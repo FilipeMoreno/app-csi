@@ -17,7 +17,7 @@ export function NavLink(props: NavLinkProps) {
       data-active={isActive}
       className={twMerge(
         'text-sm font-medium text-muted-foreground transition-colors hover:text-primary data-[active=true]:text-primary',
-        props.className
+        props.className,
       )}
       {...props}
     />
