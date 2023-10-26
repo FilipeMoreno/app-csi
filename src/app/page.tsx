@@ -1,113 +1,167 @@
-import Image from 'next/image'
+'use client'
+
+import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { ToastAction } from '@/components/ui/toast'
+import { useToast } from '@/components/ui/use-toast'
+
+import { useEffect, useState } from 'react'
+import { Br, Cut, Printer, Text, render, Image } from 'react-thermal-printer'
+
+interface VouchersContent {
+  numDevices: string
+  time: string
+  period: string
+  cod: string
+}
 
 export default function Home() {
+  const [vouchers, setVouchers] = useState<VouchersContent>()
+  const [loading, setLoading] = useState<boolean>(false)
+  const dataAtual = new Date()
+
+  const { toast } = useToast()
+
+  const receipt = (
+    <Printer type="epson" width={42}>
+      <Image align="center" src="https://i.imgur.com/MIWhUex.png" />
+      <Text size={{ width: 2, height: 2 }}>Wi-Fi</Text>
+      <Text size={{ width: 2, height: 2 }}>Voucher</Text>
+      <Br />
+      <Text>Informe o código abaixo para acessar a internet</Text>
+      <Br />
+      <Text>Rede:</Text>
+      <Text size={{ width: 2, height: 2 }}>Visitantes - CSI</Text>
+      <Br />
+      <Text>Voucher:</Text>
+      <Text bold={true} size={{ width: 2, height: 2 }}>
+        {vouchers?.cod}
+      </Text>
+      <Br />
+      <Text align="center">Data: {dataAtual.getTime()}</Text>
+      <Cut />
+    </Printer>
+  )
+
+  async function reset() {
+    setVouchers(undefined)
+  }
+
+  async function handleGenerateVoucher() {
+    reset()
+    setLoading(true)
+
+    const voucher = await fetch(
+      `${process.env.NEXT_PUBLIC_WISEFI_URL}/cp/api/vouchers/?access_token=${process.env.NEXT_PUBLIC_WISEFI_ACCESS_TOKEN}`,
+      {
+        method: 'POST',
+        body: JSON.stringify({
+          numDevices: '1',
+          time: 6,
+          period: 'hour',
+          cod: Math.random().toString(36).substr(2, 7),
+        }),
+      },
+    )
+      .then((res) => res.json())
+      .catch((err) => {
+        toast({
+          variant: 'destructive',
+          title: 'Erro ao gerar voucher!',
+          description: err.message + ' - ' + err,
+        })
+        console.log(err)
+        setLoading(false)
+      })
+
+    if (voucher) {
+      setVouchers(voucher)
+      toast({
+        variant: 'success',
+        title: 'Voucher gerado com sucesso!',
+      })
+    }
+
+    setLoading(false)
+  }
+
+  async function handlePrintVoucher() {
+    const data: Uint8Array = await render(receipt)
+    console.log(data)
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setVouchers(undefined)
+    }, 5000)
+  }, [vouchers])
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+    <div className="flex flex-col items-center justify-center">
+      <Card className="h-full w-full bg-zinc-900">
+        {!vouchers && (
+          <CardHeader>
+            <CardTitle className="uppercase">Wi-fi Vouchers</CardTitle>
+            <CardDescription>
+              Clique no botão abaixo para gerar um novo voucher para acesso à
+              internet.
+            </CardDescription>
+          </CardHeader>
+        )}
+        <CardContent>
+          {(!vouchers && loading && (
+            <Button className="w-full" onClick={handleGenerateVoucher} disabled>
+              Aguarde...
+            </Button>
+          )) ||
+            (vouchers && !loading && (
+              <div className="p-4">
+                <p className="text-xl">
+                  Voucher: <b>{vouchers.cod}</b>
+                </p>
+                <p>Data: {dataAtual.getTime()}</p>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+                <p>
+                  Tempo: {vouchers.time}{' '}
+                  {vouchers.period === 'hour' && 'hora(s)'}
+                  {vouchers.period === 'minute' && 'minuto(s)'}
+                  {vouchers.period === 'day' && 'dia(s)'}
+                  {vouchers.period === 'week' && 'semana(s)'}
+                  {vouchers.period === 'month' && 'mes(s)'}
+                  {vouchers.period === 'year' && 'ano(s)'}
+                </p>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+                <div className="-mb-4 mt-3 space-y-2">
+                  <Button
+                    className="w-full hover:opacity-60"
+                    onClick={handlePrintVoucher}
+                  >
+                    Imprimir
+                  </Button>
+                  <Button
+                    className="w-full hover:opacity-60"
+                    onClick={handleGenerateVoucher}
+                  >
+                    Gerar outro
+                  </Button>
+                </div>
+              </div>
+            )) || (
+              <Button
+                className="w-full hover:opacity-60"
+                onClick={handleGenerateVoucher}
+              >
+                Gerar
+              </Button>
+            )}
+        </CardContent>
+      </Card>
+    </div>
   )
 }
