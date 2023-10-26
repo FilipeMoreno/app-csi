@@ -7,7 +7,6 @@ import { UserNav } from './user-nav'
 import { Suspense } from 'react'
 import { Skeleton } from './ui/skeleton'
 import { NavLink } from './nav-link'
-import { Notifications } from './notifications'
 
 export function Header() {
   return (
@@ -47,8 +46,6 @@ export function Header() {
         </nav> */}
 
         {/* <Separator orientation="vertical" className="h-5" /> */}
-
-        {/* <Notifications /> */}
 
         <Suspense fallback={<Skeleton className="h-8 w-8 rounded-full" />}>
           <UserNav />
