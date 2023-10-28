@@ -1,4 +1,4 @@
-import { Avatar, AvatarImage } from './ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Button } from './ui/button'
 import {
   DropdownMenu,
@@ -11,47 +11,29 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 
-export async function UserNav() {
-  const user = {
-    firstName: 'John',
-    lastName: 'Doe',
-    imageUrl: 'https://i.pravatar.cc/100',
-  }
-
-  if (!user) {
-    throw new Error('Not authenticated.')
-  }
-
+export function UserNav() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className="relative h-8 w-8 select-none rounded-full bg-primary/10"
-        >
+        <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src={user.imageUrl} alt="" />
+            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+            <AvatarFallback>FM</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-2">
-            <p className="text-sm font-medium leading-none">
-              {user.firstName + ' ' + user.lastName}
-            </p>
+          <div className="flex flex-col space-y-1">
+            <p className="text-sm font-medium leading-none">Filipe Moreno</p>
             <p className="text-xs leading-none text-muted-foreground">
-              email@email.com
+              filipe@colegiosantoinacio.com.br
             </p>
           </div>
         </DropdownMenuLabel>
+
         <DropdownMenuSeparator />
-        <DropdownMenuGroup>
-          <DropdownMenuItem>
-            Sair
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
-        </DropdownMenuGroup>
+        <DropdownMenuItem>Sair</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

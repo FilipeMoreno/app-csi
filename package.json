@@ -1,7 +1,14 @@
 {
   "name": "wifi-voucher",
-  "version": "0.1.0",
+  "version": "0.1.5",
+  "author": {
+    "name": "Filipe Moreno",
+    "email": "y8.filipe@gmail.com"
+  },
   "private": true,
+  "repository": {
+    "url": "https://github.com/FilipeMoreno/wifi-voucher-csi"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
