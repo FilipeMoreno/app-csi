@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`dark font-sans antialiased ${inter.variable}`}>
       <body>
-        <Header toggleSidebar={toggleSidebar} />
+        <Header toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
         <div className="md:block">
           <div className="border-t">
             <div className="bg-background">

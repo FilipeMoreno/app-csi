@@ -6,34 +6,29 @@ import { Separator } from './ui/separator'
 
 import { Button } from './ui/button'
 import { UserNav } from './user-nav'
-import { Suspense, useState } from 'react'
+import { Suspense } from 'react'
 import { Skeleton } from './ui/skeleton'
+import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 
-export function Header({ toggleSidebar }: { toggleSidebar: () => void }) {
-  const [showSidebar, setShowSidebar] = useState(false)
-
+export function Header({
+  toggleSidebar,
+  showSidebar,
+}: {
+  toggleSidebar: () => void
+  showSidebar: boolean
+}) {
   return (
-    <div className="flex h-16 items-center justify-between border-b px-6">
+    <div className="flex h-16 items-center justify-between px-6">
       <div className="lg:hidden">
         <button
           onClick={toggleSidebar}
           className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
         >
-          <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
-            {showSidebar ? (
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M19 6H5v2h14V6zm0 5H5v2h14v-2zm0 5H5v2h14v-2z"
-              />
-            ) : (
-              <path
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"
-              />
-            )}
-          </svg>
+          {showSidebar ? (
+            <Cross1Icon className="h-6 w-6 text-gray-500" />
+          ) : (
+            <HamburgerMenuIcon className="h-6 w-6 text-gray-500" />
+          )}
         </button>
       </div>
       <div className="flex items-center gap-4">
