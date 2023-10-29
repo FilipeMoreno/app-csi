@@ -21,6 +21,8 @@ export function Header({
     <div className="flex h-16 items-center justify-between px-6">
       <div className="lg:hidden">
         <button
+          id="sidebar-toggle"
+          aria-label="Menu Lateral"
           onClick={toggleSidebar}
           className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
         >
@@ -32,7 +34,7 @@ export function Header({
         </button>
       </div>
       <div className="flex items-center gap-4">
-        <Link href="/">
+        <Link aria-label="Logo" href="/">
           <Logo className="h-8 w-8" />
         </Link>
 
