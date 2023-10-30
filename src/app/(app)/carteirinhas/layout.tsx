@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Bilhetes - CSI',
-  description: 'Aplicativo para geração de bilhetes',
+  title: 'Carteirinhas - CSI',
+  description: 'Aplicativo para geração de carteirinhas de estudante',
 }
 
-export default function BilheteLayout({
+export default function WifiLayout({
   children,
 }: {
   children: React.ReactNode
