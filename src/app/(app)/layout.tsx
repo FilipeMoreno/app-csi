@@ -6,7 +6,6 @@ import { Header } from '@/components/header'
 import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
-import { usePathname } from 'next/navigation'
 
 export default function RootLayout({
   children,

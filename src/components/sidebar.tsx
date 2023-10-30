@@ -1,23 +1,19 @@
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
 import { ScrollArea } from './ui/scroll-area'
-import { HomeIcon } from '@radix-ui/react-icons'
-import { FileText, LibraryIcon, Settings, Table, WifiIcon } from 'lucide-react'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
+type SidebarNavProps = React.HTMLAttributes<HTMLElement> & {
   items: {
-    title: string
-    icon: string
-    subitems: [
-      {
-        href: string
-        title: string
-        icon: string
-      },
-    ]
+    title?: string
+    icon?: string
+    subitems: {
+      href: string
+      title: string
+      icon?: string
+    }[]
   }[]
 }
 
