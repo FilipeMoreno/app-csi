@@ -11,15 +11,17 @@ interface SidebarNavProps extends React.HTMLAttributes<HTMLElement> {
   items: {
     title: string
     icon: string
-    subitems: {
-      href: string
-      title: string
-      icon: string
-    }
+    subitems: [
+      {
+        href: string
+        title: string
+        icon: string
+      },
+    ]
   }[]
 }
 
-export function Sidebar({ className, items, ...props }: SidebarNavProps) {
+export function Sidebar({ className, items }: SidebarNavProps) {
   const pathname = usePathname()
 
   return (

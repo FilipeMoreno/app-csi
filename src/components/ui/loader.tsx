@@ -12,7 +12,7 @@ export const Loader = () => {
         height: '80vh',
       }}
     >
-      <BounceLoader color="#3498db" size={50} />
+      <BounceLoader color="#FFF" size={50} />
     </div>
   )
 }
