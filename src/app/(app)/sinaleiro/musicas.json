@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Bololo HAHAHA",
+    "url": "http://localhost:3000/musica1.mp3"
+  },
+  {
+    "id": 2,
+    "title": "Noixkita",
+    "url": "http://localhost:3000/musica2.mp3"
+  },
+  {
+    "id": 3,
+    "title": "Automotivo Bibi Fogosa",
+    "url": "http://localhost:3000/Automotivo%20Bibi%20Fogosa).mp3"
+  }
+]
