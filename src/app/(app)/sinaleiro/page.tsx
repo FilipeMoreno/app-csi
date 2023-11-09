@@ -1,16 +1,17 @@
 'use client'
+
 import { useEffect, useState } from 'react'
 import { useGlobalAudioPlayer } from 'react-use-audio-player'
+import { BounceLoader } from 'react-spinners'
+import { Volume1Icon, Volume2Icon, VolumeXIcon } from 'lucide-react'
+import { Player } from '@lottiefiles/react-lottie-player'
+
 import horarios from './horarios.json'
 import songsJson from './musicas.json'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import {
-  TrackNextIcon,
-  TrackPreviousIcon,
-  PlayIcon,
-  PauseIcon,
-} from '@radix-ui/react-icons'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Card,
   CardContent,
@@ -18,21 +19,20 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Volume1Icon, Volume2Icon, VolumeXIcon } from 'lucide-react'
-
-import { Player, Controls } from '@lottiefiles/react-lottie-player'
-
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-
+import {
+  TrackNextIcon,
+  TrackPreviousIcon,
+  PlayIcon,
+  PauseIcon,
+} from '@radix-ui/react-icons'
 import { ScrollArea } from '@/components/ui/scroll-area'
-
-import Image from 'next/image'
 
 export default function SinaleiroHome() {
   const [songIndex, setSongIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volumeValue, setVolumeValue] = useState(0.5)
   const [tocandoAgora, setTocandoAgora] = useState(0)
+  const [loadMusic, setLoadMusic] = useState(true)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -46,6 +46,7 @@ export default function SinaleiroHome() {
       onstop: () => console.log('Música parada.'),
       onload() {
         console.log('Música carregada.')
+        setLoadMusic(false)
         setTocandoAgora(songsJson[songIndex].id)
       },
     })
@@ -66,6 +67,7 @@ export default function SinaleiroHome() {
   }
 
   function nextMusic() {
+    setLoadMusic(true)
     if (songIndex === songsJson.length - 1) {
       setSongIndex(0)
       return
@@ -74,6 +76,7 @@ export default function SinaleiroHome() {
   }
 
   function previousMusic() {
+    setLoadMusic(true)
     if (songIndex === 0) {
       setSongIndex(songsJson.length - 1)
       return
@@ -109,9 +112,9 @@ export default function SinaleiroHome() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mb-2  w-full ">
-        {/* <h1 className="text-center text-xl font-bold uppercase">
+        <h1 className="text-center text-xl font-bold uppercase">
           {isPlaying ? 'Em execução' : 'Pausado'}
-        </h1> */}
+        </h1>
         <h1>Controle manual</h1>
       </div>
       <div className="flex w-full flex-col items-center justify-center">
@@ -166,6 +169,21 @@ export default function SinaleiroHome() {
             </CardHeader>
             <CardContent>
               <ScrollArea className="h-96 w-full">
+                {loadMusic && (
+                  <div className="absolute h-screen w-screen bg-zinc-950 opacity-60">
+                    <BounceLoader
+                      color="#FFF"
+                      size={100}
+                      style={{
+                        position: 'absolute',
+                        top: '10%',
+                        left: '30%',
+                        transform: 'translate(-50%, -50%)',
+                      }}
+                    />
+                  </div>
+                )}
+
                 <ul className="space-y-2">
                   {songsJson.map((song, index) =>
                     song.id === tocandoAgora ? (
@@ -194,7 +212,10 @@ export default function SinaleiroHome() {
                       <li
                         key={song.id}
                         className="flex flex-row space-x-2 rounded-lg border border-zinc-950 p-4 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
-                        onClick={() => setSongIndex(index)}
+                        onClick={() => {
+                          setLoadMusic(true)
+                          setSongIndex(index)
+                        }}
                       >
                         <p>{song.id}</p>
                         <p>{song.title}</p>
