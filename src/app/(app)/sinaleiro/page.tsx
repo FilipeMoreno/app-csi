@@ -15,11 +15,14 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
 import { Volume1Icon, Volume2Icon, VolumeIcon, VolumeXIcon } from 'lucide-react'
 import { date } from 'zod'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Label } from '@radix-ui/react-dropdown-menu'
 
 export default function SinaleiroHome() {
   const [songIndex, setSongIndex] = useState(0)
@@ -148,6 +151,7 @@ export default function SinaleiroHome() {
             <TrackNextIcon />
           </Button>
         </div>
+
         <div className="flex w-full flex-row items-center space-x-1">
           {volumeValue === 0 && <VolumeXIcon onClick={muteMusica} />}
           {volumeValue < 0.5 && volumeValue > 0 && (
@@ -166,37 +170,64 @@ export default function SinaleiroHome() {
         </div>
       </div>
 
-      <div className="w-full">
-        <Card>
-          <CardHeader>
-            <CardTitle>Lista de músicas</CardTitle>
-            <CardDescription>Mostrando músicas disponíveis</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <ul className="space-y-2">
-              {songsJson.map((song, index) =>
-                song.id === tocandoAgora ? (
-                  <li
-                    key={song.id}
-                    className="rounded-lg bg-zinc-900 p-2 hover:cursor-pointer hover:bg-opacity-40"
-                    onClick={() => setSongIndex(index)}
-                  >
-                    <b>{song.title}</b>
-                  </li>
-                ) : (
-                  <li
-                    key={song.id}
-                    className="rounded-lg border border-zinc-950 p-2 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
-                    onClick={() => setSongIndex(index)}
-                  >
-                    {song.title}
-                  </li>
-                ),
-              )}
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
+      <Tabs defaultValue="musicas" className="w-full">
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="musicas">Músicas</TabsTrigger>
+          <TabsTrigger value="horarios">Horários</TabsTrigger>
+          <TabsTrigger value="config">Configurações</TabsTrigger>
+        </TabsList>
+        <TabsContent value="musicas">
+          <Card>
+            <CardHeader>
+              <CardTitle>Lista de músicas</CardTitle>
+              <CardDescription>Mostrando músicas disponíveis</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <ul className="space-y-2">
+                {songsJson.map((song, index) =>
+                  song.id === tocandoAgora ? (
+                    <li
+                      key={song.id}
+                      className="rounded-lg bg-zinc-900 p-2 hover:cursor-pointer hover:bg-opacity-40"
+                      onClick={() => setSongIndex(index)}
+                    >
+                      <b>{song.title}</b>
+                    </li>
+                  ) : (
+                    <li
+                      key={song.id}
+                      className="rounded-lg border border-zinc-950 p-2 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
+                      onClick={() => setSongIndex(index)}
+                    >
+                      {song.title}
+                    </li>
+                  ),
+                )}
+              </ul>
+            </CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="horarios">
+          <Card>
+            <CardHeader>
+              <CardTitle>Lista de horários</CardTitle>
+              <CardDescription>Horários em que a musica tocará</CardDescription>
+            </CardHeader>
+            <CardContent></CardContent>
+          </Card>
+        </TabsContent>
+        <TabsContent value="config">
+          <Card>
+            <CardHeader>
+              <CardTitle>Configurações</CardTitle>
+              <CardDescription>
+                Mostrando as configurações do sistema
+              </CardDescription>
+            </CardHeader>
+            <CardContent></CardContent>
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }
