@@ -274,7 +274,7 @@ export default function SinaleiroHome() {
                 <TabsList className="grid w-full grid-cols-5">
                   {Object.entries(horarios).map(([day], index) => (
                     <TabsTrigger key={index} value={day}>
-                      {day}
+                      {day.replace('-feira', '')}
                     </TabsTrigger>
                   ))}
                 </TabsList>
