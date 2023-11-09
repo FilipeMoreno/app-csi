@@ -346,12 +346,12 @@ export default function SinaleiroHome() {
                           className="my-4 flex h-full flex-row items-center space-x-4"
                         >
                           <label className="w-full">
-                            Hora:
+                            Horário
                             <Input type="time" defaultValue={time.horario} />
                           </label>
 
                           <label className="w-full">
-                            Duração:
+                            Duração
                             <Input type="number" defaultValue={time.duracao} />
                           </label>
 
