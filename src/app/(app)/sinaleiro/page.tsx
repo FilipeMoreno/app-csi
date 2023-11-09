@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useGlobalAudioPlayer } from 'react-use-audio-player'
 import config from './config.json'
 import songsJson from './musicas.json'
@@ -18,6 +18,8 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { Volume1Icon, Volume2Icon, VolumeIcon, VolumeXIcon } from 'lucide-react'
+import { date } from 'zod'
 
 export default function SinaleiroHome() {
   const [songIndex, setSongIndex] = useState(0)
@@ -34,6 +36,7 @@ export default function SinaleiroHome() {
       onend: () => nextMusic(),
       onpause: () => console.log('Música pausada.'),
       onplay: () => console.log(`Tocando agora: ${songsJson[songIndex].title}`),
+      onstop: () => console.log('Música parada.'),
       onload() {
         console.log('Música carregada.')
         setTocandoAgora(songsJson[songIndex].id)
@@ -56,7 +59,6 @@ export default function SinaleiroHome() {
   }
 
   function nextMusic() {
-    console.log(`Próxima música: ${songIndex + 1}`)
     if (songIndex === songsJson.length - 1) {
       setSongIndex(0)
       return
@@ -68,7 +70,7 @@ export default function SinaleiroHome() {
     const volume = parseFloat(event.target.value)
     setVolume(volume)
     setVolumeValue(volume)
-    console.log(`Setting volume to ${volume}`)
+    localStorage.setItem('volume', event.target.value)
   }
 
   function verifyAutoPlay() {
@@ -78,34 +80,92 @@ export default function SinaleiroHome() {
     return false
   }
 
+  function muteMusica() {
+    const getVolume = localStorage.getItem('volume')
+    setVolumeValue(getVolume ? parseFloat(getVolume) : 0.5)
+    setVolume(getVolume ? parseFloat(getVolume) : 0.5)
+
+    if (volumeValue > 0) {
+      setVolumeValue(0)
+      setVolume(0)
+    }
+  }
+
+  const [date, setDate] = useState(new Date())
+
+  useEffect(() => {
+    const timerID = setInterval(() => tick(), 1000)
+    return function cleanup() {
+      clearInterval(timerID)
+    }
+  })
+
+  function tick() {
+    setDate(new Date())
+  }
+
+  console.log(date)
+
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="space-x-2">
-        <Button onClick={nextMusic}>
-          <TrackPreviousIcon />
-        </Button>
-        {(isPlaying && (
-          <Button onClick={pauseMusic}>
-            <PauseIcon />
-          </Button>
-        )) || (
-          <Button onClick={playMusic}>
-            <PlayIcon />
-          </Button>
-        )}
-
-        <Button onClick={nextMusic}>
-          <TrackNextIcon />
-        </Button>
-        <Input
-          type="range"
-          min="0"
-          max="1"
-          step="0.01"
-          value={volumeValue}
-          onChange={handleVolumeChange}
-        />
+      <div className="flex flex-col items-center justify-center">
+        <h1 className="text-xs">Horário atual:</h1>
+        <h1 className="text-3xl font-bold text-red-400">
+          {date.getHours().toLocaleString('pt-BR', {
+            minimumIntegerDigits: 2,
+          })}
+          :
+          {date.getMinutes().toLocaleString('pt-BR', {
+            minimumIntegerDigits: 2,
+          })}
+          :
+          {date.getSeconds().toLocaleString('pt-BR', {
+            minimumIntegerDigits: 2,
+          })}
+        </h1>
       </div>
+      <div className="mb-2  w-full ">
+        <h1 className="text-center text-xl font-bold uppercase">
+          {isPlaying ? 'Em execução' : 'Pausado'}
+        </h1>
+      </div>
+      <div className="flex w-full flex-col items-center justify-center">
+        <div className="flex flex-row space-x-2">
+          <Button onClick={nextMusic}>
+            <TrackPreviousIcon />
+          </Button>
+          {(isPlaying && (
+            <Button onClick={pauseMusic}>
+              <PauseIcon />
+            </Button>
+          )) || (
+            <Button onClick={playMusic}>
+              <PlayIcon />
+            </Button>
+          )}
+
+          <Button onClick={nextMusic}>
+            <TrackNextIcon />
+          </Button>
+        </div>
+        <div className="flex w-full flex-row items-center space-x-1">
+          {volumeValue === 0 && <VolumeXIcon onClick={muteMusica} />}
+          {volumeValue < 0.5 && volumeValue > 0 && (
+            <Volume1Icon onClick={muteMusica} />
+          )}
+          {volumeValue >= 0.5 && <Volume2Icon onClick={muteMusica} />}
+          <Input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volumeValue}
+            onChange={handleVolumeChange}
+            className="w-full"
+          />
+        </div>
+      </div>
+
       <div className="w-full">
         <Card>
           <CardHeader>
