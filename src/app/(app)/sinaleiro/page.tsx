@@ -16,6 +16,7 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
@@ -26,6 +27,8 @@ import {
   PauseIcon,
 } from '@radix-ui/react-icons'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Label } from '@/components/ui/label'
+import { Switch } from '@/components/ui/switch'
 
 export default function SinaleiroHome() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -347,7 +350,22 @@ export default function SinaleiroHome() {
                 Mostrando as configurações do sistema
               </CardDescription>
             </CardHeader>
-            <CardContent></CardContent>
+            <CardContent className="grid gap-6">
+              <div className="flex items-center justify-between space-x-2">
+                <Label htmlFor="necessary" className="flex flex-col space-y-1">
+                  <span>Controle manual</span>
+                  <span className="font-normal leading-snug text-muted-foreground">
+                    Exibe os controles de música na tela
+                  </span>
+                </Label>
+                <Switch id="controls" />
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline" className="w-full">
+                Salvar configurações
+              </Button>
+            </CardFooter>
           </Card>
         </TabsContent>
       </Tabs>
