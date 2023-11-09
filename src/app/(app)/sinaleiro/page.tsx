@@ -28,31 +28,34 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 export default function SinaleiroHome() {
-  const [songIndex, setSongIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(false)
   const [volumeValue, setVolumeValue] = useState(0.5)
   const [tocandoAgora, setTocandoAgora] = useState(0)
   const [loadMusic, setLoadMusic] = useState(true)
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
+  const [currentSongId, setCurrentSongId] = useState(musicResults[0].id)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
   useEffect(() => {
-    load(songsJson[songIndex].url, {
+    const currentSong = musicResults.find((song) => song.id === currentSongId)
+    if (!currentSong) return
+
+    load(currentSong.url, {
       autoplay: verifyAutoPlay(),
       initialVolume: volumeValue,
       onend: () => nextMusic(),
       onpause: () => console.log('Música pausada.'),
-      onplay: () => console.log(`Tocando agora: ${songsJson[songIndex].title}`),
+      onplay: () => console.log(`Tocando agora: ${currentSong.title}`),
       onstop: () => console.log('Música parada.'),
       onload() {
         console.log('Música carregada.')
+        setTocandoAgora(currentSong.id)
         setLoadMusic(false)
-        setTocandoAgora(songsJson[songIndex].id)
       },
     })
-  }, [songIndex])
+  }, [currentSongId])
 
   function playMusic() {
     if (!isPlaying) {
@@ -70,20 +73,25 @@ export default function SinaleiroHome() {
 
   function nextMusic() {
     setLoadMusic(true)
-    if (songIndex === songsJson.length - 1) {
-      setSongIndex(0)
-      return
-    }
-    setSongIndex(songIndex + 1)
+
+    const currentIndex = musicResults.findIndex(
+      (song) => song.id === currentSongId,
+    )
+    const nextIndex = (currentIndex + 1) % musicResults.length
+    setCurrentSongId(musicResults[nextIndex].id)
   }
 
   function previousMusic() {
     setLoadMusic(true)
-    if (songIndex === 0) {
-      setSongIndex(songsJson.length - 1)
-      return
+
+    const currentIndex = musicResults.findIndex(
+      (song) => song.id === currentSongId,
+    )
+    let nextIndex = currentIndex - 1
+    if (nextIndex < 0) {
+      nextIndex = musicResults.length - 1
     }
-    setSongIndex(songIndex - 1)
+    setCurrentSongId(musicResults[nextIndex].id)
   }
 
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -112,23 +120,29 @@ export default function SinaleiroHome() {
   }
 
   async function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (event.target.value === '') {
+      setMusicResults(songsJson)
+      return
+    }
+
     setSearch(event.target.value.toLowerCase())
     const results = songsJson.filter((musica) =>
       musica.title.toLowerCase().includes(search.toLowerCase()),
     )
     setMusicResults(results)
+  }
 
-    if (event.target.value === '') {
-      setMusicResults(songsJson)
-    }
+  function selectMusic(id: number) {
+    setLoadMusic(true)
+
+    const currentIndex = musicResults.findIndex((song) => song.id === id)
+
+    setCurrentSongId(musicResults[currentIndex].id)
   }
 
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mb-2  w-full ">
-        {/* <h1 className="text-center text-xl font-bold uppercase">
-          {isPlaying ? 'Em execução' : 'Pausado'}
-        </h1> */}
         <h1 className="text-center text-xs font-bold uppercase">
           Controle manual
         </h1>
@@ -221,12 +235,14 @@ export default function SinaleiroHome() {
                 )}
 
                 <ul className="space-y-2">
-                  {musicResults.map((song, index) =>
+                  {musicResults.map((song) =>
                     song.id === tocandoAgora ? (
                       <li
                         key={song.id}
                         className="flex flex-row items-center space-x-2 rounded-lg bg-zinc-800 p-4 hover:cursor-pointer hover:bg-opacity-40"
-                        onClick={() => setSongIndex(index)}
+                        onClick={() => {
+                          selectMusic(song.id)
+                        }}
                       >
                         {(isPlaying && (
                           <Player
@@ -249,8 +265,7 @@ export default function SinaleiroHome() {
                         key={song.id}
                         className="flex flex-row space-x-2 rounded-lg border border-zinc-950 p-4 hover:cursor-pointer hover:border hover:border-zinc-800 hover:bg-opacity-40"
                         onClick={() => {
-                          setLoadMusic(true)
-                          setSongIndex(index)
+                          selectMusic(song.id)
                         }}
                       >
                         <p>{song.id}.</p>
