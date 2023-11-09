@@ -33,6 +33,8 @@ export default function SinaleiroHome() {
   const [volumeValue, setVolumeValue] = useState(0.5)
   const [tocandoAgora, setTocandoAgora] = useState(0)
   const [loadMusic, setLoadMusic] = useState(true)
+  const [search, setSearch] = useState('')
+  const [musicResults, setMusicResults] = useState(songsJson)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -106,6 +108,18 @@ export default function SinaleiroHome() {
     if (volumeValue > 0) {
       setVolumeValue(0)
       setVolume(0)
+    }
+  }
+
+  async function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    setSearch(event.target.value.toLowerCase())
+    const results = songsJson.filter((musica) =>
+      musica.title.toLowerCase().includes(search.toLowerCase()),
+    )
+    setMusicResults(results)
+
+    if (event.target.value === '') {
+      setMusicResults(songsJson)
     }
   }
 
@@ -186,7 +200,11 @@ export default function SinaleiroHome() {
               <CardDescription>Mostrando músicas disponíveis</CardDescription>
             </CardHeader>
             <CardContent>
-              <ScrollArea className="h-96 w-full">
+              <Input
+                placeholder="Pesquisar uma música..."
+                onChange={handleInputChange}
+              />
+              <ScrollArea className="my-4 h-96 w-full">
                 {loadMusic && (
                   <div className="absolute h-screen w-screen bg-zinc-950 opacity-60">
                     <BounceLoader
@@ -203,7 +221,7 @@ export default function SinaleiroHome() {
                 )}
 
                 <ul className="space-y-2">
-                  {songsJson.map((song, index) =>
+                  {musicResults.map((song, index) =>
                     song.id === tocandoAgora ? (
                       <li
                         key={song.id}
@@ -229,7 +247,7 @@ export default function SinaleiroHome() {
                     ) : (
                       <li
                         key={song.id}
-                        className="flex flex-row space-x-2 rounded-lg border border-zinc-950 p-4 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
+                        className="flex flex-row space-x-2 rounded-lg border border-zinc-950 p-4 hover:cursor-pointer hover:border hover:border-zinc-800 hover:bg-opacity-40"
                         onClick={() => {
                           setLoadMusic(true)
                           setSongIndex(index)
