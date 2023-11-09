@@ -64,17 +64,18 @@ export default function SinaleiroHome() {
     setSongIndex(songIndex + 1)
   }
 
+  const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const volume = parseFloat(event.target.value)
+    setVolume(volume)
+    setVolumeValue(volume)
+    console.log(`Setting volume to ${volume}`)
+  }
+
   function verifyAutoPlay() {
     if (isPlaying) {
       return true
     }
     return false
-  }
-
-  const handleVolumeChange = (event) => {
-    setVolume(event.target.value)
-    setVolumeValue(event.target.value)
-    console.log(`Setting volume to ${event.target.value}`)
   }
 
   return (
