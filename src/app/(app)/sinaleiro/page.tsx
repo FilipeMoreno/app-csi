@@ -94,18 +94,9 @@ export default function SinaleiroHome() {
     }
   }
 
-  const [date, setDate] = useState(new Date())
-
-  useEffect(() => {
-    const timer = setInterval(() => setDate(new Date()), 1000)
-    return function cleanup() {
-      clearInterval(timer)
-    }
-  })
-
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center">
+      {/* <div className="flex flex-col items-center justify-center">
         <h1 className="text-xs">Horário atual:</h1>
         <h1 className="text-3xl font-bold text-red-400">
           {date.getHours().toLocaleString('pt-BR', {
@@ -120,7 +111,7 @@ export default function SinaleiroHome() {
             minimumIntegerDigits: 2,
           })}
         </h1>
-      </div>
+      </div> */}
       <div className="mb-2  w-full ">
         <h1 className="text-center text-xl font-bold uppercase">
           {isPlaying ? 'Em execução' : 'Pausado'}
