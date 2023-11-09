@@ -3,7 +3,13 @@
 import { useEffect, useState } from 'react'
 import { useGlobalAudioPlayer } from 'react-use-audio-player'
 import { BounceLoader } from 'react-spinners'
-import { Volume1Icon, Volume2Icon, VolumeXIcon } from 'lucide-react'
+import {
+  CheckIcon,
+  Trash2Icon,
+  Volume1Icon,
+  Volume2Icon,
+  VolumeXIcon,
+} from 'lucide-react'
 import { Player } from '@lottiefiles/react-lottie-player'
 
 import horarios from './horarios.json'
@@ -308,7 +314,12 @@ export default function SinaleiroHome() {
           <Card>
             <CardHeader>
               <CardTitle>Lista de horários</CardTitle>
-              <CardDescription>Horários em que a musica tocará</CardDescription>
+              <div className="flex flex-row items-center justify-between">
+                <CardDescription>
+                  Horários em que a musica tocará
+                </CardDescription>
+                <Button variant="default">+ Novo horário</Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Tabs defaultValue="segunda-feira" className="w-full">
@@ -324,26 +335,32 @@ export default function SinaleiroHome() {
                     <TabsContent key={index} value={day}>
                       {times.length === 0 && (
                         <div className="my-4 flex items-center justify-center">
-                          <h1>nenhum horário cadastrado</h1>
+                          <h1 className="text-xs">
+                            nenhum horário cadastrado para {day}
+                          </h1>
                         </div>
                       )}
                       {times.map((time) => (
                         <div
                           key={time.id}
-                          className="flex w-full flex-row items-center justify-between space-x-8 space-y-4"
+                          className="my-4 flex h-full flex-row items-center space-x-4"
                         >
                           <label className="w-full">
                             Hora:
-                            <Input type="number" value={time.hora} />
+                            <Input type="time" defaultValue={time.horario} />
                           </label>
-                          <label className="w-full">
-                            Minutos:
-                            <Input type="number" value={time.minuto} />
-                          </label>
+
                           <label className="w-full">
                             Duração:
-                            <Input type="number" value={time.duracao} />
+                            <Input type="number" defaultValue={time.duracao} />
                           </label>
+
+                          <Button className="mt-6 h-full" variant={'outline'}>
+                            <CheckIcon size={15} />
+                          </Button>
+                          <Button className="mt-6 h-full" variant={'outline'}>
+                            <Trash2Icon size={15} />
+                          </Button>
                         </div>
                       ))}
                     </TabsContent>
