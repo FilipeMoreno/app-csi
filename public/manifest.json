@@ -1,0 +1,17 @@
+{
+  "name": "Super APP - Colégio Santo Inácio",
+  "short_name": "CSI - APP",
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "description": "Aplicativo para o Colégio Santo Inácio",
+  "icons": [
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
