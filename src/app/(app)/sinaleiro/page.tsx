@@ -112,37 +112,55 @@ export default function SinaleiroHome() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mb-2  w-full ">
-        <h1 className="text-center text-xl font-bold uppercase">
+        {/* <h1 className="text-center text-xl font-bold uppercase">
           {isPlaying ? 'Em execução' : 'Pausado'}
+        </h1> */}
+        <h1 className="text-center text-xs font-bold uppercase">
+          Controle manual
         </h1>
-        <h1>Controle manual</h1>
       </div>
       <div className="flex w-full flex-col items-center justify-center">
         <div className="flex flex-row space-x-2">
-          <Button onClick={previousMusic}>
-            <TrackPreviousIcon />
+          <Button
+            onClick={previousMusic}
+            className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+          >
+            <TrackPreviousIcon className="text-primary" />
           </Button>
           {(isPlaying && (
-            <Button onClick={pauseMusic}>
-              <PauseIcon />
+            <Button
+              className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+              onClick={pauseMusic}
+            >
+              <PauseIcon className="text-primary" />
             </Button>
           )) || (
-            <Button onClick={playMusic}>
-              <PlayIcon />
+            <Button
+              className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+              onClick={playMusic}
+            >
+              <PlayIcon className="text-primary" />
             </Button>
           )}
 
-          <Button onClick={nextMusic}>
-            <TrackNextIcon />
+          <Button
+            className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+            onClick={nextMusic}
+          >
+            <TrackNextIcon className="text-primary" />
           </Button>
         </div>
 
-        <div className="flex w-full flex-row items-center space-x-1">
-          {volumeValue === 0 && <VolumeXIcon onClick={muteMusica} />}
-          {volumeValue < 0.5 && volumeValue > 0 && (
-            <Volume1Icon onClick={muteMusica} />
+        <div className="bg-text-400 flex w-full flex-row items-center">
+          {volumeValue === 0 && (
+            <VolumeXIcon onClick={muteMusica} className=" mr-2 text-red-500" />
           )}
-          {volumeValue >= 0.5 && <Volume2Icon onClick={muteMusica} />}
+          {volumeValue < 0.5 && volumeValue > 0 && (
+            <Volume1Icon onClick={muteMusica} className="mr-2" />
+          )}
+          {volumeValue >= 0.5 && (
+            <Volume2Icon onClick={muteMusica} className="mr-2" />
+          )}
           <Input
             type="range"
             min="0"
@@ -189,7 +207,7 @@ export default function SinaleiroHome() {
                     song.id === tocandoAgora ? (
                       <li
                         key={song.id}
-                        className="flex flex-row items-center space-x-2 rounded-lg bg-zinc-900 p-4 hover:cursor-pointer hover:bg-opacity-40"
+                        className="flex flex-row items-center space-x-2 rounded-lg bg-zinc-800 p-4 hover:cursor-pointer hover:bg-opacity-40"
                         onClick={() => setSongIndex(index)}
                       >
                         {(isPlaying && (
@@ -203,7 +221,7 @@ export default function SinaleiroHome() {
                               color: 'green',
                             }}
                           />
-                        )) || <p>{song.id}</p>}
+                        )) || <p>{song.id}.</p>}
                         {(isPlaying && (
                           <b className="text-green-500">{song.title}</b>
                         )) || <b>{song.title}</b>}
@@ -217,7 +235,7 @@ export default function SinaleiroHome() {
                           setSongIndex(index)
                         }}
                       >
-                        <p>{song.id}</p>
+                        <p>{song.id}.</p>
                         <p>{song.title}</p>
                       </li>
                     ),
