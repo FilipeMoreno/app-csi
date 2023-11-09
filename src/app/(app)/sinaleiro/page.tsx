@@ -97,17 +97,11 @@ export default function SinaleiroHome() {
   const [date, setDate] = useState(new Date())
 
   useEffect(() => {
-    const timerID = setInterval(() => tick(), 1000)
+    const timer = setInterval(() => setDate(new Date()), 1000)
     return function cleanup() {
-      clearInterval(timerID)
+      clearInterval(timer)
     }
   })
-
-  function tick() {
-    setDate(new Date())
-  }
-
-  console.log(date)
 
   return (
     <div className="flex flex-col items-center justify-center">
