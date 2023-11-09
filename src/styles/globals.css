@@ -76,4 +76,21 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-zinc-950
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-zinc-800 rounded-lg
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+
 }

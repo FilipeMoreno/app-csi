@@ -37,7 +37,6 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { AudioSeekBar } from '@/components/AudioSeekBar'
 import { TimeLabel } from '@/components/AudioTimeLabel'
-import { Slider } from '@/components/ui/slider'
 
 export default function SinaleiroHome() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -47,7 +46,6 @@ export default function SinaleiroHome() {
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
   const [currentSongId, setCurrentSongId] = useState(1)
-  const [currentTime, setCurrentTime] = useState(0)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -151,6 +149,10 @@ export default function SinaleiroHome() {
   }
 
   function selectMusic(id: number) {
+    if (id === currentSongId) {
+      return
+    }
+
     setLoadMusic(true)
 
     const currentIndex = musicResults.findIndex((song) => song.id === id)

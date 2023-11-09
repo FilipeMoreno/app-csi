@@ -21,7 +21,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`dark font-sans antialiased ${inter.variable}`}>
+    <html
+      lang="en"
+      className={`dark font-sans antialiased ${inter.variable}
+  `}
+    >
       <Script src="/register-sw.js" />
       {children}
     </html>
