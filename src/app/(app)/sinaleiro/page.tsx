@@ -34,7 +34,7 @@ export default function SinaleiroHome() {
   const [loadMusic, setLoadMusic] = useState(true)
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
-  const [currentSongId, setCurrentSongId] = useState(musicResults[0].id)
+  const [currentSongId, setCurrentSongId] = useState(1)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -129,6 +129,11 @@ export default function SinaleiroHome() {
     const results = songsJson.filter((musica) =>
       musica.title.toLowerCase().includes(search.toLowerCase()),
     )
+
+    if (results.length === 0) {
+      return setMusicResults([])
+    }
+
     setMusicResults(results)
   }
 
@@ -219,6 +224,13 @@ export default function SinaleiroHome() {
                 onChange={handleInputChange}
               />
               <ScrollArea className="my-4 h-96 w-full">
+                {musicResults.length === 0 && (
+                  <div>
+                    <h1 className="text-center text-xs">
+                      nenhum resultado encontrado
+                    </h1>
+                  </div>
+                )}
                 {loadMusic && (
                   <div className="absolute h-screen w-screen bg-zinc-950 opacity-60">
                     <BounceLoader
