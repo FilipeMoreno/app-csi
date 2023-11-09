@@ -18,29 +18,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  EditIcon,
-  EyeIcon,
-  MoreHorizontal,
-  SaveIcon,
-  Trash2,
-  Trash2Icon,
-  Volume1Icon,
-  Volume2Icon,
-  VolumeXIcon,
-} from 'lucide-react'
+import { Volume1Icon, Volume2Icon, VolumeXIcon } from 'lucide-react'
+
+import { Player, Controls } from '@lottiefiles/react-lottie-player'
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Separator } from '@/components/ui/separator'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import config from 'next/config'
+
+import Image from 'next/image'
 
 export default function SinaleiroHome() {
   const [songIndex, setSongIndex] = useState(0)
@@ -87,6 +73,14 @@ export default function SinaleiroHome() {
     setSongIndex(songIndex + 1)
   }
 
+  function previousMusic() {
+    if (songIndex === 0) {
+      setSongIndex(songsJson.length - 1)
+      return
+    }
+    setSongIndex(songIndex - 1)
+  }
+
   const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const volume = parseFloat(event.target.value)
     setVolume(volume)
@@ -115,13 +109,14 @@ export default function SinaleiroHome() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="mb-2  w-full ">
-        <h1 className="text-center text-xl font-bold uppercase">
+        {/* <h1 className="text-center text-xl font-bold uppercase">
           {isPlaying ? 'Em execução' : 'Pausado'}
-        </h1>
+        </h1> */}
+        <h1>Controle manual</h1>
       </div>
       <div className="flex w-full flex-col items-center justify-center">
         <div className="flex flex-row space-x-2">
-          <Button onClick={nextMusic}>
+          <Button onClick={previousMusic}>
             <TrackPreviousIcon />
           </Button>
           {(isPlaying && (
@@ -176,18 +171,33 @@ export default function SinaleiroHome() {
                     song.id === tocandoAgora ? (
                       <li
                         key={song.id}
-                        className="rounded-lg bg-zinc-900 p-2 hover:cursor-pointer hover:bg-opacity-40"
+                        className="flex flex-row items-center space-x-2 rounded-lg bg-zinc-900 p-4 hover:cursor-pointer hover:bg-opacity-40"
                         onClick={() => setSongIndex(index)}
                       >
-                        <b>{song.title}</b>
+                        {(isPlaying && (
+                          <Player
+                            autoplay
+                            loop
+                            src="/lottie/audio-wave.json"
+                            style={{
+                              height: '20px',
+                              width: '20px',
+                              color: 'green',
+                            }}
+                          />
+                        )) || <p>{song.id}</p>}
+                        {(isPlaying && (
+                          <b className="text-green-500">{song.title}</b>
+                        )) || <b>{song.title}</b>}
                       </li>
                     ) : (
                       <li
                         key={song.id}
-                        className="rounded-lg border border-zinc-950 p-2 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
+                        className="flex flex-row space-x-2 rounded-lg border border-zinc-950 p-4 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
                         onClick={() => setSongIndex(index)}
                       >
-                        {song.title}
+                        <p>{song.id}</p>
+                        <p>{song.title}</p>
                       </li>
                     ),
                   )}

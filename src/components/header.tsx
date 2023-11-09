@@ -49,11 +49,11 @@ export function Header({
       </div>
 
       <div className="flex items-center gap-4">
-        <Button variant="outline" size="sm">
+        {/* <Button variant="outline" size="sm">
           Feedback
         </Button>
 
-        <Separator orientation="vertical" className="h-5" />
+        <Separator orientation="vertical" className="h-5" /> */}
 
         {/* <nav className="flex items-center space-x-6">
           <NavLink className="text-xs font-normal" href="/examples/dashboard">
