@@ -29,6 +29,9 @@ import {
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
+import { AudioSeekBar } from '@/components/AudioSeekBar'
+import { TimeLabel } from '@/components/AudioTimeLabel'
+import { Slider } from '@/components/ui/slider'
 
 export default function SinaleiroHome() {
   const [isPlaying, setIsPlaying] = useState(false)
@@ -38,6 +41,7 @@ export default function SinaleiroHome() {
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
   const [currentSongId, setCurrentSongId] = useState(1)
+  const [currentTime, setCurrentTime] = useState(0)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -186,8 +190,7 @@ export default function SinaleiroHome() {
             <TrackNextIcon className="text-primary" />
           </Button>
         </div>
-
-        <div className="bg-text-400 flex w-full flex-row items-center">
+        <div className="bg-text-400 mt-2 flex w-96 flex-row items-center">
           {volumeValue === 0 && (
             <VolumeXIcon onClick={muteMusica} className=" mr-2 text-red-500" />
           )}
@@ -197,19 +200,27 @@ export default function SinaleiroHome() {
           {volumeValue >= 0.5 && (
             <Volume2Icon onClick={muteMusica} className="mr-2" />
           )}
-          <Input
+          <input
             type="range"
             min="0"
             max="1"
             step="0.01"
             value={volumeValue}
             onChange={handleVolumeChange}
-            className="w-full"
+            className="w-full accent-zinc-800"
           />
+        </div>
+        <div className="">
+          <div className="playBar__timeStuff">
+            <AudioSeekBar className="w-full" />
+          </div>
+          <div className="flex items-center justify-center">
+            <TimeLabel />
+          </div>
         </div>
       </div>
 
-      <Tabs defaultValue="musicas" className="w-full">
+      <Tabs defaultValue="musicas" className="my-4 w-full">
         <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="musicas">Músicas</TabsTrigger>
           <TabsTrigger value="horarios">Horários</TabsTrigger>
