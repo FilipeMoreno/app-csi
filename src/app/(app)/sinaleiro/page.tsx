@@ -1,7 +1,7 @@
 'use client'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useGlobalAudioPlayer } from 'react-use-audio-player'
-import config from './config.json'
+import horarios from './horarios.json'
 import songsJson from './musicas.json'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -15,14 +15,32 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Volume1Icon, Volume2Icon, VolumeIcon, VolumeXIcon } from 'lucide-react'
-import { date } from 'zod'
+import {
+  EditIcon,
+  EyeIcon,
+  MoreHorizontal,
+  SaveIcon,
+  Trash2,
+  Trash2Icon,
+  Volume1Icon,
+  Volume2Icon,
+  VolumeXIcon,
+} from 'lucide-react'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Label } from '@radix-ui/react-dropdown-menu'
+
+import { ScrollArea } from '@/components/ui/scroll-area'
+import { Separator } from '@/components/ui/separator'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import config from 'next/config'
 
 export default function SinaleiroHome() {
   const [songIndex, setSongIndex] = useState(0)
@@ -96,22 +114,6 @@ export default function SinaleiroHome() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {/* <div className="flex flex-col items-center justify-center">
-        <h1 className="text-xs">Horário atual:</h1>
-        <h1 className="text-3xl font-bold text-red-400">
-          {date.getHours().toLocaleString('pt-BR', {
-            minimumIntegerDigits: 2,
-          })}
-          :
-          {date.getMinutes().toLocaleString('pt-BR', {
-            minimumIntegerDigits: 2,
-          })}
-          :
-          {date.getSeconds().toLocaleString('pt-BR', {
-            minimumIntegerDigits: 2,
-          })}
-        </h1>
-      </div> */}
       <div className="mb-2  w-full ">
         <h1 className="text-center text-xl font-bold uppercase">
           {isPlaying ? 'Em execução' : 'Pausado'}
@@ -168,37 +170,79 @@ export default function SinaleiroHome() {
               <CardDescription>Mostrando músicas disponíveis</CardDescription>
             </CardHeader>
             <CardContent>
-              <ul className="space-y-2">
-                {songsJson.map((song, index) =>
-                  song.id === tocandoAgora ? (
-                    <li
-                      key={song.id}
-                      className="rounded-lg bg-zinc-900 p-2 hover:cursor-pointer hover:bg-opacity-40"
-                      onClick={() => setSongIndex(index)}
-                    >
-                      <b>{song.title}</b>
-                    </li>
-                  ) : (
-                    <li
-                      key={song.id}
-                      className="rounded-lg border border-zinc-950 p-2 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
-                      onClick={() => setSongIndex(index)}
-                    >
-                      {song.title}
-                    </li>
-                  ),
-                )}
-              </ul>
+              <ScrollArea className="h-96 w-full">
+                <ul className="space-y-2">
+                  {songsJson.map((song, index) =>
+                    song.id === tocandoAgora ? (
+                      <li
+                        key={song.id}
+                        className="rounded-lg bg-zinc-900 p-2 hover:cursor-pointer hover:bg-opacity-40"
+                        onClick={() => setSongIndex(index)}
+                      >
+                        <b>{song.title}</b>
+                      </li>
+                    ) : (
+                      <li
+                        key={song.id}
+                        className="rounded-lg border border-zinc-950 p-2 hover:cursor-pointer hover:border hover:border-zinc-900 hover:bg-opacity-40"
+                        onClick={() => setSongIndex(index)}
+                      >
+                        {song.title}
+                      </li>
+                    ),
+                  )}
+                </ul>
+              </ScrollArea>
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="horarios">
+        <TabsContent value="horarios" className="max-h-screen">
           <Card>
             <CardHeader>
               <CardTitle>Lista de horários</CardTitle>
               <CardDescription>Horários em que a musica tocará</CardDescription>
             </CardHeader>
-            <CardContent></CardContent>
+            <CardContent>
+              <Tabs defaultValue="segunda-feira" className="w-full">
+                <TabsList className="grid w-full grid-cols-5">
+                  {Object.entries(horarios).map(([day], index) => (
+                    <TabsTrigger key={index} value={day}>
+                      {day}
+                    </TabsTrigger>
+                  ))}
+                </TabsList>
+                <ScrollArea className="h-96 w-full">
+                  {Object.entries(horarios).map(([day, times], index) => (
+                    <TabsContent key={index} value={day}>
+                      {times.length === 0 && (
+                        <div className="my-4 flex items-center justify-center">
+                          <h1>nenhum horário cadastrado</h1>
+                        </div>
+                      )}
+                      {times.map((time) => (
+                        <div
+                          key={time.id}
+                          className="flex w-full flex-row items-center justify-between space-x-8 space-y-4"
+                        >
+                          <label className="w-full">
+                            Hora:
+                            <Input type="number" value={time.hora} />
+                          </label>
+                          <label className="w-full">
+                            Minutos:
+                            <Input type="number" value={time.minuto} />
+                          </label>
+                          <label className="w-full">
+                            Duração:
+                            <Input type="number" value={time.duracao} />
+                          </label>
+                        </div>
+                      ))}
+                    </TabsContent>
+                  ))}
+                </ScrollArea>
+              </Tabs>
+            </CardContent>
           </Card>
         </TabsContent>
         <TabsContent value="config">
