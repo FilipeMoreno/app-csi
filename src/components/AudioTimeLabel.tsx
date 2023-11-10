@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useGlobalAudioPlayer } from 'react-use-audio-player'
 
+interface AudioTimeLabelProps {
+  id: number
+}
+
 const formatTime = (seconds: number) => {
   if (seconds === Infinity) {
     return '--'
@@ -17,7 +21,7 @@ const formatTime = (seconds: number) => {
   return new Date(floored * 1000).toISOString().substr(from, length)
 }
 
-export const TimeLabel = () => {
+export const TimeLabel = ({ id }: AudioTimeLabelProps) => {
   const [pos, setPos] = useState(0)
   const { duration, getPosition } = useGlobalAudioPlayer()
 
@@ -30,6 +34,15 @@ export const TimeLabel = () => {
   }, [getPosition])
 
   // return <div>{`${formatTime(pos)} / ${formatTime(duration)}`}</div>
+  if (id === 1) {
+    return (
+      <div className="flex flex-row text-xs">
+        <p>
+          {formatTime(pos)} / {formatTime(duration)}
+        </p>
+      </div>
+    )
+  }
   return (
     <div className="-mt-1 flex w-96 flex-row justify-between text-xs">
       <p>{formatTime(pos)}</p>

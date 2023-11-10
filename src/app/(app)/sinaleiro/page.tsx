@@ -8,6 +8,7 @@ import {
   Trash2Icon,
   Volume1Icon,
   Volume2Icon,
+  VolumeIcon,
   VolumeXIcon,
 } from 'lucide-react'
 import { Player } from '@lottiefiles/react-lottie-player'
@@ -46,6 +47,8 @@ export default function SinaleiroHome() {
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
   const [currentSongId, setCurrentSongId] = useState(1)
+  const [modoAleatorio, setModoAleatorio] = useState(false)
+  const [mostrarControles, setMostrarControles] = useState(false)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -84,6 +87,15 @@ export default function SinaleiroHome() {
 
   function nextMusic() {
     setLoadMusic(true)
+
+    if (modoAleatorio) {
+      const randomIndex = Math.floor(Math.random() * musicResults.length)
+      if (currentSongId === musicResults[randomIndex].id) {
+        return nextMusic()
+      }
+      setCurrentSongId(musicResults[randomIndex].id)
+      return
+    }
 
     const currentIndex = musicResults.findIndex(
       (song) => song.id === currentSongId,
@@ -162,70 +174,82 @@ export default function SinaleiroHome() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="mb-2  w-full ">
-        <h1 className="text-center text-xs font-bold uppercase">
-          Controle manual
-        </h1>
-      </div>
+      {mostrarControles && (
+        <div className="mb-2  w-full ">
+          <h1 className="text-center text-xs font-bold uppercase">
+            Controle manual
+          </h1>
+        </div>
+      )}
       <div className="flex w-full flex-col items-center justify-center">
-        <div className="flex flex-row space-x-2">
-          <Button
-            onClick={previousMusic}
-            className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
-          >
-            <TrackPreviousIcon className="text-primary" />
-          </Button>
-          {(isPlaying && (
-            <Button
-              className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
-              onClick={pauseMusic}
-            >
-              <PauseIcon className="text-primary" />
-            </Button>
-          )) || (
-            <Button
-              className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
-              onClick={playMusic}
-            >
-              <PlayIcon className="text-primary" />
-            </Button>
-          )}
+        {mostrarControles && (
+          <>
+            <div className="flex flex-row space-x-2">
+              <Button
+                onClick={previousMusic}
+                className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+              >
+                <TrackPreviousIcon className="text-primary" />
+              </Button>
+              {(isPlaying && (
+                <Button
+                  className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+                  onClick={pauseMusic}
+                >
+                  <PauseIcon className="text-primary" />
+                </Button>
+              )) || (
+                <Button
+                  className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+                  onClick={playMusic}
+                >
+                  <PlayIcon className="text-primary" />
+                </Button>
+              )}
 
-          <Button
-            className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
-            onClick={nextMusic}
-          >
-            <TrackNextIcon className="text-primary" />
-          </Button>
-        </div>
-        <div className="bg-text-400 mt-2 flex w-96 flex-row items-center">
-          {volumeValue === 0 && (
-            <VolumeXIcon onClick={muteMusica} className=" mr-2 text-red-500" />
-          )}
-          {volumeValue < 0.5 && volumeValue > 0 && (
-            <Volume1Icon onClick={muteMusica} className="mr-2" />
-          )}
-          {volumeValue >= 0.5 && (
-            <Volume2Icon onClick={muteMusica} className="mr-2" />
-          )}
-          <input
-            type="range"
-            min="0"
-            max="1"
-            step="0.01"
-            value={volumeValue}
-            onChange={handleVolumeChange}
-            className="w-full accent-zinc-800"
-          />
-        </div>
-        <div className="">
-          <div className="playBar__timeStuff">
-            <AudioSeekBar className="w-full" />
-          </div>
-          <div className="flex items-center justify-center">
-            <TimeLabel />
-          </div>
-        </div>
+              <Button
+                className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+                onClick={nextMusic}
+              >
+                <TrackNextIcon className="text-primary" />
+              </Button>
+            </div>
+            <div className="bg-text-400 mt-2 flex w-96 flex-row items-center">
+              {volumeValue === 0 && (
+                <VolumeXIcon
+                  onClick={muteMusica}
+                  className=" mr-2 text-red-500"
+                />
+              )}
+              {volumeValue < 0.2 && volumeValue > 0 && (
+                <VolumeIcon onClick={muteMusica} className="mr-2" />
+              )}
+              {volumeValue < 0.7 && volumeValue > 0.2 && (
+                <Volume1Icon onClick={muteMusica} className="mr-2" />
+              )}
+              {volumeValue >= 0.7 && (
+                <Volume2Icon size={25} onClick={muteMusica} className="mr-2" />
+              )}
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value={volumeValue}
+                onChange={handleVolumeChange}
+                className="w-full accent-zinc-800"
+              />
+            </div>
+            <div className="">
+              <div className="playBar__timeStuff">
+                <AudioSeekBar className="w-full" />
+              </div>
+              <div className="flex items-center justify-center">
+                <TimeLabel id={0} />
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       <Tabs defaultValue="musicas" className="my-4 w-full">
@@ -238,7 +262,10 @@ export default function SinaleiroHome() {
           <Card>
             <CardHeader>
               <CardTitle>Lista de músicas</CardTitle>
-              <CardDescription>Mostrando músicas disponíveis</CardDescription>
+              <div className="flex flex-row items-center justify-between">
+                <CardDescription>Mostrando músicas disponíveis</CardDescription>
+                <Button variant="default">+ Nova música</Button>
+              </div>
             </CardHeader>
             <CardContent>
               <Input
@@ -293,6 +320,8 @@ export default function SinaleiroHome() {
                         {(isPlaying && (
                           <b className="text-green-500">{song.title}</b>
                         )) || <b>{song.title}</b>}
+
+                        {!mostrarControles && <TimeLabel id={1} />}
                       </li>
                     ) : (
                       <li
@@ -388,7 +417,38 @@ export default function SinaleiroHome() {
                     Exibe os controles de música na tela
                   </span>
                 </Label>
-                <Switch id="controls" />
+                {(mostrarControles && (
+                  <Switch
+                    id="controles"
+                    checked
+                    onClick={() => setMostrarControles(false)}
+                  />
+                )) || (
+                  <Switch
+                    id="controles"
+                    onClick={() => setMostrarControles(true)}
+                  />
+                )}
+              </div>
+              <div className="flex items-center justify-between space-x-2">
+                <Label htmlFor="necessary" className="flex flex-col space-y-1">
+                  <span>Aleatório</span>
+                  <span className="font-normal leading-snug text-muted-foreground">
+                    Toca as músicas em ordem aleatória
+                  </span>
+                </Label>
+                {(modoAleatorio && (
+                  <Switch
+                    id="aleatorio"
+                    checked
+                    onClick={() => setModoAleatorio(false)}
+                  />
+                )) || (
+                  <Switch
+                    id="aleatorio"
+                    onClick={() => setModoAleatorio(true)}
+                  />
+                )}
               </div>
             </CardContent>
             <CardFooter>
