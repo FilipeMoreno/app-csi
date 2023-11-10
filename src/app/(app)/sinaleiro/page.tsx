@@ -226,17 +226,27 @@ export default function SinaleiroHome() {
               {volumeValue === 0 && (
                 <VolumeXIcon
                   onClick={muteMusica}
-                  className=" mr-2 text-red-500"
+                  className=" mr-2 cursor-pointer text-red-500"
                 />
               )}
               {volumeValue < 0.2 && volumeValue > 0 && (
-                <VolumeIcon onClick={muteMusica} className="mr-2" />
+                <VolumeIcon
+                  onClick={muteMusica}
+                  className="mr-2 cursor-pointer"
+                />
               )}
               {volumeValue < 0.7 && volumeValue > 0.2 && (
-                <Volume1Icon onClick={muteMusica} className="mr-2" />
+                <Volume1Icon
+                  onClick={muteMusica}
+                  className="mr-2 cursor-pointer"
+                />
               )}
               {volumeValue >= 0.7 && (
-                <Volume2Icon size={25} onClick={muteMusica} className="mr-2" />
+                <Volume2Icon
+                  size={25}
+                  onClick={muteMusica}
+                  className="mr-2 cursor-pointer"
+                />
               )}
               <input
                 type="range"
@@ -245,7 +255,7 @@ export default function SinaleiroHome() {
                 step="0.01"
                 value={volumeValue}
                 onChange={handleVolumeChange}
-                className="w-full accent-zinc-800"
+                className="w-full cursor-pointer accent-zinc-800"
               />
             </div>
             <div className="">
