@@ -28,7 +28,7 @@ export default function RootLayout({
   `}
     >
       <Script src="/register-sw.ts" />
-      <NextTopLoader color="#af3c41" />
+
       {children}
     </html>
   )

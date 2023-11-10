@@ -14,7 +14,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [showSidebar, setShowSidebar] = useState(false)
-  const [loading, setLoading] = useState(false)
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar)
@@ -78,7 +77,7 @@ export default function RootLayout({
 
   return (
     <body>
-      <NextTopLoader />
+      <NextTopLoader color="#af3c41" />
       <Header toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
       <div className="md:block">
         <div className="border-t">
