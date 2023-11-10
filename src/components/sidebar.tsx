@@ -15,9 +15,10 @@ type SidebarNavProps = React.HTMLAttributes<HTMLElement> & {
       icon?: string
     }[]
   }[]
+  onItemClick?: () => void
 }
 
-export function Sidebar({ className, items }: SidebarNavProps) {
+export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
   const pathname = usePathname()
 
   return (
@@ -30,7 +31,11 @@ export function Sidebar({ className, items }: SidebarNavProps) {
             </h2>
             <div className="space-y-1">
               {item.subitems.map((subitem) => (
-                <div key={subitem.href} className="space-y-1">
+                <div
+                  key={subitem.href}
+                  className="space-y-1"
+                  onClick={onItemClick}
+                >
                   <Link href={subitem.href} key={subitem.href}>
                     <Button
                       variant={

@@ -6,6 +6,7 @@ import { Header } from '@/components/header'
 import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
+import NextTopLoader from 'nextjs-toploader'
 
 export default function RootLayout({
   children,
@@ -13,6 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [showSidebar, setShowSidebar] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar)
@@ -57,10 +59,26 @@ export default function RootLayout({
         },
       ],
     },
+    {
+      title: 'Sinal',
+      icon: '',
+      subitems: [
+        {
+          href: '/sinaleiro',
+          title: 'Sinal',
+          icon: '',
+        },
+      ],
+    },
   ]
+
+  const handleItemClick = () => {
+    setShowSidebar(false)
+  }
 
   return (
     <body>
+      <NextTopLoader />
       <Header toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
       <div className="md:block">
         <div className="border-t">
@@ -69,6 +87,7 @@ export default function RootLayout({
               <Sidebar
                 className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
                 items={sidebarNavItems}
+                onItemClick={handleItemClick}
               />
               <div
                 className={`col-span-3 lg:col-span-4 lg:border-l ${

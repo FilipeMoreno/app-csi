@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
+import NextTopLoader from 'nextjs-toploader'
 import Script from 'next/script'
 
 const inter = Inter({
@@ -26,7 +27,8 @@ export default function RootLayout({
       className={`dark font-sans antialiased ${inter.variable}
   `}
     >
-      <Script src="/register-sw.js" />
+      <Script src="/register-sw.ts" />
+      <NextTopLoader color="#af3c41" />
       {children}
     </html>
   )
