@@ -48,7 +48,7 @@ export default function SinaleiroHome() {
   const [musicResults, setMusicResults] = useState(songsJson)
   const [currentSongId, setCurrentSongId] = useState(1)
   const [modoAleatorio, setModoAleatorio] = useState(false)
-  const [mostrarControles, setMostrarControles] = useState(false)
+  const [mostrarControles, setMostrarControles] = useState(true)
 
   const { load, play, pause, setVolume } = useGlobalAudioPlayer()
 
@@ -133,8 +133,16 @@ export default function SinaleiroHome() {
 
   function muteMusica() {
     const getVolume = localStorage.getItem('volume')
+
     setVolumeValue(getVolume ? parseFloat(getVolume) : 0.5)
     setVolume(getVolume ? parseFloat(getVolume) : 0.5)
+
+    if (getVolume && parseFloat(getVolume) === 0) {
+      setVolumeValue(0.5)
+      setVolume(0.5)
+      localStorage.setItem('volume', (0.5).toString())
+      return
+    }
 
     if (volumeValue > 0) {
       setVolumeValue(0)
