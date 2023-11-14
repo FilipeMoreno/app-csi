@@ -38,19 +38,19 @@ import { Label } from '@/components/ui/label'
 import { Switch } from '@/components/ui/switch'
 import { AudioSeekBar } from '@/components/AudioSeekBar'
 import { TimeLabel } from '@/components/AudioTimeLabel'
+import schedule from 'node-schedule'
 
 export default function SinaleiroHome() {
-  const [isPlaying, setIsPlaying] = useState(false)
   const [volumeValue, setVolumeValue] = useState(0.5)
   const [tocandoAgora, setTocandoAgora] = useState(0)
   const [loadMusic, setLoadMusic] = useState(true)
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
   const [currentSongId, setCurrentSongId] = useState(1)
-  const [modoAleatorio, setModoAleatorio] = useState(false)
-  const [mostrarControles, setMostrarControles] = useState(true)
+  const [modoAleatorio, setModoAleatorio] = useState(true)
+  const [mostrarControles, setMostrarControles] = useState(false)
 
-  const { load, play, pause, setVolume } = useGlobalAudioPlayer()
+  const { load, play, pause, setVolume, playing } = useGlobalAudioPlayer()
 
   useEffect(() => {
     const currentSong = musicResults.find((song) => song.id === currentSongId)
@@ -60,28 +60,73 @@ export default function SinaleiroHome() {
       autoplay: verifyAutoPlay(),
       initialVolume: volumeValue,
       onend: () => nextMusic(),
-      onpause: () => console.log('Música pausada.'),
-      onplay: () => console.log(`Tocando agora: ${currentSong.title}`),
+      onpause() {
+        console.log('Música pausada.')
+      },
+      onplay() {
+        console.log(`Tocando agora: ${currentSong.title}`)
+      },
       onstop: () => console.log('Música parada.'),
       onload() {
-        console.log('Música carregada.')
+        console.log('Músicas carregadas.')
         setTocandoAgora(currentSong.id)
         setLoadMusic(false)
       },
     })
   }, [currentSongId])
 
-  function playMusic() {
-    if (!isPlaying) {
+  useEffect(() => {
+    const job = schedule.scheduleJob('* * * * *', verifySchedulers)
+
+    return () => {
+      job.cancel()
+    }
+  }, [])
+
+  async function verifySchedulers() {
+    const today = new Date()
+    const dayOfWeek = today.toLocaleDateString('pt-BR', {
+      weekday: 'long',
+    })
+    const timeString = today.toLocaleTimeString('pt-BR', {
+      hour: '2-digit',
+      minute: '2-digit',
+    })
+    const getHorarios = Object.entries(horarios)
+    const getHorariosDia = getHorarios.find(([dia]) => dia === dayOfWeek)
+    const getHorariosDiaHorario = getHorariosDia?.[1].find(
+      (horario) => horario.horario === timeString,
+    )
+
+    console.log(
+      getHorariosDiaHorario ||
+        `Não há horário para este momento. (${dayOfWeek} - ${timeString})`,
+    )
+
+    if (!getHorariosDiaHorario) {
+      return
+    }
+
+    const duracao = getHorariosDiaHorario.duracao
+
+    if (!playing) {
+      playMusic()
+    }
+
+    setTimeout(() => {
+      pause()
+    }, duracao * 1000)
+  }
+
+  async function playMusic() {
+    if (!playing) {
       play()
-      setIsPlaying(true)
     }
   }
 
   function pauseMusic() {
-    if (isPlaying) {
+    if (playing) {
       pause()
-      setIsPlaying(false)
     }
   }
 
@@ -125,7 +170,7 @@ export default function SinaleiroHome() {
   }
 
   function verifyAutoPlay() {
-    if (isPlaying) {
+    if (playing) {
       return true
     }
     return false
@@ -199,7 +244,7 @@ export default function SinaleiroHome() {
               >
                 <TrackPreviousIcon className="text-primary" />
               </Button>
-              {(isPlaying && (
+              {(playing && (
                 <Button
                   className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
                   onClick={pauseMusic}
@@ -323,7 +368,7 @@ export default function SinaleiroHome() {
                           selectMusic(song.id)
                         }}
                       >
-                        {(isPlaying && (
+                        {(playing && (
                           <Player
                             autoplay
                             loop
@@ -335,7 +380,7 @@ export default function SinaleiroHome() {
                             }}
                           />
                         )) || <p>{song.id}.</p>}
-                        {(isPlaying && (
+                        {(playing && (
                           <b className="text-green-500">{song.title}</b>
                         )) || <b>{song.title}</b>}
 
@@ -404,10 +449,22 @@ export default function SinaleiroHome() {
                             <Input type="number" defaultValue={time.duracao} />
                           </label>
 
-                          <Button className="mt-6 h-full" variant={'outline'}>
+                          <Button
+                            className="mt-6 h-full"
+                            variant={'outline'}
+                            onClick={() => {
+                              console.log('salvou')
+                            }}
+                          >
                             <CheckIcon size={15} />
                           </Button>
-                          <Button className="mt-6 h-full" variant={'outline'}>
+                          <Button
+                            className="mt-6 h-full"
+                            variant={'outline'}
+                            onClick={() => {
+                              return console.log('deletou')
+                            }}
+                          >
                             <Trash2Icon size={15} />
                           </Button>
                         </div>
@@ -450,9 +507,9 @@ export default function SinaleiroHome() {
               </div>
               <div className="flex items-center justify-between space-x-2">
                 <Label htmlFor="necessary" className="flex flex-col space-y-1">
-                  <span>Aleatório</span>
+                  <span>Modo aleatório</span>
                   <span className="font-normal leading-snug text-muted-foreground">
-                    Toca as músicas em ordem aleatória
+                    Toque as músicas em ordem aleatória
                   </span>
                 </Label>
                 {(modoAleatorio && (

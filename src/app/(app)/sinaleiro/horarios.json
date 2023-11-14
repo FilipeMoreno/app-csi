@@ -99,6 +99,11 @@
       "id": 20,
       "horario": "18:05",
       "duracao": 15
+    },
+    {
+      "id": 102,
+      "horario": "23:55",
+      "duracao": 15
     }
   ],
   "terça-feira": [
@@ -200,6 +205,11 @@
     {
       "id": 40,
       "horario": "18:05",
+      "duracao": 15
+    },
+    {
+      "id": 101,
+      "horario": "00:00",
       "duracao": 15
     }
   ],
