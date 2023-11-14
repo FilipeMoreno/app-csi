@@ -12,8 +12,8 @@ import {
 import { useToast } from '@/components/ui/use-toast'
 import ReactToPrint from 'react-to-print'
 
-import { useEffect, useRef, useState } from 'react'
-import { Br, Cut, Printer, Text, render, Image } from 'react-thermal-printer'
+import { LegacyRef, useEffect, useRef, useState } from 'react'
+import { Br, Cut, Printer, Text, Image } from 'react-thermal-printer'
 
 interface VouchersContent {
   numDevices: string
@@ -106,13 +106,14 @@ export default function Home() {
     setLoading(false)
   }
 
-  async function handlePrintVoucher() {
-    const data: Uint8Array = await render(receipt)
+  // async function handlePrintVoucher() {
+  //   const data: Uint8Array = await render(receipt)
+  //   console.log(data)
 
-    if (componentRef.current) {
-      componentRef.current.print()
-    }
-  }
+  //   if (componentRef.current) {
+  //     componentRef.current.print()
+  //   }
+  // }
 
   useEffect(() => {
     setTimeout(() => {
@@ -140,7 +141,10 @@ export default function Home() {
           )) ||
             (vouchers && !loading && (
               <div className="p-4">
-                <div ref={componentRef} className="p-2 lg:hidden">
+                <div
+                  ref={componentRef as unknown as LegacyRef<HTMLDivElement>}
+                  className="p-2 lg:hidden"
+                >
                   <Card className="flex max-w-[300px] flex-col items-center justify-center">
                     <CardHeader className="flex flex-col items-center justify-center">
                       <Image
@@ -191,7 +195,7 @@ export default function Home() {
                         Imprimir
                       </Button>
                     )}
-                    content={() => componentRef.current}
+                    content={() => componentRef.current || null}
                   />
                   <Button
                     className="w-full hover:opacity-60"
