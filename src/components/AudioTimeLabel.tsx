@@ -23,11 +23,16 @@ const formatTime = (seconds: number) => {
 
 export const TimeLabel = ({ id }: AudioTimeLabelProps) => {
   const [pos, setPos] = useState(0)
+
   const { duration, getPosition } = useGlobalAudioPlayer()
 
   useEffect(() => {
+    const storagePos = localStorage.getItem('pos')
+    localStorage.setItem('music_pos', storagePos || '0')
+
     const i = setInterval(() => {
       setPos(getPosition())
+      localStorage.setItem('pos', JSON.stringify(getPosition()))
     }, 500)
 
     return () => clearInterval(i)

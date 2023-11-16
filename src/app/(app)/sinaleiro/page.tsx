@@ -46,14 +46,32 @@ export default function SinaleiroHome() {
   const [loadMusic, setLoadMusic] = useState(true)
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
-  const [currentSongId, setCurrentSongId] = useState(1)
+  const [currentSongId, setCurrentSongId] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const storedSongId = localStorage.getItem('currentSongId')
+      return storedSongId ? Number(storedSongId) : 1
+    }
+    return 1
+  })
   const [modoAleatorio, setModoAleatorio] = useState(true)
-  const [mostrarControles, setMostrarControles] = useState(false)
+  const [mostrarControles, setMostrarControles] = useState(true)
 
-  const { load, play, pause, setVolume, playing } = useGlobalAudioPlayer()
+  const { load, play, pause, setVolume, playing, seek } = useGlobalAudioPlayer()
+
+  useEffect(() => {
+    const getVolume = localStorage.getItem('volume')
+
+    setVolumeValue(getVolume ? parseFloat(getVolume) : 0.5)
+    setVolume(getVolume ? parseFloat(getVolume) : 0.5)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('currentSongId', currentSongId.toString())
+  })
 
   useEffect(() => {
     const currentSong = musicResults.find((song) => song.id === currentSongId)
+
     if (!currentSong) return
 
     load(currentSong.url, {
@@ -71,6 +89,7 @@ export default function SinaleiroHome() {
         console.log('Músicas carregadas.')
         setTocandoAgora(currentSong.id)
         setLoadMusic(false)
+        seek(parseFloat(localStorage.getItem('music_pos') || '0'))
       },
     })
   }, [currentSongId])
@@ -227,13 +246,6 @@ export default function SinaleiroHome() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {mostrarControles && (
-        <div className="mb-2  w-full ">
-          <h1 className="text-center text-xs font-bold uppercase">
-            Controle manual
-          </h1>
-        </div>
-      )}
       <div className="flex w-full flex-col items-center justify-center">
         {mostrarControles && (
           <>
