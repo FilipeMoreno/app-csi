@@ -82,6 +82,16 @@ export default function RootLayout({
         name="apple-mobile-web-app-status-bar-style"
         content="black-translucent"
       />
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: light)"
+        content="white"
+      />
+      <meta
+        name="theme-color"
+        media="(prefers-color-scheme: dark)"
+        content="black"
+      ></meta>
       <Script src="/register-sw.js" />
 
       {children}

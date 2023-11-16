@@ -1,32 +1,70 @@
 {
   "name": "APP - Colégio Santo Inácio",
   "short_name": "CSI - APP",
-  "theme_color": "#a1313d",
-  "background_color": "#09090b",
-  "display": "standalone",
+  "color_overrides": [
+    {
+      "media": "(prefers-color-scheme: dark)",
+      "theme_color": "#09090b",
+      "background_color": "#09090b"
+    },
+    {
+      "media": "(prefers-color-scheme: light)",
+      "theme_color": "#a1313d",
+      "background_color": "#f1f1f1f1"
+    }
+  ],
+  "display": "minimal-ui",
   "scope": "/",
   "start_url": "/",
   "description": "Aplicativo para o Colégio Santo Inácio",
   "icons": [
     {
-      "src": "/icon-192x192.png",
+      "src": "/icons/icon-192x192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icon-256x256.png",
+      "src": "/icons/icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-256x256.png",
       "sizes": "256x256",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icon-384x384.png",
+      "src": "/icons/icon.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-384x384.png",
       "sizes": "384x384",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icon-512x512.png",
+      "src": "/icons/icon.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "related_applications": [
@@ -43,7 +81,7 @@
       "url": "/sinaleiro",
       "icons": [
         {
-          "src": "/icon-192x192.png",
+          "src": "/icons/sinaleiro.png",
           "sizes": "192x192"
         }
       ]
