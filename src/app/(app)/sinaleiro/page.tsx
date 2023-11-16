@@ -46,6 +46,7 @@ export default function SinaleiroHome() {
   const [loadMusic, setLoadMusic] = useState(true)
   const [search, setSearch] = useState('')
   const [musicResults, setMusicResults] = useState(songsJson)
+  const [autoPlay, setAutoPlay] = useState(false)
   const [currentSongId, setCurrentSongId] = useState(() => {
     if (typeof window !== 'undefined') {
       const storedSongId = localStorage.getItem('currentSongId')
@@ -53,7 +54,14 @@ export default function SinaleiroHome() {
     }
     return 1
   })
-  const [modoAleatorio, setModoAleatorio] = useState(true)
+  const [currentSeekPosition, setCurrentSeekPosition] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const seekPosition = localStorage.getItem('music_pos')
+      return seekPosition ? parseFloat(seekPosition) : 0
+    }
+    return 1
+  })
+  const [modoAleatorio, setModoAleatorio] = useState(false)
   const [mostrarControles, setMostrarControles] = useState(true)
 
   const { load, play, pause, setVolume, playing, seek } = useGlobalAudioPlayer()
@@ -77,7 +85,9 @@ export default function SinaleiroHome() {
     load(currentSong.url, {
       autoplay: verifyAutoPlay(),
       initialVolume: volumeValue,
-      onend: () => nextMusic(),
+      onend: () => {
+        nextMusic()
+      },
       onpause() {
         console.log('Música pausada.')
       },
@@ -89,7 +99,7 @@ export default function SinaleiroHome() {
         console.log('Músicas carregadas.')
         setTocandoAgora(currentSong.id)
         setLoadMusic(false)
-        seek(parseFloat(localStorage.getItem('music_pos') || '0'))
+        seek(currentSeekPosition)
       },
     })
   }, [currentSongId])
@@ -130,10 +140,12 @@ export default function SinaleiroHome() {
 
     if (!playing) {
       playMusic()
+      setAutoPlay(true)
     }
 
     setTimeout(() => {
       pause()
+      setAutoPlay(false)
     }, duracao * 1000)
   }
 
@@ -151,6 +163,8 @@ export default function SinaleiroHome() {
 
   function nextMusic() {
     setLoadMusic(true)
+
+    setCurrentSeekPosition(0)
 
     if (modoAleatorio) {
       const randomIndex = Math.floor(Math.random() * musicResults.length)
@@ -189,9 +203,14 @@ export default function SinaleiroHome() {
   }
 
   function verifyAutoPlay() {
+    if (autoPlay) {
+      return true
+    }
+
     if (playing) {
       return true
     }
+
     return false
   }
 
