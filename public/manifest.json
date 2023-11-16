@@ -13,7 +13,7 @@
       "background_color": "#f1f1f1f1"
     }
   ],
-  "display": "minimal-ui",
+  "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "description": "Aplicativo para o Colégio Santo Inácio",
