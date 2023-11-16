@@ -256,6 +256,8 @@ export default function SinaleiroHome() {
       return
     }
 
+    setCurrentSeekPosition(0)
+
     setLoadMusic(true)
 
     const currentIndex = musicResults.findIndex((song) => song.id === id)
