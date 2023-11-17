@@ -21,7 +21,7 @@ export default function RootLayout({
 
   const sidebarNavItems = [
     {
-      title: '',
+      title: 'Início',
       icon: '',
       subitems: [
         {
@@ -38,11 +38,13 @@ export default function RootLayout({
         {
           href: '/carteirinhas/solicitacoes',
           title: 'Solicitações',
+          role: ['carteirinhas.solicitacoes', 'admin'],
           icon: '',
         },
         {
           href: '/carteirinhas/configuracoes',
           title: 'Configurações',
+          role: ['carteirinhas.configuracoes', 'admin'],
           icon: '',
         },
       ],
@@ -54,6 +56,7 @@ export default function RootLayout({
         {
           href: '/wifi',
           title: 'Vouchers',
+          role: ['wifi.voucher', 'admin'],
           icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>',
         },
       ],
@@ -65,6 +68,7 @@ export default function RootLayout({
         {
           href: '/sinaleiro',
           title: 'Sinal',
+          role: ['sinal', 'admin'],
           icon: '',
         },
       ],

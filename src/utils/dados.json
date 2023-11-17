@@ -1,0 +1,14 @@
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "username": "johndoe",
+    "email": "email@email.com",
+    "picture": "https://ui-avatars.com/api/?name=John+Doe&background=random&color=fff",
+    "created_at": "2015-07-22T14:00:00.000Z",
+    "roles": [
+      "user",
+      "*"
+    ]
+  }
+}
