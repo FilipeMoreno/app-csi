@@ -2,7 +2,6 @@
 
 import React, { FC, useEffect, useRef, useState } from 'react'
 import { Html5Qrcode, type Html5QrcodeCameraScanConfig } from 'html5-qrcode'
-import config from 'next/config'
 
 const CustomQrScanner: FC<{
   config: Html5QrcodeCameraScanConfig
@@ -25,14 +24,12 @@ const CustomQrScanner: FC<{
           content: 'Nenhuma câmera foi encontrada!',
         })
       } else {
-        html5QrCode.current
-          ?.start({ facingMode: 'environment' }, config, onScan, undefined)
-          .then(() => {
-            html5QrCode.current
-              ?.getRunningTrackCameraCapabilities()
-              .torchFeature()
-              .apply(true)
-          })
+        html5QrCode.current?.start(
+          { facingMode: 'environment' },
+          config,
+          onScan,
+          undefined,
+        )
       }
     })
   }, [config, onScan])
