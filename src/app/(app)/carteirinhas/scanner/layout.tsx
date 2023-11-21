@@ -2,11 +2,11 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Solicitações - CSI',
-  description: 'Solicitações de carteirinhas de estudante',
+  title: 'QRCode Scanner - CSI',
+  description: 'Scanner de QRCode',
 }
 
-export default function CarteirinhasSolicitacoes({
+export default function CarteirinhasScanner({
   children,
 }: {
   children: React.ReactNode

@@ -1,22 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
 
 import {
-  ArrowUpDown,
-  ChevronDown,
-  Edit2Icon,
+  BanknoteIcon,
   EditIcon,
   EyeIcon,
   MoreHorizontal,
-  Trash,
+  QrCodeIcon,
   Trash2,
 } from 'lucide-react'
 
@@ -41,13 +32,13 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu'
+import { useRouter } from 'next/navigation'
 
-export default function Home() {
+export default function CarteirinhasSolicitacoes() {
   const { toast } = useToast()
+  const router = useRouter()
 
   return (
     <div className="flex flex-col justify-center">
@@ -57,7 +48,10 @@ export default function Home() {
           <p className="text-md">Mostrando todas as solicitações realizadas</p>
         </div>
         <div>
-          <Button> + Nova solicitação</Button>
+          <Button onClick={() => router.push('/carteirinhas/scanner')}>
+            {' '}
+            + Nova solicitação
+          </Button>
         </div>
       </div>
 
@@ -137,6 +131,10 @@ export default function Home() {
                     <DropdownMenuItem className="flex flex-row items-center">
                       <EyeIcon className="mr-1 h-4 w-5" />
                       Visualizar
+                    </DropdownMenuItem>
+                    <DropdownMenuItem className="flex flex-row items-center">
+                      <QrCodeIcon className="mr-1 h-4 w-5" />
+                      Scanear
                     </DropdownMenuItem>
                     <DropdownMenuItem className="flex flex-row items-center">
                       <EditIcon className="mr-1 h-4 w-5" />
