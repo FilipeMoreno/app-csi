@@ -6,17 +6,21 @@ import dados from '@/utils/dados.json'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
+interface SubitemType {
+  href: string
+  title: string
+  role?: string[]
+  icon?: string
+}
+
+interface ItemType {
+  title?: string
+  icon?: string
+  subitems: SubitemType[]
+}
+
 type SidebarNavProps = React.HTMLAttributes<HTMLElement> & {
-  items: {
-    title?: string
-    icon?: string
-    subitems: {
-      href: string
-      title: string
-      role?: string[]
-      icon?: string
-    }[]
-  }[]
+  items: ItemType[]
   onItemClick?: () => void
 }
 
@@ -30,7 +34,7 @@ interface UserType {
 export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
   const pathname = usePathname()
 
-  function checkPermission(user: any, item: any) {
+  function checkPermission(user: UserType, item: SubitemType) {
     if (!item.role) {
       return true
     }
@@ -48,8 +52,8 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
     })
   }
 
-  function filterMenuItems(user: any, menuItem: any) {
-    return menuItem.subitems.filter((subitem: any) =>
+  function filterMenuItems(user: UserType, menuItem: ItemType) {
+    return menuItem.subitems.filter((subitem: SubitemType) =>
       checkPermission(user, subitem),
     )
   }
@@ -57,7 +61,7 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
   return (
     <div className={cn('pb-12', className)}>
       <div className="space-y-4 py-4">
-        {items.map((item) => {
+        {items.map((item: ItemType) => {
           const allowedSubitems = filterMenuItems(dados.user, item)
 
           if (allowedSubitems.length === 0) {
@@ -69,7 +73,7 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
                 {item.title}
               </h2>
               <div className="space-y-1">
-                {allowedSubitems.map((subitem) => {
+                {allowedSubitems.map((subitem: SubitemType) => {
                   if (!checkPermission(dados.user, subitem)) {
                     return null
                   }
