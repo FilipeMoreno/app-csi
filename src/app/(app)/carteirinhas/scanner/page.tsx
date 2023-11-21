@@ -17,14 +17,14 @@ export default function CarteirinhasScanner() {
       codeInput.current.value = e
     }
 
-    if (codeInput.current && codeInput.current.value) {
-      const code = codeInput.current.value
-      console.log('submit', code)
-      toast({
-        title: 'Código encontrado',
-        description: `O código ${code} foi encontrado`,
-      })
-    }
+    // if (codeInput.current && codeInput.current.value) {
+    //   const code = codeInput.current.value
+    //   console.log('submit', code)
+    //   toast({
+    //     title: 'Código encontrado',
+    //     description: `O código ${code} foi encontrado`,
+    //   })
+    // }
   }
 
   return (
