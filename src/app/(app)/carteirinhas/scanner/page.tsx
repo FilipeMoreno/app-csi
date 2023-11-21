@@ -41,24 +41,6 @@ export default function CarteirinhasScanner() {
           onScan={(scannedCode) => setCode(scannedCode)}
         />
       </div>
-      <form
-        className="flex min-h-[150px] w-full flex-col justify-between rounded-xl bg-slate-800 p-4 md:w-fit"
-        onSubmit={submitCode}
-      >
-        <div>
-          <label htmlFor="codeInput">Code</label>
-          <input
-            className="w-full rounded px-2 text-black"
-            name="code"
-            id="codeInput"
-            type="text"
-            ref={codeInput}
-          />
-        </div>
-        <button className=" h-8 rounded-xl bg-green-500" type="submit">
-          Suchen
-        </button>
-      </form>
     </div>
   )
 }
