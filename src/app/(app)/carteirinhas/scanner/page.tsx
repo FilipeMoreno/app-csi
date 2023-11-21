@@ -3,7 +3,7 @@
 import { useToast } from '@/components/ui/use-toast'
 
 import CustomQrScanner from '@/components/CustomQrScanner'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 export default function CarteirinhasScanner() {
@@ -13,19 +13,19 @@ export default function CarteirinhasScanner() {
 
   const router = useRouter()
 
-  function setCode(e: string) {
-    setQrCode(e)
-
-    if (!qrcode) {
+  useEffect(() => {
+    if (qrcode) {
       toast({
         title: 'Código encontrado',
         description: `O código ${qrcode} foi encontrado`,
         variant: 'destructive',
       })
 
-      router.push(`/${qrcode}`)
+      setTimeout(() => {
+        router.push(`/${qrcode}`)
+      }, 1000)
     }
-  }
+  }, [qrcode])
 
   return (
     <div className="flex flex-wrap gap-8">
@@ -36,7 +36,7 @@ export default function CarteirinhasScanner() {
             aspectRatio: 1,
             qrbox: { width: 250, height: 250 },
           }}
-          onScan={(scannedCode) => setCode(scannedCode)}
+          onScan={(scannedCode) => setQrCode(scannedCode)}
         />
       </div>
     </div>
