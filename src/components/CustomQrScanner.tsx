@@ -21,7 +21,7 @@ const CustomQrScanner: FC<{
       if (!devices || devices.length < 1) {
         setMsg({
           type: 'error',
-          content: 'Es wurde keine Kamera gefunden!',
+          content: 'Nenhuma câmera foi encontrada!',
         })
       } else {
         html5QrCode.current?.start(
