@@ -18,24 +18,24 @@ export default function CarteirinhasScanner() {
     if (codeInput.current) {
       codeInput.current.value = e
     }
-  }
 
-  const submitCode = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
     if (codeInput.current && codeInput.current.value) {
       const code = codeInput.current.value
       console.log('submit', code)
-      // router.push(`/${code}`)
+
       toast({
-        title: 'Código encontrado',
+        title: 'Código encontrado!',
         description: `O código ${code} foi encontrado`,
+        variant: 'destructive',
       })
+
+      router.push(`/${code}`)
     }
   }
 
   return (
     <div className="flex flex-wrap gap-8">
-      <div className="h-96 w-full max-w-sm rounded-xl bg-slate-800 p-4">
+      <div className="h-96 w-full max-w-sm rounded-xl bg-zinc-900 p-4">
         <CustomQrScanner
           config={{ fps: 10, aspectRatio: 1 }}
           onScan={(scannedCode) => setCode(scannedCode)}
