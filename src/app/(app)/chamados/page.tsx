@@ -20,6 +20,10 @@ import {
   DropdownMenuLabel,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuPortal,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu'
 
 import { ChevronDownIcon } from 'lucide-react'
@@ -35,6 +39,7 @@ import {
 } from '@/components/ui/select'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
+import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 
 export default function ChamadosHome() {
   const { toast } = useToast()
@@ -66,6 +71,7 @@ export default function ChamadosHome() {
                 <TableHead>Assunto</TableHead>
                 <TableHead>Setor</TableHead>
                 <TableHead>Usuário</TableHead>
+                <TableHead>Prioridade</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right"></TableHead>
               </TableRow>
@@ -93,14 +99,32 @@ export default function ChamadosHome() {
                 <TableCell>Sala de Aula</TableCell>
                 <TableCell>Admin</TableCell>
                 <TableCell>
+                  <Badge variant={'secondary'}>Baixa</Badge>
+                </TableCell>
+                <TableCell>
                   <Badge variant={'destructive'}>Fechado</Badge>
                 </TableCell>
                 <TableCell>
                   <DropdownMenu>
-                    <DropdownMenuTrigger>Ações</DropdownMenuTrigger>
+                    <DropdownMenuTrigger>
+                      <DotsHorizontalIcon />
+                    </DropdownMenuTrigger>
                     <DropdownMenuContent>
                       <DropdownMenuItem>Detalhes</DropdownMenuItem>
                       <DropdownMenuItem>Editar</DropdownMenuItem>
+                      <DropdownMenuSub>
+                        <DropdownMenuSubTrigger>
+                          Prioridade
+                        </DropdownMenuSubTrigger>
+                        <DropdownMenuPortal>
+                          <DropdownMenuSubContent>
+                            <DropdownMenuItem>Baixa</DropdownMenuItem>
+                            <DropdownMenuItem>Média</DropdownMenuItem>
+                            <DropdownMenuItem>Alta</DropdownMenuItem>
+                          </DropdownMenuSubContent>
+                        </DropdownMenuPortal>
+                      </DropdownMenuSub>
+
                       <DropdownMenuItem>Fechar</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
