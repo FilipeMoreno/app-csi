@@ -1,25 +1,24 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
-import React, { useRef, useState } from 'react'
+import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 
 export default function CarteirinhasScanner() {
-  const WebcamComponent = () => <Webcam />
-
   const videoConstraints = {
     width: 1280,
     height: 720,
     facingMode: 'user',
   }
 
-  const webcamRef = useRef(null)
-  const [imgSrc, setImgSrc] = useState(null)
-
-  const capture = React.useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot()
-    setImgSrc(imageSrc)
-  }, [webcamRef, setImgSrc])
+  const webcamRef = useRef<Webcam>(null)
+  const [url, setUrl] = useState<string | null>(null)
+  const capture = useCallback(() => {
+    const imageSrc = webcamRef.current?.getScreenshot()
+    if (imageSrc) {
+      setUrl(imageSrc)
+    }
+  }, [webcamRef])
 
   return (
     <div>
@@ -68,8 +67,23 @@ export default function CarteirinhasScanner() {
           width={1280}
           videoConstraints={videoConstraints}
         />
-        <button onClick={capture}>Tirar foto</button>
-        {imgSrc && <img src={imgSrc} />}
+        <Button onClick={capture}>Tirar foto</Button>
+        {url && (
+          <>
+            <div>
+              <Button
+                onClick={() => {
+                  setUrl(null)
+                }}
+              >
+                Deletar
+              </Button>
+            </div>
+            <div>
+              <img src={url} alt="Screenshot" />
+            </div>
+          </>
+        )}
       </div>
     </div>
   )
