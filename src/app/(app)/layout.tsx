@@ -32,6 +32,18 @@ export default function RootLayout({
       ],
     },
     {
+      title: 'Chamados',
+      icon: '',
+      subitems: [
+        {
+          href: '/chamados',
+          title: 'Chamados',
+          role: ['chamados.listar', 'admin'],
+          icon: '',
+        },
+      ],
+    },
+    {
       title: 'Carteirinhas',
       icon: '',
       subitems: [
