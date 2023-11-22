@@ -1,6 +1,7 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import Image from 'next/image'
 import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 
@@ -32,21 +33,27 @@ export default function CarteirinhasFoto() {
             width={1280}
             videoConstraints={videoConstraints}
           />
-          <Button onClick={capture}>Tirar foto</Button>
+          <Button className="w-full" onClick={capture}>
+            Tirar foto
+          </Button>
         </div>
       )}
       {url && (
         <div>
           <div>
-            <img src={url} alt="Screenshot" />
+            <Image src={url} alt="Screenshot" />
           </div>
-          <Button
-            onClick={() => {
-              setUrl(null)
-            }}
-          >
-            Deletar
-          </Button>
+          <div className="flex flex-row space-x-2">
+            <Button
+              onClick={() => {
+                setUrl(null)
+              }}
+              className="w-full"
+            >
+              Tirar novamente
+            </Button>
+            <Button className="w-full">Confirmar</Button>
+          </div>
         </div>
       )}
     </div>
