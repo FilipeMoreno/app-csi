@@ -22,23 +22,29 @@ export default function CarteirinhasScanner() {
       })
 
       setTimeout(() => {
-        router.push(`/${qrcode}`)
+        router.push(`/carteirinhas/detalhes/${qrcode}`)
       }, 1000)
     }
   }, [qrcode])
 
   return (
-    <div className="flex flex-wrap gap-8">
-      <div className="h-96 w-full max-w-sm rounded-xl bg-zinc-900 p-4">
-        <CustomQrScanner
-          config={{
-            fps: 10,
-            aspectRatio: 1,
-            qrbox: { width: 250, height: 250 },
-          }}
-          onScan={(scannedCode) => setQrCode(scannedCode)}
-        />
+    <>
+      <div className="mb-4 flex flex-col">
+        <h1 className="text-3xl font-bold">Scanner</h1>
+        <p>Aponte a câmera para o QR Code</p>
       </div>
-    </div>
+      <div className="flex flex-wrap gap-8">
+        <div className="h-96 w-full max-w-sm rounded-xl bg-zinc-900 p-4">
+          <CustomQrScanner
+            config={{
+              fps: 10,
+              aspectRatio: 1,
+              qrbox: { width: 250, height: 250 },
+            }}
+            onScan={(scannedCode) => setQrCode(scannedCode)}
+          />
+        </div>
+      </div>
+    </>
   )
 }
