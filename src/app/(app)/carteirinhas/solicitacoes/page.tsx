@@ -48,10 +48,7 @@ export default function CarteirinhasSolicitacoes() {
           <p className="text-md">Mostrando todas as solicitações realizadas</p>
         </div>
         <div>
-          <Button onClick={() => router.push('/carteirinhas/scanner')}>
-            {' '}
-            + Nova solicitação
-          </Button>
+          <Button> + Nova solicitação</Button>
         </div>
       </div>
 

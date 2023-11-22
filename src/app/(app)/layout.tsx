@@ -42,6 +42,12 @@ export default function RootLayout({
           icon: '',
         },
         {
+          href: '/carteirinhas/scanner',
+          title: 'Scanner',
+          role: ['carteirinhas.scanner', 'admin'],
+          icon: '',
+        },
+        {
           href: '/carteirinhas/configuracoes',
           title: 'Configurações',
           role: ['carteirinhas.configuracoes', 'admin'],
