@@ -1,10 +1,13 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 
 export default function CarteirinhasScanner() {
+  const router = useRouter()
+
   const videoConstraints = {
     width: 1280,
     height: 720,
@@ -32,7 +35,12 @@ export default function CarteirinhasScanner() {
           <span className="text-xl font-bold">Aguardando foto</span>
         </div>
         <div className="flex w-full flex-row items-center justify-center space-x-2">
-          <Button className="w-full">Tirar foto</Button>
+          <Button
+            className="w-full"
+            onClick={() => router.push('/carteirinhas/foto')}
+          >
+            Tirar foto
+          </Button>
           <Button className="w-full">Produzir</Button>
           <Button className="w-full">Pronta</Button>
           <Button className="w-full">Entregar</Button>
@@ -57,33 +65,6 @@ export default function CarteirinhasScanner() {
             <p className="text-sm text-gray-300">Data de validade</p>
           </div>
         </div>
-      </div>
-      <div className="bg-red-500">
-        <Webcam
-          audio={false}
-          height={720}
-          ref={webcamRef}
-          screenshotFormat="image/jpeg"
-          width={1280}
-          videoConstraints={videoConstraints}
-        />
-        <Button onClick={capture}>Tirar foto</Button>
-        {url && (
-          <>
-            <div>
-              <Button
-                onClick={() => {
-                  setUrl(null)
-                }}
-              >
-                Deletar
-              </Button>
-            </div>
-            <div>
-              <img src={url} alt="Screenshot" />
-            </div>
-          </>
-        )}
       </div>
     </div>
   )
