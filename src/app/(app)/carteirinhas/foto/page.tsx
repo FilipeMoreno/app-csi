@@ -22,7 +22,7 @@ export default function CarteirinhasFoto() {
   }, [webcamRef])
 
   return (
-    <div>
+    <div className="h-full w-full rounded-lg bg-zinc-900 p-4">
       {!url && (
         <div>
           <Webcam
@@ -33,7 +33,7 @@ export default function CarteirinhasFoto() {
             width={1280}
             videoConstraints={videoConstraints}
           />
-          <Button className="w-full" onClick={capture}>
+          <Button className="my-2 w-full" onClick={capture}>
             Tirar foto
           </Button>
         </div>
@@ -43,12 +43,13 @@ export default function CarteirinhasFoto() {
           <div>
             <Image src={url} alt="Screenshot" />
           </div>
-          <div className="flex flex-row space-x-2">
+          <div className="my-2 flex flex-row space-x-2">
             <Button
               onClick={() => {
                 setUrl(null)
               }}
               className="w-full"
+              variant={'outline'}
             >
               Tirar novamente
             </Button>
