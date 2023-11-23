@@ -3,7 +3,6 @@
 import { Button } from '@/components/ui/button'
 
 import {
-  BanknoteIcon,
   EditIcon,
   EyeIcon,
   MoreHorizontal,
@@ -11,7 +10,6 @@ import {
   Trash2,
 } from 'lucide-react'
 
-import { useToast } from '@/components/ui/use-toast'
 import {
   Select,
   SelectTrigger,
@@ -34,12 +32,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu'
-import { useRouter } from 'next/navigation'
 
 export default function CarteirinhasSolicitacoes() {
-  const { toast } = useToast()
-  const router = useRouter()
-
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-row items-center justify-between">
@@ -101,7 +95,7 @@ export default function CarteirinhasSolicitacoes() {
         <Input className="w-auto" placeholder="Pesquisar" />
       </div>
 
-      <div className="rounded-md border bg-zinc-900">
+      <div className="hidden rounded-md border bg-zinc-900 md:block">
         <Table>
           <TableHeader>
             <TableRow>
@@ -147,6 +141,15 @@ export default function CarteirinhasSolicitacoes() {
             </TableRow>
           </TableBody>
         </Table>
+      </div>
+      <div className="md:hidden">
+        {/* Aqui você pode adicionar o código para os cards */}
+        <div className="rounded-md border bg-zinc-900 p-4">
+          <h2 className="font-medium">João João João</h2>
+          <p>6º ANO B</p>
+          <p>Entregue</p>
+          {/* ...resto do código do card... */}
+        </div>
       </div>
     </div>
   )
