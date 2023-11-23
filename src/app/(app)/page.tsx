@@ -54,13 +54,17 @@ export default function Home() {
                   return 0
                 })
                 .map((change, index) => {
-                  const changesByType = change.changes.reduce((acc, item) => {
-                    if (!acc[item.type]) {
-                      acc[item.type] = []
-                    }
-                    acc[item.type].push(item.description)
-                    return acc
-                  }, {})
+                  const changesByType: { [key: string]: string[] } =
+                    change.changes.reduce(
+                      (acc: { [key: string]: string[] }, item) => {
+                        if (!acc[item.type]) {
+                          acc[item.type] = []
+                        }
+                        acc[item.type].push(item.description)
+                        return acc
+                      },
+                      {},
+                    )
 
                   return (
                     <div key={change.version} className="mb-8 flex">
