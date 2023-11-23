@@ -22,9 +22,9 @@ export default function Home() {
   return (
     <>
       <CookiesConsent />
-      <Alert variant={'destructive'}>
+      <Alert className="bg-[#aa3744]">
         <ExclamationTriangleIcon className="h-4 w-4" />
-        <AlertTitle>Atenção!</AlertTitle>
+        <AlertTitle className="font-bold">Atenção!</AlertTitle>
         <AlertDescription>
           Este aplicativo está em desenvolvimento e pode conter bugs
         </AlertDescription>
