@@ -5,13 +5,14 @@ export function Logo(props: ComponentProps<'svg'>) {
     <svg
       version="1.0"
       xmlns="http://www.w3.org/2000/svg"
-      width="100.000000pt"
-      height="108.000000pt"
+      width="140.000000pt"
+      height="148.000000pt"
       viewBox="0 0 535.000000 108.000000"
       preserveAspectRatio="xMidYMid meet"
     >
       <g
         transform="translate(0.000000,108.000000) scale(0.100000,-0.100000)"
+        // fill="#FFF"
         fill="#af3c41"
         stroke="none"
       >

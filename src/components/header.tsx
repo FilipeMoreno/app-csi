@@ -2,9 +2,7 @@
 
 import Link from 'next/link'
 import { Logo } from './logo'
-import { Separator } from './ui/separator'
 
-import { Button } from './ui/button'
 import { UserNav } from './user-nav'
 import { Suspense } from 'react'
 import { Skeleton } from './ui/skeleton'
@@ -35,7 +33,7 @@ export function Header({
       </div>
       <div className="flex items-center gap-4">
         <Link aria-label="Logo" href="/">
-          <Logo className="h-8 w-8" />
+          <Logo className="h-12 w-12" />
         </Link>
 
         {/* <Separator orientation="vertical" className="h-5" /> */}
