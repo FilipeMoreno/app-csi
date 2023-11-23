@@ -28,7 +28,7 @@ export default function Home() {
           Este aplicativo está em desenvolvimento e pode conter bugs
         </AlertDescription>
       </Alert>
-      <div className="my-4 flex flex-row space-x-6">
+      <div className="my-4 flex flex-col space-y-4 sm:flex-row sm:space-y-0 lg:space-x-6">
         <div>
           <h1 className="text-2xl font-bold">Olá, Usuário!</h1>
           <p className="text-md">Escolha uma das opções no menu ao lado</p>
@@ -36,7 +36,7 @@ export default function Home() {
         <div className="w-full">
           <h1 className="text-2xl font-bold">Atualizações</h1>
           <span>Mostrando histórico de atualizações</span>
-          <ScrollArea className="h-screen w-full ">
+          <ScrollArea className="h-screen w-full">
             <div className="relative m-4">
               {changelog
                 .sort((a, b) => {
