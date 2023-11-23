@@ -22,7 +22,7 @@ export default function CarteirinhasScanner() {
       })
 
       setTimeout(() => {
-        router.push(`/carteirinhas/detalhes/${qrcode}`)
+        router.push(`/carteirinhas/solicitacoes/${qrcode}`)
       }, 1000)
     }
   }, [qrcode])
