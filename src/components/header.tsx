@@ -8,6 +8,14 @@ import { Suspense } from 'react'
 import { Skeleton } from './ui/skeleton'
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Notifications } from './Notifications'
+import { ChevronLeft } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from './ui/tooltip'
 
 export function Header({
   toggleSidebar,
@@ -16,6 +24,7 @@ export function Header({
   toggleSidebar: () => void
   showSidebar: boolean
 }) {
+  const router = useRouter()
   return (
     <div className="flex h-16 items-center justify-between px-6">
       <div className="lg:hidden">
@@ -33,6 +42,22 @@ export function Header({
         </button>
       </div>
       <div className="flex items-center gap-4">
+        <div className="hidden lg:flex">
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <ChevronLeft
+                  className="cursor-pointer text-zinc-300"
+                  onClick={() => router.back()}
+                />
+              </TooltipTrigger>
+              <TooltipContent className="bg-zinc-900 text-primary">
+                <p>Voltar</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
+        </div>
+
         <Link aria-label="Logo" href="/">
           <Logo className="h-12 w-12" />
         </Link>
