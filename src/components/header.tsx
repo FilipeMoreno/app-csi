@@ -7,6 +7,7 @@ import { UserNav } from './user-nav'
 import { Suspense } from 'react'
 import { Skeleton } from './ui/skeleton'
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
+import { Notifications } from './Notifications'
 
 export function Header({
   toggleSidebar,
@@ -38,6 +39,7 @@ export function Header({
       </div>
 
       <div className="flex items-center gap-4">
+        <Notifications />
         <Suspense fallback={<Skeleton className="h-8 w-8 rounded-full" />}>
           <UserNav />
         </Suspense>

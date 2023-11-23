@@ -27,13 +27,22 @@ export function UserNav() {
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
-          <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">
-              {dados.user.name}
-            </p>
-            <p className="text-xs leading-none text-muted-foreground">
-              {dados.user.email}
-            </p>
+          <div className="flex flex-row space-x-4 space-y-1">
+            <Avatar className="h-8 w-8">
+              <AvatarImage
+                src={dados.user.picture}
+                alt={'@' + dados.user.username}
+              />
+              <AvatarFallback>CSI</AvatarFallback>
+            </Avatar>
+            <div className="flex flex-col">
+              <p className="text-sm font-medium leading-none">
+                {dados.user.name}
+              </p>
+              <p className="text-xs leading-none text-muted-foreground">
+                {dados.user.email}
+              </p>
+            </div>
           </div>
         </DropdownMenuLabel>
 
