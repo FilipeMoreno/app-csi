@@ -1,13 +1,19 @@
-import { Inter } from 'next/font/google'
+import { Inter, Caveat } from 'next/font/google'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
-import NextTopLoader from 'nextjs-toploader'
+
 import Script from 'next/script'
 
 const inter = Inter({
   display: 'swap',
   subsets: ['latin'],
   variable: '--font-inter',
+})
+
+const caveat = Caveat({
+  display: 'swap',
+  subsets: ['latin'],
+  variable: '--font-caveat',
 })
 
 export const metadata: Metadata = {
@@ -23,8 +29,8 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
-      className={`dark font-sans antialiased ${inter.variable}
+      lang="pt-BR"
+      className={`dark font-sans antialiased ${inter.variable} ${caveat.variable} 
   `}
     >
       <link

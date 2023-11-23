@@ -3,15 +3,14 @@
 import { Button } from '@/components/ui/button'
 
 import {
-  BanknoteIcon,
   EditIcon,
   EyeIcon,
+  FilterIcon,
   MoreHorizontal,
   QrCodeIcon,
   Trash2,
 } from 'lucide-react'
 
-import { useToast } from '@/components/ui/use-toast'
 import {
   Select,
   SelectTrigger,
@@ -34,12 +33,19 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
 } from '@/components/ui/dropdown-menu'
-import { useRouter } from 'next/navigation'
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { Badge } from '@/components/ui/badge'
 
 export default function CarteirinhasSolicitacoes() {
-  const { toast } = useToast()
-  const router = useRouter()
-
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-row items-center justify-between">
@@ -52,56 +58,77 @@ export default function CarteirinhasSolicitacoes() {
         </div>
       </div>
 
-      <div className="my-4 flex flex-row items-center space-x-3">
-        <Select>
-          <SelectTrigger className="w-[100px]">
-            <SelectValue placeholder="Ano" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="2024">2024</SelectItem>
-            <SelectItem value="2023">2023</SelectItem>
-            <SelectItem value="2022">2022</SelectItem>
-          </SelectContent>
-        </Select>
+      <div className="flex flex-row items-center justify-between space-x-4">
+        <Input className="my-4 w-full" placeholder="Pesquisar" />
 
-        <Select>
-          <SelectTrigger className="w-[120px]">
-            <SelectValue placeholder="Série" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">6º ANO</SelectItem>
-            <SelectItem value="dark">7º ANO</SelectItem>
-            <SelectItem value="system">8º ANO</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Select>
-          <SelectTrigger className="w-[90px]">
-            <SelectValue placeholder="Turma" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">A</SelectItem>
-            <SelectItem value="dark">B</SelectItem>
-            <SelectItem value="system">C</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Select>
-          <SelectTrigger className="w-[200px]">
-            <SelectValue placeholder="Status" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="light">Entregue</SelectItem>
-            <SelectItem value="dark">Aguardando foto</SelectItem>
-            <SelectItem value="system">Aguardando pagamento</SelectItem>
-            <SelectItem value="analise">Em análise</SelectItem>
-          </SelectContent>
-        </Select>
-
-        <Input className="w-auto" placeholder="Pesquisar" />
+        <Sheet>
+          <SheetTrigger asChild>
+            <Button variant={'secondary'}>
+              <FilterIcon className="h-5 w-5" />
+            </Button>
+          </SheetTrigger>
+          <SheetContent>
+            <SheetHeader>
+              <SheetTitle>Filtros</SheetTitle>
+              <SheetDescription>
+                Filtre as solicitações de acordo com suas necessidades
+              </SheetDescription>
+            </SheetHeader>
+            <div className="grid gap-4 py-4">
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Ano" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="2024">2024</SelectItem>
+                  <SelectItem value="2023">2023</SelectItem>
+                  <SelectItem value="2022">2022</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Série" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">6º ANO</SelectItem>
+                  <SelectItem value="dark">7º ANO</SelectItem>
+                  <SelectItem value="system">8º ANO</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Turma" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">A</SelectItem>
+                  <SelectItem value="dark">B</SelectItem>
+                  <SelectItem value="system">C</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Status" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Entregue</SelectItem>
+                  <SelectItem value="dark">Aguardando foto</SelectItem>
+                  <SelectItem value="system">Aguardando pagamento</SelectItem>
+                  <SelectItem value="analise">Em análise</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <SheetFooter>
+              <SheetClose asChild>
+                <Button className="w-full" type="submit">
+                  Salvar
+                </Button>
+              </SheetClose>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
       </div>
 
-      <div className="rounded-md border bg-zinc-900">
+      <div className="hidden rounded-md border bg-zinc-900 md:block">
         <Table>
           <TableHeader>
             <TableRow>
@@ -130,10 +157,6 @@ export default function CarteirinhasSolicitacoes() {
                       Visualizar
                     </DropdownMenuItem>
                     <DropdownMenuItem className="flex flex-row items-center">
-                      <QrCodeIcon className="mr-1 h-4 w-5" />
-                      Scanear
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="flex flex-row items-center">
                       <EditIcon className="mr-1 h-4 w-5" />
                       Editar
                     </DropdownMenuItem>
@@ -147,6 +170,27 @@ export default function CarteirinhasSolicitacoes() {
             </TableRow>
           </TableBody>
         </Table>
+      </div>
+      <div className="md:hidden">
+        <div className="space-y-2 rounded-md border bg-zinc-900 p-4">
+          <div className="flex flex-row items-center space-x-4">
+            <p className="text-2xl font-medium">João João João</p>
+            <Badge className="text- bg-emerald-900 text-sm">entregue</Badge>
+          </div>
+          <p className="text-xl">6º ANO B</p>
+
+          <div className="mt-4 flex w-full flex-row items-center justify-evenly">
+            <Button variant="ghost">
+              <EyeIcon className="h-6 w-6" />
+            </Button>
+            <Button variant="ghost">
+              <EditIcon className="h-6 w-6" />
+            </Button>
+            <Button variant="ghost">
+              <Trash2 className="h-6 w-6" />
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   )
