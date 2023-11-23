@@ -185,7 +185,10 @@ export default function CarteirinhasSolicitacoes() {
           <p className="text-xl">6º ANO B</p>
 
           <div className="mt-4 flex w-full flex-row items-center justify-evenly">
-            <Button variant="ghost">
+            <Button
+              onClick={() => router.push('solicitacoes/1')}
+              variant="ghost"
+            >
               <EyeIcon className="h-6 w-6" />
             </Button>
             <Button variant="ghost">
