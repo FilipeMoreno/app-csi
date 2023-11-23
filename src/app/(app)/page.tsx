@@ -21,7 +21,6 @@ export default function Home() {
   ]
   return (
     <>
-      <CookiesConsent />
       <Alert className="bg-[#aa3744]">
         <ExclamationTriangleIcon className="h-4 w-4" />
         <AlertTitle className="font-bold">Atenção!</AlertTitle>
@@ -99,6 +98,7 @@ export default function Home() {
           </ScrollArea>
         </div>
       </div>
+      <CookiesConsent />
     </>
   )
 }
