@@ -7,6 +7,15 @@ import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
 import NextTopLoader from 'nextjs-toploader'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
+import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 
 export default function RootLayout({
   children,
@@ -14,10 +23,6 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   const [showSidebar, setShowSidebar] = useState(false)
-
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar)
-  }
 
   const sidebarNavItems = [
     {
@@ -88,11 +93,22 @@ export default function RootLayout({
   return (
     <body>
       <NextTopLoader color="#af3c41" />
-      <Header toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
+      <Header />
       <div className="md:block">
         <div className="border-t">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
+              <Sheet>
+                <SheetTrigger className="lg:hidden">
+                  <HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+                </SheetTrigger>
+                <SheetContent side="left">
+                  <Sidebar
+                    items={sidebarNavItems}
+                    onItemClick={handleItemClick}
+                  />
+                </SheetContent>
+              </Sheet>
               <Sidebar
                 className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
                 items={sidebarNavItems}

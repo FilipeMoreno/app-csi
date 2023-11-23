@@ -6,7 +6,6 @@ import { Logo } from './logo'
 import { UserNav } from './user-nav'
 import { Suspense } from 'react'
 import { Skeleton } from './ui/skeleton'
-import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { Notifications } from './Notifications'
 import { ChevronLeft } from 'lucide-react'
 import { useRouter } from 'next/navigation'
@@ -17,13 +16,7 @@ import {
   TooltipTrigger,
 } from './ui/tooltip'
 
-export function Header({
-  toggleSidebar,
-  showSidebar,
-}: {
-  toggleSidebar: () => void
-  showSidebar: boolean
-}) {
+export function Header() {
   const router = useRouter()
   return (
     <div className="flex h-16 items-center justify-between px-6">
@@ -31,15 +24,8 @@ export function Header({
         <button
           id="sidebar-toggle"
           aria-label="Menu Lateral"
-          onClick={toggleSidebar}
-          className="block text-gray-500 hover:text-white focus:text-white focus:outline-none"
-        >
-          {showSidebar ? (
-            <Cross1Icon className="h-6 w-6 text-gray-500" />
-          ) : (
-            <HamburgerMenuIcon className="h-6 w-6 text-gray-500" />
-          )}
-        </button>
+          className=" text-gray-500 hover:text-white focus:text-white focus:outline-none"
+        ></button>
       </div>
       <div className="flex items-center gap-4">
         <div className="hidden lg:flex">
