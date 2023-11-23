@@ -44,8 +44,10 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { Badge } from '@/components/ui/badge'
+import { useRouter } from 'next/navigation'
 
 export default function CarteirinhasSolicitacoes() {
+  const router = useRouter()
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-row items-center justify-between">
@@ -152,7 +154,10 @@ export default function CarteirinhasSolicitacoes() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem className="flex flex-row items-center">
+                    <DropdownMenuItem
+                      className="flex flex-row items-center"
+                      onClick={() => router.push('solicitacoes/1')}
+                    >
                       <EyeIcon className="mr-1 h-4 w-5" />
                       Visualizar
                     </DropdownMenuItem>

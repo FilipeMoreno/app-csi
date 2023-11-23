@@ -21,6 +21,17 @@ import {
   PrinterIcon,
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from '@/components/ui/alert-dialog'
 
 export default function CarteirinhasScanner() {
   const router = useRouter()
@@ -154,7 +165,36 @@ export default function CarteirinhasScanner() {
             <h1 className="text-xl font-bold">Histórico</h1>
             <span>Mostrando histórico de status</span>
           </div>
-          <Button>+ Adicionar status</Button>
+          <AlertDialog>
+            <AlertDialogTrigger asChild>
+              <Button variant="outline">+ Adicionar status</Button>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+              <AlertDialogHeader>
+                <AlertDialogTitle>Adicionar status</AlertDialogTitle>
+                <AlertDialogDescription>
+                  Selecione o status que deseja adicionar
+                  <Select>
+                    <SelectTrigger className="mt-2 w-full">
+                      <SelectValue placeholder="Selecione o status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Entregue">Entregue</SelectItem>
+                      <SelectItem value="Produzida">Produzida</SelectItem>
+                      <SelectItem value="Pagamento recebido">
+                        Pagamento recebido
+                      </SelectItem>
+                      <SelectItem value="Aprovada">Aprovada</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </AlertDialogDescription>
+              </AlertDialogHeader>
+              <AlertDialogFooter>
+                <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                <AlertDialogAction>Continuar</AlertDialogAction>
+              </AlertDialogFooter>
+            </AlertDialogContent>
+          </AlertDialog>
         </div>
         <div className="flex w-full flex-col items-center justify-center rounded-lg bg-emerald-900 p-4">
           <span className="font-thin">Situação atual:</span>
