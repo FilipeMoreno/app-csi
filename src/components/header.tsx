@@ -35,38 +35,9 @@ export function Header({
         <Link aria-label="Logo" href="/">
           <Logo className="h-12 w-12" />
         </Link>
-
-        {/* <Separator orientation="vertical" className="h-5" /> */}
-
-        {/* <nav className="flex items-center space-x-6">
-          <NavLink href="/services">Services</NavLink>
-          <NavLink href="/events">Events</NavLink>
-          <NavLink href="/monitoring">Monitoring</NavLink>
-          <NavLink href="/settings">Settings</NavLink>
-        </nav> */}
       </div>
 
       <div className="flex items-center gap-4">
-        {/* <Button variant="outline" size="sm">
-          Feedback
-        </Button>
-
-        <Separator orientation="vertical" className="h-5" /> */}
-
-        {/* <nav className="flex items-center space-x-6">
-          <NavLink className="text-xs font-normal" href="/examples/dashboard">
-            Changelog
-          </NavLink>
-          <NavLink className="text-xs font-normal" href="/examples/dashboard">
-            Help
-          </NavLink>
-          <NavLink className="text-xs font-normal" href="/examples/dashboard">
-            Docs
-          </NavLink>
-        </nav> */}
-
-        {/* <Separator orientation="vertical" className="h-5" /> */}
-
         <Suspense fallback={<Skeleton className="h-8 w-8 rounded-full" />}>
           <UserNav />
         </Suspense>

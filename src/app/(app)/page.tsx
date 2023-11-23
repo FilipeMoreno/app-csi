@@ -3,8 +3,8 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 import { ScrollArea } from '@/components/ui/scroll-area'
-
 import { Badge } from '@/components/ui/badge'
+import CookiesConsent from '@/components/CookiesConsent'
 
 export default function Home() {
   const changelog = [
@@ -21,6 +21,7 @@ export default function Home() {
   ]
   return (
     <>
+      <CookiesConsent />
       <Alert variant={'destructive'}>
         <ExclamationTriangleIcon className="h-4 w-4" />
         <AlertTitle>Atenção!</AlertTitle>
