@@ -130,14 +130,14 @@ export default function CarteirinhasScanner() {
             <img src="https://via.placeholder.com/150x250" />
           </div>
           <div className="my-6 space-y-4">
-            <Button className="w-full">Remover foto</Button>
-            <Button className="w-full">Alterar foto</Button>
             <Button
               className="w-full"
               onClick={() => router.push('/carteirinhas/foto')}
             >
               Tirar foto
             </Button>
+            <Button className="w-full">Alterar foto</Button>
+            <Button className="w-full">Remover foto</Button>
           </div>
         </div>
       </div>
@@ -150,11 +150,11 @@ export default function CarteirinhasScanner() {
             <h1 className="text-xl font-bold">Histórico</h1>
             <span>Mostrando histórico de status</span>
           </div>
-          <Button>Adicionar status</Button>
+          <Button>+ Adicionar status</Button>
         </div>
-        <div className="flex w-full flex-col items-center justify-center rounded-lg bg-red-900 p-4">
+        <div className="flex w-full flex-col items-center justify-center rounded-lg bg-emerald-900 p-4">
           <span className="font-thin">Situação atual:</span>
-          <span className="text-xl font-bold">Aguardando foto</span>
+          <span className="text-xl font-bold">Entregue!</span>
         </div>
         <div className="my-2 flex flex-col space-y-3">
           <Alert className="bg-secondary">
