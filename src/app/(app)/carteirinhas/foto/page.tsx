@@ -32,6 +32,7 @@ export default function CarteirinhasFoto() {
             screenshotFormat="image/jpeg"
             width={1280}
             videoConstraints={videoConstraints}
+            screenshotQuality={1}
           />
           <Button className="my-2 w-full" onClick={capture}>
             Tirar foto
