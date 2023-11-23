@@ -59,6 +59,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
+    "react-qr-code": "^2.0.12",
     "react-spinners": "^0.13.8",
     "react-thermal-printer": "^0.16.0",
     "react-to-print": "^2.14.15",
