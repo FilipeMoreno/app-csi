@@ -2,7 +2,7 @@
 
 import { Loader } from '@/components/ui/loader'
 
-const Loading = () => {
+export default function LoadingPage() {
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
       <Loader />
@@ -11,5 +11,3 @@ const Loading = () => {
     </div>
   )
 }
-
-export default Loading

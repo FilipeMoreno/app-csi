@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
-const OfflinePage = () => {
+export default function OfflinePage() {
   const router = useRouter()
 
   function handleRefresh() {
@@ -34,5 +34,3 @@ const OfflinePage = () => {
     </div>
   )
 }
-
-export default OfflinePage
