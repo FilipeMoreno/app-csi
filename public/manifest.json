@@ -10,7 +10,7 @@
     {
       "media": "(prefers-color-scheme: light)",
       "theme_color": "#a1313d",
-      "background_color": "#f1f1f1f1"
+      "background_color": "#a1313d"
     }
   ],
   "display": "standalone",
