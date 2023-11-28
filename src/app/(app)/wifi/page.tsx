@@ -143,9 +143,9 @@ export default function Home() {
               <div className="p-4">
                 <div
                   ref={componentRef as unknown as LegacyRef<HTMLDivElement>}
-                  className="p-2 lg:hidden"
+                  className="p-2"
                 >
-                  <Card className="flex max-w-[300px] flex-col items-center justify-center">
+                  <Card className="flex w-full flex-col items-center justify-center">
                     <CardHeader className="flex flex-col items-center justify-center">
                       <Image
                         src="/icon-512x512.png"
@@ -170,20 +170,6 @@ export default function Home() {
                     </CardFooter>
                   </Card>
                 </div>
-                <p className="text-xl">
-                  Voucher: <b>{vouchers.cod}</b>
-                </p>
-                <p>Data: {dataAtual}</p>
-
-                <p>
-                  Tempo: {vouchers.time}{' '}
-                  {vouchers.period === 'hour' && 'hora(s)'}
-                  {vouchers.period === 'minute' && 'minuto(s)'}
-                  {vouchers.period === 'day' && 'dia(s)'}
-                  {vouchers.period === 'week' && 'semana(s)'}
-                  {vouchers.period === 'month' && 'mes(s)'}
-                  {vouchers.period === 'year' && 'ano(s)'}
-                </p>
 
                 <div className="-mb-4 mt-3 space-y-2">
                   <ReactToPrint
