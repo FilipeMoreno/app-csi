@@ -1,6 +1,8 @@
 {
   "name": "APP - Colégio Santo Inácio",
   "short_name": "CSI - APP",
+  "theme_color": "#a1313d",
+  "background_color": "#a1313d",
   "color_overrides": [
     {
       "media": "(prefers-color-scheme: dark)",
