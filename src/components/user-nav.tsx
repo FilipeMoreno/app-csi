@@ -16,7 +16,7 @@ export function UserNav() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-          <Avatar className="h-8 w-8">
+          <Avatar className="h-8 w-8 border border-secondary">
             <AvatarImage
               src={dados.user.picture}
               alt={'@' + dados.user.username}
@@ -28,7 +28,7 @@ export function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-row space-x-4 space-y-1">
-            <Avatar className="h-8 w-8">
+            <Avatar className="h-8 w-8 border border-secondary">
               <AvatarImage
                 src={dados.user.picture}
                 alt={'@' + dados.user.username}
@@ -47,8 +47,8 @@ export function UserNav() {
         </DropdownMenuLabel>
 
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer hover:text-red-400">
-          <ExitIcon className="mr-2 " /> Sair
+        <DropdownMenuItem className="text-red-400 hover:cursor-pointer hover:text-red-400">
+          <ExitIcon className="mr-2" /> Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

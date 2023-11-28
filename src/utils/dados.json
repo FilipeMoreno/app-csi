@@ -1,7 +1,7 @@
 {
   "user": {
     "id": "123456",
-    "name": "John Doe",
+    "name": "Usuário do Sistema",
     "username": "johndoe",
     "email": "email@email.com",
     "picture": "https://github.com/vercel.png",
