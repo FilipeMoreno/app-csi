@@ -57,21 +57,21 @@ export default function Home() {
 
                   return (
                     <div key={change.version} className="mb-8 flex">
-                      <div className="mr-16 space-y-2">
+                      <div className="w-64 space-y-2">
                         <Badge className="font-bold">{change.version}</Badge>
-                        <div>
+                        <div className="text-xs">
                           {Intl.DateTimeFormat('pt-BR', {
                             year: 'numeric',
-                            month: 'short',
+                            month: 'long',
                             day: 'numeric',
                             timeZone: 'UTC',
                           }).format(new Date(change.date))}
                         </div>
                       </div>
-                      <div>
+                      <div className="flex w-full flex-col">
                         {Object.entries(changesByType).map(
                           ([type, descriptions]) => (
-                            <div key={type} className="my-3">
+                            <div key={type} className="my-4">
                               <div>{type}:</div>
                               {descriptions.map((description, index) => (
                                 <div key={index}>- {description}</div>
