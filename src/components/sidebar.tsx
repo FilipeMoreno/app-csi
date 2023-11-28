@@ -91,7 +91,7 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
                           }
                           className="w-full justify-start text-left text-base font-bold tracking-tight"
                         >
-                          <Home className="mx-2 h-4 w-4" />
+                          <Home className="mr-2 h-4 w-4" />
                           {subitem.title}
                         </Button>
                       </Link>

@@ -39,14 +39,14 @@ export default function CarteirinhasScanner() {
   return (
     <div>
       <div className="flex flex-wrap gap-8">
-        <div className="flex w-full flex-row items-center justify-between">
+        <div className="flex w-full flex-row items-center justify-between rounded-lg bg-secondary p-4">
           <div>
             <h1 className="text-2xl font-bold">Carteirnha #1234</h1>
             <p className="text-sm text-gray-300">
               Mostrando detalhes da carteirinha #1234
             </p>
           </div>
-          <QRCode value="1" size={80} fgColor="#FFFFFF" bgColor="#09090b" />
+          <QRCode value="1234" size={80} fgColor="#FFFFFF" bgColor="#09090b" />
         </div>
       </div>
       <div className="my-4 flex w-full flex-col space-y-4">
@@ -144,7 +144,7 @@ export default function CarteirinhasScanner() {
             <Label>Foto</Label>
             <img src="https://via.placeholder.com/150x250" />
           </div>
-          <div className="my-6 space-y-4">
+          <div className="my-6 flex flex-col justify-center space-y-4">
             <Button
               className="w-full"
               onClick={() => router.push('/carteirinhas/foto')}
