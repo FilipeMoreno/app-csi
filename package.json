@@ -1,13 +1,13 @@
 {
   "name": "APP-CSI",
-  "version": "0.0.40.1",
+  "version": "0.2.21.1-alpha",
   "author": {
     "name": "Filipe Moreno",
     "email": "y8.filipe@gmail.com"
   },
   "private": true,
   "repository": {
-    "url": "https://github.com/FilipeMoreno/wifi-voucher-csi"
+    "url": "https://github.com/FilipeMoreno/app-csi"
   },
   "scripts": {
     "dev": "next dev",
@@ -48,7 +48,10 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
     "cmdk": "^0.2.0",
+    "cookies-next": "^4.1.0",
     "date-fns": "^2.30.0",
+    "framer-motion": "^10.16.5",
+    "html5-qrcode": "^2.3.8",
     "lucide-react": "^0.289.0",
     "next": "13.5.6",
     "nextjs-toploader": "^1.6.4",
@@ -58,10 +61,12 @@
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
+    "react-qr-code": "^2.0.12",
     "react-spinners": "^0.13.8",
     "react-thermal-printer": "^0.16.0",
     "react-to-print": "^2.14.15",
     "react-use-audio-player": "^2.2.0",
+    "react-webcam": "^7.2.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"

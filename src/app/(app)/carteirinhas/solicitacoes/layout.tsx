@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Solicitações de carteirinhas de estudante',
 }
 
-export default function WifiLayout({
+export default function CarteirinhasSolicitacoes({
   children,
 }: {
   children: React.ReactNode

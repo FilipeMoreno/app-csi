@@ -87,7 +87,7 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-zinc-800 rounded-lg
+    @apply bg-zinc-900 rounded-lg
   }
 
   ::-webkit-scrollbar-thumb:hover {

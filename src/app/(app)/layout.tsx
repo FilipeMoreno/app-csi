@@ -7,6 +7,21 @@ import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
 import NextTopLoader from 'nextjs-toploader'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { HamburgerMenuIcon } from '@radix-ui/react-icons'
+import {
+  CreditCard,
+  Home,
+  LayoutDashboard,
+  List,
+  Podcast,
+  ScanLine,
+  Settings,
+  Speaker,
+  Ticket,
+  Wifi,
+} from 'lucide-react'
+import { title } from 'process'
 
 export default function RootLayout({
   children,
@@ -15,57 +30,63 @@ export default function RootLayout({
 }) {
   const [showSidebar, setShowSidebar] = useState(false)
 
-  const toggleSidebar = () => {
-    setShowSidebar(!showSidebar)
-  }
-
   const sidebarNavItems = [
     {
-      title: '',
-      icon: '',
+      title: 'Dashboard',
+      icon: LayoutDashboard,
       subitems: [
         {
           href: '/',
-          title: 'Home',
-          icon: '',
+          title: 'Início',
+          icon: Home,
         },
       ],
     },
     {
       title: 'Carteirinhas',
-      icon: '',
+      icon: CreditCard,
       subitems: [
         {
           href: '/carteirinhas/solicitacoes',
           title: 'Solicitações',
-          icon: '',
+          role: ['carteirinhas.solicitacoes', 'admin'],
+          icon: List,
+        },
+        {
+          href: '/carteirinhas/scanner',
+          title: 'Scanner',
+          role: ['carteirinhas.scanner', 'admin'],
+          icon: ScanLine,
         },
         {
           href: '/carteirinhas/configuracoes',
           title: 'Configurações',
-          icon: '',
+          role: ['carteirinhas.configuracoes', 'admin'],
+          icon: Settings,
         },
       ],
     },
     {
       title: 'Wi-Fi',
-      icon: '',
+      icon: Wifi,
       subitems: [
         {
           href: '/wifi',
           title: 'Vouchers',
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>',
+          role: ['wifi.voucher', 'admin'],
+          icon: Ticket,
         },
       ],
     },
     {
       title: 'Sinal',
-      icon: '',
+      icon: Speaker,
       subitems: [
         {
           href: '/sinaleiro',
           title: 'Sinal',
-          icon: '',
+          role: ['sinal', 'admin'],
+          icon: Podcast,
         },
       ],
     },
@@ -78,11 +99,22 @@ export default function RootLayout({
   return (
     <body>
       <NextTopLoader color="#af3c41" />
-      <Header toggleSidebar={toggleSidebar} showSidebar={showSidebar} />
+      <Header />
       <div className="md:block">
         <div className="border-t">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
+              <Sheet>
+                <SheetTrigger className="lg:hidden">
+                  <HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+                </SheetTrigger>
+                <SheetContent side="left">
+                  <Sidebar
+                    items={sidebarNavItems}
+                    onItemClick={handleItemClick}
+                  />
+                </SheetContent>
+              </Sheet>
               <Sidebar
                 className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
                 items={sidebarNavItems}
