@@ -4,18 +4,17 @@ import dados from '@/utils/dados.json'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home } from 'lucide-react'
 
 interface SubitemType {
   href: string
   title: string
   role?: string[]
-  icon?: string
+  icon?: React.ElementType
 }
 
 interface ItemType {
   title?: string
-  icon?: string
+  icon?: React.ElementType
   subitems: SubitemType[]
 }
 
@@ -69,7 +68,8 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
           }
           return (
             <div className="px-3 py-2" key={item.title}>
-              <h2 className="mb-4 rounded-lg px-4 text-[10px] font-black uppercase tracking-tight text-zinc-500">
+              <h2 className="mb-4 flex flex-row items-center rounded-lg px-4 text-[10px] font-black uppercase tracking-tight text-zinc-500">
+                {item.icon && <item.icon className="mr-2 h-4 w-4" />}
                 {item.title}
               </h2>
 
@@ -91,7 +91,9 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
                           }
                           className="w-full justify-start text-left text-base font-bold tracking-tight"
                         >
-                          <Home className="mr-2 h-4 w-4" />
+                          {subitem.icon && (
+                            <subitem.icon className="mr-2 h-4 w-4" />
+                          )}
                           {subitem.title}
                         </Button>
                       </Link>

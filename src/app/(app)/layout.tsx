@@ -7,13 +7,21 @@ import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
 import NextTopLoader from 'nextjs-toploader'
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
+import {
+  CreditCard,
+  Disc3,
+  Home,
+  LayoutDashboard,
+  List,
+  Podcast,
+  ScanLine,
+  Settings,
+  Ticket,
+  Wifi,
+} from 'lucide-react'
+import { title } from 'process'
 
 export default function RootLayout({
   children,
@@ -25,60 +33,60 @@ export default function RootLayout({
   const sidebarNavItems = [
     {
       title: 'Dashboard',
-      icon: '',
+      icon: LayoutDashboard,
       subitems: [
         {
           href: '/',
           title: 'Início',
-          icon: 'home',
+          icon: Home,
         },
       ],
     },
     {
       title: 'Carteirinhas',
-      icon: '',
+      icon: CreditCard,
       subitems: [
         {
           href: '/carteirinhas/solicitacoes',
           title: 'Solicitações',
           role: ['carteirinhas.solicitacoes', 'admin'],
-          icon: '',
+          icon: List,
         },
         {
           href: '/carteirinhas/scanner',
           title: 'Scanner',
           role: ['carteirinhas.scanner', 'admin'],
-          icon: '',
+          icon: ScanLine,
         },
         {
           href: '/carteirinhas/configuracoes',
           title: 'Configurações',
           role: ['carteirinhas.configuracoes', 'admin'],
-          icon: '',
+          icon: Settings,
         },
       ],
     },
     {
       title: 'Wi-Fi',
-      icon: '',
+      icon: Wifi,
       subitems: [
         {
           href: '/wifi',
           title: 'Vouchers',
           role: ['wifi.voucher', 'admin'],
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wifi"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>',
+          icon: Ticket,
         },
       ],
     },
     {
       title: 'Sinal',
-      icon: '',
+      icon: Disc3,
       subitems: [
         {
           href: '/sinaleiro',
           title: 'Sinal',
           role: ['sinal', 'admin'],
-          icon: '',
+          icon: Podcast,
         },
       ],
     },
