@@ -21,7 +21,7 @@ export default function Home() {
   ]
   return (
     <>
-      <Alert className="bg-[#aa3744]">
+      <Alert className="bg-[#a1313d]">
         <ExclamationTriangleIcon className="h-4 w-4" />
         <AlertTitle className="font-bold">Atenção!</AlertTitle>
         <AlertDescription>
