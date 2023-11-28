@@ -11,13 +11,13 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import {
   CreditCard,
-  Disc3,
   Home,
   LayoutDashboard,
   List,
   Podcast,
   ScanLine,
   Settings,
+  Speaker,
   Ticket,
   Wifi,
 } from 'lucide-react'
@@ -80,7 +80,7 @@ export default function RootLayout({
     },
     {
       title: 'Sinal',
-      icon: Disc3,
+      icon: Speaker,
       subitems: [
         {
           href: '/sinaleiro',
