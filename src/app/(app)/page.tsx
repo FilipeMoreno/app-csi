@@ -5,22 +5,9 @@ import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Badge } from '@/components/ui/badge'
 import CookiesConsent from '@/components/CookiesConsent'
-import { motion } from 'framer-motion'
-import { Infinity } from 'lucide-react'
+import changelog from '@/../changelog.json'
 
 export default function Home() {
-  const changelog = [
-    {
-      version: '0.0.1',
-      date: '2023-01-01T00:00:00+00:00',
-      changes: [
-        {
-          type: 'Adições',
-          description: 'Iniciando o desenvolvimento do aplicativo',
-        },
-      ],
-    },
-  ]
   return (
     <>
       <Alert className="bg-[#a1313d]">
@@ -70,8 +57,8 @@ export default function Home() {
 
                   return (
                     <div key={change.version} className="mb-8 flex">
-                      <div className="mr-16">
-                        <Badge>{change.version}</Badge>
+                      <div className="mr-16 space-y-2">
+                        <Badge className="font-bold">{change.version}</Badge>
                         <div>
                           {Intl.DateTimeFormat('pt-BR', {
                             year: 'numeric',

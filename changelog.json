@@ -1,0 +1,44 @@
+[
+  {
+    "version": "0.0.1",
+    "date": "2023-01-01T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Iniciando o desenvolvimento do aplicativo."
+      }
+    ]
+  },
+  {
+    "version": "0.2.20.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Correções gerais."
+      },
+      {
+        "type": "Mudanças",
+        "description": "Agora a versão do aplicativo é exibida na sidebar."
+      },
+      {
+        "type": "Mudanças",
+        "description": "Mudanças no método em que pega a versão do aplicativo."
+      }
+    ]
+  },
+  {
+    "version": "0.2.21.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Correções no arquivo config.ts."
+      },
+      {
+        "type": "Mudanças",
+        "description": "Melhoria no design da changelog."
+      }
+    ]
+  }
+]
