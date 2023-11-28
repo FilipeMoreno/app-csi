@@ -148,7 +148,7 @@ export default function Home() {
                   <Card className="flex w-full flex-col items-center justify-center">
                     <CardHeader className="flex flex-col items-center justify-center">
                       <Image
-                        src="/icon-512x512.png"
+                        src="/icons/icon-512x512.png"
                         alt="Logo"
                         height={60}
                         width={60}

@@ -40,5 +40,37 @@
         "description": "Melhoria no design da changelog."
       }
     ]
+  },
+  {
+    "version": "0.3.1.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Bump",
+        "description": "Bump de versão."
+      },
+      {
+        "type": "Correções",
+        "description": "Correções gerais na página vouchers."
+      },
+      {
+        "type": "Mudanças",
+        "description": "Melhorias gerais na página vouchers."
+      },
+      {
+        "type": "Mudanças",
+        "description": "Adicionada lógica de impressão em vouchers."
+      }
+    ]
+  },
+  {
+    "version": "0.3.1.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Corrigido caminho da logo em vouchers."
+      }
+    ]
   }
 ]
