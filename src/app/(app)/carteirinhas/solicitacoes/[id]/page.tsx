@@ -144,15 +144,15 @@ export default function CarteirinhasScanner() {
             <Label>Foto</Label>
             <img src="https://via.placeholder.com/150x250" />
           </div>
-          <div className="my-6 flex flex-col justify-center space-y-4">
+          <div className="my-6 flex w-full flex-col justify-center space-y-4">
             <Button
-              className="w-full"
+              className="lg:w-48"
               onClick={() => router.push('/carteirinhas/foto')}
             >
               Tirar foto
             </Button>
-            <Button className="w-full">Alterar foto</Button>
-            <Button className="w-full">Remover foto</Button>
+            <Button className="lg:w-48">Alterar foto</Button>
+            <Button className="lg:w-48">Remover foto</Button>
           </div>
         </div>
       </div>
