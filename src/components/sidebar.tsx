@@ -4,6 +4,7 @@ import dados from '@/utils/dados.json'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { config } from '@/config'
 
 interface SubitemType {
   href: string
@@ -104,6 +105,9 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
             </div>
           )
         })}
+      </div>
+      <div className="bottom-0 left-0 right-0 flex items-center justify-center">
+        <span className="text-xs text-zinc-500">v{config.version}</span>
       </div>
     </div>
   )

@@ -5,6 +5,8 @@ import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Badge } from '@/components/ui/badge'
 import CookiesConsent from '@/components/CookiesConsent'
+import { motion } from 'framer-motion'
+import { Infinity } from 'lucide-react'
 
 export default function Home() {
   const changelog = [
