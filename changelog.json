@@ -18,11 +18,11 @@
         "description": "Correções gerais."
       },
       {
-        "type": "Mudanças",
+        "type": "Alterações",
         "description": "Agora a versão do aplicativo é exibida na sidebar."
       },
       {
-        "type": "Mudanças",
+        "type": "Alterações",
         "description": "Mudanças no método em que pega a versão do aplicativo."
       }
     ]
@@ -36,7 +36,7 @@
         "description": "Correções no arquivo config.ts."
       },
       {
-        "type": "Mudanças",
+        "type": "Alterações",
         "description": "Melhoria no design da changelog."
       }
     ]
@@ -54,11 +54,11 @@
         "description": "Correções gerais na página vouchers."
       },
       {
-        "type": "Mudanças",
+        "type": "Alterações",
         "description": "Melhorias gerais na página vouchers."
       },
       {
-        "type": "Mudanças",
+        "type": "Alterações",
         "description": "Adicionada lógica de impressão em vouchers."
       }
     ]
@@ -70,6 +70,20 @@
       {
         "type": "Correções",
         "description": "Corrigido caminho da logo em vouchers."
+      }
+    ]
+  },
+  {
+    "version": "0.4.1.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Componente para changelog criado."
+      },
+      {
+        "type": "Alterações",
+        "description": "Changelog movido para a sidebar. (O que há de novo?)"
       }
     ]
   }
