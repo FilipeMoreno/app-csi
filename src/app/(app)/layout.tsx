@@ -9,10 +9,8 @@ import Footer from '@/components/footer'
 import NextTopLoader from 'nextjs-toploader'
 import {
   Sheet,
+  SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
@@ -26,13 +24,13 @@ export default function RootLayout({
 
   const sidebarNavItems = [
     {
-      title: 'Início',
+      title: 'Dashboard',
       icon: '',
       subitems: [
         {
           href: '/',
-          title: 'Home',
-          icon: '',
+          title: 'Início',
+          icon: 'home',
         },
       ],
     },

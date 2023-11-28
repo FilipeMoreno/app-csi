@@ -4,6 +4,7 @@ import dados from '@/utils/dados.json'
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { Home } from 'lucide-react'
 
 interface SubitemType {
   href: string
@@ -68,9 +69,10 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
           }
           return (
             <div className="px-3 py-2" key={item.title}>
-              <h2 className="mb-2 px-4 text-lg font-semibold tracking-tight">
+              <h2 className="mb-4 rounded-lg px-4 text-[10px] font-black uppercase tracking-tight text-zinc-500">
                 {item.title}
               </h2>
+
               <div className="space-y-1">
                 {allowedSubitems.map((subitem: SubitemType) => {
                   if (!checkPermission(dados.user, subitem)) {
@@ -87,9 +89,9 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
                           variant={
                             pathname === subitem.href ? 'secondary' : 'ghost'
                           }
-                          className="w-full justify-start"
+                          className="w-full justify-start text-left text-base font-bold tracking-tight"
                         >
-                          {/* {subitem.icon} */}
+                          <Home className="mx-2 h-4 w-4" />
                           {subitem.title}
                         </Button>
                       </Link>
