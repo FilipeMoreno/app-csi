@@ -17,6 +17,7 @@ import {
 import {
   CheckCheckIcon,
   DollarSign,
+  Edit,
   PlusCircle,
   PrinterIcon,
 } from 'lucide-react'
@@ -39,14 +40,16 @@ export default function CarteirinhasScanner() {
   return (
     <div>
       <div className="flex flex-wrap gap-8">
-        <div className="flex w-full flex-row items-center justify-between rounded-lg bg-secondary p-4">
+        <div className="flex w-full flex-row items-center justify-between rounded-lg p-4">
           <div>
             <h1 className="text-2xl font-bold">Carteirnha #1234</h1>
             <p className="text-sm text-gray-300">
               Mostrando detalhes da carteirinha #1234
             </p>
           </div>
-          <QRCode value="1234" size={80} fgColor="#FFFFFF" bgColor="#09090b" />
+          <Button className="w-auto">
+            <Edit className="mr-2 h-4 w-4" /> Editar
+          </Button>
         </div>
       </div>
       <div className="my-4 flex w-full flex-col space-y-4">
@@ -167,7 +170,7 @@ export default function CarteirinhasScanner() {
           </div>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="outline">+ Adicionar status</Button>
+              <Button>+ Adicionar status</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>

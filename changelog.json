@@ -86,5 +86,23 @@
         "description": "Changelog movido para a sidebar. (O que há de novo?)"
       }
     ]
+  },
+  {
+    "version": "0.4.2.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Alterações",
+        "description": "Melhorias no layout das solicitações de carteirinhas."
+      },
+      {
+        "type": "Alterações",
+        "description": "Alteração do botão de status na visualização de solicitações de carteirinhas."
+      },
+      {
+        "type": "Adições",
+        "description": "Botão editar adicionado na visualização de solicitações de carteirinhas."
+      }
+    ]
   }
 ]

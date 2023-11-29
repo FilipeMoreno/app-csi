@@ -155,17 +155,13 @@ export default function CarteirinhasSolicitacoes() {
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem
-                      className="flex flex-row items-center"
+                      className="flex cursor-pointer flex-row items-center"
                       onClick={() => router.push('solicitacoes/1')}
                     >
                       <EyeIcon className="mr-1 h-4 w-5" />
                       Visualizar
                     </DropdownMenuItem>
-                    <DropdownMenuItem className="flex flex-row items-center">
-                      <EditIcon className="mr-1 h-4 w-5" />
-                      Editar
-                    </DropdownMenuItem>
-                    <DropdownMenuItem className="flex flex-row items-center">
+                    <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
                       <Trash2 className="mr-1 h-4 w-5" />
                       Remover
                     </DropdownMenuItem>
@@ -179,20 +175,19 @@ export default function CarteirinhasSolicitacoes() {
       <div className="md:hidden">
         <div className="space-y-2 rounded-md border bg-zinc-900 p-4">
           <div className="flex flex-row items-center space-x-4">
-            <p className="text-2xl font-medium">João João João</p>
-            <Badge className="text- bg-emerald-900 text-sm">entregue</Badge>
+            <p className="text-xl font-medium">João João João</p>
+            <Badge className="bg-emerald-900 text-xs text-primary">
+              entregue
+            </Badge>
           </div>
-          <p className="text-xl">6º ANO B</p>
+          <p className="text-base">6º ANO B</p>
 
-          <div className="mt-4 flex w-full flex-row items-center justify-evenly">
+          <div className="mt-2 flex w-full flex-row items-center justify-evenly">
             <Button
               onClick={() => router.push('solicitacoes/1')}
               variant="ghost"
             >
               <EyeIcon className="h-6 w-6" />
-            </Button>
-            <Button variant="ghost">
-              <EditIcon className="h-6 w-6" />
             </Button>
             <Button variant="ghost">
               <Trash2 className="h-6 w-6" />
