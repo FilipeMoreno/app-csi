@@ -1,6 +1,4 @@
-import { ThemeProvider } from '@/components/theme-provider'
 import { Metadata } from 'next'
-import NextTopLoader from 'nextjs-toploader'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
@@ -8,18 +6,10 @@ export const metadata: Metadata = {
   description: 'Faça login na plataforma CSI',
 }
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+export default function LoginLayout({ children }: { children: ReactNode }) {
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <NextTopLoader color="#af3c41" />
-        {children}
-      </ThemeProvider>
+      {children}
     </div>
   )
 }

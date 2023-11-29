@@ -1,38 +1,11 @@
 'use client'
 
-import { z } from 'zod'
-
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-
 import Link from 'next/link'
 import { UserAuthForm } from '@/components/user-auth-form'
 import Image from 'next/image'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import CookiesConsent from '@/components/CookiesConsent'
 
 export default function Page() {
-  const formSchema = z.object({
-    email: z.string().email({
-      message: 'Informe um e-mail válido',
-    }),
-    senha: z.string().min(6, {
-      message: 'A senha deve ter no mínimo 6 caracteres',
-    }),
-  })
-
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      email: '',
-      senha: '',
-    },
-  })
-
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-  }
-
   return (
     <>
       <div className="container flex h-[800px] flex-col items-center justify-center md:grid ">
@@ -77,7 +50,6 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
-        <CookiesConsent />
       </div>
     </>
   )
