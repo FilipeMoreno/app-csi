@@ -188,5 +188,19 @@
         "description": "Mudança na logo."
       }
     ]
+  },
+  {
+    "version": "0.5.7.1-alpha",
+    "date": "2023-11-29T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Alterações",
+        "description": "Mudanças nas cores dos botões."
+      },
+      {
+        "type": "Adições",
+        "description": "Adicionado icones em botões."
+      }
+    ]
   }
 ]
