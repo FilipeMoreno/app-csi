@@ -1,14 +1,5 @@
 'use client'
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form'
 import { z } from 'zod'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -18,6 +9,7 @@ import Link from 'next/link'
 import { UserAuthForm } from '@/components/user-auth-form'
 import Image from 'next/image'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
+import CookiesConsent from '@/components/CookiesConsent'
 
 export default function Page() {
   const formSchema = z.object({
@@ -85,6 +77,7 @@ export default function Page() {
             </div>
           </CardContent>
         </Card>
+        <CookiesConsent />
       </div>
     </>
   )

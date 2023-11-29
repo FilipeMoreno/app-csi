@@ -1,7 +1,6 @@
 import { Inter, Caveat } from 'next/font/google'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
-import { ThemeProvider } from '@/components/theme-provider'
 
 import Script from 'next/script'
 
