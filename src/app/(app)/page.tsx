@@ -7,7 +7,7 @@ import CookiesConsent from '@/components/CookiesConsent'
 export default function Home() {
   return (
     <>
-      <Alert className="bg-[#a1313d]">
+      <Alert className="bg-tertiary">
         <ExclamationTriangleIcon className="h-4 w-4" color="white" />
         <AlertTitle className="font-bold text-white">Atenção!</AlertTitle>
         <AlertDescription className="text-white">

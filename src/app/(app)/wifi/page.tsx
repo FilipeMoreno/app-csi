@@ -176,7 +176,7 @@ export default function Home() {
                   <ReactToPrint
                     trigger={() => (
                       <Button
-                        variant={'outline'}
+                        variant={'secondary'}
                         className="w-full hover:opacity-60"
                       >
                         Imprimir
@@ -185,7 +185,7 @@ export default function Home() {
                     content={() => componentRef.current || null}
                   />
                   <Button
-                    variant={'secondary'}
+                    variant={'tertiary'}
                     className="w-full hover:opacity-60"
                     onClick={handleGenerateVoucher}
                   >
@@ -197,7 +197,7 @@ export default function Home() {
               <Button
                 className="w-full hover:opacity-60"
                 onClick={handleGenerateVoucher}
-                variant={'secondary'}
+                variant={'tertiary'}
               >
                 Gerar
               </Button>

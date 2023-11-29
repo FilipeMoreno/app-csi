@@ -35,7 +35,7 @@ export default function CarteirinhasFoto() {
             screenshotQuality={1}
           />
           <Button
-            variant={'secondary'}
+            variant={'tertiary'}
             className="my-2 w-full"
             onClick={capture}
           >
@@ -58,7 +58,7 @@ export default function CarteirinhasFoto() {
             >
               Tirar novamente
             </Button>
-            <Button variant={'secondary'} className="w-full">
+            <Button variant={'tertiary'} className="w-full">
               Confirmar
             </Button>
           </div>

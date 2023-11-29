@@ -29,7 +29,7 @@ export default function Page() {
                 <UserAuthForm />
                 <CardFooter>
                   <p className="text-center text-sm text-muted-foreground">
-                    Ao clicar em Entrar, você concorda com nossos{' '}
+                    Ao continuar, você concorda com nossos{' '}
                     <Link
                       href="/terms"
                       className="underline underline-offset-4 hover:text-primary"

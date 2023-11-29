@@ -1,4 +1,8 @@
+import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 import { Metadata } from 'next'
+
+import NextTopLoader from 'nextjs-toploader'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
@@ -8,8 +12,19 @@ export const metadata: Metadata = {
 
 export default function LoginLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
-      {children}
-    </div>
+    <>
+      <NextTopLoader color="#af3c41" />
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
+          {children}
+        </div>
+      </ThemeProvider>
+      <Toaster />
+    </>
   )
 }

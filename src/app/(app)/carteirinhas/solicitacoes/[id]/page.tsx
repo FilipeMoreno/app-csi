@@ -51,7 +51,7 @@ export default function CarteirinhasScanner() {
             </p>
           </div>
           <Button
-            variant={'secondary'}
+            variant={'tertiary'}
             onClick={() => setIsEditing(true)}
             className="w-auto"
           >
@@ -166,21 +166,21 @@ export default function CarteirinhasScanner() {
             <Button
               className="lg:w-48"
               onClick={() => router.push('/carteirinhas/foto')}
-              variant={'secondary'}
+              variant={'tertiary'}
             >
               Tirar foto
             </Button>
-            <Button variant={'secondary'} className="lg:w-48">
+            <Button variant={'tertiary'} className="lg:w-48">
               Alterar foto
             </Button>
-            <Button variant={'secondary'} className="lg:w-48">
+            <Button variant={'tertiary'} className="lg:w-48">
               Remover foto
             </Button>
           </div>
         </div>
         {isEditing && (
           <Button
-            variant={'secondary'}
+            variant={'tertiary'}
             onClick={() => setIsEditing(false)}
             className="w-full"
           >
@@ -200,7 +200,7 @@ export default function CarteirinhasScanner() {
           </div>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant={'secondary'}>
+              <Button variant={'tertiary'}>
                 <Plus className="mr-2 h-4 w-4" /> Status
               </Button>
             </AlertDialogTrigger>

@@ -275,26 +275,22 @@ export default function SinaleiroHome() {
             <div className="flex flex-row space-x-2">
               <Button
                 onClick={previousMusic}
-                variant={'secondary'}
+                variant={'tertiary'}
                 size={'icon'}
               >
                 <TrackPreviousIcon />
               </Button>
               {(playing && (
-                <Button
-                  variant={'secondary'}
-                  size={'icon'}
-                  onClick={pauseMusic}
-                >
+                <Button variant={'tertiary'} size={'icon'} onClick={pauseMusic}>
                   <PauseIcon />
                 </Button>
               )) || (
-                <Button variant={'secondary'} size={'icon'} onClick={playMusic}>
+                <Button variant={'tertiary'} size={'icon'} onClick={playMusic}>
                   <PlayIcon />
                 </Button>
               )}
 
-              <Button variant={'secondary'} size={'icon'} onClick={nextMusic}>
+              <Button variant={'tertiary'} size={'icon'} onClick={nextMusic}>
                 <TrackNextIcon />
               </Button>
             </div>
@@ -331,7 +327,7 @@ export default function SinaleiroHome() {
                 step="0.01"
                 value={volumeValue}
                 onChange={handleVolumeChange}
-                className="w-full cursor-pointer accent-zinc-800"
+                className="w-full cursor-pointer accent-tertiary"
               />
             </div>
             <div className="">
@@ -358,7 +354,7 @@ export default function SinaleiroHome() {
               <CardTitle>Lista de músicas</CardTitle>
               <div className="flex flex-row items-center justify-between">
                 <CardDescription>Mostrando músicas disponíveis</CardDescription>
-                <Button variant="secondary">
+                <Button variant="tertiary">
                   <Plus className="mr-2 h-4 w-4" /> Música
                 </Button>
               </div>
@@ -443,7 +439,7 @@ export default function SinaleiroHome() {
                 <CardDescription>
                   Horários em que a musica tocará
                 </CardDescription>
-                <Button variant="secondary">
+                <Button variant="tertiary">
                   <Plus className="mr-2 h-4 w-4" /> Horário
                 </Button>
               </div>
@@ -560,7 +556,7 @@ export default function SinaleiroHome() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="secondary" className="w-full">
+              <Button variant="tertiary" className="w-full">
                 <Save className="mr-2 h-4 w-4" />
                 Salvar
               </Button>

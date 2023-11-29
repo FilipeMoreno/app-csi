@@ -18,7 +18,7 @@ export default function CarteirinhasScanner() {
       toast({
         title: 'Código encontrado',
         description: `O código ${qrcode} foi encontrado`,
-        variant: 'destructive',
+        variant: 'success',
       })
 
       setTimeout(() => {
