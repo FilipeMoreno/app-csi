@@ -19,10 +19,12 @@ export default function ChangelogComponent() {
           O que há de novo?
         </span>
       </DialogTrigger>
-      <DialogContent className="w-auto">
-        <DialogHeader>
+      <DialogContent className="w-[95%]">
+        <DialogHeader className="text-start">
           <DialogTitle>Atualizações</DialogTitle>
-          <DialogDescription>Lista de atualizações </DialogDescription>
+          <DialogDescription>
+            Lista de mudanças e atualizações do sistema
+          </DialogDescription>
         </DialogHeader>
         <div className="w-full">
           <ScrollArea className="h-96 w-auto">
@@ -57,10 +59,15 @@ export default function ChangelogComponent() {
                     )
 
                   return (
-                    <div key={change.version} className="mb-8 flex">
-                      <div className="w-64 space-y-2">
-                        <Badge className="font-bold">{change.version}</Badge>
-                        <div className="text-xs">
+                    <div
+                      key={change.version}
+                      className="mb-8 flex w-full flex-col"
+                    >
+                      <div className="w-full space-y-2">
+                        <Badge className="text-base font-bold">
+                          {change.version}
+                        </Badge>
+                        <div className="text-base">
                           {Intl.DateTimeFormat('pt-BR', {
                             year: 'numeric',
                             month: 'long',

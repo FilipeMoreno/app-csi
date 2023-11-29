@@ -156,5 +156,27 @@
         "description": "Correções gerais."
       }
     ]
+  },
+  {
+    "version": "0.5.5.1-alpha",
+    "date": "2023-11-29T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Correções gerais."
+      },
+      {
+        "type": "Alterações",
+        "description": "Mudança no design da changelog."
+      },
+      {
+        "type": "Alterações",
+        "description": "Mudança no design das solicitações de carteirinhas nas versões mobiles."
+      },
+      {
+        "type": "Alterações",
+        "description": "Melhorias no design em geral."
+      }
+    ]
   }
 ]
