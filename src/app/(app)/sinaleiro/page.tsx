@@ -273,31 +273,27 @@ export default function SinaleiroHome() {
             <div className="flex flex-row space-x-2">
               <Button
                 onClick={previousMusic}
-                className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+                variant={'secondary'}
+                size={'icon'}
               >
-                <TrackPreviousIcon className="text-primary" />
+                <TrackPreviousIcon />
               </Button>
               {(playing && (
                 <Button
-                  className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
+                  variant={'secondary'}
+                  size={'icon'}
                   onClick={pauseMusic}
                 >
-                  <PauseIcon className="text-primary" />
+                  <PauseIcon />
                 </Button>
               )) || (
-                <Button
-                  className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
-                  onClick={playMusic}
-                >
-                  <PlayIcon className="text-primary" />
+                <Button variant={'secondary'} size={'icon'} onClick={playMusic}>
+                  <PlayIcon />
                 </Button>
               )}
 
-              <Button
-                className="bg-zinc-800 hover:bg-zinc-800 hover:bg-opacity-60"
-                onClick={nextMusic}
-              >
-                <TrackNextIcon className="text-primary" />
+              <Button variant={'secondary'} size={'icon'} onClick={nextMusic}>
+                <TrackNextIcon />
               </Button>
             </div>
             <div className="bg-text-400 mt-2 flex w-96 flex-row items-center">
@@ -333,7 +329,7 @@ export default function SinaleiroHome() {
                 step="0.01"
                 value={volumeValue}
                 onChange={handleVolumeChange}
-                className="w-full cursor-pointer accent-zinc-800"
+                className="w-full cursor-pointer accent-secondary"
               />
             </div>
             <div className="">
@@ -377,7 +373,7 @@ export default function SinaleiroHome() {
                   </div>
                 )}
                 {loadMusic && (
-                  <div className="absolute h-screen w-screen bg-zinc-950 opacity-60">
+                  <div className="absolute h-screen w-screen rounded-lg bg-secondary opacity-60">
                     <BounceLoader
                       color="#FFF"
                       size={100}
@@ -396,7 +392,7 @@ export default function SinaleiroHome() {
                     song.id === tocandoAgora ? (
                       <li
                         key={song.id}
-                        className="flex flex-row items-center space-x-2 rounded-lg bg-zinc-800 p-4 hover:cursor-pointer hover:bg-opacity-40"
+                        className="flex flex-row items-center space-x-2 rounded-lg bg-secondary p-4 hover:cursor-pointer hover:bg-opacity-40"
                         onClick={() => {
                           selectMusic(song.id)
                         }}
@@ -422,7 +418,7 @@ export default function SinaleiroHome() {
                     ) : (
                       <li
                         key={song.id}
-                        className="flex flex-row space-x-2 rounded-lg border border-zinc-950 p-4 hover:cursor-pointer hover:border hover:border-zinc-800 hover:bg-opacity-40"
+                        className="flex flex-row space-x-2 rounded-lg border border-secondary p-4 hover:cursor-pointer hover:bg-secondary hover:bg-opacity-40"
                         onClick={() => {
                           selectMusic(song.id)
                         }}
@@ -560,9 +556,7 @@ export default function SinaleiroHome() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="outline" className="w-full">
-                Salvar configurações
-              </Button>
+              <Button className="w-full">Salvar configurações</Button>
             </CardFooter>
           </Card>
         </TabsContent>

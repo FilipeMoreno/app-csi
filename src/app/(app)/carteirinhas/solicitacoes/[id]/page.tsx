@@ -44,7 +44,7 @@ export default function CarteirinhasScanner() {
         <div className="flex w-full flex-row items-center justify-between rounded-lg p-4">
           <div>
             <h1 className="text-2xl font-bold">Carteirnha #1234</h1>
-            <p className="text-sm text-gray-300">
+            <p className="text-sm text-zinc-400">
               Mostrando detalhes da carteirinha #1234
             </p>
           </div>
@@ -213,7 +213,7 @@ export default function CarteirinhasScanner() {
             </AlertDialogContent>
           </AlertDialog>
         </div>
-        <div className="flex w-full flex-col items-center justify-center rounded-lg bg-emerald-900 p-4">
+        <div className="flex w-full flex-col items-center justify-center rounded-lg bg-emerald-900 p-4 text-zinc-100">
           <span className="font-thin">Situação atual:</span>
           <span className="text-xl font-bold">Entregue!</span>
         </div>

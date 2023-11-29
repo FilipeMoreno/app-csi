@@ -1,6 +1,7 @@
 import { Inter, Caveat } from 'next/font/google'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
+import { ThemeProvider } from '@/components/theme-provider'
 
 import Script from 'next/script'
 
@@ -99,8 +100,14 @@ export default function RootLayout({
         content="black"
       ></meta>
       <Script src="/register-sw.js" />
-
-      {children}
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+      </ThemeProvider>
     </html>
   )
 }

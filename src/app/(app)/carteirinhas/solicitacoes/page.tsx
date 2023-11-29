@@ -65,8 +65,8 @@ export default function CarteirinhasSolicitacoes() {
 
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant={'secondary'}>
-              <FilterIcon className="h-5 w-5" />
+            <Button variant={'secondary'} size={'icon'}>
+              <FilterIcon className="h-4 w-4" />
             </Button>
           </SheetTrigger>
           <SheetContent>
@@ -130,7 +130,7 @@ export default function CarteirinhasSolicitacoes() {
         </Sheet>
       </div>
 
-      <div className="hidden rounded-md border bg-zinc-900 md:block">
+      <div className="hidden rounded-md border bg-primary-foreground md:block">
         <Table>
           <TableHeader>
             <TableRow>
@@ -173,7 +173,7 @@ export default function CarteirinhasSolicitacoes() {
         </Table>
       </div>
       <div className="md:hidden">
-        <div className="space-y-2 rounded-md border bg-zinc-900 p-4">
+        <div className="space-y-2 rounded-md border bg-secondary p-4">
           <div className="flex flex-row items-center space-x-4">
             <p className="text-xl font-medium">João João João</p>
             <Badge className="bg-emerald-900 text-xs text-primary">

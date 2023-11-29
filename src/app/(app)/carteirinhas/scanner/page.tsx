@@ -34,7 +34,7 @@ export default function CarteirinhasScanner() {
         <p>Aponte a câmera para o QR Code</p>
       </div>
       <div className="flex flex-wrap gap-8">
-        <div className="h-96 w-full max-w-sm rounded-xl bg-zinc-900 p-4">
+        <div className="h-96 w-full max-w-sm rounded-xl bg-secondary p-4">
           <CustomQrScanner
             config={{
               fps: 10,

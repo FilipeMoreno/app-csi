@@ -118,5 +118,19 @@
         "description": "Adicionado item meu perfil no menu do avatar"
       }
     ]
+  },
+  {
+    "version": "0.5.1.1-alpha",
+    "date": "2023-11-29T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Implementação dos temas claro e escuro."
+      },
+      {
+        "type": "Correções",
+        "description": "Melhorias e correções no design em relação aos temas."
+      }
+    ]
   }
 ]

@@ -21,7 +21,7 @@ import {
   Ticket,
   Wifi,
 } from 'lucide-react'
-import { title } from 'process'
+import { ThemeProvider } from '@/components/theme-provider'
 
 export default function RootLayout({
   children,
@@ -98,6 +98,12 @@ export default function RootLayout({
 
   return (
     <body>
+      {/* <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      > */}
       <NextTopLoader color="#af3c41" />
       <Header />
       <div className="md:block">
@@ -133,6 +139,7 @@ export default function RootLayout({
       </div>
       <Footer />
       <Toaster />
+      {/* </ThemeProvider> */}
     </body>
   )
 }

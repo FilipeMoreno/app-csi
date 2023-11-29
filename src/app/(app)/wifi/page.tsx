@@ -123,7 +123,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <Card className="h-full w-full bg-zinc-900">
+      <Card className="h-full w-full bg-secondary">
         {!vouchers && (
           <CardHeader>
             <CardTitle className="uppercase">Wi-fi Vouchers</CardTitle>

@@ -22,7 +22,7 @@ export default function CarteirinhasFoto() {
   }, [webcamRef])
 
   return (
-    <div className="h-full w-full rounded-lg bg-zinc-900 p-4">
+    <div className="h-full w-full rounded-lg bg-secondary p-4">
       {!url && (
         <div>
           <Webcam
