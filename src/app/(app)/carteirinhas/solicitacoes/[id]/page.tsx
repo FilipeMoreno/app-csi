@@ -4,7 +4,6 @@ import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import QRCode from 'react-qr-code'
 import {
   Select,
   SelectContent,
@@ -33,9 +32,11 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { useState } from 'react'
 
 export default function CarteirinhasScanner() {
   const router = useRouter()
+  const [isEditing, setIsEditing] = useState(false)
 
   return (
     <div>
@@ -47,7 +48,7 @@ export default function CarteirinhasScanner() {
               Mostrando detalhes da carteirinha #1234
             </p>
           </div>
-          <Button className="w-auto">
+          <Button onClick={() => setIsEditing(true)} className="w-auto">
             <Edit className="mr-2 h-4 w-4" /> Editar
           </Button>
         </div>
@@ -55,7 +56,11 @@ export default function CarteirinhasScanner() {
       <div className="my-4 flex w-full flex-col space-y-4">
         <div className="w-full">
           <Label>Nome</Label>
-          <Input type="text" defaultValue="Filipe Moreno" disabled />
+          <Input
+            type="text"
+            defaultValue="João João João"
+            disabled={!isEditing}
+          />
         </div>
         <div className="flex w-full flex-row space-x-4">
           <div className="w-1/2">
@@ -64,7 +69,7 @@ export default function CarteirinhasScanner() {
               className="w-full"
               type="date"
               defaultValue="01/01/1990"
-              disabled
+              disabled={!isEditing}
             />
           </div>
           <div className="w-1/2">
@@ -73,7 +78,7 @@ export default function CarteirinhasScanner() {
               className="w-full"
               type="number"
               defaultValue="0000"
-              disabled
+              disabled={!isEditing}
             />
           </div>
         </div>
@@ -84,18 +89,22 @@ export default function CarteirinhasScanner() {
               className="w-full"
               type="text"
               defaultValue="000.000.000-00"
-              disabled
+              disabled={!isEditing}
             />
           </div>
           <div className="w-1/2">
             <Label>RG</Label>
-            <Input className="w-full" defaultValue="00.000.000-0" disabled />
+            <Input
+              className="w-full"
+              defaultValue="00.000.000-0"
+              disabled={!isEditing}
+            />
           </div>
         </div>
         <div className="flex w-full flex-row space-x-4">
           <div className="flex-grow">
             <Label>Curso</Label>
-            <Select defaultValue="Ensino Fundamental II" disabled>
+            <Select defaultValue="Ensino Fundamental II" disabled={!isEditing}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Selecione o curso" />
               </SelectTrigger>
@@ -115,7 +124,7 @@ export default function CarteirinhasScanner() {
           </div>
           <div className="flex-grow">
             <Label>Série</Label>
-            <Select defaultValue="6º ANO" disabled>
+            <Select defaultValue="6º ANO" disabled={!isEditing}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Selecione a série" />
               </SelectTrigger>
@@ -130,7 +139,7 @@ export default function CarteirinhasScanner() {
           <div className="flex-grow">
             <Label>Turma</Label>
             <Select defaultValue="A">
-              <SelectTrigger className="w-full" disabled>
+              <SelectTrigger className="w-full" disabled={!isEditing}>
                 <SelectValue placeholder="Selecione a turma" />
               </SelectTrigger>
               <SelectContent>
@@ -158,6 +167,11 @@ export default function CarteirinhasScanner() {
             <Button className="lg:w-48">Remover foto</Button>
           </div>
         </div>
+        {isEditing && (
+          <Button onClick={() => setIsEditing(false)} className="w-full">
+            Salvar
+          </Button>
+        )}
       </div>
 
       <SelectSeparator />
