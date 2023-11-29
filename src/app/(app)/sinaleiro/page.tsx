@@ -329,7 +329,7 @@ export default function SinaleiroHome() {
                 step="0.01"
                 value={volumeValue}
                 onChange={handleVolumeChange}
-                className="w-full cursor-pointer accent-secondary"
+                className="w-full cursor-pointer accent-zinc-800"
               />
             </div>
             <div className="">
