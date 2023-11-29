@@ -98,48 +98,48 @@ export default function RootLayout({
 
   return (
     <body>
-      {/* <ThemeProvider
+      <ThemeProvider
         attribute="class"
         defaultTheme="system"
         enableSystem
         disableTransitionOnChange
-      > */}
-      <NextTopLoader color="#af3c41" />
-      <Header />
-      <div className="md:block">
-        <div className="border-t">
-          <div className="bg-background">
-            <div className="grid lg:grid-cols-5">
-              <Sheet>
-                <SheetTrigger className="lg:hidden">
-                  <HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
-                </SheetTrigger>
-                <SheetContent side="left">
-                  <Sidebar
-                    items={sidebarNavItems}
-                    onItemClick={handleItemClick}
-                  />
-                </SheetContent>
-              </Sheet>
-              <Sidebar
-                className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
-                items={sidebarNavItems}
-                onItemClick={handleItemClick}
-              />
-              <div
-                className={`col-span-3 lg:col-span-4 lg:border-l ${
-                  showSidebar ? 'hidden' : 'block'
-                }`}
-              >
-                <div className="h-full px-4 py-6 lg:px-8">{children}</div>
+      >
+        <NextTopLoader color="#af3c41" />
+        <Header />
+        <div className="md:block">
+          <div className="border-t">
+            <div className="bg-background">
+              <div className="grid lg:grid-cols-5">
+                <Sheet>
+                  <SheetTrigger className="lg:hidden">
+                    <HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+                  </SheetTrigger>
+                  <SheetContent side="left">
+                    <Sidebar
+                      items={sidebarNavItems}
+                      onItemClick={handleItemClick}
+                    />
+                  </SheetContent>
+                </Sheet>
+                <Sidebar
+                  className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
+                  items={sidebarNavItems}
+                  onItemClick={handleItemClick}
+                />
+                <div
+                  className={`col-span-3 lg:col-span-4 lg:border-l ${
+                    showSidebar ? 'hidden' : 'block'
+                  }`}
+                >
+                  <div className="h-full px-4 py-6 lg:px-8">{children}</div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <Footer />
-      <Toaster />
-      {/* </ThemeProvider> */}
+        <Footer />
+        <Toaster />
+      </ThemeProvider>
     </body>
   )
 }

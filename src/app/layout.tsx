@@ -100,14 +100,8 @@ export default function RootLayout({
         content="black"
       ></meta>
       <Script src="/register-sw.js" />
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        {children}
-      </ThemeProvider>
+
+      {children}
     </html>
   )
 }

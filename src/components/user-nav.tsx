@@ -11,10 +11,11 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 import { Settings } from 'lucide-react'
-import { useTheme } from 'next-themes'
+import { useRouter } from 'next/navigation'
 
 export function UserNav() {
-  const { setTheme, theme } = useTheme()
+  const router = useRouter()
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -49,7 +50,10 @@ export function UserNav() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer">
+        <DropdownMenuItem
+          className="hover:cursor-pointer"
+          onClick={() => router.push('/configuracoes')}
+        >
           <Settings className="mr-2 h-4 w-4" /> Configurações
         </DropdownMenuItem>
         <DropdownMenuSeparator />

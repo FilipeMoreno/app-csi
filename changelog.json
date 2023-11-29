@@ -132,5 +132,19 @@
         "description": "Melhorias e correções no design em relação aos temas."
       }
     ]
+  },
+  {
+    "version": "0.5.2.1-alpha",
+    "date": "2023-11-29T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Página de configurações."
+      },
+      {
+        "type": "Adições",
+        "description": "Seleção de temas nas configurações."
+      }
+    ]
   }
 ]
