@@ -104,5 +104,19 @@
         "description": "Botão editar adicionado na visualização de solicitações de carteirinhas."
       }
     ]
+  },
+  {
+    "version": "0.4.2.1-alpha",
+    "date": "2023-11-28T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Adicionado item configurações no menu do avatar"
+      },
+      {
+        "type": "Adições",
+        "description": "Adicionado item meu perfil no menu do avatar"
+      }
+    ]
   }
 ]

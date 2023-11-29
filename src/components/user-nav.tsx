@@ -10,6 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
+import { Settings, User } from 'lucide-react'
 
 export function UserNav() {
   return (
@@ -45,10 +46,16 @@ export function UserNav() {
             </div>
           </div>
         </DropdownMenuLabel>
-
+        <DropdownMenuSeparator />
+        <DropdownMenuItem className="hover:cursor-pointer">
+          <User className="mr-2 h-4 w-4" /> Meu perfil
+        </DropdownMenuItem>
+        <DropdownMenuItem className="hover:cursor-pointer">
+          <Settings className="mr-2 h-4 w-4" /> Configurações
+        </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="text-red-400 hover:cursor-pointer hover:text-red-400">
-          <ExitIcon className="mr-2" /> Sair
+          <ExitIcon className="mr-2 h-4 w-4" /> Sair
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
