@@ -178,5 +178,15 @@
         "description": "Melhorias no design em geral."
       }
     ]
+  },
+  {
+    "version": "0.5.6.1-alpha",
+    "date": "2023-11-29T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Alterações",
+        "description": "Mudança na logo."
+      }
+    ]
   }
 ]

@@ -15,6 +15,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from './ui/tooltip'
+import Image from 'next/image'
 
 export function Header() {
   const router = useRouter()
@@ -46,7 +47,13 @@ export function Header() {
         </div>
 
         <Link aria-label="Logo" href="/">
-          <Logo className="h-12 w-12" />
+          <Image
+            src="http://colegiosantoinacio.com.br/img/logo.png"
+            alt="Logo"
+            width={200}
+            height={50}
+          />
+          {/* <Logo className="h-12 w-12" /> */}
         </Link>
       </div>
 

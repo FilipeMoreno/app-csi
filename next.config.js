@@ -7,6 +7,11 @@ const nextConfig = {
         hostname: 'i.imgur.com',
         port: '',
       },
+      {
+        protocol: 'http',
+        hostname: 'colegiosantoinacio.com.br',
+        port: '',
+      },
     ],
   },
   async redirects() {
