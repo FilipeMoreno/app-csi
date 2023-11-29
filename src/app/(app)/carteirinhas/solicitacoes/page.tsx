@@ -130,8 +130,8 @@ export default function CarteirinhasSolicitacoes() {
         </Sheet>
       </div>
 
-      <div className="hidden rounded-md border bg-primary-foreground md:block">
-        <Table>
+      <div className="rounded-md border bg-primary-foreground md:block">
+        <Table className="relative">
           <TableHeader>
             <TableRow>
               <TableHead className="w-[200px]">Nome</TableHead>
@@ -172,15 +172,15 @@ export default function CarteirinhasSolicitacoes() {
           </TableBody>
         </Table>
       </div>
-      <div className="md:hidden">
-        <div className="space-y-2 rounded-md border bg-secondary p-4">
+      {/* <div className="md:hidden">
+        <div className="space-y-1 rounded-md border bg-secondary p-4">
           <div className="flex flex-row items-center space-x-4">
-            <p className="text-xl font-medium">João João João</p>
-            <Badge className="bg-emerald-900 text-xs text-primary">
+            <p className="text-xl font-bold">João João João</p>
+            <Badge className="bg-emerald-900 text-xs font-bold text-zinc-300">
               entregue
             </Badge>
           </div>
-          <p className="text-base">6º ANO B</p>
+          <p className="text-xs font-medium">6º ANO B</p>
 
           <div className="mt-2 flex w-full flex-row items-center justify-evenly">
             <Button
@@ -194,7 +194,7 @@ export default function CarteirinhasSolicitacoes() {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
