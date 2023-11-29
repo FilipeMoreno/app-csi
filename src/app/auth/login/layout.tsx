@@ -10,16 +10,16 @@ export const metadata: Metadata = {
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
+    <ThemeProvider
+      attribute="class"
+      defaultTheme="system"
+      enableSystem
+      disableTransitionOnChange
+    >
+      <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
         <NextTopLoader color="#af3c41" />
         {children}
-      </ThemeProvider>
-    </div>
+      </div>
+    </ThemeProvider>
   )
 }
