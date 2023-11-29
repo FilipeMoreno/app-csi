@@ -57,7 +57,7 @@ export default function CarteirinhasSolicitacoes() {
           <p className="text-md">Mostrando todas as solicitações realizadas</p>
         </div>
         <div>
-          <Button variant={'secondary'}>
+          <Button variant={'tertiary'}>
             {' '}
             <Plus className="mr-2 h-4 w-4" /> Solicitação
           </Button>
@@ -69,7 +69,7 @@ export default function CarteirinhasSolicitacoes() {
 
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant={'secondary'} size={'icon'}>
+            <Button variant={'tertiary'} size={'icon'}>
               <FilterIcon className="h-4 w-4" />
             </Button>
           </SheetTrigger>
@@ -125,7 +125,7 @@ export default function CarteirinhasSolicitacoes() {
             </div>
             <SheetFooter>
               <SheetClose asChild>
-                <Button variant={'secondary'} className="w-full" type="submit">
+                <Button variant="tertiary" className="w-full" type="submit">
                   Salvar
                 </Button>
               </SheetClose>
