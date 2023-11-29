@@ -7,6 +7,7 @@ import {
   EyeIcon,
   FilterIcon,
   MoreHorizontal,
+  Plus,
   QrCodeIcon,
   Trash2,
 } from 'lucide-react'
@@ -56,7 +57,10 @@ export default function CarteirinhasSolicitacoes() {
           <p className="text-md">Mostrando todas as solicitações realizadas</p>
         </div>
         <div>
-          <Button> + Nova solicitação</Button>
+          <Button variant={'secondary'}>
+            {' '}
+            <Plus className="mr-2 h-4 w-4" /> Solicitação
+          </Button>
         </div>
       </div>
 
@@ -121,7 +125,7 @@ export default function CarteirinhasSolicitacoes() {
             </div>
             <SheetFooter>
               <SheetClose asChild>
-                <Button className="w-full" type="submit">
+                <Button variant={'secondary'} className="w-full" type="submit">
                   Salvar
                 </Button>
               </SheetClose>

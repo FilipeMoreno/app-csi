@@ -17,8 +17,10 @@ import {
   CheckCheckIcon,
   DollarSign,
   Edit,
+  Plus,
   PlusCircle,
   PrinterIcon,
+  Save,
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import {
@@ -48,7 +50,11 @@ export default function CarteirinhasScanner() {
               Mostrando detalhes da carteirinha #1234
             </p>
           </div>
-          <Button onClick={() => setIsEditing(true)} className="w-auto">
+          <Button
+            variant={'secondary'}
+            onClick={() => setIsEditing(true)}
+            className="w-auto"
+          >
             <Edit className="mr-2 h-4 w-4" /> Editar
           </Button>
         </div>
@@ -160,15 +166,25 @@ export default function CarteirinhasScanner() {
             <Button
               className="lg:w-48"
               onClick={() => router.push('/carteirinhas/foto')}
+              variant={'secondary'}
             >
               Tirar foto
             </Button>
-            <Button className="lg:w-48">Alterar foto</Button>
-            <Button className="lg:w-48">Remover foto</Button>
+            <Button variant={'secondary'} className="lg:w-48">
+              Alterar foto
+            </Button>
+            <Button variant={'secondary'} className="lg:w-48">
+              Remover foto
+            </Button>
           </div>
         </div>
         {isEditing && (
-          <Button onClick={() => setIsEditing(false)} className="w-full">
+          <Button
+            variant={'secondary'}
+            onClick={() => setIsEditing(false)}
+            className="w-full"
+          >
+            <Save className="mr-2 h-4 w-4" />
             Salvar
           </Button>
         )}
@@ -184,7 +200,9 @@ export default function CarteirinhasScanner() {
           </div>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button>+ Adicionar status</Button>
+              <Button variant={'secondary'}>
+                <Plus className="mr-2 h-4 w-4" /> Status
+              </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>

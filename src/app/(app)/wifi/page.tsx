@@ -98,7 +98,8 @@ export default function Home() {
       setVouchers(voucher)
       toast({
         variant: 'success',
-        title: 'Voucher gerado com sucesso!',
+        title: 'Sucesso!',
+        description: 'Voucher gerado com sucesso!',
         className: 'my-1',
       })
     }
@@ -123,7 +124,7 @@ export default function Home() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <Card className="h-full w-full bg-secondary">
+      <Card className="h-full w-full">
         {!vouchers && (
           <CardHeader>
             <CardTitle className="uppercase">Wi-fi Vouchers</CardTitle>
@@ -184,6 +185,7 @@ export default function Home() {
                     content={() => componentRef.current || null}
                   />
                   <Button
+                    variant={'secondary'}
                     className="w-full hover:opacity-60"
                     onClick={handleGenerateVoucher}
                   >
@@ -195,6 +197,7 @@ export default function Home() {
               <Button
                 className="w-full hover:opacity-60"
                 onClick={handleGenerateVoucher}
+                variant={'secondary'}
               >
                 Gerar
               </Button>

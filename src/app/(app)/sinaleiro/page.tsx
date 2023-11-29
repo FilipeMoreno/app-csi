@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react'
 import { useGlobalAudioPlayer } from 'react-use-audio-player'
-import { BounceLoader } from 'react-spinners'
 import {
   CheckIcon,
+  Plus,
+  Save,
   Trash2Icon,
   Volume1Icon,
   Volume2Icon,
@@ -357,7 +358,9 @@ export default function SinaleiroHome() {
               <CardTitle>Lista de músicas</CardTitle>
               <div className="flex flex-row items-center justify-between">
                 <CardDescription>Mostrando músicas disponíveis</CardDescription>
-                <Button variant="default">+ Nova música</Button>
+                <Button variant="secondary">
+                  <Plus className="mr-2 h-4 w-4" /> Música
+                </Button>
               </div>
             </CardHeader>
             <CardContent>
@@ -440,7 +443,9 @@ export default function SinaleiroHome() {
                 <CardDescription>
                   Horários em que a musica tocará
                 </CardDescription>
-                <Button variant="default">+ Novo horário</Button>
+                <Button variant="secondary">
+                  <Plus className="mr-2 h-4 w-4" /> Horário
+                </Button>
               </div>
             </CardHeader>
             <CardContent>
@@ -555,7 +560,10 @@ export default function SinaleiroHome() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button className="w-full">Salvar configurações</Button>
+              <Button variant="secondary" className="w-full">
+                <Save className="mr-2 h-4 w-4" />
+                Salvar
+              </Button>
             </CardFooter>
           </Card>
         </TabsContent>

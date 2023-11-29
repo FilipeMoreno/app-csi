@@ -43,7 +43,7 @@ export default function ConfiguracoesHome() {
 
           <div>
             <div className="my-4 flex flex-row items-center space-x-4">
-              <div className="items-center rounded-md border-2 border-muted bg-muted p-1 hover:border-accent">
+              <div className="items-center rounded-md border-2 border-muted bg-transparent p-1 hover:border-accent">
                 <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
                   <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
                     <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
@@ -62,7 +62,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('light')}
                     className="mt-2 w-full p-4"
-                    variant={'secondary'}
+                    variant={'outline'}
                     disabled
                   >
                     <Check className="mr-2 h-4 w-4" />
@@ -72,13 +72,14 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('light')}
                     className="mt-2 w-full p-4"
+                    variant={'secondary'}
                   >
                     <Sun className="mr-2 h-4 w-4" />
                     Claro
                   </Button>
                 )}
               </div>
-              <div className="items-center rounded-md border-2 border-muted bg-muted p-1 hover:bg-accent hover:text-accent-foreground">
+              <div className="items-center rounded-md border-2 border-muted bg-transparent p-1 hover:bg-accent hover:text-accent-foreground">
                 <div className="space-y-2 rounded-sm bg-zinc-900 p-2">
                   <div className="space-y-2 rounded-md bg-zinc-800 p-2 shadow-sm">
                     <div className="h-2 w-[80px] rounded-lg bg-zinc-400" />
@@ -97,7 +98,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('dark')}
                     className="mt-2 w-full p-4"
-                    variant={'secondary'}
+                    variant={'outline'}
                     disabled
                   >
                     <Check className="mr-2 h-4 w-4" />
@@ -107,13 +108,14 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('dark')}
                     className="mt-2 w-full p-4"
+                    variant={'secondary'}
                   >
                     <Moon className="mr-2 h-4 w-4" />
                     Escuro
                   </Button>
                 )}
               </div>
-              <div className="items-center rounded-md border-2 border-muted bg-muted p-1 hover:bg-accent hover:text-accent-foreground">
+              <div className="items-center rounded-md border-2 border-muted bg-transparent p-1 hover:bg-accent hover:text-accent-foreground">
                 <div className="space-y-2 rounded-sm bg-zinc-900 p-2">
                   <div className="space-y-2 rounded-md bg-[#ecedef] p-2 shadow-sm">
                     <div className="h-2 w-[80px] rounded-lg bg-zinc-400" />
@@ -132,7 +134,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('system')}
                     className="mt-2 w-full p-4"
-                    variant={'secondary'}
+                    variant={'outline'}
                     disabled
                   >
                     <Check className="mr-2 h-4 w-4" />
@@ -142,6 +144,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('system')}
                     className="mt-2 w-full p-4"
+                    variant={'secondary'}
                   >
                     <Computer className="mr-2 h-4 w-4" />
                     Sistema
