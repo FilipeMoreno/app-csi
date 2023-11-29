@@ -39,6 +39,7 @@ import { Switch } from '@/components/ui/switch'
 import { AudioSeekBar } from '@/components/AudioSeekBar'
 import { TimeLabel } from '@/components/AudioTimeLabel'
 import schedule from 'node-schedule'
+import { Icons } from '@/components/icons'
 
 export default function SinaleiroHome() {
   const [volumeValue, setVolumeValue] = useState(0.5)
@@ -374,15 +375,13 @@ export default function SinaleiroHome() {
                 )}
                 {loadMusic && (
                   <div className="absolute h-screen w-screen rounded-lg bg-secondary opacity-60">
-                    <BounceLoader
-                      color="#FFF"
-                      size={100}
+                    <Icons.spinner
                       style={{
                         position: 'absolute',
-                        top: '10%',
-                        left: '30%',
-                        transform: 'translate(-50%, -50%)',
+                        top: '12%',
+                        left: '31%',
                       }}
+                      className="h-16 w-16 animate-spin"
                     />
                   </div>
                 )}

@@ -1,13 +1,12 @@
 'use client'
 
-import { Loader } from '@/components/ui/loader'
+import { Icons } from '@/components/icons'
 
 export default function LoadingPage() {
   return (
-    <div className="flex h-full w-full flex-col items-center justify-center">
-      <Loader />
-
-      <h1>Carregando</h1>
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <Icons.spinner className="h-12 w-12 animate-spin" />
+      <h1 className="">Carregando...</h1>
     </div>
   )
 }
