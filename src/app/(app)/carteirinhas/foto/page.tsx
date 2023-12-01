@@ -6,10 +6,13 @@ import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
 
 export default function CarteirinhasFoto() {
+  const [facingMode, setFacingMode] = useState<'user' | 'environment'>(
+    'environment',
+  )
   const videoConstraints = {
-    width: 1280,
-    height: 720,
-    facingMode: 'environment',
+    width: 1920,
+    height: 1080,
+    facingMode,
   }
 
   const webcamRef = useRef<Webcam>(null)
@@ -33,9 +36,17 @@ export default function CarteirinhasFoto() {
             width={1280}
             videoConstraints={videoConstraints}
             screenshotQuality={1}
+            forceScreenshotSourceSize={true}
           />
           <Button variant={'outline'} className="my-2 w-full" onClick={capture}>
             Tirar foto
+          </Button>
+          <Button
+            variant={'outline'}
+            className="my-2 w-full"
+            onClick={() => setFacingMode('user')}
+          >
+            Frontal
           </Button>
         </div>
       )}
