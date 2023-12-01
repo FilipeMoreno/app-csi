@@ -13,6 +13,7 @@ import {
   CreditCard,
   Home,
   LayoutDashboard,
+  LifeBuoy,
   List,
   Podcast,
   ScanLine,
@@ -22,6 +23,7 @@ import {
   Wifi,
 } from 'lucide-react'
 import { ThemeProvider } from '@/components/theme-provider'
+import { BiSupport } from 'react-icons/bi'
 
 export default function RootLayout({
   children,
@@ -39,6 +41,17 @@ export default function RootLayout({
           href: '/',
           title: 'Início',
           icon: Home,
+        },
+      ],
+    },
+    {
+      title: 'Suporte',
+      icon: BiSupport,
+      subitems: [
+        {
+          href: '/suporte',
+          title: 'Chamados',
+          icon: LifeBuoy,
         },
       ],
     },

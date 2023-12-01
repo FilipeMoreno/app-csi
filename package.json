@@ -1,6 +1,6 @@
 {
   "name": "APP-CSI",
-  "version": "0.6.1.1-alpha",
+  "version": "0.6.2.1-alpha",
   "author": {
     "name": "Filipe Moreno",
     "email": "y8.filipe@gmail.com"
@@ -62,7 +62,7 @@
     "react-day-picker": "^8.9.1",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
-    "react-icons": "^4.11.0",
+    "react-icons": "^4.12.0",
     "react-qr-code": "^2.0.12",
     "react-spinners": "^0.13.8",
     "react-thermal-printer": "^0.16.0",
