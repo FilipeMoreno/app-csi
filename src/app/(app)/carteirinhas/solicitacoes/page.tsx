@@ -2,15 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 
-import {
-  EditIcon,
-  EyeIcon,
-  FilterIcon,
-  MoreHorizontal,
-  Plus,
-  QrCodeIcon,
-  Trash2,
-} from 'lucide-react'
+import { EyeIcon, FilterIcon, MoreHorizontal, Plus, Trash2 } from 'lucide-react'
 
 import {
   Select,
@@ -45,10 +37,9 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export default function CarteirinhasSolicitacoes() {
-  const router = useRouter()
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-row items-center justify-between">
@@ -158,13 +149,12 @@ export default function CarteirinhasSolicitacoes() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem
-                      className="flex cursor-pointer flex-row items-center"
-                      onClick={() => router.push('solicitacoes/1')}
-                    >
-                      <EyeIcon className="mr-1 h-4 w-5" />
-                      Visualizar
-                    </DropdownMenuItem>
+                    <Link href="solicitacoes/1">
+                      <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
+                        <EyeIcon className="mr-1 h-4 w-5" />
+                        Visualizar
+                      </DropdownMenuItem>
+                    </Link>
                     <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
                       <Trash2 className="mr-1 h-4 w-5" />
                       Remover

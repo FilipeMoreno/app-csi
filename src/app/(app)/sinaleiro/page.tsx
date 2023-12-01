@@ -41,6 +41,7 @@ import { AudioSeekBar } from '@/components/AudioSeekBar'
 import { TimeLabel } from '@/components/AudioTimeLabel'
 import schedule from 'node-schedule'
 import { Icons } from '@/components/icons'
+import { Separator } from '@/components/ui/separator'
 
 export default function SinaleiroHome() {
   const [volumeValue, setVolumeValue] = useState(0.5)
@@ -269,7 +270,7 @@ export default function SinaleiroHome() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center justify-center sm:w-auto lg:w-full">
+      <div className="flex w-full flex-col items-center justify-center">
         {mostrarControles && (
           <>
             <div className="flex flex-row space-x-2">
@@ -290,7 +291,7 @@ export default function SinaleiroHome() {
                 <TrackNextIcon />
               </Button>
             </div>
-            <div className="bg-text-400 mt-2 flex w-96 flex-row items-center">
+            <div className="bg-text-400 mt-2 flex w-80 flex-row items-center lg:w-96">
               {volumeValue === 0 && (
                 <VolumeXIcon
                   onClick={muteMusica}
@@ -338,8 +339,8 @@ export default function SinaleiroHome() {
         )}
       </div>
 
-      <Tabs defaultValue="musicas" className="my-4 sm:w-auto lg:w-full">
-        <TabsList className="grid grid-cols-3 sm:w-auto lg:w-full">
+      <Tabs defaultValue="musicas" className="my-4 w-full">
+        <TabsList className="grid w-full grid-cols-3">
           <TabsTrigger value="musicas">Músicas</TabsTrigger>
           <TabsTrigger value="horarios">Horários</TabsTrigger>
           <TabsTrigger value="config">Configurações</TabsTrigger>
@@ -360,7 +361,7 @@ export default function SinaleiroHome() {
                 placeholder="Pesquisar uma música..."
                 onChange={handleInputChange}
               />
-              <ScrollArea className="my-4 h-96 sm:w-auto lg:w-full">
+              <ScrollArea className="my-4 h-96 w-full">
                 {musicResults.length === 0 && (
                   <div>
                     <h1 className="text-center text-sm ">
@@ -440,10 +441,10 @@ export default function SinaleiroHome() {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="horarios" className="max-h-screen">
+        <TabsContent value="horarios">
           <Card>
             <CardHeader>
-              <CardTitle>Lista de horários</CardTitle>
+              <CardTitle className="font-bold">Lista de horários</CardTitle>
               <div className="flex flex-row items-center justify-between">
                 <CardDescription>
                   Horários em que a musica tocará
@@ -454,18 +455,15 @@ export default function SinaleiroHome() {
               </div>
             </CardHeader>
             <CardContent>
-              <Tabs
-                defaultValue="segunda-feira"
-                className="sm:w-auto lg:w-full"
-              >
-                <TabsList className="grid grid-cols-5 sm:w-auto lg:w-full">
+              <Tabs defaultValue="segunda-feira" className="w-full">
+                <TabsList className="grid w-auto grid-cols-5">
                   {Object.entries(horarios).map(([day], index) => (
                     <TabsTrigger key={index} value={day}>
                       {day.replace('-feira', '')}
                     </TabsTrigger>
                   ))}
                 </TabsList>
-                <ScrollArea className="h-96 sm:w-auto lg:w-full">
+                <ScrollArea className="h-96 w-auto">
                   {Object.entries(horarios).map(([day, times], index) => (
                     <TabsContent key={index} value={day}>
                       {times.length === 0 && (
@@ -478,7 +476,7 @@ export default function SinaleiroHome() {
                       {times.map((time) => (
                         <div
                           key={time.id}
-                          className="my-4 flex h-full flex-row items-center space-x-4"
+                          className="my-4 flex h-full flex-row items-center space-x-2"
                         >
                           <label className="w-full">
                             Horário
@@ -526,6 +524,7 @@ export default function SinaleiroHome() {
               </CardDescription>
             </CardHeader>
             <CardContent className="grid gap-6">
+              <Separator />
               <div className="flex items-center justify-between space-x-2">
                 <Label htmlFor="necessary" className="flex flex-col space-y-1">
                   <span>Controle manual</span>

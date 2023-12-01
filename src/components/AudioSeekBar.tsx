@@ -72,7 +72,7 @@ export const AudioSeekBar: FunctionComponent<AudioSeekBarProps> = (props) => {
         min="0"
         max={duration}
         value={pos}
-        className="mt-2 w-96 cursor-pointer overflow-hidden rounded-full accent-zinc-800"
+        className="mt-2 w-80 cursor-pointer overflow-hidden rounded-full accent-zinc-800 lg:w-96"
         ref={seekBarElem as React.RefObject<HTMLInputElement>}
         onChange={(e) => seek(Number(e.target.value))}
         onClick={goTo}

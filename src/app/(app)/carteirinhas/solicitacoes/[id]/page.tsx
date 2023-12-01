@@ -22,7 +22,6 @@ import {
   PrinterIcon,
   Save,
 } from 'lucide-react'
-import { useRouter } from 'next/navigation'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,9 +34,9 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { useState } from 'react'
+import Link from 'next/link'
 
 export default function CarteirinhasScanner() {
-  const router = useRouter()
   const [isEditing, setIsEditing] = useState(false)
 
   return (
@@ -161,13 +160,11 @@ export default function CarteirinhasScanner() {
             <img src="https://via.placeholder.com/150x250" />
           </div>
           <div className="my-6 flex w-full flex-col justify-center space-y-4">
-            <Button
-              className="lg:w-48"
-              onClick={() => router.push('/carteirinhas/foto')}
-              variant={'outline'}
-            >
-              Tirar foto
-            </Button>
+            <Link href={'/carteirinhas/foto'}>
+              <Button className="lg:w-48" variant={'outline'}>
+                Tirar foto
+              </Button>
+            </Link>
             <Button variant={'outline'} className="lg:w-48">
               Alterar foto
             </Button>

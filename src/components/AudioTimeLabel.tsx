@@ -46,7 +46,7 @@ export const TimeLabel = ({ id }: AudioTimeLabelProps) => {
     )
   }
   return (
-    <div className="-mt-1 flex w-96 flex-row justify-between text-xs">
+    <div className="-mt-1 flex w-80 flex-row justify-between text-xs lg:w-96">
       <p>{formatTime(pos)}</p>
       <p>{formatTime(duration)}</p>
     </div>

@@ -11,11 +11,9 @@ import {
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 import { Settings } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 export function UserNav() {
-  const router = useRouter()
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -50,16 +48,17 @@ export function UserNav() {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          className="hover:cursor-pointer"
-          onClick={() => router.push('/configuracoes')}
-        >
-          <Settings className="mr-2 h-4 w-4" /> Configurações
-        </DropdownMenuItem>
+        <Link href={'/configuracoes'}>
+          <DropdownMenuItem className="hover:cursor-pointer">
+            <Settings className="mr-2 h-4 w-4" /> Configurações
+          </DropdownMenuItem>
+        </Link>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="text-red-400 hover:cursor-pointer hover:text-red-400">
-          <ExitIcon className="mr-2 h-4 w-4" /> Sair
-        </DropdownMenuItem>
+        <Link href={'/auth'}>
+          <DropdownMenuItem className="text-red-400 hover:cursor-pointer hover:text-red-400">
+            <ExitIcon className="mr-2 h-4 w-4" /> Sair
+          </DropdownMenuItem>
+        </Link>
       </DropdownMenuContent>
     </DropdownMenu>
   )
