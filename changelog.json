@@ -238,5 +238,19 @@
         "description": "Corrigido redirecionamento de botões."
       }
     ]
+  },
+  {
+    "version": "0.6.1.1-alpha",
+    "date": "2023-12-01T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Desenvolvimento da página de suporte iniciada."
+      },
+      {
+        "type": "Correções",
+        "description": "Correções gerais."
+      }
+    ]
   }
 ]
