@@ -224,5 +224,19 @@
         "description": "Novas músicas adicionada."
       }
     ]
+  },
+  {
+    "version": "0.5.8.1-alpha",
+    "date": "2023-11-29T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Correções gerais na resposividade do aplicativo."
+      },
+      {
+        "type": "Correções",
+        "description": "Corrigido redirecionamento de botões."
+      }
+    ]
   }
 ]
