@@ -160,8 +160,8 @@ export default function CarteirinhasScanner() {
             <img src="https://via.placeholder.com/150x250" />
           </div>
           <div className="my-6 flex w-full flex-col justify-center space-y-4">
-            <Link href={'/carteirinhas/foto'}>
-              <Button className="lg:w-48" variant={'outline'}>
+            <Link className="w-full" href={'/carteirinhas/foto'}>
+              <Button className="w-full lg:w-48" variant={'outline'}>
                 Tirar foto
               </Button>
             </Link>
