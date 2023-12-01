@@ -1,22 +1,34 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+import { RefreshCcw, Zap, ZapOff } from 'lucide-react'
 import Image from 'next/image'
 import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
+import { useTorchLight } from '@blackbox-vision/use-torch-light'
 
 export default function CarteirinhasFoto() {
+  const webcamRef = useRef<Webcam>(null)
+  const [url, setUrl] = useState<string | null>(null)
   const [facingMode, setFacingMode] = useState<'user' | 'environment'>(
     'environment',
   )
+  const [flash, setFlash] = useState(webcamRef.current || false)
+
   const videoConstraints = {
     width: 1920,
     height: 1080,
     facingMode,
   }
 
-  const webcamRef = useRef<Webcam>(null)
-  const [url, setUrl] = useState<string | null>(null)
+  function handleFacingMode() {
+    setFacingMode(facingMode === 'environment' ? 'user' : 'environment')
+  }
+
+  function handleFlash() {
+    setFlash(!flash)
+  }
+
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current?.getScreenshot()
     if (imageSrc) {
@@ -28,6 +40,27 @@ export default function CarteirinhasFoto() {
     <div className="h-full w-full rounded-lg bg-secondary p-4">
       {!url && (
         <div>
+          <div className="flex flex-row justify-between">
+            <Button
+              variant={'default'}
+              type="button"
+              className="my-2"
+              onClick={handleFacingMode}
+            >
+              <RefreshCcw className="h-4 w-4" />
+            </Button>
+
+            <Button
+              variant={'default'}
+              type="button"
+              className="my-2"
+              onClick={handleFlash}
+            >
+              {(flash && <Zap className="h-4 w-4" />) || (
+                <ZapOff className="h-4 w-4" />
+              )}
+            </Button>
+          </div>
           <Webcam
             audio={false}
             height={720}
@@ -38,15 +71,8 @@ export default function CarteirinhasFoto() {
             screenshotQuality={1}
             forceScreenshotSourceSize={true}
           />
-          <Button variant={'outline'} className="my-2 w-full" onClick={capture}>
+          <Button variant={'default'} className="my-2 w-full" onClick={capture}>
             Tirar foto
-          </Button>
-          <Button
-            variant={'outline'}
-            className="my-2 w-full"
-            onClick={() => setFacingMode('user')}
-          >
-            Frontal
           </Button>
         </div>
       )}
