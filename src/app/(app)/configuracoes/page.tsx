@@ -2,8 +2,7 @@
 
 import { Button } from '@/components/ui/button'
 
-import { SelectSeparator } from '@/components/ui/select'
-import { Separator } from '@radix-ui/react-dropdown-menu'
+import { Separator } from '@/components/ui/separator'
 
 import { Check, Computer, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
@@ -33,7 +32,7 @@ export default function ConfiguracoesHome() {
           Customize suas configurações de usuário.
         </p>
       </div>
-      <SelectSeparator />
+      <Separator />
       <div className="space-y-6">
         <div>
           <h3 className="text-lg font-medium">Aparência</h3>
@@ -42,8 +41,8 @@ export default function ConfiguracoesHome() {
           </p>
 
           <div>
-            <div className="my-4 flex flex-row items-center space-x-4">
-              <div className="items-center rounded-md border-2 border-muted bg-muted p-1 hover:border-accent">
+            <div className="my-4 flex flex-col space-x-0 space-y-4 sm:flex-row sm:items-center sm:justify-center sm:space-x-4 sm:space-y-0 lg:justify-start">
+              <div className="items-center rounded-md border-2 border-secondary bg-transparent p-1 hover:border-accent">
                 <div className="space-y-2 rounded-sm bg-[#ecedef] p-2">
                   <div className="space-y-2 rounded-md bg-white p-2 shadow-sm">
                     <div className="h-2 w-[80px] rounded-lg bg-[#ecedef]" />
@@ -79,7 +78,7 @@ export default function ConfiguracoesHome() {
                   </Button>
                 )}
               </div>
-              <div className="items-center rounded-md border-2 border-muted bg-muted p-1 hover:bg-accent hover:text-accent-foreground">
+              <div className="items-center rounded-md border-2 border-secondary bg-transparent p-1 hover:bg-accent hover:text-accent-foreground">
                 <div className="space-y-2 rounded-sm bg-zinc-900 p-2">
                   <div className="space-y-2 rounded-md bg-zinc-800 p-2 shadow-sm">
                     <div className="h-2 w-[80px] rounded-lg bg-zinc-400" />
@@ -115,7 +114,7 @@ export default function ConfiguracoesHome() {
                   </Button>
                 )}
               </div>
-              <div className="items-center rounded-md border-2 border-muted bg-muted p-1 hover:bg-accent hover:text-accent-foreground">
+              <div className="items-center rounded-md border-2 border-secondary bg-transparent p-1 hover:bg-accent hover:text-accent-foreground">
                 <div className="space-y-2 rounded-sm bg-zinc-900 p-2">
                   <div className="space-y-2 rounded-md bg-[#ecedef] p-2 shadow-sm">
                     <div className="h-2 w-[80px] rounded-lg bg-zinc-400" />
@@ -155,7 +154,6 @@ export default function ConfiguracoesHome() {
           </div>
         </div>
       </div>
-      <Separator />
     </div>
   )
 }
