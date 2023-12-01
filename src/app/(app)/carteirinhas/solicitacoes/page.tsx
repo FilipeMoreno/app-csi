@@ -44,7 +44,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/components/ui/sheet'
-import { Badge } from '@/components/ui/badge'
+
 import { useRouter } from 'next/navigation'
 
 export default function CarteirinhasSolicitacoes() {
@@ -54,10 +54,10 @@ export default function CarteirinhasSolicitacoes() {
       <div className="flex flex-row items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Solicitações</h1>
-          <p className="text-md">Mostrando todas as solicitações realizadas</p>
+          <p className="text-sm">Mostrando todas as solicitações realizadas</p>
         </div>
         <div>
-          <Button variant={'tertiary'}>
+          <Button variant={'outline'}>
             {' '}
             <Plus className="mr-2 h-4 w-4" /> Solicitação
           </Button>
@@ -69,7 +69,7 @@ export default function CarteirinhasSolicitacoes() {
 
         <Sheet>
           <SheetTrigger asChild>
-            <Button variant={'tertiary'} size={'icon'}>
+            <Button variant={'outline'} size={'icon'}>
               <FilterIcon className="h-4 w-4" />
             </Button>
           </SheetTrigger>
@@ -125,7 +125,7 @@ export default function CarteirinhasSolicitacoes() {
             </div>
             <SheetFooter>
               <SheetClose asChild>
-                <Button variant="tertiary" className="w-full" type="submit">
+                <Button variant="outline" className="w-full" type="submit">
                   Salvar
                 </Button>
               </SheetClose>

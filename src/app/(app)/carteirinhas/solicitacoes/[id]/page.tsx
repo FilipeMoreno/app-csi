@@ -43,15 +43,13 @@ export default function CarteirinhasScanner() {
   return (
     <div>
       <div className="flex flex-wrap gap-8">
-        <div className="flex w-full flex-row items-center justify-between rounded-lg p-4">
+        <div className="flex w-full flex-row items-center justify-between rounded-lg">
           <div>
             <h1 className="text-2xl font-bold">Carteirnha #1234</h1>
-            <p className="text-sm text-zinc-400">
-              Mostrando detalhes da carteirinha #1234
-            </p>
+            <p className="text-sm">Mostrando detalhes da carteirinha #1234</p>
           </div>
           <Button
-            variant={'tertiary'}
+            variant={'outline'}
             onClick={() => setIsEditing(true)}
             className="w-auto"
           >
@@ -166,21 +164,21 @@ export default function CarteirinhasScanner() {
             <Button
               className="lg:w-48"
               onClick={() => router.push('/carteirinhas/foto')}
-              variant={'tertiary'}
+              variant={'outline'}
             >
               Tirar foto
             </Button>
-            <Button variant={'tertiary'} className="lg:w-48">
+            <Button variant={'outline'} className="lg:w-48">
               Alterar foto
             </Button>
-            <Button variant={'tertiary'} className="lg:w-48">
+            <Button variant={'outline'} className="lg:w-48">
               Remover foto
             </Button>
           </div>
         </div>
         {isEditing && (
           <Button
-            variant={'tertiary'}
+            variant={'outline'}
             onClick={() => setIsEditing(false)}
             className="w-full"
           >
@@ -200,7 +198,7 @@ export default function CarteirinhasScanner() {
           </div>
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant={'tertiary'}>
+              <Button variant={'outline'}>
                 <Plus className="mr-2 h-4 w-4" /> Status
               </Button>
             </AlertDialogTrigger>

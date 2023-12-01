@@ -14,16 +14,11 @@ export default function LoginLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <NextTopLoader color="#af3c41" />
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-        disableTransitionOnChange
-      >
-        <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
-          {children}
-        </div>
-      </ThemeProvider>
+
+      <div className="flex h-screen flex-col items-center justify-center gap-12 bg-background">
+        {children}
+      </div>
+
       <Toaster />
     </>
   )

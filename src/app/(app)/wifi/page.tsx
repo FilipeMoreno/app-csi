@@ -123,87 +123,97 @@ export default function Home() {
   }, [vouchers])
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <Card className="h-full w-full">
-        {!vouchers && (
-          <CardHeader>
-            <CardTitle className="uppercase">Wi-fi Vouchers</CardTitle>
-            <CardDescription>
-              Clique no botão abaixo para gerar um novo voucher para acesso à
-              internet.
-            </CardDescription>
-          </CardHeader>
-        )}
-        <CardContent>
-          {(!vouchers && loading && (
-            <Button className="w-full" onClick={handleGenerateVoucher} disabled>
-              Aguarde...
-            </Button>
-          )) ||
-            (vouchers && !loading && (
-              <div className="p-4">
-                <div
-                  ref={componentRef as unknown as LegacyRef<HTMLDivElement>}
-                  className="p-2"
-                >
-                  <Card className="flex w-full flex-col items-center justify-center">
-                    <CardHeader className="flex flex-col items-center justify-center">
-                      <Image
-                        src="/icons/icon-512x512.png"
-                        alt="Logo"
-                        height={60}
-                        width={60}
-                      />
-                      <p className="text-center">
-                        Insira o código abaixo para acessar a internet
-                      </p>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-center text-sm">
-                        Rede: <b>Visitantes - CSI</b>
-                      </p>
-                      <p className="my-1 text-center text-sm">
-                        Voucher: <b className="text-2xl">{vouchers.cod}</b>
-                      </p>
-                    </CardContent>
-                    <CardFooter>
-                      <p className="text-center text-xs">{dataAtual}</p>
-                    </CardFooter>
-                  </Card>
-                </div>
+    <>
+      <div>
+        <h1 className="text-2xl font-bold">Vouchers</h1>
+        <p className="text-sm">Vouchers para acessar ao wi-fi</p>
+      </div>
 
-                <div className="-mb-4 mt-3 space-y-2">
-                  <ReactToPrint
-                    trigger={() => (
-                      <Button
-                        variant={'secondary'}
-                        className="w-full hover:opacity-60"
-                      >
-                        Imprimir
-                      </Button>
-                    )}
-                    content={() => componentRef.current || null}
-                  />
-                  <Button
-                    variant={'tertiary'}
-                    className="w-full hover:opacity-60"
-                    onClick={handleGenerateVoucher}
-                  >
-                    Gerar outro
-                  </Button>
-                </div>
-              </div>
-            )) || (
+      <div className="mt-2 flex flex-col items-center justify-center">
+        <Card className="h-full w-full">
+          {!vouchers && (
+            <CardHeader>
+              <CardDescription>
+                Clique no botão abaixo para gerar um novo voucher para acesso à
+                internet.
+              </CardDescription>
+            </CardHeader>
+          )}
+          <CardContent>
+            {(!vouchers && loading && (
               <Button
-                className="w-full hover:opacity-60"
+                className="w-full"
                 onClick={handleGenerateVoucher}
-                variant={'tertiary'}
+                disabled
               >
-                Gerar
+                Aguarde...
               </Button>
-            )}
-        </CardContent>
-      </Card>
-    </div>
+            )) ||
+              (vouchers && !loading && (
+                <div className="p-4">
+                  <div
+                    ref={componentRef as unknown as LegacyRef<HTMLDivElement>}
+                    className="p-2"
+                  >
+                    <Card className="flex w-full flex-col items-center justify-center">
+                      <CardHeader className="flex flex-col items-center justify-center">
+                        <Image
+                          src="/icons/icon-512x512.png"
+                          alt="Logo"
+                          height={60}
+                          width={60}
+                        />
+                        <p className="text-center">
+                          Insira o código abaixo para acessar a internet
+                        </p>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-center text-sm">
+                          Rede: <b>Visitantes - CSI</b>
+                        </p>
+                        <p className="my-1 text-center text-sm">
+                          Voucher: <b className="text-2xl">{vouchers.cod}</b>
+                        </p>
+                      </CardContent>
+                      <CardFooter>
+                        <p className="text-center text-xs">{dataAtual}</p>
+                      </CardFooter>
+                    </Card>
+                  </div>
+
+                  <div className="-mb-4 mt-3 space-y-2">
+                    <ReactToPrint
+                      trigger={() => (
+                        <Button
+                          variant={'secondary'}
+                          className="w-full hover:opacity-60"
+                        >
+                          Imprimir
+                        </Button>
+                      )}
+                      content={() => componentRef.current || null}
+                    />
+                    <Button
+                      variant={'outline'}
+                      className="w-full hover:opacity-60"
+                      onClick={handleGenerateVoucher}
+                    >
+                      Gerar outro
+                    </Button>
+                  </div>
+                </div>
+              )) || (
+                <Button
+                  className="w-full hover:opacity-60"
+                  onClick={handleGenerateVoucher}
+                  variant={'outline'}
+                >
+                  Gerar
+                </Button>
+              )}
+          </CardContent>
+        </Card>
+      </div>
+    </>
   )
 }

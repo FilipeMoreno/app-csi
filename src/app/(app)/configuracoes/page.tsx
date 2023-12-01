@@ -72,7 +72,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('light')}
                     className="mt-2 w-full p-4"
-                    variant={'tertiary'}
+                    variant={'outline'}
                   >
                     <Sun className="mr-2 h-4 w-4" />
                     Claro
@@ -108,7 +108,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('dark')}
                     className="mt-2 w-full p-4"
-                    variant={'tertiary'}
+                    variant={'outline'}
                   >
                     <Moon className="mr-2 h-4 w-4" />
                     Escuro
@@ -144,7 +144,7 @@ export default function ConfiguracoesHome() {
                   <Button
                     onClick={() => setTheme('system')}
                     className="mt-2 w-full p-4"
-                    variant={'tertiary'}
+                    variant={'outline'}
                   >
                     <Computer className="mr-2 h-4 w-4" />
                     Sistema

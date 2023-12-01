@@ -50,8 +50,9 @@ export function Header() {
           <Image
             src="http://colegiosantoinacio.com.br/img/logo.png"
             alt="Logo"
-            width={200}
             height={50}
+            width={200}
+            className="h-[36px] w-[170px] lg:h-[40px] lg:w-[200px]"
           />
           {/* <Logo className="h-12 w-12" /> */}
         </Link>

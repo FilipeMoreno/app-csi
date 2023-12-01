@@ -269,28 +269,24 @@ export default function SinaleiroHome() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="flex w-full flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center sm:w-auto lg:w-full">
         {mostrarControles && (
           <>
             <div className="flex flex-row space-x-2">
-              <Button
-                onClick={previousMusic}
-                variant={'tertiary'}
-                size={'icon'}
-              >
+              <Button onClick={previousMusic} variant={'outline'} size={'icon'}>
                 <TrackPreviousIcon />
               </Button>
               {(playing && (
-                <Button variant={'tertiary'} size={'icon'} onClick={pauseMusic}>
+                <Button variant={'outline'} size={'icon'} onClick={pauseMusic}>
                   <PauseIcon />
                 </Button>
               )) || (
-                <Button variant={'tertiary'} size={'icon'} onClick={playMusic}>
+                <Button variant={'outline'} size={'icon'} onClick={playMusic}>
                   <PlayIcon />
                 </Button>
               )}
 
-              <Button variant={'tertiary'} size={'icon'} onClick={nextMusic}>
+              <Button variant={'outline'} size={'icon'} onClick={nextMusic}>
                 <TrackNextIcon />
               </Button>
             </div>
@@ -327,7 +323,7 @@ export default function SinaleiroHome() {
                 step="0.01"
                 value={volumeValue}
                 onChange={handleVolumeChange}
-                className="w-full cursor-pointer accent-tertiary"
+                className="w-full cursor-pointer accent-zinc-800"
               />
             </div>
             <div className="">
@@ -342,8 +338,8 @@ export default function SinaleiroHome() {
         )}
       </div>
 
-      <Tabs defaultValue="musicas" className="my-4 w-full">
-        <TabsList className="grid w-full grid-cols-3">
+      <Tabs defaultValue="musicas" className="my-4 sm:w-auto lg:w-full">
+        <TabsList className="grid grid-cols-3 sm:w-auto lg:w-full">
           <TabsTrigger value="musicas">Músicas</TabsTrigger>
           <TabsTrigger value="horarios">Horários</TabsTrigger>
           <TabsTrigger value="config">Configurações</TabsTrigger>
@@ -354,7 +350,7 @@ export default function SinaleiroHome() {
               <CardTitle>Lista de músicas</CardTitle>
               <div className="flex flex-row items-center justify-between">
                 <CardDescription>Mostrando músicas disponíveis</CardDescription>
-                <Button variant="tertiary">
+                <Button variant="outline">
                   <Plus className="mr-2 h-4 w-4" /> Música
                 </Button>
               </div>
@@ -364,23 +360,26 @@ export default function SinaleiroHome() {
                 placeholder="Pesquisar uma música..."
                 onChange={handleInputChange}
               />
-              <ScrollArea className="my-4 h-96 w-full">
+              <ScrollArea className="my-4 h-96 sm:w-auto lg:w-full">
                 {musicResults.length === 0 && (
                   <div>
-                    <h1 className="text-center text-xs">
-                      nenhum resultado encontrado
+                    <h1 className="text-center text-sm ">
+                      nenhum resultado encontrado.
                     </h1>
                   </div>
                 )}
                 {loadMusic && (
-                  <div className="absolute h-screen w-screen rounded-lg bg-secondary opacity-60">
+                  <div className="absolute h-full w-full rounded-lg bg-secondary opacity-60">
                     <Icons.spinner
                       style={{
                         position: 'absolute',
-                        top: '12%',
-                        left: '31%',
+                        top: '0',
+                        left: '0',
+                        right: '0',
+                        bottom: '0',
+                        margin: 'auto',
                       }}
-                      className="h-16 w-16 animate-spin"
+                      className="h-16 w-16 animate-spin text-primary"
                     />
                   </div>
                 )}
@@ -408,8 +407,16 @@ export default function SinaleiroHome() {
                           />
                         )) || <p>{song.id}.</p>}
                         {(playing && (
-                          <b className="text-green-500">{song.title}</b>
-                        )) || <b>{song.title}</b>}
+                          <span className="text-green-500">
+                            <b>
+                              {song.title} - {song.author}
+                            </b>
+                          </span>
+                        )) || (
+                          <b>
+                            {song.title} - {song.author}
+                          </b>
+                        )}
 
                         {!mostrarControles && <TimeLabel id={1} />}
                       </li>
@@ -422,7 +429,9 @@ export default function SinaleiroHome() {
                         }}
                       >
                         <p>{song.id}.</p>
-                        <p>{song.title}</p>
+                        <p>
+                          {song.title} - {song.author}
+                        </p>
                       </li>
                     ),
                   )}
@@ -439,21 +448,24 @@ export default function SinaleiroHome() {
                 <CardDescription>
                   Horários em que a musica tocará
                 </CardDescription>
-                <Button variant="tertiary">
+                <Button variant="outline">
                   <Plus className="mr-2 h-4 w-4" /> Horário
                 </Button>
               </div>
             </CardHeader>
             <CardContent>
-              <Tabs defaultValue="segunda-feira" className="w-full">
-                <TabsList className="grid w-full grid-cols-5">
+              <Tabs
+                defaultValue="segunda-feira"
+                className="sm:w-auto lg:w-full"
+              >
+                <TabsList className="grid grid-cols-5 sm:w-auto lg:w-full">
                   {Object.entries(horarios).map(([day], index) => (
                     <TabsTrigger key={index} value={day}>
                       {day.replace('-feira', '')}
                     </TabsTrigger>
                   ))}
                 </TabsList>
-                <ScrollArea className="h-96 w-full">
+                <ScrollArea className="h-96 sm:w-auto lg:w-full">
                   {Object.entries(horarios).map(([day, times], index) => (
                     <TabsContent key={index} value={day}>
                       {times.length === 0 && (
@@ -556,7 +568,7 @@ export default function SinaleiroHome() {
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="tertiary" className="w-full">
+              <Button variant="outline" className="w-full">
                 <Save className="mr-2 h-4 w-4" />
                 Salvar
               </Button>

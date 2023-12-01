@@ -34,11 +34,7 @@ export default function CarteirinhasFoto() {
             videoConstraints={videoConstraints}
             screenshotQuality={1}
           />
-          <Button
-            variant={'tertiary'}
-            className="my-2 w-full"
-            onClick={capture}
-          >
+          <Button variant={'outline'} className="my-2 w-full" onClick={capture}>
             Tirar foto
           </Button>
         </div>
@@ -58,7 +54,7 @@ export default function CarteirinhasFoto() {
             >
               Tirar novamente
             </Button>
-            <Button variant={'tertiary'} className="w-full">
+            <Button variant={'outline'} className="w-full">
               Confirmar
             </Button>
           </div>
