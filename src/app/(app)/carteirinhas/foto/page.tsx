@@ -1,102 +1,92 @@
 'use client'
-
 import { Button } from '@/components/ui/button'
-import { RefreshCcw, Zap, ZapOff } from 'lucide-react'
-import Image from 'next/image'
-import React, { useCallback, useRef, useState } from 'react'
-import Webcam from 'react-webcam'
-import { useTorchLight } from '@blackbox-vision/use-torch-light'
+import { useState, useRef, useEffect } from 'react'
+import { Camera, CameraType } from 'react-camera-pro-with-torch'
 
 export default function CarteirinhasFoto() {
-  const webcamRef = useRef<Webcam>(null)
-  const [url, setUrl] = useState<string | null>(null)
-  const [facingMode, setFacingMode] = useState<'user' | 'environment'>(
-    'environment',
+  const [numberOfCameras, setNumberOfCameras] = useState(0)
+  const [image, setImage] = useState<string | null>(null)
+  const [showImage, setShowImage] = useState<boolean>(false)
+  const camera = useRef<CameraType>(null)
+  const [devices, setDevices] = useState<MediaDeviceInfo[]>([])
+  const [activeDeviceId, setActiveDeviceId] = useState<string | undefined>(
+    undefined,
   )
-  const [flash, setFlash] = useState(webcamRef.current || false)
 
-  const videoConstraints = {
-    width: 1920,
-    height: 1080,
-    facingMode,
-  }
-
-  function handleFacingMode() {
-    setFacingMode(facingMode === 'environment' ? 'user' : 'environment')
-  }
-
-  function handleFlash() {
-    setFlash(!flash)
-  }
-
-  const capture = useCallback(() => {
-    const imageSrc = webcamRef.current?.getScreenshot()
-    if (imageSrc) {
-      setUrl(imageSrc)
-    }
-  }, [webcamRef])
+  useEffect(() => {
+    ;(async () => {
+      const devices = await navigator.mediaDevices.enumerateDevices()
+      const videoDevices = devices.filter((i) => i.kind === 'videoinput')
+      setDevices(videoDevices)
+    })()
+  })
 
   return (
     <div className="h-full w-full rounded-lg bg-secondary p-4">
-      {!url && (
-        <div>
-          <div className="flex flex-row justify-between">
-            <Button
-              variant={'default'}
-              type="button"
-              className="my-2"
-              onClick={handleFacingMode}
-            >
-              <RefreshCcw className="h-4 w-4" />
-            </Button>
-
-            <Button
-              variant={'default'}
-              type="button"
-              className="my-2"
-              onClick={handleFlash}
-            >
-              {(flash && <Zap className="h-4 w-4" />) || (
-                <ZapOff className="h-4 w-4" />
-              )}
-            </Button>
-          </div>
-          <Webcam
-            audio={false}
-            height={720}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            width={1280}
-            videoConstraints={videoConstraints}
-            screenshotQuality={1}
-            forceScreenshotSourceSize={true}
-          />
-          <Button variant={'default'} className="my-2 w-full" onClick={capture}>
-            Tirar foto
-          </Button>
-        </div>
+      {showImage ? (
+        <div
+          style={{ backgroundImage: `url(${image})` }}
+          onClick={() => {
+            setShowImage(!showImage)
+          }}
+        />
+      ) : (
+        <Camera
+          ref={camera}
+          aspectRatio="cover"
+          // numberOfCamerasCallback={(i) => setNumberOfCameras(i)}
+          // videoSourceDeviceId={activeDeviceId}
+          errorMessages={{
+            noCameraAccessible:
+              'No camera device accessible. Please connect your camera or try a different browser.',
+            permissionDenied:
+              'Permission denied. Please refresh and give camera permission.',
+            switchCamera:
+              'It is not possible to switch camera to different one because there is only one video device accessible.',
+            canvas: 'Canvas is not supported.',
+          }}
+          videoReadyCallback={() => {
+            console.log('Video feed ready.')
+          }}
+        />
       )}
-      {url && (
-        <div>
-          <div>
-            <Image src={url} alt="Screenshot" />
-          </div>
-          <div className="my-2 flex flex-row space-x-2">
-            <Button
-              onClick={() => {
-                setUrl(null)
-              }}
-              className="w-full"
-              variant={'outline'}
-            >
-              Tirar novamente
-            </Button>
-            <Button variant={'outline'} className="w-full">
-              Confirmar
-            </Button>
-          </div>
-        </div>
-      )}
+      <div>
+        <select
+          onChange={(event) => {
+            setActiveDeviceId(event.target.value)
+          }}
+        >
+          {devices.map((d) => (
+            <option key={d.deviceId} value={d.deviceId}>
+              {d.label}
+            </option>
+          ))}
+        </select>
+        <div
+          style={{ backgroundImage: `url(${image})` }}
+          onClick={() => {
+            setShowImage(!showImage)
+          }}
+        />
+        <div
+          onClick={() => {
+            if (camera.current) {
+              const photo = camera.current.takePhoto()
+              console.log(photo)
+              setImage(photo)
+            }
+          }}
+        />
+        <Button
+          disabled={numberOfCameras <= 1}
+          onClick={() => {
+            if (camera.current) {
+              const result = camera.current.switchCamera()
+              console.log(result)
+            }
+          }}
+        />
+      </div>
     </div>
   )
 }

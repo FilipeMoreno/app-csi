@@ -16,7 +16,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@blackbox-vision/use-torch-light": "^0.0.2",
     "@hookform/resolvers": "^3.3.2",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@radix-ui/react-accordion": "^1.1.2",
@@ -59,6 +58,7 @@
     "nextjs-toploader": "^1.6.4",
     "node-schedule": "^2.1.1",
     "react": "^18",
+    "react-camera-pro-with-torch": "^1.1.4",
     "react-day-picker": "^8.9.1",
     "react-dom": "^18",
     "react-hook-form": "^7.47.0",
