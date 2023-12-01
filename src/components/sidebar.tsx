@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { config } from '@/config'
 import ChangelogComponent from './Changelog'
+import Image from 'next/image'
 
 interface SubitemType {
   href: string
@@ -69,8 +70,8 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
             return null
           }
           return (
-            <div className="px-3 py-2" key={item.title}>
-              <h2 className="mb-4 flex flex-row items-center rounded-lg px-4 text-[10px] font-black uppercase tracking-tight text-zinc-500">
+            <div className="px-3 py-1" key={item.title}>
+              <h2 className="mb-3 flex flex-row items-center rounded-lg px-4 text-[10px] font-black uppercase tracking-tight text-zinc-500">
                 {item.icon && <item.icon className="mr-2 h-4 w-4" />}
                 {item.title}
               </h2>
@@ -108,6 +109,13 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
         })}
       </div>
       <div className="bottom-0 left-0 right-0 flex flex-col items-center justify-center">
+        <Image
+          alt="Logo"
+          width={20}
+          height={20}
+          src={'/icons/icon-512x512.png'}
+          className="mb-1 lg:hidden"
+        />
         <ChangelogComponent />
         <span className="text-xs text-zinc-500">v{config.version}</span>
       </div>
