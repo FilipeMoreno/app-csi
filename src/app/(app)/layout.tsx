@@ -12,7 +12,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { FaRegCalendarAlt } from 'react-icons/fa'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import {
-  CreditCard,
   Home,
   LayoutDashboard,
   LifeBuoy,
@@ -24,7 +23,6 @@ import {
   Ticket,
   Wifi,
 } from 'lucide-react'
-import { PiBellRinging } from 'react-icons/pi'
 import { ThemeProvider } from '@/components/theme-provider'
 import { BiSupport } from 'react-icons/bi'
 

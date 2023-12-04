@@ -35,7 +35,6 @@ export default function RecadoIndex() {
   const [loading, setLoading] = useState<boolean>(false)
   const [recados, setRecados] = useState<RecadosContent>()
   const [numPerPage, setNumPerPage] = useState<number>(1) // Número de recados por página
-  const [currentPage, setCurrentPage] = useState<number>(1)
 
   async function handleSetTemplate(id: string) {
     setLoading(true)

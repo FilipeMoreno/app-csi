@@ -1,25 +1,9 @@
 'use client'
-import { Button } from '@/components/ui/button'
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import { Camera, CameraType } from 'react-camera-pro-with-torch'
 
 export default function CarteirinhasFoto() {
-  const [numberOfCameras, setNumberOfCameras] = useState(0)
-  const [image, setImage] = useState<string | null>(null)
-  const [showImage, setShowImage] = useState<boolean>(false)
   const camera = useRef<CameraType>(null)
-  const [devices, setDevices] = useState<MediaDeviceInfo[]>([])
-  const [activeDeviceId, setActiveDeviceId] = useState<string | undefined>(
-    undefined,
-  )
-
-  useEffect(() => {
-    ;(async () => {
-      const devices = await navigator.mediaDevices.enumerateDevices()
-      const videoDevices = devices.filter((i) => i.kind === 'videoinput')
-      setDevices(videoDevices)
-    })()
-  })
 
   return (
     <div className="h-full w-full rounded-lg bg-secondary p-4">
@@ -27,8 +11,6 @@ export default function CarteirinhasFoto() {
         <Camera
           ref={camera}
           aspectRatio="cover"
-          // numberOfCamerasCallback={(i) => setNumberOfCameras(i)}
-          // videoSourceDeviceId={activeDeviceId}
           errorMessages={{
             noCameraAccessible:
               'No camera device accessible. Please connect your camera or try a different browser.',

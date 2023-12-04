@@ -7,7 +7,6 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle,
 } from '@/components/ui/card'
 import { useToast } from '@/components/ui/use-toast'
 import ReactToPrint from 'react-to-print'

@@ -36,7 +36,7 @@ import {
 import { useState } from 'react'
 import Link from 'next/link'
 
-export default function CarteirinhasScanner() {
+export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
 
   return (

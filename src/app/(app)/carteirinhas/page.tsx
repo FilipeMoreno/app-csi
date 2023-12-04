@@ -11,9 +11,7 @@ import {
 
 import { useToast } from '@/components/ui/use-toast'
 
-import { useEffect, useState } from 'react'
-
-export default function Home() {
+export default function CarteirinhaHome() {
   const { toast } = useToast()
 
   return (

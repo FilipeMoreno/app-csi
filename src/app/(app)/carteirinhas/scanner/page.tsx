@@ -16,7 +16,7 @@ export default function CarteirinhasScanner() {
   useEffect(() => {
     if (qrcode) {
       toast({
-        title: 'Código encontrado',
+        title: 'Carteirinha encontrada!',
         description: `O código ${qrcode} foi encontrado`,
         variant: 'success',
       })

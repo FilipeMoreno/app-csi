@@ -1,4 +1,3 @@
-import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import { Metadata } from 'next'
 

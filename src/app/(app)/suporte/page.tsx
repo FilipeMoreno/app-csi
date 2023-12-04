@@ -5,31 +5,24 @@ import { Input } from '@/components/ui/input'
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { useToast } from '@/components/ui/use-toast'
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
-  DropdownMenuCheckboxItem,
-  DropdownMenuLabel,
   DropdownMenuItem,
-  DropdownMenuSeparator,
   DropdownMenuPortal,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { Archive, ChevronDownIcon } from 'lucide-react'
-
+import { Archive } from 'lucide-react'
 import React from 'react'
-import { table } from 'console'
 import {
   Select,
   SelectContent,
@@ -37,14 +30,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
-import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 export default function ChamadosHome() {
-  const { toast } = useToast()
-
   const dadosTabela = [
     {
       id: 1,

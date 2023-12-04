@@ -49,7 +49,7 @@ export default function CarteirinhasFoto() {
               <RefreshCcw className="h-4 w-4" />
             </Button>
 
-            <Button
+            {/* <Button
               variant={'default'}
               type="button"
               className="my-2"
@@ -58,7 +58,7 @@ export default function CarteirinhasFoto() {
               {(flash && <Zap className="h-4 w-4" />) || (
                 <ZapOff className="h-4 w-4" />
               )}
-            </Button>
+            </Button> */}
           </div>
           <Webcam
             audio={false}
