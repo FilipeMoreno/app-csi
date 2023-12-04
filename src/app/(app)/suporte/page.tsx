@@ -162,7 +162,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Crítica' && (
                         <Badge
                           variant={'outline'}
-                          className="flex w-full items-center justify-center bg-[#E0453D] text-center font-bold"
+                          className="bg-error flex w-full items-center justify-center text-center font-bold text-white"
                         >
                           {item.prioridade}
                         </Badge>
@@ -170,7 +170,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Alta' && (
                         <Badge
                           variant={'outline'}
-                          className="flex w-full items-center justify-center bg-[#E08231] text-center font-bold"
+                          className="bg-important flex w-full items-center justify-center text-center font-bold text-white"
                         >
                           {item.prioridade}
                         </Badge>
@@ -178,7 +178,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Moderada' && (
                         <Badge
                           variant={'outline'}
-                          className="flex w-full items-center justify-center bg-[#E0C600] text-center font-bold"
+                          className="bg-warning flex w-full items-center justify-center text-center font-bold text-white"
                         >
                           {item.prioridade}
                         </Badge>
@@ -186,7 +186,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Baixa' && (
                         <Badge
                           variant={'outline'}
-                          className="flex w-full items-center justify-center bg-[#53E146] text-center font-bold"
+                          className="flex w-full items-center justify-center bg-success text-center font-bold text-white"
                         >
                           {item.prioridade}
                         </Badge>
