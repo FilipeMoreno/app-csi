@@ -7,7 +7,9 @@ import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
 import NextTopLoader from 'nextjs-toploader'
+import { FaComputer, FaRegAddressCard } from 'react-icons/fa6'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { FaRegCalendarAlt } from 'react-icons/fa'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import {
   CreditCard,
@@ -22,6 +24,7 @@ import {
   Ticket,
   Wifi,
 } from 'lucide-react'
+import { PiBellRinging } from 'react-icons/pi'
 import { ThemeProvider } from '@/components/theme-provider'
 import { BiSupport } from 'react-icons/bi'
 
@@ -56,8 +59,22 @@ export default function RootLayout({
       ],
     },
     {
+      title: 'Reservas',
+      icon: FaRegCalendarAlt,
+      role: ['reservas', 'admin'],
+
+      subitems: [
+        {
+          href: '/reservas',
+          title: 'Informática',
+          icon: FaComputer,
+          role: ['reservas.informatica', 'admin'],
+        },
+      ],
+    },
+    {
       title: 'Carteirinhas',
-      icon: CreditCard,
+      icon: FaRegAddressCard,
       subitems: [
         {
           href: '/carteirinhas/solicitacoes',
@@ -92,7 +109,7 @@ export default function RootLayout({
       ],
     },
     {
-      title: 'Sinal',
+      title: 'Sinaleiro',
       icon: Speaker,
       subitems: [
         {
