@@ -152,6 +152,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Crítica' && (
                         <Badge
                           variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
                           className="bg-error flex w-full items-center justify-center text-center font-bold text-white"
                         >
                           {item.prioridade}
@@ -160,6 +161,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Alta' && (
                         <Badge
                           variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
                           className="bg-important flex w-full items-center justify-center text-center font-bold text-white"
                         >
                           {item.prioridade}
@@ -168,6 +170,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Moderada' && (
                         <Badge
                           variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
                           className="bg-warning flex w-full items-center justify-center text-center font-bold text-white"
                         >
                           {item.prioridade}
@@ -176,6 +179,7 @@ export default function ChamadosHome() {
                       {item.prioridade === 'Baixa' && (
                         <Badge
                           variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
                           className="flex w-full items-center justify-center bg-success text-center font-bold text-white"
                         >
                           {item.prioridade}
@@ -185,6 +189,7 @@ export default function ChamadosHome() {
                     <TableCell>
                       {item.status === 'Aberto' && (
                         <Badge
+                          // eslint-disable-next-line prettier/prettier
                           className="flex w-full items-center justify-center text-center"
                           variant={'secondary'}
                         >
@@ -193,6 +198,7 @@ export default function ChamadosHome() {
                       )}
                       {item.status === 'Fechado' && (
                         <Badge
+                          // eslint-disable-next-line prettier/prettier
                           className="flex w-full items-center justify-center text-center"
                           variant={'default'}
                         >
