@@ -125,10 +125,10 @@ export default function ReservasHome() {
                     </CardHeader>
                     <CardContent>
                       {!horario.reservado && (
-                        <Button className="mt-6">Reservar horário</Button>
+                        <Button className="mt-2">Reservar horário</Button>
                       )}
                       {horario.reservado && (
-                        <div className="mt-6 flex flex-row items-center space-x-8">
+                        <div className="mt-2 flex flex-row items-center space-x-8">
                           <div className="flex flex-col">
                             <p className="text-[10px] font-bold uppercase text-zinc-600">
                               Reservado por
