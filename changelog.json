@@ -280,5 +280,23 @@
         "description": "Melhorias gerais no sistema."
       }
     ]
+  },
+  {
+    "version": "0.7.2.1-alpha",
+    "date": "2023-12-05T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Diversos problemas corrigidos."
+      },
+      {
+        "type": "Correções",
+        "description": "Melhoria no visual dos agendamentos."
+      },
+      {
+        "type": "Correções",
+        "description": "Problema no layout dos agendamentos."
+      }
+    ]
   }
 ]

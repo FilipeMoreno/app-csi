@@ -19,6 +19,7 @@ import setores from './setores.json'
 import horarios from './horarios.json'
 import { Clock } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import AgendarAgendamento from './agendar'
 
 export default function ReservasHome() {
   const [date, setDate] = useState(new Date())
@@ -38,7 +39,7 @@ export default function ReservasHome() {
       </div>
       <div className="mt-4 flex flex-row space-x-2">
         <Select onValueChange={setSetor} value={setor}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Selecione o setor" />
           </SelectTrigger>
           <SelectContent>
@@ -52,7 +53,7 @@ export default function ReservasHome() {
           </SelectContent>
         </Select>
         <Select onValueChange={setPeriodo} value={periodo}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full">
             <SelectValue placeholder="Selecione o período" />
           </SelectTrigger>
           <SelectContent>
@@ -109,14 +110,14 @@ export default function ReservasHome() {
                         {horario.reservado ? (
                           <Badge
                             variant={'outline'}
-                            className="ml-2 border border-error uppercase text-error"
+                            className="ml-2 border border-error font-bold uppercase text-error"
                           >
                             Reservado
                           </Badge>
                         ) : (
                           <Badge
                             variant={'outline'}
-                            className="ml-2 border border-success uppercase text-success"
+                            className="ml-2 border border-success font-bold uppercase text-success"
                           >
                             Disponível
                           </Badge>
@@ -125,7 +126,11 @@ export default function ReservasHome() {
                     </CardHeader>
                     <CardContent>
                       {!horario.reservado && (
-                        <Button className="mt-2">Reservar horário</Button>
+                        <AgendarAgendamento
+                          data={date}
+                          setor={setor}
+                          horario={horario.inicio + ' - ' + horario.fim}
+                        />
                       )}
                       {horario.reservado && (
                         <div className="mt-2 flex flex-row items-center space-x-8">
@@ -133,19 +138,21 @@ export default function ReservasHome() {
                             <p className="text-[10px] font-bold uppercase text-zinc-600">
                               Reservado por
                             </p>
-                            <p>{horario.reserva?.usuario}</p>
+                            <p className="text-zinc-400">
+                              {horario.reserva?.usuario}
+                            </p>
                           </div>
                           <div className="flex flex-col">
                             <p className="text-[10px] font-bold uppercase text-zinc-600">
                               Série/Turma
                             </p>
-                            <p>Xº ANO X</p>
+                            <p className="text-zinc-400">Xº ANO X</p>
                           </div>
                           <div className="flex flex-col">
                             <p className="text-[10px] font-bold uppercase text-zinc-600">
                               Atividades
                             </p>
-                            <p>Trilhas</p>
+                            <p className="text-zinc-400">Trilhas</p>
                           </div>
                         </div>
                       )}

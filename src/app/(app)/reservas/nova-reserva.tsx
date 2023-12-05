@@ -127,44 +127,48 @@ export default function AdicionarReserva() {
               </SelectContent>
             </Select>
           </div>
-          <div className="flex w-full flex-row items-center">
-            <Label className="w-20">Horários</Label>
-            <div className="flex flex-col space-y-3">
-              {horarios
-                .filter((horario) => horario.setor === setor)
-                .map((horario) => {
-                  return horario.horarios
-                    .filter(
-                      (horarioInterno) =>
-                        horarioInterno.periodo === periodo &&
-                        !horarioInterno.reservado,
-                    )
-                    .map((horarioInterno) => {
-                      return (
-                        <div
-                          key={horarioInterno.id}
-                          className="flex flex-row space-x-2"
-                        >
-                          <Checkbox
-                            id={horarioInterno.id.toString()}
-                            value={horarioInterno.id.toString()}
-                            onChange={() =>
-                              handleCheckboxChange(horarioInterno.id.toString())
-                            }
-                            disabled={horarioInterno.reservado}
-                          />
-                          <label
-                            htmlFor={horarioInterno.id.toString()}
-                            className="text-base font-medium"
-                          >
-                            {horarioInterno.inicio} - {horarioInterno.fim}
-                          </label>
-                        </div>
+          {setor && periodo && (
+            <div className="flex w-full flex-row items-center">
+              <Label className="w-20">Horários</Label>
+              <div className="flex flex-col space-y-3">
+                {horarios
+                  .filter((horario) => horario.setor === setor)
+                  .map((horario) => {
+                    return horario.horarios
+                      .filter(
+                        (horarioInterno) =>
+                          horarioInterno.periodo === periodo &&
+                          !horarioInterno.reservado,
                       )
-                    })
-                })}
+                      .map((horarioInterno) => {
+                        return (
+                          <div
+                            key={horarioInterno.id}
+                            className="flex flex-row space-x-2"
+                          >
+                            <Checkbox
+                              id={horarioInterno.id.toString()}
+                              value={horarioInterno.id.toString()}
+                              onChange={() =>
+                                handleCheckboxChange(
+                                  horarioInterno.id.toString(),
+                                )
+                              }
+                              disabled={horarioInterno.reservado}
+                            />
+                            <label
+                              htmlFor={horarioInterno.id.toString()}
+                              className="text-base font-medium"
+                            >
+                              {horarioInterno.inicio} - {horarioInterno.fim}
+                            </label>
+                          </div>
+                        )
+                      })
+                  })}
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <DialogFooter>
           <Button type="submit">Reservar</Button>
