@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "setor": "Informática",
+    "horarios": [
+      {
+        "id": 1,
+        "inicio": "07:15",
+        "fim": "08:00",
+        "periodo": "Manhã",
+        "reservado": true,
+        "reserva": null
+      },
+      {
+        "id": 2,
+        "inicio": "08:00",
+        "fim": "08:45",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 3,
+        "inicio": "08:45",
+        "fim": "09:30",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 4,
+        "inicio": "09:50",
+        "fim": "10: 35",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 5,
+        "inicio": "10:35",
+        "fim": "11: 20",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 6,
+        "inicio": "11:20",
+        "fim": "12: 05",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 7,
+        "inicio": "13:15",
+        "fim": "14: 00",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 8,
+        "inicio": "14:00",
+        "fim": "14: 45",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 9,
+        "inicio": "14:45",
+        "fim": "15: 30",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 10,
+        "inicio": "15:50",
+        "fim": "16: 35",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 11,
+        "inicio": "16:35",
+        "fim": "17: 20",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 12,
+        "inicio": "17:20",
+        "fim": "18: 05",
+        "periodo": "Tarde",
+        "reserva": null
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "setor": "Salão",
+    "horarios": [
+      {
+        "id": 13,
+        "inicio": "07:15",
+        "fim": "08:00",
+        "periodo": "Manhã",
+        "reservado": false,
+        "reserva": null
+      },
+      {
+        "id": 14,
+        "inicio": "08:00",
+        "fim": "08:45",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 15,
+        "inicio": "08:45",
+        "fim": "09:30",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 16,
+        "inicio": "09:50",
+        "fim": "10: 35",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 17,
+        "inicio": "10:35",
+        "fim": "11: 20",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 18,
+        "inicio": "11:20",
+        "fim": "12:05",
+        "periodo": "Manhã",
+        "reserva": null
+      },
+      {
+        "id": 19,
+        "inicio": "13: 15",
+        "fim": "14: 00",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 20,
+        "inicio": "14: 00",
+        "fim": "14: 45",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 21,
+        "inicio": "14: 45",
+        "fim": "15: 30",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 22,
+        "inicio": "15:50",
+        "fim": "16:35",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 23,
+        "inicio": "16:35",
+        "fim": "17: 20",
+        "periodo": "Tarde",
+        "reserva": null
+      },
+      {
+        "id": 24,
+        "inicio": "17:20",
+        "fim": "18: 05",
+        "periodo": "Tarde",
+        "reserva": null
+      }
+    ]
+  }
+]

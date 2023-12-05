@@ -77,6 +77,10 @@ export default function ChamadosHome() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="w-full">
+        <div>
+          <h1 className="text-2xl font-bold">Suporte</h1>
+          <p className="text-sm">Mostrando todos os chamados</p>
+        </div>
         <div className="my-4 flex flex-row items-center space-x-3">
           <Select>
             <SelectTrigger className="w-[200px]">

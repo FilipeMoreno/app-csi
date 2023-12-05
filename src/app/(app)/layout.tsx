@@ -7,10 +7,11 @@ import { Sidebar } from '@/components/sidebar'
 import { useState } from 'react'
 import Footer from '@/components/footer'
 import NextTopLoader from 'nextjs-toploader'
-import { FaComputer, FaRegAddressCard } from 'react-icons/fa6'
+import { FaRegAddressCard } from 'react-icons/fa6'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { FaRegCalendarAlt } from 'react-icons/fa'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
+import { TbTimeDuration45 } from 'react-icons/tb'
 import {
   Home,
   LayoutDashboard,
@@ -64,9 +65,9 @@ export default function RootLayout({
       subitems: [
         {
           href: '/reservas',
-          title: 'Informática',
-          icon: FaComputer,
-          role: ['reservas.informatica', 'admin'],
+          title: 'Agendamentos',
+          icon: TbTimeDuration45,
+          role: ['reservas.agendamentos', 'admin'],
         },
       ],
     },
