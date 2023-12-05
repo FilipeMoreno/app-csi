@@ -24,7 +24,6 @@ import {
 import { useState } from 'react'
 import setores from './setores.json'
 import horarios from './horarios.json'
-import { ptBR } from 'date-fns/locale'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -37,16 +36,15 @@ import { format, setDate } from 'date-fns'
 import { Badge } from '@/components/ui/badge'
 
 export default function AdicionarReserva() {
-  const [setor, setSetor] = useState('')
-  const [periodo, setPeriodo] = useState('')
-  const [selectedHorarios, setSelectedHorarios] = useState([])
-  const [date, setDate] = useState(new Date())
+  const [setor, setSetor] = useState<string>('')
+  const [periodo, setPeriodo] = useState<string>('')
+  const [selectedHorarios, setSelectedHorarios] = useState<string[]>([])
+  const [date, setDate] = useState<Date>(new Date())
 
-  const handleCheckboxChange = (event: any) => {
-    const { value } = event.target
-    setSelectedHorarios((prev: any) => {
+  const handleCheckboxChange = (value: string) => {
+    setSelectedHorarios((prev) => {
       if (prev.includes(value)) {
-        return prev.filter((horario: any) => horario !== value)
+        return prev.filter((horario) => horario !== value)
       } else {
         return [...prev, value]
       }
@@ -151,7 +149,9 @@ export default function AdicionarReserva() {
                           <Checkbox
                             id={horarioInterno.id.toString()}
                             value={horarioInterno.id.toString()}
-                            onChange={handleCheckboxChange}
+                            onChange={() =>
+                              handleCheckboxChange(horarioInterno.id.toString())
+                            }
                             disabled={horarioInterno.reservado}
                           />
                           <label
