@@ -11,14 +11,16 @@ import {
 
 import { useToast } from '@/components/ui/use-toast'
 
+import { caveat } from '@/app/fonts'
+
 export default function CarteirinhaHome() {
   const { toast } = useToast()
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <Card className="h-full w-full bg-zinc-900">
+      <Card className="h-full w-full">
         <CardHeader>
-          <CardTitle>Carteirinhas</CardTitle>
+          <CardTitle className={caveat.className}>Carteirinhas</CardTitle>
           <CardDescription>Gerencie as carteirinhas</CardDescription>
         </CardHeader>
         <CardContent>

@@ -52,6 +52,7 @@ export function Header() {
             alt="Logo"
             height={50}
             width={200}
+            priority={true}
             className="h-[36px] w-[170px] lg:h-[40px] lg:w-[200px]"
           />
           {/* <Logo className="h-12 w-12" /> */}
