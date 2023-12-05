@@ -33,12 +33,17 @@ import {
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { format, setDate } from 'date-fns'
+import { Textarea } from '@/components/ui/textarea'
 
 export default function AdicionarReserva() {
   const [setor, setSetor] = useState<string>('')
   const [periodo, setPeriodo] = useState<string>('')
   const [selectedHorarios, setSelectedHorarios] = useState<string[]>([])
   const [date, setDate] = useState<Date>(new Date())
+  const [serie, setSerie] = useState<string>('')
+  const [turma, setTurma] = useState<string>('')
+  const [curso, setCurso] = useState<string>('')
+  const [atividades, setAtividades] = useState<string>('')
 
   const handleCheckboxChange = (value: string) => {
     setSelectedHorarios((prev) => {
@@ -131,45 +136,113 @@ export default function AdicionarReserva() {
             <div className="flex w-full flex-row items-center">
               <Label className="w-20">Horários</Label>
               <div className="flex flex-col space-y-3">
-                {horarios
-                  .filter((horario) => horario.setor === setor)
-                  .map((horario) => {
-                    return horario.horarios
-                      .filter(
+                {(() => {
+                  const horariosDisponiveis = horarios
+                    .filter((horario) => horario.setor === setor)
+                    .flatMap((horario) =>
+                      horario.horarios.filter(
                         (horarioInterno) =>
                           horarioInterno.periodo === periodo &&
                           !horarioInterno.reservado,
-                      )
-                      .map((horarioInterno) => {
-                        return (
-                          <div
-                            key={horarioInterno.id}
-                            className="flex flex-row space-x-2"
-                          >
-                            <Checkbox
-                              id={horarioInterno.id.toString()}
-                              value={horarioInterno.id.toString()}
-                              onChange={() =>
-                                handleCheckboxChange(
-                                  horarioInterno.id.toString(),
-                                )
-                              }
-                              disabled={horarioInterno.reservado}
-                            />
-                            <label
-                              htmlFor={horarioInterno.id.toString()}
-                              className="text-base font-medium"
-                            >
-                              {horarioInterno.inicio} - {horarioInterno.fim}
-                            </label>
-                          </div>
-                        )
-                      })
-                  })}
+                      ),
+                    )
+
+                  if (horariosDisponiveis.length === 0) {
+                    return (
+                      <p className="text-sm text-zinc-400">
+                        não há horários disponíveis.
+                      </p>
+                    )
+                  }
+
+                  return horariosDisponiveis.map((horarioInterno) => (
+                    <div
+                      key={horarioInterno.id}
+                      className="flex flex-row space-x-2"
+                    >
+                      <Checkbox
+                        id={horarioInterno.id.toString()}
+                        value={horarioInterno.id.toString()}
+                        onClick={() =>
+                          handleCheckboxChange(horarioInterno.id.toString())
+                        }
+                        onChange={() =>
+                          handleCheckboxChange(horarioInterno.id.toString())
+                        }
+                      />
+                      <label
+                        htmlFor={horarioInterno.id.toString()}
+                        className="text-base font-medium"
+                      >
+                        {horarioInterno.inicio} - {horarioInterno.fim}
+                      </label>
+                    </div>
+                  ))
+                })()}
               </div>
             </div>
           )}
         </div>
+        {periodo && setor && selectedHorarios && (
+          <div className="flex flex-col items-center space-y-4">
+            <div className="flex w-full flex-row items-center">
+              <Label className="w-28">Curso</Label>
+              <div className="flex w-full flex-row space-x-2">
+                <Select value={curso} onValueChange={setCurso}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="1">Educação Infantil</SelectItem>
+                      <SelectItem value="2">Ensino Fundamental I</SelectItem>
+                      <SelectItem value="3">Ensino Fundamental II</SelectItem>
+                      <SelectItem value="4">Ensino Médio</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="flex w-full flex-row items-center">
+              <Label className="w-28">Série/Turma</Label>
+              <div className="flex w-full flex-row space-x-2">
+                <Select value={serie} onValueChange={setSerie}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="1">1º ano</SelectItem>
+                      <SelectItem value="2">2º ano</SelectItem>
+                      <SelectItem value="3">3º ano</SelectItem>
+                      <SelectItem value="4">4º ano</SelectItem>
+                      <SelectItem value="5">5º ano</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+                <Select value={turma} onValueChange={setTurma}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecione" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectItem value="A">A</SelectItem>
+                      <SelectItem value="B">B</SelectItem>
+                      <SelectItem value="C">C</SelectItem>
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+            <div className="flex w-full flex-row items-center">
+              <Label className="w-28">Atividades</Label>
+              <Textarea
+                value={atividades}
+                onChange={(e) => setAtividades(e.target.value)}
+              />
+            </div>
+          </div>
+        )}
         <DialogFooter>
           <Button type="submit">Reservar</Button>
         </DialogFooter>

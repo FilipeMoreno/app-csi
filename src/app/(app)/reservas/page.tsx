@@ -94,8 +94,8 @@ export default function ReservasHome() {
                 .map((horario) => (
                   <Card
                     key={horario.id}
-                    className={`border ${
-                      horario.reservado ? 'border-error' : 'border-success'
+                    className={`border-2 ${
+                      horario.reservado ? 'border-l-error' : 'border-l-success'
                     }`}
                   >
                     <CardHeader>
@@ -146,7 +146,9 @@ export default function ReservasHome() {
                             <p className="text-[10px] font-bold uppercase text-zinc-600">
                               Série/Turma
                             </p>
-                            <p className="text-zinc-400">Xº ANO X</p>
+                            <p className="text-zinc-400">
+                              {horario.reserva?.serie} {horario.reserva?.turma}
+                            </p>
                           </div>
                           <div className="flex flex-col">
                             <p className="text-[10px] font-bold uppercase text-zinc-600">

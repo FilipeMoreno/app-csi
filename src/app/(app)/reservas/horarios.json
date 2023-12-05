@@ -14,6 +14,9 @@
           "data": "2021-08-20",
           "horario": "07:15-08:00",
           "setor": "Informática",
+          "serie": "5º Ano",
+          "turma": "A",
+          "curso": "Ensino Fundamental I",
           "usuario": "Professor"
         }
       },
@@ -22,35 +25,85 @@
         "inicio": "08:00",
         "fim": "08:45",
         "periodo": "Manhã",
-        "reserva": null
+        "reservado": true,
+        "reserva": {
+          "id": 1,
+          "data": "2021-08-20",
+          "horario": "07:15-08:00",
+          "setor": "Informática",
+          "serie": "5º Ano",
+          "turma": "A",
+          "curso": "Ensino Fundamental I",
+          "usuario": "Professor"
+        }
       },
       {
         "id": 3,
         "inicio": "08:45",
         "fim": "09:30",
         "periodo": "Manhã",
-        "reserva": null
+        "reservado": true,
+        "reserva": {
+          "id": 2,
+          "data": "2021-08-20",
+          "horario": "08:45-09:30",
+          "setor": "Informática",
+          "serie": "1º Série",
+          "turma": "A",
+          "curso": "Ensino Médio",
+          "usuario": "Miguel"
+        }
       },
       {
         "id": 4,
         "inicio": "09:50",
         "fim": "10: 35",
         "periodo": "Manhã",
-        "reserva": null
+        "reservado": true,
+        "reserva": {
+          "id": 3,
+          "data": "2021-08-20",
+          "horario": "09:50-10:35",
+          "setor": "Informática",
+          "serie": "1º Série",
+          "turma": "A",
+          "curso": "Ensino Médio",
+          "usuario": "Miguel"
+        }
       },
       {
         "id": 5,
         "inicio": "10:35",
         "fim": "11: 20",
         "periodo": "Manhã",
-        "reserva": null
+        "reservado": true,
+        "reserva": {
+          "id": 1,
+          "data": "2021-08-20",
+          "horario": "07:15-08:00",
+          "setor": "Informática",
+          "serie": "8º Ano",
+          "turma": "C",
+          "curso": "Ensino Fundamental II",
+          "usuario": "Jonas"
+        }
       },
       {
         "id": 6,
         "inicio": "11:20",
         "fim": "12: 05",
         "periodo": "Manhã",
-        "reserva": null
+        "reservado": true,
+        "reserva": {
+          "id": 1,
+          "data": "2021-08-20",
+          "horario": "07:15-08:00",
+          "setor": "Informática",
+          "serie": "9º Ano",
+          "turma": "D",
+          "curso": "Ensino Fundamental II",
+          "usuario": "Luana"
+        }
       },
       {
         "id": 7,
