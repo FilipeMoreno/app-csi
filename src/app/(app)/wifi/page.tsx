@@ -129,7 +129,7 @@ export default function Home() {
       </div>
 
       <div className="mt-2 flex flex-col items-center justify-center">
-        <Card className="h-full w-full">
+        <Card className="h-full w-full border-transparent bg-transparent shadow-none">
           {!vouchers && (
             <CardHeader>
               <CardDescription>

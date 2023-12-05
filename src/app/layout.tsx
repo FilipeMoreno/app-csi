@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   title: 'APP - CSI',
   description: 'Aplicativo do Colégio Santo Inácio',
   manifest: '/manifest.json',
+  viewport: {
+    width: 'device-width',
+    height: 'device-height',
+    initialScale: 1,
+    maximumScale: 1,
+    minimumScale: 1,
+  },
 }
 
 export default function RootLayout({
@@ -97,6 +104,10 @@ export default function RootLayout({
         name="theme-color"
         media="(prefers-color-scheme: dark)"
         content="black"
+      ></meta>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
       ></meta>
       <Script src="/register-sw.js" />
 

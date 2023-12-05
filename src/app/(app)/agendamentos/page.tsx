@@ -30,8 +30,8 @@ export default function ReservasHome() {
     <div>
       <div className="flex flex-row items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Reservas</h1>
-          <p className="text-sm">Mostrando todas as reservas</p>
+          <h1 className="text-2xl font-bold">Agendamentos</h1>
+          <p className="text-sm">Mostrando todos os agendamentos</p>
         </div>
         <div>
           <AdicionarReserva />
@@ -135,26 +135,26 @@ export default function ReservasHome() {
                       {horario.reservado && (
                         <div className="mt-2 flex flex-row items-center space-x-8">
                           <div className="flex flex-col">
-                            <p className="text-[10px] font-bold uppercase text-zinc-600">
+                            <p className="text-[10px] font-bold uppercase text-zinc-500">
                               Reservado por
                             </p>
-                            <p className="text-zinc-400">
+                            <p className="text-primary">
                               {horario.reserva?.usuario}
                             </p>
                           </div>
                           <div className="flex flex-col">
-                            <p className="text-[10px] font-bold uppercase text-zinc-600">
+                            <p className="text-[10px] font-bold uppercase text-zinc-500">
                               Série/Turma
                             </p>
-                            <p className="text-zinc-400">
+                            <p className="text-primary">
                               {horario.reserva?.serie} {horario.reserva?.turma}
                             </p>
                           </div>
                           <div className="flex flex-col">
-                            <p className="text-[10px] font-bold uppercase text-zinc-600">
+                            <p className="text-[10px] font-bold uppercase text-zinc-500">
                               Atividades
                             </p>
-                            <p className="text-zinc-400">Trilhas</p>
+                            <p className="text-primary">Trilhas</p>
                           </div>
                         </div>
                       )}

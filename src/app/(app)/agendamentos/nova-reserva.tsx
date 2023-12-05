@@ -66,9 +66,10 @@ export default function AdicionarReserva() {
           <DialogTitle>Novo agendamento</DialogTitle>
           <DialogDescription>Preencha os dados abaixo</DialogDescription>
         </DialogHeader>
+
         <div className="flex flex-col items-center space-y-4">
           <div className="flex w-full flex-row items-center">
-            <Label className="w-20">Data</Label>
+            <Label className="w-28">Data</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -102,7 +103,7 @@ export default function AdicionarReserva() {
             </Popover>
           </div>
           <div className="flex w-full flex-row items-center">
-            <Label className="w-20">Setor</Label>
+            <Label className="w-28">Setor</Label>
             <Select onValueChange={setSetor} value={setor}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Selecione o setor" />
@@ -119,7 +120,7 @@ export default function AdicionarReserva() {
             </Select>
           </div>
           <div className="flex w-full flex-row items-center">
-            <Label className="w-20">Período</Label>
+            <Label className="w-28">Período</Label>
             <Select onValueChange={setPeriodo} value={periodo}>
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Selecione o período" />
@@ -134,7 +135,7 @@ export default function AdicionarReserva() {
           </div>
           {setor && periodo && (
             <div className="flex w-full flex-row items-center">
-              <Label className="w-20">Horários</Label>
+              <Label className="w-[95px]">Horários</Label>
               <div className="flex flex-col space-y-3">
                 {(() => {
                   const horariosDisponiveis = horarios
@@ -149,40 +150,108 @@ export default function AdicionarReserva() {
 
                   if (horariosDisponiveis.length === 0) {
                     return (
-                      <p className="text-sm text-zinc-400">
-                        não há horários disponíveis.
+                      <p className="text-sm text-zinc-500">
+                        Não há horários disponíveis.
                       </p>
                     )
                   }
 
-                  return horariosDisponiveis.map((horarioInterno) => (
-                    <div
-                      key={horarioInterno.id}
-                      className="flex flex-row space-x-2"
-                    >
-                      <Checkbox
-                        id={horarioInterno.id.toString()}
-                        value={horarioInterno.id.toString()}
-                        onClick={() =>
-                          handleCheckboxChange(horarioInterno.id.toString())
-                        }
-                        onChange={() =>
-                          handleCheckboxChange(horarioInterno.id.toString())
-                        }
-                      />
-                      <label
-                        htmlFor={horarioInterno.id.toString()}
-                        className="text-base font-medium"
-                      >
-                        {horarioInterno.inicio} - {horarioInterno.fim}
-                      </label>
+                  // return horariosDisponiveis.map((horarioInterno) => (
+                  //   <div
+                  //     key={horarioInterno.id}
+                  //     className="flex flex-row space-x-2"
+                  //   >
+                  //     <Checkbox
+                  //       id={horarioInterno.id.toString()}
+                  //       value={horarioInterno.id.toString()}
+                  //       onClick={() =>
+                  //         handleCheckboxChange(horarioInterno.id.toString())
+                  //       }
+                  //       onChange={() =>
+                  //         handleCheckboxChange(horarioInterno.id.toString())
+                  //       }
+                  //     />
+                  //     <label
+                  //       htmlFor={horarioInterno.id.toString()}
+                  //       className="text-base font-medium"
+                  //     >
+                  //       {horarioInterno.inicio} - {horarioInterno.fim}
+                  //     </label>
+                  //   </div>
+                  // ))
+
+                  return (
+                    <div className="flex flex-row justify-between space-x-4">
+                      <div>
+                        {horariosDisponiveis
+                          .slice(0, 3)
+                          .map((horarioInterno) => (
+                            <div
+                              key={horarioInterno.id}
+                              className="flex flex-row space-x-2"
+                            >
+                              <Checkbox
+                                id={horarioInterno.id.toString()}
+                                value={horarioInterno.id.toString()}
+                                onClick={() =>
+                                  handleCheckboxChange(
+                                    horarioInterno.id.toString(),
+                                  )
+                                }
+                                onChange={() =>
+                                  handleCheckboxChange(
+                                    horarioInterno.id.toString(),
+                                  )
+                                }
+                              />
+                              <label
+                                htmlFor={horarioInterno.id.toString()}
+                                className="text-sm font-medium"
+                              >
+                                {horarioInterno.inicio} - {horarioInterno.fim}
+                              </label>
+                            </div>
+                          ))}
+                      </div>
+                      <div>
+                        {horariosDisponiveis
+                          .slice(3, 6)
+                          .map((horarioInterno) => (
+                            <div
+                              key={horarioInterno.id}
+                              className="flex flex-row space-x-2"
+                            >
+                              <Checkbox
+                                id={horarioInterno.id.toString()}
+                                value={horarioInterno.id.toString()}
+                                onClick={() =>
+                                  handleCheckboxChange(
+                                    horarioInterno.id.toString(),
+                                  )
+                                }
+                                onChange={() =>
+                                  handleCheckboxChange(
+                                    horarioInterno.id.toString(),
+                                  )
+                                }
+                              />
+                              <label
+                                htmlFor={horarioInterno.id.toString()}
+                                className="text-sm font-medium"
+                              >
+                                {horarioInterno.inicio} - {horarioInterno.fim}
+                              </label>
+                            </div>
+                          ))}
+                      </div>
                     </div>
-                  ))
+                  )
                 })()}
               </div>
             </div>
           )}
         </div>
+
         {periodo && setor && selectedHorarios && (
           <div className="flex flex-col items-center space-y-4">
             <div className="flex w-full flex-row items-center">
@@ -243,8 +312,11 @@ export default function AdicionarReserva() {
             </div>
           </div>
         )}
+
         <DialogFooter>
-          <Button type="submit">Reservar</Button>
+          <Button className="mt-4 w-full" type="submit">
+            Reservar
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

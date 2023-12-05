@@ -43,7 +43,7 @@ export default function AgendarAgendamento({ setor, data, horario }: Dados) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={'outline'} className="text-zinc-400">
+        <Button variant={'outline'} className="w-full">
           <Plus className="h-4 w-4" /> Agendar horário
         </Button>
       </DialogTrigger>

@@ -38,8 +38,47 @@ import {
 } from '@/components/ui/sheet'
 
 import Link from 'next/link'
+import { Badge } from '@/components/ui/badge'
 
 export default function CarteirinhasSolicitacoes() {
+  const solicitacoes = [
+    {
+      id: 1,
+      nome: 'João da Silva',
+      serie: '6º ANO',
+      turma: 'B',
+      status: 'Entregue',
+      curso: 'Ensino Fundamental II',
+      createdAt: '2021-08-01',
+    },
+    {
+      id: 2,
+      nome: 'Larissa Amorim',
+      serie: '3º SÉRIE',
+      turma: 'A',
+      status: 'Aguardando foto',
+      curso: 'Ensino Médio',
+      createdAt: '2021-08-01',
+    },
+    {
+      id: 3,
+      nome: 'Gabriel Rodrigues',
+      serie: '8º ANO',
+      turma: 'C',
+      status: 'Aguardando pagamento',
+      curso: 'Ensino Fundamental II',
+      createdAt: '2021-08-01',
+    },
+    {
+      id: 4,
+      nome: 'Maria Eduarda',
+      serie: '2º SÉRIE',
+      turma: 'B',
+      status: 'Em análise',
+      curso: 'Ensino Médio',
+      createdAt: '2021-08-01',
+    },
+  ]
   return (
     <div className="flex flex-col justify-center">
       <div className="flex flex-row items-center justify-between">
@@ -80,6 +119,17 @@ export default function CarteirinhasSolicitacoes() {
                   <SelectItem value="2024">2024</SelectItem>
                   <SelectItem value="2023">2023</SelectItem>
                   <SelectItem value="2022">2022</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Curso" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="EI">Educação Infantil</SelectItem>
+                  <SelectItem value="EFI">Ensino Fundamental I</SelectItem>
+                  <SelectItem value="EFII">Ensino Fundamental II</SelectItem>
+                  <SelectItem value="EM">Ensino Médio</SelectItem>
                 </SelectContent>
               </Select>
               <Select>
@@ -125,44 +175,80 @@ export default function CarteirinhasSolicitacoes() {
         </Sheet>
       </div>
 
-      <div className="rounded-md border bg-primary-foreground md:block">
+      <div className="rounded-md border md:block">
         <Table className="relative">
           <TableHeader>
-            <TableRow>
+            <TableRow className="bg-secondary">
               <TableHead className="w-[200px]">Nome</TableHead>
               <TableHead>Série/Turma</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Data</TableHead>
               <TableHead className="text-right"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            <TableRow>
-              <TableCell className="font-medium">João João João</TableCell>
-              <TableCell>6º ANO B</TableCell>
-              <TableCell>Entregue</TableCell>
-              <TableCell className="text-right">
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" className="h-8 w-8 p-0">
-                      <span className="sr-only">Abrir opções</span>
-                      <MoreHorizontal className="h-4 w-4" />
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end">
-                    <Link href="solicitacoes/1">
-                      <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
-                        <EyeIcon className="mr-1 h-4 w-5" />
-                        Visualizar
-                      </DropdownMenuItem>
-                    </Link>
-                    <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
-                      <Trash2 className="mr-1 h-4 w-5" />
-                      Remover
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </TableCell>
-            </TableRow>
+            {solicitacoes.map((solicitacao) => {
+              return (
+                <TableRow key={solicitacao.id}>
+                  <TableCell className="font-medium">
+                    {solicitacao.nome}
+                  </TableCell>
+                  <TableCell>
+                    {solicitacao.serie} {solicitacao.turma}
+                  </TableCell>
+                  <TableCell>
+                    <Badge
+                      className={`font-bold uppercase ${
+                        solicitacao.status === 'Entregue' &&
+                        'border-success text-success'
+                      } ${
+                        solicitacao.status === 'Em análise' &&
+                        'border-error text-error'
+                      } ${
+                        solicitacao.status === 'Aguardando foto' &&
+                        'border-warning text-warning'
+                      } ${
+                        solicitacao.status === 'Aguardando pagamento' &&
+                        'border-important text-important'
+                      }`}
+                      variant={'outline'}
+                    >
+                      {solicitacao.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    {Intl.DateTimeFormat('pt-BR', {
+                      day: 'numeric',
+                      month: 'short',
+                      year: 'numeric',
+                    }).format(new Date(solicitacao.createdAt))}
+                  </TableCell>
+
+                  <TableCell className="text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className="h-8 w-8 p-0">
+                          <span className="sr-only">Abrir opções</span>
+                          <MoreHorizontal className="h-4 w-4" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <Link href={`solicitacoes/${solicitacao.id}`}>
+                          <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
+                            <EyeIcon className="mr-1 h-4 w-5" />
+                            Visualizar
+                          </DropdownMenuItem>
+                        </Link>
+                        <DropdownMenuItem className="flex cursor-pointer flex-row items-center">
+                          <Trash2 className="mr-1 h-4 w-5" />
+                          Remover
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  </TableCell>
+                </TableRow>
+              )
+            })}
           </TableBody>
         </Table>
       </div>

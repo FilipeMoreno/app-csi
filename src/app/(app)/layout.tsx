@@ -64,7 +64,7 @@ export default function RootLayout({
 
       subitems: [
         {
-          href: '/reservas',
+          href: '/agendamentos',
           title: 'Agendamentos',
           icon: TbTimeDuration45,
           role: ['reservas.agendamentos', 'admin'],

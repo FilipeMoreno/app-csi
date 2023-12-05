@@ -98,16 +98,16 @@ export default function ChamadosHome() {
             <Archive className="h-4 w-4" />
           </Button>
         </div>
-        <div className="w-[320px] overflow-x-scroll rounded-md border lg:w-full">
-          <Table className="w-[800px] lg:w-full">
+        <div className="w-[328px] flex-grow rounded-md border md:w-full lg:w-full">
+          <Table className="w-[800px] sm:w-full md:w-full lg:w-full">
             <TableHeader>
-              <TableRow>
+              <TableRow className="bg-secondary">
                 <TableHead className="w-[100px]"></TableHead>
-                <TableHead>Solicitante</TableHead>
                 <TableHead>Assunto</TableHead>
-                <TableHead>Setor</TableHead>
-                <TableHead>Usuário</TableHead>
                 <TableHead>Prioridade</TableHead>
+                <TableHead>Setor</TableHead>
+                <TableHead>Solicitante</TableHead>
+                <TableHead>Usuário</TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead className="text-right"></TableHead>
               </TableRow>
@@ -140,9 +140,48 @@ export default function ChamadosHome() {
                         )}
                       </div>
                     </TableCell>
-                    <TableCell>{item.solicitante}</TableCell>
                     <TableCell>{item.assunto}</TableCell>
+
+                    <TableCell>
+                      {item.prioridade === 'Crítica' && (
+                        <Badge
+                          variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
+                          className="flex w-full items-center justify-center border-error text-center font-bold  text-error"
+                        >
+                          {item.prioridade}
+                        </Badge>
+                      )}
+                      {item.prioridade === 'Alta' && (
+                        <Badge
+                          variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
+                          className="flex w-full items-center justify-center border-important text-center font-bold text-important"
+                        >
+                          {item.prioridade}
+                        </Badge>
+                      )}
+                      {item.prioridade === 'Moderada' && (
+                        <Badge
+                          variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
+                          className="flex w-full items-center justify-center border-warning text-center font-bold text-warning"
+                        >
+                          {item.prioridade}
+                        </Badge>
+                      )}
+                      {item.prioridade === 'Baixa' && (
+                        <Badge
+                          variant={'outline'}
+                          // eslint-disable-next-line prettier/prettier
+                          className="flex w-full items-center justify-center border-success text-center font-bold text-success"
+                        >
+                          {item.prioridade}
+                        </Badge>
+                      )}
+                    </TableCell>
                     <TableCell>{item.setor}</TableCell>
+                    <TableCell>{item.solicitante}</TableCell>
                     <TableCell>
                       {item?.usuario ? (
                         item.usuario
@@ -152,44 +191,7 @@ export default function ChamadosHome() {
                         </Button>
                       )}
                     </TableCell>
-                    <TableCell>
-                      {item.prioridade === 'Crítica' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="bg-error flex w-full items-center justify-center text-center font-bold text-white"
-                        >
-                          {item.prioridade}
-                        </Badge>
-                      )}
-                      {item.prioridade === 'Alta' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="bg-important flex w-full items-center justify-center text-center font-bold text-white"
-                        >
-                          {item.prioridade}
-                        </Badge>
-                      )}
-                      {item.prioridade === 'Moderada' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="bg-warning flex w-full items-center justify-center text-center font-bold text-white"
-                        >
-                          {item.prioridade}
-                        </Badge>
-                      )}
-                      {item.prioridade === 'Baixa' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center bg-success text-center font-bold text-white"
-                        >
-                          {item.prioridade}
-                        </Badge>
-                      )}
-                    </TableCell>
+
                     <TableCell>
                       {item.status === 'Aberto' && (
                         <Badge
