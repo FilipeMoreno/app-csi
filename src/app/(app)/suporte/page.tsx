@@ -21,7 +21,7 @@ import {
   DropdownMenuSubTrigger,
 } from '@/components/ui/dropdown-menu'
 
-import { Archive } from 'lucide-react'
+import { Archive, PlusCircle } from 'lucide-react'
 import React from 'react'
 import {
   Select,
@@ -77,9 +77,14 @@ export default function ChamadosHome() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="w-full">
-        <div>
-          <h1 className="text-2xl font-bold">Suporte</h1>
-          <p className="text-sm">Mostrando todos os chamados</p>
+        <div className="flex flex-row items-center justify-between">
+          <div>
+            <h1 className="text-2xl font-bold">Suporte</h1>
+            <p className="text-sm">Mostrando todos os chamados</p>
+          </div>
+          <Button variant={'outline'}>
+            <PlusCircle className="mr-2 h-4 w-4" /> Chamado
+          </Button>
         </div>
         <div className="my-4 flex flex-row items-center space-x-3">
           <Select>
