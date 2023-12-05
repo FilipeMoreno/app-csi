@@ -109,14 +109,14 @@ export default function ReservasHome() {
                         {horario.reservado ? (
                           <Badge
                             variant={'outline'}
-                            className="border border-error"
+                            className="ml-2 border border-error text-error"
                           >
                             Reservado
                           </Badge>
                         ) : (
                           <Badge
                             variant={'outline'}
-                            className="border border-success"
+                            className="ml-2 border border-success text-success"
                           >
                             Disponível
                           </Badge>
