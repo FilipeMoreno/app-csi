@@ -217,11 +217,11 @@ export default function CarteirinhasSolicitacoes() {
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    {Intl.DateTimeFormat('pt-BR', {
+                    {/* {Intl.DateTimeFormat('pt-BR', {
                       day: 'numeric',
                       month: 'short',
                       year: 'numeric',
-                    }).format(new Date(solicitacao.createdAt))}
+                    }).format(new Date(solicitacao.createdAt))} */}
                   </TableCell>
 
                   <TableCell className="text-right">
