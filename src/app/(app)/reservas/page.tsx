@@ -76,12 +76,7 @@ export default function ReservasHome() {
             initialFocus
           />
         </div>
-        <div className="flex w-full flex-col space-y-2">
-          <div className="flex flex-row items-center justify-center space-x-1">
-            <span className="text-lg font-bold">{setor}</span>
-            <span className="text-lg">({periodo})</span>
-          </div>
-
+        <div className="flex w-full flex-col space-y-4">
           {horarios
             .filter(
               (horario) =>

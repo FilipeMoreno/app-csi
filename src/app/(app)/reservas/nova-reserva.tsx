@@ -33,7 +33,6 @@ import {
 } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 import { format, setDate } from 'date-fns'
-import { Badge } from '@/components/ui/badge'
 
 export default function AdicionarReserva() {
   const [setor, setSetor] = useState<string>('')
@@ -70,7 +69,7 @@ export default function AdicionarReserva() {
                 <Button
                   variant={'outline'}
                   className={cn(
-                    'w-[280px] w-full justify-start text-left font-normal',
+                    'w-full justify-start text-left font-normal',
                     !date && 'text-muted-foreground',
                   )}
                 >
