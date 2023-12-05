@@ -17,6 +17,8 @@ import AdicionarReserva from './nova-reserva'
 
 import setores from './setores.json'
 import horarios from './horarios.json'
+import { Clock } from 'lucide-react'
+import { Badge } from '@/components/ui/badge'
 
 export default function ReservasHome() {
   const [date, setDate] = useState(new Date())
@@ -96,17 +98,55 @@ export default function ReservasHome() {
                     }`}
                   >
                     <CardHeader>
-                      <CardTitle>
+                      <CardTitle
+                        className={`flex flex-row items-center text-xl font-bold ${
+                          horario.reservado ? 'text-error' : 'text-success'
+                        }
+                        `}
+                      >
+                        <Clock className="mr-2 h-4 w-4" />
                         {horario.inicio} - {horario.fim}
+                        {horario.reservado ? (
+                          <Badge
+                            variant={'outline'}
+                            className="border border-error"
+                          >
+                            Reservado
+                          </Badge>
+                        ) : (
+                          <Badge
+                            variant={'outline'}
+                            className="border border-success"
+                          >
+                            Disponível
+                          </Badge>
+                        )}
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p>{horario.reservado ? 'Reservado' : 'Disponível'}</p>
-                      {!horario.reservado && <Button>Reservar horário</Button>}
+                      {!horario.reservado && (
+                        <Button className="mt-6">Reservar horário</Button>
+                      )}
                       {horario.reservado && (
-                        <div>
-                          <p>Reservado por: {horario.reserva?.usuario}</p>
-                          <p>Setor: {horario.reserva?.setor}</p>
+                        <div className="mt-6 flex flex-row items-center space-x-8">
+                          <div className="flex flex-col">
+                            <p className="text-[10px] font-bold uppercase text-zinc-600">
+                              Reservado por
+                            </p>
+                            <p>{horario.reserva?.usuario}</p>
+                          </div>
+                          <div className="flex flex-col">
+                            <p className="text-[10px] font-bold uppercase text-zinc-600">
+                              Série/Turma
+                            </p>
+                            <p>Xº ANO X</p>
+                          </div>
+                          <div className="flex flex-col">
+                            <p className="text-[10px] font-bold uppercase text-zinc-600">
+                              Atividades
+                            </p>
+                            <p>Trilhas</p>
+                          </div>
                         </div>
                       )}
                     </CardContent>
