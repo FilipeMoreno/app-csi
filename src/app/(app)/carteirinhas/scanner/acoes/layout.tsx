@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Scanner de QRCode',
 }
 
-export default function CarteirinhasScannerAcoes({
+export default function CarteirinhasScanner({
   children,
 }: {
   children: React.ReactNode

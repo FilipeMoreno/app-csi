@@ -44,7 +44,7 @@ export default function CarteirinhasDetalhes() {
 
   const pagestyle = `
   @page {
-    margin: 0mm 0mm 0mm 1mm;
+    margin: 0mm;
     size: 86mm 54mm landscape;
   }
   @media print {
@@ -279,7 +279,7 @@ export default function CarteirinhasDetalhes() {
           </Alert>
         </div>
       </div>
-      <div>
+      <div className="hidden flex-col lg:flex">
         <div className="mb-4 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold">Carteirinha</h1>
