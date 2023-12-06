@@ -34,7 +34,7 @@ export default function CarteirinhasScannerAcoes() {
 
   function handleChangeStatus() {
     toast({
-      title: `Status de ${QRCode} alterado!`,
+      title: `Status de ${qrcode} alterado!`,
       description: `O status foi alterado para ${status} com sucesso!`,
       variant: 'success',
     })
