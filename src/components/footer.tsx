@@ -10,15 +10,11 @@ export default function Footer() {
         <div className="flex flex-row items-center justify-center">
           <Image
             alt="Logo"
-            width={20}
-            height={20}
+            width={30}
+            height={30}
             src={'/icons/icon-512x512.png'}
-            className="mr-1"
+            className="mb-1"
           />
-
-          <span className="font-medium text-tertiary">
-            Colégio Santo Inácio
-          </span>
         </div>
         <div className="flex flex-row items-center justify-center text-xs">
           <Code2 className="mr-1 h-4 w-4 text-zinc-600" />

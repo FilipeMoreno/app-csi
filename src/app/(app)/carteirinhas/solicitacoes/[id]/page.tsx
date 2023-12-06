@@ -38,7 +38,6 @@ import Link from 'next/link'
 import QRCode from 'react-qr-code'
 import ReactToPrint from 'react-to-print'
 import Image from 'next/image'
-import image from 'next/image'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
