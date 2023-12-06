@@ -41,7 +41,7 @@ import Image from 'next/image'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
-  const pagestyle = `{ size: 325px 208px }`
+  const pagestyle = `@page { margin: 0px 0px 0px 0px !important; width: 1px; height: 1px } @media print { body { -webkit-print-color-adjust: exact; } } `
 
   const componentRef = useRef()
 
@@ -291,19 +291,19 @@ export default function CarteirinhasDetalhes() {
               width={370}
               priority={true}
               quality={100}
-              className="relative mx-4 my-2"
+              className="mx-4 my-2"
             />
             <div>
               <QRCode
                 value="https://app-csi.vercel.app/carteirinhas/solicitacoes/1"
-                size={120}
-                className="relative mr-8 mt-16"
+                size={110}
+                className=" my-4 mr-8"
               />
             </div>
           </div>
           <div className="h-[330px] w-full bg-[rgb(150,42,44)]">
             <div className="flex flex-row items-center space-x-8 p-4">
-              <img src="https://via.placeholder.com/150x250" />
+              <img src="https://via.placeholder.com/200x250" />
               <div>
                 <h1 className="my-6 text-2xl font-bold uppercase text-white">
                   NOME DO ALUNO AQUI
