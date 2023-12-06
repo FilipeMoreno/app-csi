@@ -298,5 +298,39 @@
         "description": "Problema no layout dos agendamentos."
       }
     ]
+  },
+  {
+    "version": "0.7.3.1-alpha",
+    "date": "2023-12-05T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Correções gerais."
+      }
+    ]
+  },
+  {
+    "version": "0.7.4.1-alpha",
+    "date": "2023-12-05T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Correções",
+        "description": "Correções gerais."
+      }
+    ]
+  },
+  {
+    "version": "0.7.5.1-alpha",
+    "date": "2023-12-05T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Preview de carteirinhas."
+      },
+      {
+        "type": "Adições",
+        "description": "Adicionado botão de impressão nos detalhes de carteirinhas."
+      }
+    ]
   }
 ]
