@@ -33,11 +33,15 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
-import { useState } from 'react'
+import { LegacyRef, useRef, useState } from 'react'
 import Link from 'next/link'
+import QRCode from 'react-qr-code'
+import ReactToPrint from 'react-to-print'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
+
+  const componentRef = useRef()
 
   return (
     <div>
@@ -259,6 +263,107 @@ export default function CarteirinhasDetalhes() {
               Solicitação criada em 01 de janeiro de 2023
             </AlertDescription>
           </Alert>
+        </div>
+      </div>
+      <div>
+        <div className="mb-4 flex items-center justify-between">
+          <div>
+            <h1 className="text-xl font-bold">Carteirinha</h1>
+            <span>Mostrando a carteirinha</span>
+          </div>
+          <ReactToPrint
+            trigger={() => <Button variant={'outline'}>Imprimir</Button>}
+            content={() => componentRef.current || null}
+          />
+        </div>
+        <div
+          ref={componentRef as unknown as LegacyRef<HTMLDivElement>}
+          className="flex flex-col items-center justify-center border"
+        >
+          <div className="flex h-32 w-full items-center justify-between bg-white">
+            <img
+              src="http://colegiosantoinacio.com.br/img/logo.png"
+              alt="Logo"
+              width={370}
+              height={180}
+              className="relative mx-4 my-2"
+            />
+            <div>
+              <QRCode value="hey" size={150} className="relative mr-4 mt-16" />
+            </div>
+          </div>
+          <div className="h-[320px] w-full bg-[rgb(150,42,44)]">
+            <div className="flex flex-row items-center space-x-8 p-4">
+              <img src="https://via.placeholder.com/150x250" />
+              <div>
+                <h1 className="my-6 text-2xl font-bold uppercase text-white">
+                  NOME DO ALUNO AQUI
+                </h1>
+                <div className="] flex flex-row items-center justify-between">
+                  <div className="my-1 flex w-[300px] flex-col">
+                    <span className="text-xs font-bold uppercase text-white">
+                      Data de nascimento
+                    </span>
+                    <span className="text-lg font-bold uppercase text-white">
+                      00/00/0000
+                    </span>
+                  </div>
+                  <div className="my-1 flex w-[300px] flex-col">
+                    <span className="text-xs font-bold uppercase text-white">
+                      Matrícula
+                    </span>
+                    <span className="text-lg font-bold uppercase text-white">
+                      00000
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-row items-center justify-between">
+                  <div className="my-1 flex w-[300px] flex-col">
+                    <span className="text-xs font-bold uppercase text-white">
+                      Série/Turma:
+                    </span>
+                    <span className="text-lg font-bold uppercase text-white">
+                      1º ANO A
+                    </span>
+                  </div>
+                  <div className="my-1 flex w-[300px] flex-col">
+                    <span className="text-xs font-bold uppercase text-white">
+                      Curso:
+                    </span>
+                    <span className="text-lg font-bold uppercase text-white">
+                      Ensino Médio
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-row items-center justify-between">
+                  <div className="my-1 flex w-[300px] flex-col">
+                    <span className="text-xs font-bold uppercase text-white">
+                      CPF:
+                    </span>
+                    <span className="text-lg font-bold uppercase text-white">
+                      000.000.000-00
+                    </span>
+                  </div>
+                  <div className="my-1 flex w-[300px] flex-col">
+                    <span className="text-xs font-bold uppercase text-white">
+                      RG:
+                    </span>
+                    <span className="text-lg font-bold uppercase text-white">
+                      00.000.000-0
+                    </span>
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center space-x-1">
+                  <span className="font-bold uppercase text-white">
+                    Validade:
+                  </span>
+                  <span className="font-bold uppercase text-white">
+                    00/00/0000
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
