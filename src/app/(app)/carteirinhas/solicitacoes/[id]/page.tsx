@@ -50,6 +50,7 @@ export default function CarteirinhasDetalhes() {
   @media print {
     body {
       -webkit-print-color-adjust: exact;
+      width: 100%;
     }
   }
 `
