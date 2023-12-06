@@ -45,7 +45,7 @@ export default function CarteirinhasDetalhes() {
   const pagestyle = `
   @page {
     margin: 0mm;
-    size: 210mm 297mm;
+    size: 86mm 54mm;
   }
   @media print {
     body {
