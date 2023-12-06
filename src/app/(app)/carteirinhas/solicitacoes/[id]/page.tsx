@@ -41,7 +41,18 @@ import Image from 'next/image'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
-  const pagestyle = `@page { margin: 0px 0px 0px 0px !important; width: 1px; height: 1px } @media print { body { -webkit-print-color-adjust: exact; } } `
+
+  const pagestyle = `
+  @page {
+    margin: 0mm;
+    size: 210mm 297mm;
+  }
+  @media print {
+    body {
+      -webkit-print-color-adjust: exact;
+    }
+  }
+`
 
   const componentRef = useRef()
 
@@ -303,72 +314,74 @@ export default function CarteirinhasDetalhes() {
           </div>
           <div className="h-[330px] w-full bg-[rgb(150,42,44)]">
             <div className="flex flex-row items-center space-x-8 p-4">
-              <img src="https://via.placeholder.com/200x250" />
+              <div className="flex flex-col items-center justify-center">
+                <img src="https://via.placeholder.com/200x250" />
+                <div className="mt-4 flex items-center space-x-2">
+                  <span className="font-bold uppercase text-white">
+                    Validade:
+                  </span>
+                  <span className="font-bold uppercase text-white">
+                    00/00/0000
+                  </span>
+                </div>
+              </div>
               <div>
-                <h1 className="my-6 text-2xl font-bold uppercase text-white">
+                <h1 className="-mt-8 mb-8 text-3xl font-bold uppercase text-white">
                   NOME DO ALUNO AQUI
                 </h1>
-                <div className="] flex flex-row items-center justify-between">
+                <div className="flex flex-row items-center justify-between">
                   <div className="my-1 flex w-[300px] flex-col">
-                    <span className="text-xs font-bold uppercase text-white">
+                    <span className="text-sm font-bold uppercase text-white">
                       Data de nascimento
                     </span>
-                    <span className="text-lg font-bold uppercase text-white">
+                    <span className="text-xl font-bold uppercase text-white">
                       00/00/0000
                     </span>
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
-                    <span className="text-xs font-bold uppercase text-white">
+                    <span className="text-sm font-bold uppercase text-white">
                       Matrícula
                     </span>
-                    <span className="text-lg font-bold uppercase text-white">
+                    <span className="text-xl font-bold uppercase text-white">
                       00000
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-row items-center justify-between">
                   <div className="my-1 flex w-[300px] flex-col">
-                    <span className="text-xs font-bold uppercase text-white">
+                    <span className="text-sm font-bold uppercase text-white">
                       Série/Turma
                     </span>
-                    <span className="text-lg font-bold uppercase text-white">
+                    <span className="text-xl font-bold uppercase text-white">
                       1º ANO A
                     </span>
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
-                    <span className="text-xs font-bold uppercase text-white">
+                    <span className="text-sm font-bold uppercase text-white">
                       Curso
                     </span>
-                    <span className="text-lg font-bold uppercase text-white">
+                    <span className="text-xl font-bold uppercase text-white">
                       Ensino Médio
                     </span>
                   </div>
                 </div>
                 <div className="flex flex-row items-center justify-between">
                   <div className="my-1 flex w-[300px] flex-col">
-                    <span className="text-xs font-bold uppercase text-white">
+                    <span className="text-sm font-bold uppercase text-white">
                       CPF
                     </span>
-                    <span className="text-lg font-bold uppercase text-white">
+                    <span className="text-xl font-bold uppercase text-white">
                       000.000.000-00
                     </span>
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
-                    <span className="text-xs font-bold uppercase text-white">
+                    <span className="text-sm font-bold uppercase text-white">
                       RG
                     </span>
-                    <span className="text-lg font-bold uppercase text-white">
+                    <span className="text-xl font-bold uppercase text-white">
                       00.000.000-0
                     </span>
                   </div>
-                </div>
-                <div className="mt-4 flex items-center space-x-1">
-                  <span className="font-bold uppercase text-white">
-                    Validade
-                  </span>
-                  <span className="font-bold uppercase text-white">
-                    00/00/0000
-                  </span>
                 </div>
               </div>
             </div>
