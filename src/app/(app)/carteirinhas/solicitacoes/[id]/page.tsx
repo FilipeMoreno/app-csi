@@ -37,6 +37,7 @@ import { LegacyRef, useRef, useState } from 'react'
 import Link from 'next/link'
 import QRCode from 'react-qr-code'
 import ReactToPrint from 'react-to-print'
+import Image from 'next/image'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
@@ -281,18 +282,20 @@ export default function CarteirinhasDetalhes() {
           className="flex flex-col items-center justify-center border"
         >
           <div className="flex h-32 w-full items-center justify-between bg-white">
-            <img
+            <Image
               src="http://colegiosantoinacio.com.br/img/logo.png"
               alt="Logo"
+              height={600}
               width={370}
-              height={180}
+              priority={true}
+              quality={100}
               className="relative mx-4 my-2"
             />
             <div>
               <QRCode value="hey" size={150} className="relative mr-4 mt-16" />
             </div>
           </div>
-          <div className="h-[320px] w-full bg-[rgb(150,42,44)]">
+          <div className="h-[310px] w-full bg-[rgb(150,42,44)]">
             <div className="flex flex-row items-center space-x-8 p-4">
               <img src="https://via.placeholder.com/150x250" />
               <div>
@@ -320,7 +323,7 @@ export default function CarteirinhasDetalhes() {
                 <div className="flex flex-row items-center justify-between">
                   <div className="my-1 flex w-[300px] flex-col">
                     <span className="text-xs font-bold uppercase text-white">
-                      Série/Turma:
+                      Série/Turma
                     </span>
                     <span className="text-lg font-bold uppercase text-white">
                       1º ANO A
@@ -328,7 +331,7 @@ export default function CarteirinhasDetalhes() {
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
                     <span className="text-xs font-bold uppercase text-white">
-                      Curso:
+                      Curso
                     </span>
                     <span className="text-lg font-bold uppercase text-white">
                       Ensino Médio
@@ -338,7 +341,7 @@ export default function CarteirinhasDetalhes() {
                 <div className="flex flex-row items-center justify-between">
                   <div className="my-1 flex w-[300px] flex-col">
                     <span className="text-xs font-bold uppercase text-white">
-                      CPF:
+                      CPF
                     </span>
                     <span className="text-lg font-bold uppercase text-white">
                       000.000.000-00
@@ -346,7 +349,7 @@ export default function CarteirinhasDetalhes() {
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
                     <span className="text-xs font-bold uppercase text-white">
-                      RG:
+                      RG
                     </span>
                     <span className="text-lg font-bold uppercase text-white">
                       00.000.000-0
@@ -355,7 +358,7 @@ export default function CarteirinhasDetalhes() {
                 </div>
                 <div className="mt-4 flex items-center space-x-1">
                   <span className="font-bold uppercase text-white">
-                    Validade:
+                    Validade
                   </span>
                   <span className="font-bold uppercase text-white">
                     00/00/0000
