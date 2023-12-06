@@ -41,6 +41,7 @@ import Image from 'next/image'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
+  const pagestyle = `{ size: 325px 208px }`
 
   const componentRef = useRef()
 
@@ -275,6 +276,7 @@ export default function CarteirinhasDetalhes() {
           <ReactToPrint
             trigger={() => <Button variant={'outline'}>Imprimir</Button>}
             content={() => componentRef.current || null}
+            pageStyle={pagestyle}
           />
         </div>
         <div
