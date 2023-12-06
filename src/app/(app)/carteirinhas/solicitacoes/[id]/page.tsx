@@ -294,10 +294,10 @@ export default function CarteirinhasDetalhes() {
               className="relative mx-4 my-2"
             />
             <div>
-              <QRCode value="hey" size={150} className="relative mr-4 mt-16" />
+              <QRCode value="hey" size={120} className="relative mr-8 mt-16" />
             </div>
           </div>
-          <div className="h-[310px] w-full bg-[rgb(150,42,44)]">
+          <div className="h-[330px] w-full bg-[rgb(150,42,44)]">
             <div className="flex flex-row items-center space-x-8 p-4">
               <img src="https://via.placeholder.com/150x250" />
               <div>
