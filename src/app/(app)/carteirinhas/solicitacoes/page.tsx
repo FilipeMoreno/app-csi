@@ -2,7 +2,14 @@
 
 import { Button } from '@/components/ui/button'
 
-import { EyeIcon, FilterIcon, MoreHorizontal, Plus, Trash2 } from 'lucide-react'
+import {
+  EyeIcon,
+  FilterIcon,
+  MoreHorizontal,
+  Plus,
+  ScanLine,
+  Trash2,
+} from 'lucide-react'
 
 import {
   Select,
@@ -88,14 +95,18 @@ export default function CarteirinhasSolicitacoes() {
         </div>
         <div>
           <Button variant={'outline'}>
-            {' '}
             <Plus className="mr-2 h-4 w-4" /> Solicitação
           </Button>
         </div>
       </div>
 
-      <div className="flex flex-row items-center justify-between space-x-4">
+      <div className="flex flex-row items-center justify-between space-x-2">
         <Input className="my-4 w-full" placeholder="Pesquisar" />
+        <Link href={'/carteirinhas/scanner'}>
+          <Button variant={'outline'} size={'icon'}>
+            <ScanLine className="h-4 w-4" />
+          </Button>
+        </Link>
 
         <Sheet>
           <SheetTrigger asChild>

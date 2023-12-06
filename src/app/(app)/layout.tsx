@@ -12,7 +12,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { FaRegCalendarAlt } from 'react-icons/fa'
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import { TbTimeDuration45 } from 'react-icons/tb'
-import { MdQrCodeScanner } from 'react-icons/md'
 import {
   Home,
   LayoutDashboard,
@@ -83,16 +82,10 @@ export default function RootLayout({
           icon: List,
         },
         {
-          href: '/carteirinhas/scanner',
-          title: 'Scanner',
-          role: ['carteirinhas.scanner', 'admin'],
-          icon: ScanLine,
-        },
-        {
           href: '/carteirinhas/scanner/acoes',
           title: 'Scanner Ações',
           role: ['carteirinhas.scanner', 'admin'],
-          icon: MdQrCodeScanner,
+          icon: ScanLine,
         },
         {
           href: '/carteirinhas/configuracoes',
