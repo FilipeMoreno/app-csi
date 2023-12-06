@@ -294,7 +294,11 @@ export default function CarteirinhasDetalhes() {
               className="relative mx-4 my-2"
             />
             <div>
-              <QRCode value="hey" size={120} className="relative mr-8 mt-16" />
+              <QRCode
+                value="https://app-csi.vercel.app/carteirinhas/solicitacoes/1"
+                size={120}
+                className="relative mr-8 mt-16"
+              />
             </div>
           </div>
           <div className="h-[330px] w-full bg-[rgb(150,42,44)]">
