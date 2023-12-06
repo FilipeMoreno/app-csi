@@ -14,6 +14,8 @@ export default function CarteirinhasScanner() {
   const router = useRouter()
 
   useEffect(() => {
+    let id = ''
+
     if (qrcode) {
       toast({
         title: 'Carteirinha encontrada!',
@@ -21,8 +23,14 @@ export default function CarteirinhasScanner() {
         variant: 'success',
       })
 
+      if (qrcode.includes('http')) {
+        id = qrcode.split('/').pop() as string
+      } else {
+        id = qrcode
+      }
+
       setTimeout(() => {
-        router.push(`/carteirinhas/solicitacoes/${qrcode}`)
+        router.push(`/carteirinhas/solicitacoes/${id}`)
       }, 1000)
     }
   }, [qrcode])
