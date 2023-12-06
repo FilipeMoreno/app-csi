@@ -38,6 +38,7 @@ import Link from 'next/link'
 import QRCode from 'react-qr-code'
 import ReactToPrint from 'react-to-print'
 import Image from 'next/image'
+import image from 'next/image'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
@@ -313,22 +314,32 @@ export default function CarteirinhasDetalhes() {
               />
             </div>
           </div>
-          <div className="h-[330px] w-full bg-[rgb(150,42,44)]">
+          <div
+            className="h-[330px] w-full bg-[rgb(150,42,44)]"
+            style={{
+              backgroundImage: `url('https://i.stack.imgur.com/8Jeyb.png')`,
+            }}
+          >
             <div className="flex flex-row items-center space-x-8 p-4">
               <div className="flex flex-col items-center justify-center">
-                <img src="https://via.placeholder.com/200x250" />
+                <img
+                  src="https://www.lovekylie.com/extern/uploads/2023/09/9afc14cb-49d8-486e-97d4-9794d9435c57.jpg"
+                  height={250}
+                  width={200}
+                  className="h-[250px] w-[200px]"
+                />
                 <div className="mt-4 flex items-center space-x-2">
                   <span className="font-bold uppercase text-white">
                     Validade:
                   </span>
                   <span className="font-bold uppercase text-white">
-                    00/00/0000
+                    31/03/2025
                   </span>
                 </div>
               </div>
               <div>
                 <h1 className="-mt-8 mb-8 text-3xl font-bold uppercase text-white">
-                  NOME DO ALUNO AQUI
+                  Taylor Alison Swift
                 </h1>
                 <div className="flex flex-row items-center justify-between">
                   <div className="my-1 flex w-[300px] flex-col">
@@ -336,7 +347,7 @@ export default function CarteirinhasDetalhes() {
                       Data de nascimento
                     </span>
                     <span className="text-xl font-bold uppercase text-white">
-                      00/00/0000
+                      13/12/1989
                     </span>
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
@@ -344,7 +355,7 @@ export default function CarteirinhasDetalhes() {
                       Matrícula
                     </span>
                     <span className="text-xl font-bold uppercase text-white">
-                      00000
+                      123456
                     </span>
                   </div>
                 </div>
@@ -354,7 +365,7 @@ export default function CarteirinhasDetalhes() {
                       Série/Turma
                     </span>
                     <span className="text-xl font-bold uppercase text-white">
-                      1º ANO A
+                      3º SÉRIE A
                     </span>
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
@@ -372,7 +383,7 @@ export default function CarteirinhasDetalhes() {
                       CPF
                     </span>
                     <span className="text-xl font-bold uppercase text-white">
-                      000.000.000-00
+                      560.293.833-88
                     </span>
                   </div>
                   <div className="my-1 flex w-[300px] flex-col">
@@ -380,7 +391,7 @@ export default function CarteirinhasDetalhes() {
                       RG
                     </span>
                     <span className="text-xl font-bold uppercase text-white">
-                      00.000.000-0
+                      29.865.222-5
                     </span>
                   </div>
                 </div>
