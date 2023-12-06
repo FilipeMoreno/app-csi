@@ -24,11 +24,23 @@ import {
 } from '@/components/ui/select'
 import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import QRCode from 'react-qr-code'
 
 export default function CarteirinhasScannerAcoes() {
   const { toast } = useToast()
 
   const [qrcode, setQrCode] = useState<string | null>(null)
+  const [status, setStatus] = useState('')
+
+  function handleChangeStatus() {
+    toast({
+      title: `Status de ${QRCode} alterado!`,
+      description: `O status foi alterado para ${status} com sucesso!`,
+      variant: 'success',
+    })
+
+    setQrCode(null)
+  }
 
   useEffect(() => {
     if (qrcode) {
@@ -68,7 +80,7 @@ export default function CarteirinhasScannerAcoes() {
                   <AlertDialogTitle>Adicionar status</AlertDialogTitle>
                   <AlertDialogDescription>
                     Selecione o status que deseja adicionar
-                    <Select>
+                    <Select onValueChange={setStatus}>
                       <SelectTrigger className="mt-2 w-full">
                         <SelectValue placeholder="Selecione o status" />
                       </SelectTrigger>
@@ -87,7 +99,7 @@ export default function CarteirinhasScannerAcoes() {
                   <AlertDialogCancel onClick={() => setQrCode(null)}>
                     Cancelar
                   </AlertDialogCancel>
-                  <AlertDialogAction onClick={() => setQrCode(null)}>
+                  <AlertDialogAction onClick={handleChangeStatus}>
                     Continuar
                   </AlertDialogAction>
                 </AlertDialogFooter>

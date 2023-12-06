@@ -83,7 +83,7 @@ export default function RootLayout({
         },
         {
           href: '/carteirinhas/scanner/acoes',
-          title: 'Scanner Ações',
+          title: 'Scanner',
           role: ['carteirinhas.scanner', 'admin'],
           icon: ScanLine,
         },
