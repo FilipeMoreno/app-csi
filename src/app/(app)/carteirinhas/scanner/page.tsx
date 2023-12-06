@@ -4,31 +4,14 @@ import { useToast } from '@/components/ui/use-toast'
 
 import CustomQrScanner from '@/components/CustomQrScanner'
 import { useEffect, useState } from 'react'
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog'
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from '@/components/ui/select'
-import { Plus } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation'
 
-export default function CarteirinhasScannerAcoes() {
+export default function CarteirinhasScanner() {
   const { toast } = useToast()
 
   const [qrcode, setQrCode] = useState<string | null>(null)
+
+  const router = useRouter()
 
   useEffect(() => {
     if (qrcode) {
@@ -37,14 +20,18 @@ export default function CarteirinhasScannerAcoes() {
         description: `O código ${qrcode} foi encontrado`,
         variant: 'success',
       })
+
+      setTimeout(() => {
+        router.push(`/carteirinhas/solicitacoes/${qrcode}`)
+      }, 1000)
     }
   }, [qrcode])
 
   return (
     <>
       <div className="mb-4 flex flex-col">
-        <h1 className="text-3xl font-bold">Scanner de ações rápidas</h1>
-        <p>Aponte a câmera para o QR Code para visualizar as ações rápidas</p>
+        <h1 className="text-3xl font-bold">Scanner</h1>
+        <p>Aponte a câmera para o QR Code</p>
       </div>
       <div className="flex flex-wrap gap-8">
         <div className="h-96 w-full max-w-sm rounded-xl bg-secondary p-4">
@@ -56,40 +43,6 @@ export default function CarteirinhasScannerAcoes() {
             }}
             onScan={(scannedCode) => setQrCode(scannedCode)}
           />
-          {qrcode && (
-            <AlertDialog open>
-              <AlertDialogTrigger asChild>
-                <Button variant={'outline'}>
-                  <Plus className="mr-2 h-4 w-4" /> Status
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Adicionar status</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    Selecione o status que deseja adicionar
-                    <Select>
-                      <SelectTrigger className="mt-2 w-full">
-                        <SelectValue placeholder="Selecione o status" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Entregue">Entregue</SelectItem>
-                        <SelectItem value="Produzida">Produzida</SelectItem>
-                        <SelectItem value="Pagamento recebido">
-                          Pagamento recebido
-                        </SelectItem>
-                        <SelectItem value="Aprovada">Aprovada</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction>Continuar</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          )}
         </div>
       </div>
     </>
