@@ -37,41 +37,6 @@ export default function CarteirinhasScannerAcoes() {
         description: `O código ${qrcode} foi encontrado`,
         variant: 'success',
       })
-
-      return (
-        <AlertDialog open>
-          <AlertDialogTrigger asChild>
-            <Button variant={'outline'}>
-              <Plus className="mr-2 h-4 w-4" /> Status
-            </Button>
-          </AlertDialogTrigger>
-          <AlertDialogContent>
-            <AlertDialogHeader>
-              <AlertDialogTitle>Adicionar status</AlertDialogTitle>
-              <AlertDialogDescription>
-                Selecione o status que deseja adicionar
-                <Select>
-                  <SelectTrigger className="mt-2 w-full">
-                    <SelectValue placeholder="Selecione o status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Entregue">Entregue</SelectItem>
-                    <SelectItem value="Produzida">Produzida</SelectItem>
-                    <SelectItem value="Pagamento recebido">
-                      Pagamento recebido
-                    </SelectItem>
-                    <SelectItem value="Aprovada">Aprovada</SelectItem>
-                  </SelectContent>
-                </Select>
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter>
-              <AlertDialogCancel>Cancelar</AlertDialogCancel>
-              <AlertDialogAction>Continuar</AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
-      )
     }
   }, [qrcode])
 
@@ -91,6 +56,40 @@ export default function CarteirinhasScannerAcoes() {
             }}
             onScan={(scannedCode) => setQrCode(scannedCode)}
           />
+          {qrcode && (
+            <AlertDialog open>
+              <AlertDialogTrigger asChild>
+                <Button variant={'outline'}>
+                  <Plus className="mr-2 h-4 w-4" /> Status
+                </Button>
+              </AlertDialogTrigger>
+              <AlertDialogContent>
+                <AlertDialogHeader>
+                  <AlertDialogTitle>Adicionar status</AlertDialogTitle>
+                  <AlertDialogDescription>
+                    Selecione o status que deseja adicionar
+                    <Select>
+                      <SelectTrigger className="mt-2 w-full">
+                        <SelectValue placeholder="Selecione o status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="Entregue">Entregue</SelectItem>
+                        <SelectItem value="Produzida">Produzida</SelectItem>
+                        <SelectItem value="Pagamento recebido">
+                          Pagamento recebido
+                        </SelectItem>
+                        <SelectItem value="Aprovada">Aprovada</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
+                  <AlertDialogAction>Continuar</AlertDialogAction>
+                </AlertDialogFooter>
+              </AlertDialogContent>
+            </AlertDialog>
+          )}
         </div>
       </div>
     </>
