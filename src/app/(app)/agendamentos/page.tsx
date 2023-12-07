@@ -27,6 +27,12 @@ export default function ReservasHome() {
   const [periodo, setPeriodo] = useState('Manhã')
   const [setor, setSetor] = useState('Informática')
 
+  const horariosFiltrados = horarios.filter(
+    (horario) =>
+      horario.setor === setor &&
+      horario.horarios.some((horarios) => horarios.periodo === periodo),
+  )
+
   return (
     <div>
       <div className="flex flex-row items-center justify-between">
@@ -84,15 +90,12 @@ export default function ReservasHome() {
           />
         </div>
         <div className="flex w-full flex-col space-y-4">
-          {horarios
-            .filter(
-              (horario) =>
-                horario.setor === setor &&
-                horario.horarios.some(
-                  (horarios) => horarios.periodo === periodo,
-                ),
-            )
-            .map((horario) =>
+          {horariosFiltrados.length === 0 ? (
+            <div className="flex items-center justify-center p-4">
+              <p>Não há horários cadastrados.</p>
+            </div>
+          ) : (
+            horariosFiltrados.map((horario) =>
               horario.horarios
                 .filter((horario) => horario.periodo === periodo)
                 .map((horario) => (
@@ -177,7 +180,8 @@ export default function ReservasHome() {
                     </CardContent>
                   </Card>
                 )),
-            )}
+            )
+          )}
         </div>
       </div>
     </div>
