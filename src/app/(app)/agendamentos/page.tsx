@@ -20,6 +20,7 @@ import horarios from './horarios.json'
 import { Clock } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
 import AgendarAgendamento from './agendar'
+import Link from 'next/link'
 
 export default function ReservasHome() {
   const [date, setDate] = useState(new Date())
@@ -63,6 +64,9 @@ export default function ReservasHome() {
             </SelectGroup>
           </SelectContent>
         </Select>
+        <Link href="/agendamentos/todos">
+          <Button variant={'outline'}>Visualizar todos</Button>
+        </Link>
       </div>
       <div className="mt-4 flex w-full flex-col space-y-4 lg:flex-row lg:space-x-8">
         <div className="flex w-full justify-center lg:max-w-[300px]">
@@ -106,7 +110,7 @@ export default function ReservasHome() {
                         `}
                       >
                         <Clock className="mr-2 h-4 w-4" />
-                        {horario.inicio} - {horario.fim}
+                        {horario.inicio} às {horario.fim}
                         {horario.reservado ? (
                           <Badge
                             variant={'outline'}
@@ -119,7 +123,7 @@ export default function ReservasHome() {
                             variant={'outline'}
                             className="ml-2 border border-success font-bold uppercase text-success"
                           >
-                            Disponível
+                            Livre
                           </Badge>
                         )}
                       </CardTitle>
@@ -129,7 +133,7 @@ export default function ReservasHome() {
                         <AgendarAgendamento
                           data={date}
                           setor={setor}
-                          horario={horario.inicio + ' - ' + horario.fim}
+                          horario={horario.inicio + ' às ' + horario.fim}
                         />
                       )}
                       {horario.reservado && (
@@ -154,8 +158,20 @@ export default function ReservasHome() {
                             <p className="text-[10px] font-bold uppercase text-zinc-500">
                               Atividades
                             </p>
-                            <p className="text-primary">Trilhas</p>
+                            <p className="text-primary">
+                              {horario.reserva?.atividades}
+                            </p>
                           </div>
+                          {horario.reserva?.equipamentos && (
+                            <div className="flex flex-col">
+                              <p className="text-[10px] font-bold uppercase text-zinc-500">
+                                Equipamentos
+                              </p>
+                              <p className="text-primary">
+                                {horario.reserva?.equipamentos}
+                              </p>
+                            </div>
+                          )}
                         </div>
                       )}
                     </CardContent>

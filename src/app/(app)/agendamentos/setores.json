@@ -5,11 +5,11 @@
   },
   {
     "id": 2,
-    "nome": "Salão"
+    "nome": "Sala de aula"
   },
   {
     "id": 3,
-    "nome": "Sala de aula"
+    "nome": "Salão"
   },
   {
     "id": 4,
@@ -17,6 +17,14 @@
   },
   {
     "id": 5,
+    "nome": "Quadra"
+  },
+  {
+    "id": 6,
+    "nome": "Ginásio"
+  },
+  {
+    "id": 7,
     "nome": "Outro"
   }
 ]

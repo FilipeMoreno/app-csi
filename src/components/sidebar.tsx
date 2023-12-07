@@ -8,6 +8,9 @@ import { config } from '@/config'
 import ChangelogComponent from './Changelog'
 import Image from 'next/image'
 
+import { HeartFilledIcon } from '@radix-ui/react-icons'
+import { Code2 } from 'lucide-react'
+
 interface SubitemType {
   href: string
   title: string
@@ -118,6 +121,20 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
         />
         <ChangelogComponent />
         <span className="text-xs text-zinc-500">v{config.version}</span>
+      </div>
+      <div className="mt-4 flex flex-row items-center justify-center text-xs">
+        <Code2 className="mr-1 h-4 w-4 text-zinc-500" />
+        <span className="text-zinc-500">Developed with</span>
+        <HeartFilledIcon className="mx-1 h-4 w-4 text-tertiary" />
+        <span className="text-zinc-500">
+          by{' '}
+          <Link
+            className="hover:text-tertiary"
+            href="https://filipemoreno.com.br"
+          >
+            Filipe Moreno
+          </Link>
+        </span>
       </div>
     </div>
   )

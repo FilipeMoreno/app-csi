@@ -38,6 +38,8 @@ export default function AgendarAgendamento({ setor, data, horario }: Dados) {
   const [serie, setSerie] = useState('')
   const [turma, setTurma] = useState('')
   const [curso, setCurso] = useState('')
+  const [equipamentos, setEquipamentos] = useState(false)
+  const [equipamentosList, setEquipamentosList] = useState('')
   const [atividades, setAtividades] = useState('')
 
   return (
@@ -135,9 +137,39 @@ export default function AgendarAgendamento({ setor, data, horario }: Dados) {
               onChange={(e) => setAtividades(e.target.value)}
             />
           </div>
+          <div className="flex w-full flex-row items-center">
+            <Label className="w-36 text-sm">Equipamentos</Label>
+            <div className="flex w-full flex-row space-x-2">
+              <Select
+                value={equipamentos ? 'Sim' : 'Não'}
+                onValueChange={(value) => setEquipamentos(value === 'Sim')}
+              >
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="Sim">Sim</SelectItem>
+                    <SelectItem value="Não">Não</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
+          {equipamentos && (
+            <div className="flex w-full flex-row items-center">
+              <Textarea
+                value={equipamentosList}
+                onChange={(e) => setEquipamentosList(e.target.value)}
+                placeholder="Projetor, notebook..."
+              />
+            </div>
+          )}
         </div>
         <DialogFooter>
-          <Button type="submit">Reservar</Button>
+          <Button type="submit" className="w-full">
+            Reservar
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

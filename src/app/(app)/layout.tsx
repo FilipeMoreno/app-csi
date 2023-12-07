@@ -166,7 +166,7 @@ export default function RootLayout({
             </div>
           </div>
         </div>
-        <Footer />
+        {/* <Footer /> */}
         <Toaster />
       </ThemeProvider>
     </body>

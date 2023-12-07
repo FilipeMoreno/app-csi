@@ -25,6 +25,7 @@ import {
 import { Plus } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import QRCode from 'react-qr-code'
+import { Separator } from '@/components/ui/separator'
 
 export default function CarteirinhasScannerAcoes() {
   const { toast } = useToast()
@@ -79,6 +80,9 @@ export default function CarteirinhasScannerAcoes() {
                 <AlertDialogHeader>
                   <AlertDialogTitle>Adicionar status</AlertDialogTitle>
                   <AlertDialogDescription>
+                    <span>Nome: Nome do aluno aqui</span>
+                    <span>Série/Turma: 1º ANO A - Ensino Médio</span>
+                    <Separator />
                     Selecione o status que deseja adicionar
                     <Select onValueChange={setStatus}>
                       <SelectTrigger className="mt-2 w-full">
