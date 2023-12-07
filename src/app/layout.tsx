@@ -1,11 +1,10 @@
-import { Inter, Caveat } from 'next/font/google'
 import '@/styles/globals.css'
 import { Metadata } from 'next'
 
 import Script from 'next/script'
 
 export const metadata: Metadata = {
-  title: 'APP - CSI',
+  title: 'APP | Colégio Santo Inácio',
   description: 'Aplicativo do Colégio Santo Inácio',
   manifest: '/manifest.json',
   viewport: {

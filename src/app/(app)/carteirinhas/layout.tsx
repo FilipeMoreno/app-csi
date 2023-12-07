@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Carteirinhas - CSI',
-  description: 'Aplicativo para geração de carteirinhas de estudante',
+  title: 'Carteirinhas | Colégio Santo Inácio',
+  description: 'Gestão de carteirinhas de estudantes',
 }
 
 export default function WifiLayout({

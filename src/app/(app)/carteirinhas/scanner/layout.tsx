@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'QRCode Scanner - CSI',
-  description: 'Scanner de QRCode',
+  title: 'Scanner QRCode - Carteirinhas | Colégio Santo Inácio',
+  description: 'Scanner QRCode para carteirinhas de estudantes',
 }
 
 export default function CarteirinhasScannerAcoes({

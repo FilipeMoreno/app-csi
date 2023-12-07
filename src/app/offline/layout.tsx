@@ -3,7 +3,7 @@ import NextTopLoader from 'nextjs-toploader'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  title: 'Você está off-line',
+  title: 'Você está off-line | Colégio Santo Inácio',
 }
 
 export default function OfflineLayout({ children }: { children: ReactNode }) {

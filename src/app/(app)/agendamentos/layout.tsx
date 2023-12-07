@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Reservas - CSI',
-  description: 'Aplicativo de reservas do CSI',
+  title: 'Agendamentos | Colégio Santo Inácio',
+  description: 'Agendamentos de salas e laboratórios',
 }
 
 export default function ReservasLayout({

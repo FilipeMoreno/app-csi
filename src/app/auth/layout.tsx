@@ -5,8 +5,8 @@ import NextTopLoader from 'nextjs-toploader'
 import { ReactNode } from 'react'
 
 export const metadata: Metadata = {
-  title: 'Login - CSI',
-  description: 'Faça login na plataforma CSI',
+  title: 'Login | Colégio Santo Inácio',
+  description: 'Página de login do APP do Colégio Santo Inácio',
 }
 
 export default function LoginLayout({ children }: { children: ReactNode }) {

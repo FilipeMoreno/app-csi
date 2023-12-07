@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Carteirinhas - CSI',
-  description: 'Aplicativo de carteirinhas do CSI',
+  title: 'Solicitação #ID - Carteirinhas | Colégio Santo Inácio',
+  description: 'Detalhes da solicitação de carteirinha de estudante',
 }
 
 export default function CarteirinhasDetalhes({

@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Wi-Fi Voucher - CSI',
-  description: 'Aplicativo para geração de vouchers para conexão wi-fi',
+  title: 'Wi-Fi Voucher | Colégio Santo Inácio',
+  description: 'Geração de vouchers para conexão wi-fi',
 }
 
 export default function WifiLayout({

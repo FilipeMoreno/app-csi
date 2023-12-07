@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Solicitações - CSI',
+  title: 'Solicitações - Carteirinhas | Colégio Santo Inácio',
   description: 'Solicitações de carteirinhas de estudante',
 }
 

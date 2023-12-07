@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Sinaleiro - CSI',
-  description: 'Aplicativo para controle de sinal',
+  title: 'Sinaleiro | Colégio Santo Inácio',
+  description: 'Controle de sinal de troca de aulas',
 }
 
 export default function SinaleiroLayout({

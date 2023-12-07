@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Recados - CSI',
-  description: 'Aplicativo para geração de recados',
+  title: 'Recados | Colégio Santo Inácio',
+  description: 'Geração de recados',
 }
 
 export default function RecadoLayout({
