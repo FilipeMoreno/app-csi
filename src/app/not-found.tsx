@@ -1,11 +1,16 @@
 'use client'
 
 import { Button } from '@/components/ui/button'
+
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 
 export default function Custom404() {
   const router = useRouter()
+
+  function handleBack() {
+    router.back()
+  }
 
   return (
     <div className="dark flex h-screen w-screen flex-col items-center justify-center bg-zinc-950 text-primary">
@@ -21,7 +26,8 @@ export default function Custom404() {
         <p className="text-center font-light">
           Página não encontrada ou indisponível
         </p>
-        <Button variant="outline" onClick={() => router.back()}>
+
+        <Button variant="outline" onClick={handleBack}>
           Voltar
         </Button>
       </div>

@@ -27,6 +27,7 @@ export default function OfflinePage() {
         <p className="text-center font-light">
           Você está off-line. Verifique sua conexão.
         </p>
+
         <Button variant="outline" onClick={handleRefresh}>
           Tentar novamente
         </Button>
