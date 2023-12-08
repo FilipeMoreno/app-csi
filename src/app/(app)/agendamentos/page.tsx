@@ -102,13 +102,15 @@ export default function ReservasHome() {
                   <Card
                     key={horario.id}
                     className={`border-2 ${
-                      horario.reservado ? 'border-l-error' : 'border-l-success'
+                      horario.reservado
+                        ? 'border-l-red-600'
+                        : 'border-l-green-600'
                     }`}
                   >
                     <CardHeader>
                       <CardTitle
                         className={`flex flex-row items-center text-xl font-bold ${
-                          horario.reservado ? 'text-error' : 'text-success'
+                          horario.reservado ? 'text-red-600' : 'text-green-600'
                         }
                         `}
                       >
@@ -117,14 +119,14 @@ export default function ReservasHome() {
                         {horario.reservado ? (
                           <Badge
                             variant={'outline'}
-                            className="ml-2 border border-error font-bold uppercase text-error"
+                            className="ml-2 border border-red-600 font-bold uppercase text-red-600"
                           >
                             Reservado
                           </Badge>
                         ) : (
                           <Badge
                             variant={'outline'}
-                            className="ml-2 border border-success font-bold uppercase text-success"
+                            className="ml-2 border border-green-600 font-bold uppercase text-green-600"
                           >
                             Livre
                           </Badge>

@@ -149,40 +149,36 @@ export default function ChamadosHome() {
 
                     <TableCell>
                       {item.prioridade === 'Crítica' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center border-error text-center font-bold  text-error"
-                        >
-                          {item.prioridade}
-                        </Badge>
+                        <div className="flex flex-row items-center">
+                          <span className="mr-2 flex h-3 w-3 rounded-full bg-red-600" />
+                          <span className="text-red-600">
+                            {item.prioridade}
+                          </span>
+                        </div>
                       )}
                       {item.prioridade === 'Alta' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center border-important text-center font-bold text-important"
-                        >
-                          {item.prioridade}
-                        </Badge>
+                        <div className="flex flex-row items-center">
+                          <span className="mr-2 flex h-3 w-3 rounded-full bg-orange-600" />
+                          <span className="text-orange-600">
+                            {item.prioridade}
+                          </span>
+                        </div>
                       )}
                       {item.prioridade === 'Moderada' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center border-warning text-center font-bold text-warning"
-                        >
-                          {item.prioridade}
-                        </Badge>
+                        <div className="flex flex-row items-center">
+                          <span className="mr-2 flex h-3 w-3 rounded-full bg-yellow-600" />
+                          <span className="text-yellow-600">
+                            {item.prioridade}
+                          </span>
+                        </div>
                       )}
                       {item.prioridade === 'Baixa' && (
-                        <Badge
-                          variant={'outline'}
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center border-success text-center font-bold text-success"
-                        >
-                          {item.prioridade}
-                        </Badge>
+                        <div className="flex flex-row items-center">
+                          <span className="mr-2 flex h-3 w-3 rounded-full bg-green-600" />
+                          <span className="text-green-600">
+                            {item.prioridade}
+                          </span>
+                        </div>
                       )}
                     </TableCell>
                     <TableCell>{item.setor}</TableCell>
