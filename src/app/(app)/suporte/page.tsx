@@ -4,9 +4,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import moment from 'moment'
 import 'moment/locale/pt-br'
-import { PiChatTeardropText } from 'react-icons/pi'
 
-import { Archive, MessageCircle, PlusCircle } from 'lucide-react'
+import Link from 'next/link'
+
+import { MessageCircle, PlusCircle } from 'lucide-react'
 import React from 'react'
 import {
   Select,
@@ -26,7 +27,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Avatar, AvatarFallback } from '@radix-ui/react-avatar'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 export default function ChamadosHome() {
   const dadosTabela = [
@@ -85,7 +86,7 @@ export default function ChamadosHome() {
             <p className="text-sm">Mostrando todos os chamados</p>
           </div>
           <Button variant={'outline'}>
-            <PlusCircle className="mr-2 h-4 w-4" /> Chamado
+            <PlusCircle className="mr-2 h-4 w-4" /> Novo chamado
           </Button>
         </div>
         <div className="my-4 flex flex-row items-center space-x-3">
@@ -101,69 +102,93 @@ export default function ChamadosHome() {
           </Select>
 
           <Input className="w-full" placeholder="Pesquisar" />
-          <Button variant={'outline'}>
-            <Archive className="h-4 w-4" />
-          </Button>
         </div>
         <div className="space-y-2">
-          {dadosTabela.length > 0 &&
-            dadosTabela.map((item) => (
-              <Card key={item.id}>
-                <CardHeader>
-                  <CardTitle>
-                    <div className="flex items-center justify-between">
-                      <span>{item.assunto}</span>
-                      <span className="text-sm text-zinc-500">
-                        {moment(item.createdAt).fromNow()}
-                      </span>
-                    </div>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>{item.resumo}</CardDescription>
-                  <CardDescription>Setor: {item.setor}</CardDescription>
-                </CardContent>
-                <CardFooter>
-                  <div className="flex flex-row items-center space-x-2">
-                    <Badge variant={'outline'}>#{item.id}</Badge>
-                    {item.prioridade === 'Crítica' && (
-                      <div className="flex flex-row items-center">
-                        <span className="mr-2 flex h-3 w-3 rounded-full bg-red-600" />
-                        <span className="text-red-600">{item.prioridade}</span>
-                      </div>
-                    )}
-                    {item.prioridade === 'Alta' && (
-                      <div className="flex flex-row items-center">
-                        <span className="mr-2 flex h-3 w-3 rounded-full bg-orange-600" />
-                        <span className="text-orange-600">
-                          {item.prioridade}
+          <Tabs defaultValue="ativos">
+            <TabsList className="grid w-full grid-cols-2">
+              <TabsTrigger value="ativos">Ativos</TabsTrigger>
+              <TabsTrigger value="arquivados">Arquivados</TabsTrigger>
+            </TabsList>
+            <TabsContent value="ativos" className="space-y-2">
+              {dadosTabela.length > 0 &&
+                dadosTabela.map((item) => (
+                  <Card
+                    key={item.id}
+                    // className={`border ${
+                    //   item.status === 'Aberto' && 'border-l-green-500'
+                    // }  ${item.status === 'Fechado' && 'border-l-red-500'}  ${
+                    //   item.status === 'Respondido' && 'border-l-blue-600'
+                    // }`}
+                  >
+                    <CardHeader>
+                      <CardTitle>
+                        <div className="flex items-center justify-between">
+                          <Link
+                            href="/suporte/1"
+                            className="hover:text-zinc-400"
+                          >
+                            {item.assunto}
+                          </Link>
+                          <span className="text-sm text-zinc-500">
+                            {moment(item.createdAt).fromNow()}
+                          </span>
+                        </div>
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription>{item.resumo}</CardDescription>
+                      <CardDescription>Setor: {item.setor}</CardDescription>
+                    </CardContent>
+                    <CardFooter>
+                      <div className="flex flex-row items-center space-x-2">
+                        <Badge variant={'outline'}>#{item.id}</Badge>
+                        {item.prioridade === 'Crítica' && (
+                          <div className="flex flex-row items-center">
+                            <span className="mr-2 flex h-3 w-3 rounded-full bg-red-600" />
+                            <span className="text-red-600">
+                              {item.prioridade}
+                            </span>
+                          </div>
+                        )}
+                        {item.prioridade === 'Alta' && (
+                          <div className="flex flex-row items-center">
+                            <span className="mr-2 flex h-3 w-3 rounded-full bg-orange-600" />
+                            <span className="text-orange-600">
+                              {item.prioridade}
+                            </span>
+                          </div>
+                        )}
+                        {item.prioridade === 'Moderada' && (
+                          <div className="flex flex-row items-center">
+                            <span className="mr-2 flex h-3 w-3 rounded-full bg-yellow-600" />
+                            <span className="text-yellow-600">
+                              {item.prioridade}
+                            </span>
+                          </div>
+                        )}
+                        {item.prioridade === 'Baixa' && (
+                          <div className="flex flex-row items-center">
+                            <span className="mr-2 flex h-3 w-3 rounded-full bg-green-600" />
+                            <span className="text-green-600">
+                              {item.prioridade}
+                            </span>
+                          </div>
+                        )}
+                        <Badge>{item.status}</Badge>
+                        <span className="flex flex-row items-center text-zinc-400">
+                          <MessageCircle className="mr-1 h-4 w-4" />0
                         </span>
                       </div>
-                    )}
-                    {item.prioridade === 'Moderada' && (
-                      <div className="flex flex-row items-center">
-                        <span className="mr-2 flex h-3 w-3 rounded-full bg-yellow-600" />
-                        <span className="text-yellow-600">
-                          {item.prioridade}
-                        </span>
-                      </div>
-                    )}
-                    {item.prioridade === 'Baixa' && (
-                      <div className="flex flex-row items-center">
-                        <span className="mr-2 flex h-3 w-3 rounded-full bg-green-600" />
-                        <span className="text-green-600">
-                          {item.prioridade}
-                        </span>
-                      </div>
-                    )}
-                    <Badge>{item.status}</Badge>
-                    <span className="flex flex-row items-center text-zinc-400">
-                      <MessageCircle className="mr-1 h-4 w-4" />0
-                    </span>
-                  </div>
-                </CardFooter>
-              </Card>
-            ))}
+                    </CardFooter>
+                  </Card>
+                ))}
+            </TabsContent>
+            <TabsContent value="arquivados">
+              <div className="flex items-center justify-center text-zinc-400">
+                <p>Nenhum chamado encontrado.</p>
+              </div>
+            </TabsContent>
+          </Tabs>
         </div>
         <div className="flex items-center justify-end space-x-2 py-4">
           <div className="flex-1 text-sm text-muted-foreground">

@@ -3,34 +3,101 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
+import { Textarea } from '@/components/ui/textarea'
 import { SendHorizonal, SmileIcon } from 'lucide-react'
+import Image from 'next/image'
 
 export default function ChamadosDetalhes() {
   return (
-    <div className="flex flex-col ">
-      <section className="flex w-full flex-col">
-        <header className="space-y-2 border-b p-4">
-          <h2 className="flex items-center gap-2 text-xl font-bold">
-            <span>Chamado #ID - Computador parou de funcionar</span>
-          </h2>
-          <div className="mt-2 flex space-x-2">
-            <p className="text-sm">
-              <span className="font-bold">Aberto por:</span> Nome do usuário
-            </p>
-            <p className="text-sm">
-              <span className="font-bold">Aberto em:</span> 01/01/2021 às 00:00
-            </p>
-            <p className="text-sm">
-              <span className="font-bold">Última atualização:</span> 01/01/2021
-              às 00:00
-            </p>
-          </div>
-          <div className="flex flex-row space-x-2">
-            <Badge>Aberto</Badge>
-            <Badge>Baixa</Badge>
-          </div>
-        </header>
+    <div className="flex flex-col space-y-4 lg:flex-row lg:space-x-2 lg:space-y-0">
+      <div className="flex flex-col space-y-2">
+        <Card className="w-full lg:w-[300px]">
+          <CardHeader>
+            <div className="flex flex-col space-y-2">
+              <span className="font-bold">
+                Projetor não funciona <Badge className="ml-2">#1234</Badge>
+              </span>
+              <div className="flex flex-row space-x-2">
+                <Badge
+                  variant={'outline'}
+                  className="border-green-500 font-bold text-green-500"
+                >
+                  Aberto
+                </Badge>
+                <Badge
+                  variant={'outline'}
+                  className="border-red-500 font-bold text-red-500"
+                >
+                  Crítica
+                </Badge>
+              </div>
+            </div>
+          </CardHeader>
+        </Card>
+        <Card className="w-full lg:w-[300px]">
+          <CardHeader>
+            <CardTitle className="font-bold">Informações</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-col space-y-1">
+              <span className="text-sm">Data de abertura</span>
+              <span className="text-xs text-zinc-500">01/01/2024 às 00:00</span>
+            </div>
+            <div className="flex flex-col space-y-1">
+              <span className="text-sm">Data de fechamento</span>
+              <span className="text-xs text-zinc-500">01/01/2024 às 00:00</span>
+            </div>
+            <div className="flex flex-col space-y-1">
+              <span className="text-sm">Setor</span>
+              <span className="text-xs text-zinc-500">Usuário</span>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-bold">Usuário</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="flex flex-row  space-x-4">
+              <Image
+                src="/icons/icon.png"
+                width={50}
+                height={50}
+                alt="Foto do usuário"
+                className="rounded-full"
+              />
+              <div className="flex flex-col">
+                <span className="text-lg">Usuário</span>
+                <span className="text-xs">Professor</span>
+              </div>
+            </div>
+            <div className="mt-4 flex flex-row items-center justify-between rounded-lg bg-secondary p-4">
+              <div className="flex flex-col items-center justify-center">
+                <span className="text-lg font-bold">5</span>
+                <span>Total</span>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <span className="text-lg font-bold">3</span>
+                <span>Abertos</span>
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <span className="text-lg font-bold">2</span>
+                <span>Resolvidos</span>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+      <section className="flex w-full flex-col rounded-lg border">
         <main className="flex-1 overflow-auto p-4">
           <div className="space-y-4">
             <div className="flex items-end gap-2">
@@ -73,9 +140,9 @@ export default function ChamadosDetalhes() {
             </div>
           </div>
         </main>
-        <footer className="border-t p-4">
+        <footer className="p-4">
           <div className="flex items-center gap-2">
-            <Input className="flex-1" placeholder="Digite sua mensagem..." />
+            <Textarea className="flex-1" placeholder="Digite sua mensagem..." />
             <Button>
               <SendHorizonal className="mr-2 h-4 w-4" />
               Enviar
