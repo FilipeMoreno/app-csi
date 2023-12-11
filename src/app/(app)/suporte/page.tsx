@@ -2,26 +2,11 @@
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuPortal,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-} from '@/components/ui/dropdown-menu'
+import moment from 'moment'
+import 'moment/locale/pt-br'
+import { PiChatTeardropText } from 'react-icons/pi'
 
-import { Archive, PlusCircle } from 'lucide-react'
+import { Archive, MessageCircle, PlusCircle } from 'lucide-react'
 import React from 'react'
 import {
   Select,
@@ -30,9 +15,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+
 import { Badge } from '@/components/ui/badge'
-import { DotsHorizontalIcon } from '@radix-ui/react-icons'
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { Avatar, AvatarFallback } from '@radix-ui/react-avatar'
 
 export default function ChamadosHome() {
   const dadosTabela = [
@@ -44,6 +38,8 @@ export default function ChamadosHome() {
       usuario: 'Rafael',
       prioridade: 'Alta',
       status: 'Respondido',
+      resumo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      createdAt: '2023-12-10T00:00:00.000Z',
     },
     {
       id: 2,
@@ -53,6 +49,8 @@ export default function ChamadosHome() {
       usuario: 'Bruno',
       prioridade: 'Moderada',
       status: 'Aberto',
+      resumo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      createdAt: '2023-12-11T00:00:00.000Z',
     },
     {
       id: 3,
@@ -62,6 +60,8 @@ export default function ChamadosHome() {
       usuario: 'Diego',
       prioridade: 'Baixa',
       status: 'Respondido',
+      resumo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      createdAt: '2023-12-11T00:00:00.000Z',
     },
     {
       id: 4,
@@ -71,6 +71,8 @@ export default function ChamadosHome() {
       usuario: null,
       prioridade: 'Crítica',
       status: 'Aberto',
+      resumo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+      createdAt: '2021-08-01T00:00:00.000Z',
     },
   ]
 
@@ -103,154 +105,65 @@ export default function ChamadosHome() {
             <Archive className="h-4 w-4" />
           </Button>
         </div>
-        <div className="w-[328px] flex-grow rounded-md border md:w-full lg:w-full">
-          <Table className="w-[800px] sm:w-full md:w-full lg:w-full">
-            <TableHeader>
-              <TableRow className="bg-secondary">
-                <TableHead className="w-[100px]"></TableHead>
-                <TableHead>Assunto</TableHead>
-                <TableHead>Prioridade</TableHead>
-                <TableHead>Setor</TableHead>
-                <TableHead>Solicitante</TableHead>
-                <TableHead>Usuário</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right"></TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {dadosTabela.map((item) => {
-                return (
-                  <TableRow key={item.id}>
-                    <TableCell>
-                      <div className="flex w-full justify-center -space-x-1 ">
-                        <Avatar className="inline-block h-6 w-6 rounded-full ring-1 ring-zinc-700">
-                          <AvatarFallback>
-                            {' '}
-                            {item.solicitante
-                              .split(' ')
-                              .map((word) => word[0])
-                              .join('')}
-                          </AvatarFallback>
-                        </Avatar>
-                        {item.usuario && (
-                          <Avatar className="inline-block h-6 w-6 rounded-full ring-1 ring-zinc-700">
-                            <AvatarFallback>
-                              {' '}
-                              {item?.usuario
-                                .split(' ')
-                                .map((word) => word[0])
-                                .join('')}
-                            </AvatarFallback>
-                          </Avatar>
-                        )}
+        <div className="space-y-2">
+          {dadosTabela.length > 0 &&
+            dadosTabela.map((item) => (
+              <Card key={item.id}>
+                <CardHeader>
+                  <CardTitle>
+                    <div className="flex items-center justify-between">
+                      <span>{item.assunto}</span>
+                      <span className="text-sm text-zinc-500">
+                        {moment(item.createdAt).fromNow()}
+                      </span>
+                    </div>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription>{item.resumo}</CardDescription>
+                  <CardDescription>Setor: {item.setor}</CardDescription>
+                </CardContent>
+                <CardFooter>
+                  <div className="flex flex-row items-center space-x-2">
+                    <Badge variant={'outline'}>#{item.id}</Badge>
+                    {item.prioridade === 'Crítica' && (
+                      <div className="flex flex-row items-center">
+                        <span className="mr-2 flex h-3 w-3 rounded-full bg-red-600" />
+                        <span className="text-red-600">{item.prioridade}</span>
                       </div>
-                    </TableCell>
-                    <TableCell>{item.assunto}</TableCell>
-
-                    <TableCell>
-                      {item.prioridade === 'Crítica' && (
-                        <div className="flex flex-row items-center">
-                          <span className="mr-2 flex h-3 w-3 rounded-full bg-red-600" />
-                          <span className="text-red-600">
-                            {item.prioridade}
-                          </span>
-                        </div>
-                      )}
-                      {item.prioridade === 'Alta' && (
-                        <div className="flex flex-row items-center">
-                          <span className="mr-2 flex h-3 w-3 rounded-full bg-orange-600" />
-                          <span className="text-orange-600">
-                            {item.prioridade}
-                          </span>
-                        </div>
-                      )}
-                      {item.prioridade === 'Moderada' && (
-                        <div className="flex flex-row items-center">
-                          <span className="mr-2 flex h-3 w-3 rounded-full bg-yellow-600" />
-                          <span className="text-yellow-600">
-                            {item.prioridade}
-                          </span>
-                        </div>
-                      )}
-                      {item.prioridade === 'Baixa' && (
-                        <div className="flex flex-row items-center">
-                          <span className="mr-2 flex h-3 w-3 rounded-full bg-green-600" />
-                          <span className="text-green-600">
-                            {item.prioridade}
-                          </span>
-                        </div>
-                      )}
-                    </TableCell>
-                    <TableCell>{item.setor}</TableCell>
-                    <TableCell>{item.solicitante}</TableCell>
-                    <TableCell>
-                      {item?.usuario ? (
-                        item.usuario
-                      ) : (
-                        <Button variant={'outline'} className="h-6">
-                          Aceitar chamado
-                        </Button>
-                      )}
-                    </TableCell>
-
-                    <TableCell>
-                      {item.status === 'Aberto' && (
-                        <Badge
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center text-center"
-                          variant={'secondary'}
-                        >
-                          {item.status}
-                        </Badge>
-                      )}
-                      {item.status === 'Fechado' && (
-                        <Badge
-                          // eslint-disable-next-line prettier/prettier
-                          className="flex w-full items-center justify-center text-center"
-                          variant={'default'}
-                        >
-                          {item.status}
-                        </Badge>
-                      )}
-                      {item.status === 'Respondido' && (
-                        <Badge
-                          className="flex w-full items-center justify-center text-center"
-                          variant={'outline'}
-                        >
-                          {item.status}
-                        </Badge>
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      <DropdownMenu>
-                        <DropdownMenuTrigger>
-                          <DotsHorizontalIcon />
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                          <DropdownMenuItem>Detalhes</DropdownMenuItem>
-                          <DropdownMenuItem>Editar</DropdownMenuItem>
-                          <DropdownMenuSub>
-                            <DropdownMenuSubTrigger>
-                              Prioridade
-                            </DropdownMenuSubTrigger>
-                            <DropdownMenuPortal>
-                              <DropdownMenuSubContent>
-                                <DropdownMenuItem>Baixa</DropdownMenuItem>
-                                <DropdownMenuItem>Média</DropdownMenuItem>
-                                <DropdownMenuItem>Alta</DropdownMenuItem>
-                              </DropdownMenuSubContent>
-                            </DropdownMenuPortal>
-                          </DropdownMenuSub>
-
-                          <DropdownMenuItem>Fechar</DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
+                    )}
+                    {item.prioridade === 'Alta' && (
+                      <div className="flex flex-row items-center">
+                        <span className="mr-2 flex h-3 w-3 rounded-full bg-orange-600" />
+                        <span className="text-orange-600">
+                          {item.prioridade}
+                        </span>
+                      </div>
+                    )}
+                    {item.prioridade === 'Moderada' && (
+                      <div className="flex flex-row items-center">
+                        <span className="mr-2 flex h-3 w-3 rounded-full bg-yellow-600" />
+                        <span className="text-yellow-600">
+                          {item.prioridade}
+                        </span>
+                      </div>
+                    )}
+                    {item.prioridade === 'Baixa' && (
+                      <div className="flex flex-row items-center">
+                        <span className="mr-2 flex h-3 w-3 rounded-full bg-green-600" />
+                        <span className="text-green-600">
+                          {item.prioridade}
+                        </span>
+                      </div>
+                    )}
+                    <Badge>{item.status}</Badge>
+                    <span className="flex flex-row items-center text-zinc-400">
+                      <MessageCircle className="mr-1 h-4 w-4" />0
+                    </span>
+                  </div>
+                </CardFooter>
+              </Card>
+            ))}
         </div>
         <div className="flex items-center justify-end space-x-2 py-4">
           <div className="flex-1 text-sm text-muted-foreground">

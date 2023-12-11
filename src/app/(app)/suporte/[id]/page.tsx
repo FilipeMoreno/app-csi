@@ -42,19 +42,23 @@ export default function ChamadosDetalhes() {
                   <AvatarImage src="/icons/icon.png" />
                 </Avatar>
               </div>
-              <div className="rounded-lg bg-secondary p-2 ">
-                <p className="text-sm">
-                  Preciso de ajuda! O computador na sala 1 parou de funcionar.
-                </p>
-                <span className="text-[10px]">
+              <div className="flex flex-col space-y-1">
+                <div className="rounded-lg bg-secondary p-2">
+                  <p className="text-sm">
+                    Preciso de ajuda! O computador na sala 1 parou de funcionar.
+                  </p>
+                </div>
+                <span className="text-[10px] text-zinc-500">
                   Usuário - 01/01/2024 às 00:00
                 </span>
               </div>
             </div>
             <div className="flex items-end justify-end gap-2">
-              <div className="rounded-lg bg-tertiary p-2 text-white">
-                <p className="text-sm">Resolvido!</p>
-                <span className="text-[10px]">
+              <div className="flex flex-col space-y-1">
+                <div className="rounded-lg bg-tertiary p-2 text-white">
+                  <p className="text-sm">Resolvido!</p>
+                </div>
+                <span className="text-[10px] text-zinc-500">
                   Usuário - 01/01/2024 às 00:00
                 </span>
               </div>
