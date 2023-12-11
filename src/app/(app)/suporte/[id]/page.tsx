@@ -125,8 +125,8 @@ export default function ChamadosDetalhes() {
             </div>
             <div className="flex items-end justify-end gap-2">
               <div className="flex flex-col space-y-1">
-                <div className="rounded-lg border border-tertiary bg-transparent p-2 text-white">
-                  <span className="flex text-[10px] font-bold text-zinc-300">
+                <div className="rounded-lg border border-tertiary bg-transparent p-2 text-primary">
+                  <span className="flex text-[10px] font-bold text-zinc-400">
                     Nota privada - Usuário
                   </span>
                   <p className="text-sm">
@@ -135,7 +135,7 @@ export default function ChamadosDetalhes() {
                     ipsum architecto repellat non. Quasi, aperiam iste. Sapiente
                     qui optio repudiandae amet adipisci nesciunt!
                   </p>
-                  <span className="flex justify-end text-[10px] text-zinc-300">
+                  <span className="flex justify-end text-[10px] text-zinc-400">
                     01/01/2024 às 00:00
                   </span>
                 </div>

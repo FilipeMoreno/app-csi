@@ -47,6 +47,9 @@ import {
 import Link from 'next/link'
 import { Badge } from '@/components/ui/badge'
 
+import moment from 'moment'
+import 'moment/locale/pt-br'
+
 export default function CarteirinhasSolicitacoes() {
   const solicitacoes = [
     {
@@ -228,11 +231,7 @@ export default function CarteirinhasSolicitacoes() {
                     </Badge>
                   </TableCell>
                   <TableCell>
-                    {/* {Intl.DateTimeFormat('pt-BR', {
-                      day: 'numeric',
-                      month: 'short',
-                      year: 'numeric',
-                    }).format(new Date(solicitacao.createdAt))} */}
+                    {moment(solicitacao.createdAt).fromNow()}
                   </TableCell>
 
                   <TableCell className="text-right">
