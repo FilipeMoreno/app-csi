@@ -22,7 +22,7 @@ import {
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
-import { PaperclipIcon, SendHorizonal, SmileIcon } from 'lucide-react'
+import { Link, PaperclipIcon, SendHorizonal, SmileIcon } from 'lucide-react'
 import Image from 'next/image'
 
 export default function ChamadosDetalhes() {
@@ -123,11 +123,37 @@ export default function ChamadosDetalhes() {
                 </Avatar>
               </div>
             </div>
+            <div className="flex items-end justify-end gap-2">
+              <div className="flex flex-col space-y-1">
+                <div className="rounded-lg border border-tertiary bg-transparent p-2 text-white">
+                  <span className="flex text-[10px] font-bold text-zinc-300">
+                    Nota privada - Usuário
+                  </span>
+                  <p className="text-sm">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Sunt reprehenderit a culpa eligendi voluptas at. Temporibus
+                    ipsum architecto repellat non. Quasi, aperiam iste. Sapiente
+                    qui optio repudiandae amet adipisci nesciunt!
+                  </p>
+                  <span className="flex justify-end text-[10px] text-zinc-300">
+                    01/01/2024 às 00:00
+                  </span>
+                </div>
+              </div>
+              <div className="flex items-center justify-center">
+                <Avatar>
+                  <AvatarFallback>
+                    <SmileIcon />
+                  </AvatarFallback>
+                  <AvatarImage src="/icons/icon.png" />
+                </Avatar>
+              </div>
+            </div>
           </div>
         </main>
-        <footer className="p-4">
+        <footer className="rounded-lg p-4">
           <div className="flex items-end gap-2">
-            <Textarea className="flex-1" placeholder="Digite sua mensagem..." />
+            <Input className="flex-1 " placeholder="Digite sua mensagem..." />
             <Button variant={'ghost'} size={'icon'}>
               <PaperclipIcon className="h-4 w-4" />
             </Button>
@@ -140,35 +166,46 @@ export default function ChamadosDetalhes() {
       <div className="flex flex-col space-y-2">
         <Card className="w-full lg:w-[300px]">
           <CardHeader>
-            <CardTitle className="font-bold">
-              Informações do chamado #123456
-            </CardTitle>
+            <CardTitle className="font-bold">Detalhes do chamado</CardTitle>
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="flex flex-col space-y-1">
-              <span className="text-sm">Data de abertura</span>
-              <span className="text-xs text-zinc-500">01/01/2024 às 00:00</span>
+            <div className="flex flex-row items-center space-x-1">
+              <span className="text-sm">ID:</span>
+              <span className="text-sm text-zinc-400">123456</span>
+              <Link className="ml-4 h-3 w-3" />
+            </div>
+            <div className="flex flex-row items-center space-x-1">
+              <span className="text-sm">Setor:</span>
+              <span className="text-sm text-zinc-400">Sala de Aula</span>
+            </div>
+            <div className="flex flex-row items-center space-x-1">
+              <span className="text-sm">Data de abertura:</span>
+              <span className="text-sm text-zinc-400">01/01/2024 às 00:00</span>
+            </div>
+            <div className="flex flex-row items-center space-x-1">
+              <span className="text-sm">Última mensagem:</span>
+              <span className="text-sm text-zinc-400">01/01/2024 às 00:00</span>
+            </div>
+            <div className="flex flex-row items-center space-x-1">
+              <span className="text-sm">Data de fechamento:</span>
+              <span className="text-sm text-zinc-400">-/-</span>
             </div>
             <div className="flex flex-col space-y-1">
-              <span className="text-sm">Data de fechamento</span>
-              <span className="text-xs text-zinc-500">01/01/2024 às 00:00</span>
-            </div>
-            <div className="flex flex-col space-y-1">
-              <span className="text-sm">Setor</span>
-              <Select defaultValue="sala-de-aula">
+              <span className="text-sm">Status</span>
+              <Select defaultValue="aberto">
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecione o setor" />
+                  <SelectValue placeholder="Selecione o status" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem value="sala-de-aula">Sala de aula</SelectItem>
-                    <SelectItem value="salao">Salão</SelectItem>
-                    <SelectItem value="patio">Pátio</SelectItem>
-                    <SelectItem value="quadra">Quadra</SelectItem>
+                    <SelectItem value="aberto">Aberto</SelectItem>
+                    <SelectItem value="pendente">Pendente</SelectItem>
+                    <SelectItem value="fechado">Fechado</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
             </div>
+
             <div className="flex flex-col space-y-1">
               <span className="text-sm">Prioridade</span>
               <Select defaultValue="critica">
@@ -186,15 +223,31 @@ export default function ChamadosDetalhes() {
               </Select>
             </div>
             <div className="flex flex-col space-y-1">
-              <span className="text-sm">Estado</span>
-              <Select defaultValue="aberto">
+              <span className="text-sm">Categoria</span>
+              <Select defaultValue="duvidas">
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecione o estado" />
+                  <SelectValue placeholder="Selecione a categoria" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectGroup>
-                    <SelectItem value="aberto">Aberto</SelectItem>
-                    <SelectItem value="fechado">Fechado</SelectItem>
+                    <SelectItem value="duvidas">Dúvidas</SelectItem>
+                    <SelectItem value="troca">Troca</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex flex-col space-y-1">
+              <span className="text-sm">Setor</span>
+              <Select defaultValue="sala-de-aula">
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione o setor" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectItem value="sala-de-aula">Sala de aula</SelectItem>
+                    <SelectItem value="salao">Salão</SelectItem>
+                    <SelectItem value="patio">Pátio</SelectItem>
+                    <SelectItem value="quadra">Quadra</SelectItem>
                   </SelectGroup>
                 </SelectContent>
               </Select>
@@ -204,7 +257,7 @@ export default function ChamadosDetalhes() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="font-bold">Usuário</CardTitle>
+            <CardTitle className="font-bold">Solicitante</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex flex-row  space-x-4">
