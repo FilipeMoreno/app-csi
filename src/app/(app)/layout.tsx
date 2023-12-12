@@ -174,10 +174,10 @@ export default function RootLayout({
         </div>
         {/* <Footer /> */}
         <Toaster />
-        <SpeedInsights />
-        <Analytics />
-        <GoogleAnalytics />
       </ThemeProvider>
+      <SpeedInsights />
+      <Analytics />
+      <GoogleAnalytics />
     </body>
   )
 }
