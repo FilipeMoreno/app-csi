@@ -101,9 +101,6 @@ export default function RootLayout({
         <Script src="/register-sw.js" />
 
         {children}
-        <SpeedInsights />
-        <Analytics />
-        <GoogleAnalytics />
       </head>
     </html>
   )

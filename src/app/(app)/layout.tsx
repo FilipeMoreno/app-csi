@@ -29,6 +29,9 @@ import { FaRegAddressCard } from 'react-icons/fa6'
 import { TbTimeDuration45 } from 'react-icons/tb'
 
 import '@/styles/globals.css'
+import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import GoogleAnalytics from '../GoogleAnalytics'
 
 export default function RootLayout({
   children,
@@ -171,6 +174,9 @@ export default function RootLayout({
         </div>
         {/* <Footer /> */}
         <Toaster />
+        <SpeedInsights />
+        <Analytics />
+        <GoogleAnalytics />
       </ThemeProvider>
     </body>
   )
