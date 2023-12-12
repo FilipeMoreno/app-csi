@@ -1,6 +1,8 @@
-import '@/styles/globals.css'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { Metadata } from 'next'
 import Script from 'next/script'
+
+import '@/styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'APP | Colégio Santo Inácio',
@@ -97,6 +99,7 @@ export default function RootLayout({
         <Script src="/register-sw.js" />
 
         {children}
+        <SpeedInsights />
       </head>
     </html>
   )

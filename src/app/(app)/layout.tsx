@@ -1,6 +1,5 @@
 'use client'
 
-import { SpeedInsights } from '@vercel/speed-insights/next'
 import NextTopLoader from 'nextjs-toploader'
 import { useState } from 'react'
 
@@ -165,7 +164,6 @@ export default function RootLayout({
                   }`}
                 >
                   <div className="h-full px-4 py-6 lg:px-8">{children}</div>
-                  <SpeedInsights />
                 </div>
               </div>
             </div>
