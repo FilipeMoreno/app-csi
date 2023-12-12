@@ -90,11 +90,8 @@ export default function RootLayout({
           name="theme-color"
           media="(prefers-color-scheme: dark)"
           content="black"
-        ></meta>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0"
-        ></meta>
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Script src="/register-sw.js" />
 
         {children}

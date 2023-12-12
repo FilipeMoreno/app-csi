@@ -8,8 +8,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-import { ScrollArea, ScrollBar } from './ui/scroll-area'
 import { Badge } from './ui/badge'
+import { ScrollArea, ScrollBar } from './ui/scroll-area'
 
 export default function ChangelogComponent() {
   return (
@@ -38,14 +38,15 @@ export default function ChangelogComponent() {
                   for (let i = 0; i < aVersion.length; i++) {
                     if (aVersion[i] > bVersion[i]) {
                       return -1
-                    } else if (aVersion[i] < bVersion[i]) {
+                    }
+                    if (aVersion[i] < bVersion[i]) {
                       return 1
                     }
                   }
 
                   return 0
                 })
-                .map((change, index) => {
+                .flatMap((change, index) => {
                   const changesByType: { [key: string]: string[] } =
                     change.changes.reduce(
                       (acc: { [key: string]: string[] }, item) => {
@@ -77,12 +78,12 @@ export default function ChangelogComponent() {
                         </div>
                       </div>
                       <div className="flex w-full flex-col">
-                        {Object.entries(changesByType).map(
+                        {Object.entries(changesByType).flatMap(
                           ([type, descriptions]) => (
                             <div key={type} className="my-4">
                               <div>{type}:</div>
-                              {descriptions.map((description, index) => (
-                                <div key={index}>- {description}</div>
+                              {descriptions.flatMap((description, index) => (
+                                <div key={description}>- {description}</div>
                               ))}
                             </div>
                           ),

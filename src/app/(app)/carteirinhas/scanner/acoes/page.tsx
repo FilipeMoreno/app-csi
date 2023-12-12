@@ -1,9 +1,9 @@
 'use client'
 
-import { useToast } from '@/components/ui/use-toast'
+import { Plus } from 'lucide-react'
+import { useEffect, useState } from 'react'
 
 import CustomQrScanner from '@/components/CustomQrScanner'
-import { useEffect, useState } from 'react'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,17 +15,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 import {
   Select,
-  SelectTrigger,
-  SelectValue,
   SelectContent,
   SelectItem,
+  SelectTrigger,
+  SelectValue,
 } from '@/components/ui/select'
-import { Plus } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import QRCode from 'react-qr-code'
 import { Separator } from '@/components/ui/separator'
+import { useToast } from '@/components/ui/use-toast'
 
 export default function CarteirinhasScannerAcoes() {
   const { toast } = useToast()
@@ -35,7 +34,7 @@ export default function CarteirinhasScannerAcoes() {
 
   function handleChangeStatus() {
     toast({
-      title: `Status alterado!`,
+      title: 'Status alterado!',
       description: `O status foi alterado para ${status} com sucesso!`,
       variant: 'success',
     })

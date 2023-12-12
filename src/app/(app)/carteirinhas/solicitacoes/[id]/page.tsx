@@ -1,18 +1,5 @@
 'use client'
 
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
-
 import {
   CheckCheckIcon,
   DollarSign,
@@ -22,6 +9,13 @@ import {
   PrinterIcon,
   Save,
 } from 'lucide-react'
+import Image from 'next/image'
+import Link from 'next/link'
+import { LegacyRef, useRef, useState } from 'react'
+import QRCode from 'react-qr-code'
+import ReactToPrint from 'react-to-print'
+
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -33,11 +27,17 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
-import { LegacyRef, useRef, useState } from 'react'
-import Link from 'next/link'
-import QRCode from 'react-qr-code'
-import ReactToPrint from 'react-to-print'
-import Image from 'next/image'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectSeparator,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 export default function CarteirinhasDetalhes() {
   const [isEditing, setIsEditing] = useState(false)
@@ -175,7 +175,7 @@ export default function CarteirinhasDetalhes() {
         <div className="flex w-full flex-row space-x-4">
           <div>
             <Label>Foto</Label>
-            <img src="https://via.placeholder.com/150x250" />
+            <img src="https://via.placeholder.com/150x250" alt="Usuário" />
           </div>
           <div className="my-6 flex w-full flex-col justify-center space-y-4">
             <Link className="w-full" href={'/carteirinhas/foto'}>
@@ -326,6 +326,7 @@ export default function CarteirinhasDetalhes() {
                   height={250}
                   width={200}
                   className="h-[250px] w-[200px]"
+                  alt="Foto de perfil"
                 />
                 <div className="mt-4 flex items-center space-x-2">
                   <span className="font-bold uppercase text-white">

@@ -1,5 +1,9 @@
 'use client'
 
+import { LegacyRef, useEffect, useRef, useState } from 'react'
+import { Br, Cut, Image, Printer, Text } from 'react-thermal-printer'
+import ReactToPrint from 'react-to-print'
+
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -9,10 +13,6 @@ import {
   CardHeader,
 } from '@/components/ui/card'
 import { useToast } from '@/components/ui/use-toast'
-import ReactToPrint from 'react-to-print'
-
-import { LegacyRef, useEffect, useRef, useState } from 'react'
-import { Br, Cut, Printer, Text, Image } from 'react-thermal-printer'
 
 interface VouchersContent {
   numDevices: string

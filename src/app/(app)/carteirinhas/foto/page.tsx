@@ -1,10 +1,11 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { RefreshCcw, Zap, ZapOff } from 'lucide-react'
+import { RefreshCcw } from 'lucide-react'
 import Image from 'next/image'
 import React, { useCallback, useRef, useState } from 'react'
 import Webcam from 'react-webcam'
+
+import { Button } from '@/components/ui/button'
 
 export default function CarteirinhasFoto() {
   const webcamRef = useRef<Webcam>(null)
@@ -48,17 +49,6 @@ export default function CarteirinhasFoto() {
             >
               <RefreshCcw className="h-4 w-4" />
             </Button>
-
-            {/* <Button
-              variant={'default'}
-              type="button"
-              className="my-2"
-              onClick={handleFlash}
-            >
-              {(flash && <Zap className="h-4 w-4" />) || (
-                <ZapOff className="h-4 w-4" />
-              )}
-            </Button> */}
           </div>
           <Webcam
             audio={false}

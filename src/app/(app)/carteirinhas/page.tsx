@@ -1,5 +1,6 @@
 'use client'
 
+import { caveat } from '@/app/fonts'
 import { Button } from '@/components/ui/button'
 import {
   Card,
@@ -8,10 +9,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-
 import { useToast } from '@/components/ui/use-toast'
-
-import { caveat } from '@/app/fonts'
 
 export default function CarteirinhaHome() {
   const { toast } = useToast()

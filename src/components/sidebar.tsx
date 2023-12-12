@@ -1,12 +1,11 @@
+import { config } from '@/config'
 import { cn } from '@/lib/utils'
-import { Button } from './ui/button'
 import dados from '@/utils/dados.json'
-
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { config } from '@/config'
 import ChangelogComponent from './Changelog'
-import Image from 'next/image'
+import { Button } from './ui/button'
 
 import { HeartFilledIcon } from '@radix-ui/react-icons'
 import { Code2 } from 'lucide-react'
@@ -44,7 +43,7 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
       return true
     }
 
-    return item.role.some((role: any) => {
+    return item.role.some((role: string) => {
       if (user.roles.includes(role)) {
         return true
       }

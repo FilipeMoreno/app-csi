@@ -1,4 +1,4 @@
-import { Inter, Caveat } from 'next/font/google'
+import { Caveat, Inter } from 'next/font/google'
 
 export const inter = Inter({
   display: 'swap',

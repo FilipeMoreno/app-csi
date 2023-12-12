@@ -1,9 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+
+import { Button } from '@/components/ui/button'
 
 export default function Custom404() {
   const router = useRouter()

@@ -1,10 +1,10 @@
 'use client'
 
-import { useToast } from '@/components/ui/use-toast'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
 
 import CustomQrScanner from '@/components/CustomQrScanner'
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useToast } from '@/components/ui/use-toast'
 
 export default function CarteirinhasScanner() {
   const { toast } = useToast()

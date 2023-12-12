@@ -1,8 +1,8 @@
-import { Toaster } from '@/components/ui/toaster'
 import { Metadata } from 'next'
-
 import NextTopLoader from 'nextjs-toploader'
 import { ReactNode } from 'react'
+
+import { Toaster } from '@/components/ui/toaster'
 
 export const metadata: Metadata = {
   title: 'Login | Colégio Santo Inácio',

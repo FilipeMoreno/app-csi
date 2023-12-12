@@ -2,12 +2,12 @@
 
 import * as React from 'react'
 
-import { cn } from '@/lib/utils'
 import { Icons } from '@/components/icons'
+import { cn } from '@/lib/utils'
+import { useRouter } from 'next/navigation'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
-import { useRouter } from 'next/navigation'
 
 type UserAuthFormProps = React.HTMLAttributes<HTMLDivElement>
 

@@ -1,7 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
-import { useGlobalAudioPlayer } from 'react-use-audio-player'
+import { Player } from '@lottiefiles/react-lottie-player'
+import {
+  PauseIcon,
+  PlayIcon,
+  TrackNextIcon,
+  TrackPreviousIcon,
+} from '@radix-ui/react-icons'
 import {
   CheckIcon,
   Plus,
@@ -12,14 +17,14 @@ import {
   VolumeIcon,
   VolumeXIcon,
 } from 'lucide-react'
-import { Player } from '@lottiefiles/react-lottie-player'
+import schedule from 'node-schedule'
+import { useEffect, useState } from 'react'
+import { useGlobalAudioPlayer } from 'react-use-audio-player'
 
-import horarios from './horarios.json'
-import songsJson from './musicas.json'
-
+import { AudioSeekBar } from '@/components/AudioSeekBar'
+import { TimeLabel } from '@/components/AudioTimeLabel'
+import { Icons } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import {
   Card,
   CardContent,
@@ -28,20 +33,15 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import {
-  TrackNextIcon,
-  TrackPreviousIcon,
-  PlayIcon,
-  PauseIcon,
-} from '@radix-ui/react-icons'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Switch } from '@/components/ui/switch'
-import { AudioSeekBar } from '@/components/AudioSeekBar'
-import { TimeLabel } from '@/components/AudioTimeLabel'
-import schedule from 'node-schedule'
-import { Icons } from '@/components/icons'
+import { ScrollArea } from '@/components/ui/scroll-area'
 import { Separator } from '@/components/ui/separator'
+import { Switch } from '@/components/ui/switch'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+
+import horarios from './horarios.json'
+import songsJson from './musicas.json'
 
 export default function SinaleiroHome() {
   const [volumeValue, setVolumeValue] = useState(0.5)
@@ -457,15 +457,15 @@ export default function SinaleiroHome() {
             <CardContent>
               <Tabs defaultValue="segunda-feira" className="w-full">
                 <TabsList className="grid w-auto grid-cols-5">
-                  {Object.entries(horarios).map(([day], index) => (
-                    <TabsTrigger key={index} value={day}>
+                  {Object.entries(horarios).flatMap(([day], index) => (
+                    <TabsTrigger value={day}>
                       {day.replace('-feira', '')}
                     </TabsTrigger>
                   ))}
                 </TabsList>
                 <ScrollArea className="h-96 w-auto">
-                  {Object.entries(horarios).map(([day, times], index) => (
-                    <TabsContent key={index} value={day}>
+                  {Object.entries(horarios).flatMap(([day, times], index) => (
+                    <TabsContent value={day}>
                       {times.length === 0 && (
                         <div className="my-4 flex items-center justify-center">
                           <h1 className="text-xs">

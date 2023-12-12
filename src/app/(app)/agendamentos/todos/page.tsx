@@ -1,13 +1,12 @@
 'use client'
+import { Clock } from 'lucide-react'
+import { useState } from 'react'
 
+import { Badge } from '@/components/ui/badge'
 import { Calendar } from '@/components/ui/calendar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-import { useState } from 'react'
-
 import horarios from '../horarios.json'
-import { Clock } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 
 export default function ReservasHome() {
   const [date, setDate] = useState(new Date())
@@ -36,10 +35,10 @@ export default function ReservasHome() {
         </div>
         <div className="flex w-full flex-col space-y-4">
           {horarios
-            .map((horario) =>
+            .flatMap((horario) =>
               horario.horarios
                 .filter((horario) => horario.reservado === true)
-                .map((horarioReservado) => ({
+                .flatMap((horarioReservado) => ({
                   ...horarioReservado,
                   setor: horario.setor,
                 })),
@@ -50,7 +49,7 @@ export default function ReservasHome() {
               const horaB = b.inicio.split(':').join('')
               return horaA > horaB ? 1 : -1
             })
-            .map((horario) => (
+            .flatMap((horario) => (
               <Card
                 key={horario.id}
                 className={`border-2 ${

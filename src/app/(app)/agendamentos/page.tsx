@@ -1,5 +1,10 @@
 'use client'
 
+import { Clock } from 'lucide-react'
+import Link from 'next/link'
+import { useState } from 'react'
+
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -12,15 +17,10 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 
-import { useState } from 'react'
-import AdicionarReserva from './nova-reserva'
-
-import setores from './setores.json'
-import horarios from './horarios.json'
-import { Clock } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
 import AgendarAgendamento from './agendar'
-import Link from 'next/link'
+import horarios from './horarios.json'
+import AdicionarReserva from './nova-reserva'
+import setores from './setores.json'
 
 export default function ReservasHome() {
   const [date, setDate] = useState(new Date())
@@ -95,10 +95,10 @@ export default function ReservasHome() {
               <p>Não há horários cadastrados.</p>
             </div>
           ) : (
-            horariosFiltrados.map((horario) =>
+            horariosFiltrados.flatMap((horario) =>
               horario.horarios
                 .filter((horario) => horario.periodo === periodo)
-                .map((horario) => (
+                .flatMap((horario) => (
                   <Card
                     key={horario.id}
                     className={`border-2 ${
@@ -138,7 +138,7 @@ export default function ReservasHome() {
                         <AgendarAgendamento
                           data={date}
                           setor={setor}
-                          horario={horario.inicio + ' às ' + horario.fim}
+                          horario={`${horario.inicio} às ${horario.fim}`}
                         />
                       )}
                       {horario.reservado && (

@@ -1,9 +1,10 @@
 'use client'
 
-import Link from 'next/link'
-import { UserAuthForm } from '@/components/user-auth-form'
 import Image from 'next/image'
+import Link from 'next/link'
+
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
+import { UserAuthForm } from '@/components/user-auth-form'
 
 export default function Page() {
   return (

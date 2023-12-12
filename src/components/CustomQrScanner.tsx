@@ -1,7 +1,7 @@
 'use client'
 
-import React, { FC, useEffect, useRef, useState } from 'react'
 import { Html5Qrcode, type Html5QrcodeCameraScanConfig } from 'html5-qrcode'
+import React, { FC, useEffect, useRef, useState } from 'react'
 
 const CustomQrScanner: FC<{
   config: Html5QrcodeCameraScanConfig
@@ -49,7 +49,7 @@ const CustomQrScanner: FC<{
           {msg.content}
         </p>
       )}
-      <div id={CONTAINER_ID}></div>
+      <div id={CONTAINER_ID} />
     </div>
   )
 }

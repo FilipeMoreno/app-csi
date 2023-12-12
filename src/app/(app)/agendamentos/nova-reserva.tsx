@@ -1,18 +1,25 @@
+import { format, setDate } from 'date-fns'
+import { CalendarIcon, Plus } from 'lucide-react'
+import { useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Calendar } from '@/components/ui/calendar'
+import { Checkbox } from '@/components/ui/checkbox'
 import {
-  DialogHeader,
-  DialogFooter,
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
-
 import { Label } from '@/components/ui/label'
-import { Button } from '@/components/ui/button'
-
-import { CalendarIcon, Plus } from 'lucide-react'
-import { Calendar } from '@/components/ui/calendar'
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover'
 import {
   Select,
   SelectContent,
@@ -21,19 +28,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { useState } from 'react'
-import setores from './setores.json'
-import horarios from './horarios.json'
-
-import { Checkbox } from '@/components/ui/checkbox'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover'
-import { cn } from '@/lib/utils'
-import { format, setDate } from 'date-fns'
 import { Textarea } from '@/components/ui/textarea'
+import { cn } from '@/lib/utils'
+
+import horarios from './horarios.json'
+import setores from './setores.json'
 
 export default function AdicionarReserva() {
   const [setor, setSetor] = useState<string>('')
@@ -49,9 +48,8 @@ export default function AdicionarReserva() {
     setSelectedHorarios((prev) => {
       if (prev.includes(value)) {
         return prev.filter((horario) => horario !== value)
-      } else {
-        return [...prev, value]
       }
+      return [...prev, value]
     })
   }
   return (
@@ -156,36 +154,12 @@ export default function AdicionarReserva() {
                     )
                   }
 
-                  // return horariosDisponiveis.map((horarioInterno) => (
-                  //   <div
-                  //     key={horarioInterno.id}
-                  //     className="flex flex-row space-x-2"
-                  //   >
-                  //     <Checkbox
-                  //       id={horarioInterno.id.toString()}
-                  //       value={horarioInterno.id.toString()}
-                  //       onClick={() =>
-                  //         handleCheckboxChange(horarioInterno.id.toString())
-                  //       }
-                  //       onChange={() =>
-                  //         handleCheckboxChange(horarioInterno.id.toString())
-                  //       }
-                  //     />
-                  //     <label
-                  //       htmlFor={horarioInterno.id.toString()}
-                  //       className="text-base font-medium"
-                  //     >
-                  //       {horarioInterno.inicio} - {horarioInterno.fim}
-                  //     </label>
-                  //   </div>
-                  // ))
-
                   return (
                     <div className="flex flex-row justify-between space-x-4">
                       <div>
                         {horariosDisponiveis
                           .slice(0, 3)
-                          .map((horarioInterno) => (
+                          .flatMap((horarioInterno) => (
                             <div
                               key={horarioInterno.id}
                               className="flex flex-row space-x-2"
@@ -216,7 +190,7 @@ export default function AdicionarReserva() {
                       <div>
                         {horariosDisponiveis
                           .slice(3, 6)
-                          .map((horarioInterno) => (
+                          .flatMap((horarioInterno) => (
                             <div
                               key={horarioInterno.id}
                               className="flex flex-row space-x-2"

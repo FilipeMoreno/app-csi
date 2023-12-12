@@ -1,10 +1,10 @@
 import { BellIcon, GearIcon } from '@radix-ui/react-icons'
+import { FilePlus2, LifeBuoy, Reply } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from './ui/button'
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover'
-import Link from 'next/link'
-import { FilePlus2, LifeBuoy, Reply } from 'lucide-react'
-import { Tabs, TabsList, TabsTrigger } from './ui/tabs'
 import { Separator } from './ui/separator'
+import { Tabs, TabsList, TabsTrigger } from './ui/tabs'
 
 export async function Notifications() {
   return (
@@ -19,8 +19,8 @@ export async function Notifications() {
           <span>3</span>
 
           <span className="absolute -right-0.5 -top-0.5 flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500" />
           </span>
         </Button>
       </PopoverTrigger>

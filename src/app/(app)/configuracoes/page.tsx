@@ -1,12 +1,11 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-
-import { Separator } from '@/components/ui/separator'
-
 import { Check, Computer, Moon, Sun } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import { useEffect, useState } from 'react'
+
+import { Button } from '@/components/ui/button'
+import { Separator } from '@/components/ui/separator'
 
 export default function ConfiguracoesHome() {
   const { setTheme, theme } = useTheme()

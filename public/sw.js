@@ -1,4 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const OFFLINE_VERSION = 1
 const CACHE_NAME = 'offline'
 const OFFLINE_URL = 'offline'

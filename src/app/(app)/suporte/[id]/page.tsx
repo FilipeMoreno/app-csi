@@ -1,29 +1,21 @@
 'use client'
 
+import { Link, PaperclipIcon, SendHorizonal, SmileIcon } from 'lucide-react'
+import Image from 'next/image'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
   SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { Separator } from '@/components/ui/separator'
-import { Textarea } from '@/components/ui/textarea'
-import { Link, PaperclipIcon, SendHorizonal, SmileIcon } from 'lucide-react'
-import Image from 'next/image'
 
 export default function ChamadosDetalhes() {
   return (
