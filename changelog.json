@@ -332,5 +332,41 @@
         "description": "Adicionado botão de impressão nos detalhes de carteirinhas."
       }
     ]
+  },
+  {
+    "version": "0.8.1.1-alpha",
+    "date": "2023-12-05T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Alterações",
+        "description": "Páginas de suporte refeitas."
+      },
+      {
+        "type": "Correções",
+        "description": "Correções gerais."
+      }
+    ]
+  },
+  {
+    "version": "0.9.1.1-alpha",
+    "date": "2023-12-05T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Adições",
+        "description": "Adicionado Google Analytics."
+      },
+      {
+        "type": "Adições",
+        "description": "Adicionado Vercel Analytics."
+      },
+      {
+        "type": "Adições",
+        "description": "Adicionado Vercel Speed Insights."
+      },
+      {
+        "type": "Correções",
+        "description": "Correções gerais no aplicativo."
+      }
+    ]
   }
 ]
