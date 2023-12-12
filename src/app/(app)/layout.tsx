@@ -133,9 +133,9 @@ export default function RootLayout({
 
   return (
     <body>
-      <SpeedInsights />
+      {/* <SpeedInsights />
       <Analytics />
-      <GoogleAnalytics trackingId={process.env.NEXT_PUBLIC_GOOGLE_ID || ''} />
+      <GoogleAnalytics trackingId={process.env.NEXT_PUBLIC_GOOGLE_ID || ''} /> */}
       <ThemeProvider
         attribute="class"
         defaultTheme="system"

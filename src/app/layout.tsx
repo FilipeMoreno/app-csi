@@ -99,7 +99,6 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1.0"
         ></meta>
         <Script src="/register-sw.js" />
-
         {children}
       </head>
     </html>
