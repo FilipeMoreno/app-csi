@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 
 import '@/styles/globals.css'
@@ -7,13 +7,18 @@ export const metadata: Metadata = {
   title: 'APP | Colégio Santo Inácio',
   description: 'Aplicativo do Colégio Santo Inácio',
   manifest: '/manifest.json',
-  viewport: {
-    width: 'device-width',
-    height: 'device-height',
-    initialScale: 1,
-    maximumScale: 1,
-    minimumScale: 1,
-  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  height: 'device-height',
+  initialScale: 1,
+  maximumScale: 1,
+  minimumScale: 1,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'cyan' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
 }
 
 export default function RootLayout({
@@ -43,17 +48,6 @@ export default function RootLayout({
           name="apple-mobile-web-app-status-bar-style"
           content="black-translucent"
         />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: light)"
-          content="white"
-        />
-        <meta
-          name="theme-color"
-          media="(prefers-color-scheme: dark)"
-          content="black"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link
           href="splashscreens/iphone5_splash.png"
