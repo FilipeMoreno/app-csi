@@ -28,6 +28,19 @@ export default function RootLayout({
     <html lang="pt-BR" className="font-sans antialiased">
       <head>
         <meta charSet="utf-8" />
+
+        <meta property="og:image" content="https://i.imgur.com/V3yZGU7.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Logo CSI" />
+
+        <meta name="twitter:image" content="https://i.imgur.com/V3yZGU7.png" />
+        <meta name="twitter:image:type" content="image/png" />
+        <meta name="twitter:image:width" content="1200" />
+        <meta name="twitter:image:height" content="630" />
+        <meta property="twitter:image:alt" content="Logo CSI" />
+
         <link
           href="splashscreens/iphone5_splash.png"
           media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"
