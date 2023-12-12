@@ -1,17 +1,17 @@
 'use client'
 
-import '@/styles/globals.css'
-import { Toaster } from '@/components/ui/toaster'
+import { SpeedInsights } from '@vercel/speed-insights/next'
+import NextTopLoader from 'nextjs-toploader'
+import { useState } from 'react'
+
+import Footer from '@/components/footer'
 import { Header } from '@/components/header'
 import { Sidebar } from '@/components/sidebar'
-import { useState } from 'react'
-import Footer from '@/components/footer'
-import NextTopLoader from 'nextjs-toploader'
-import { FaRegAddressCard } from 'react-icons/fa6'
+import { ThemeProvider } from '@/components/theme-provider'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { FaRegCalendarAlt } from 'react-icons/fa'
+import { Toaster } from '@/components/ui/toaster'
+
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
-import { TbTimeDuration45 } from 'react-icons/tb'
 import {
   Home,
   LayoutDashboard,
@@ -24,8 +24,12 @@ import {
   Ticket,
   Wifi,
 } from 'lucide-react'
-import { ThemeProvider } from '@/components/theme-provider'
 import { BiSupport } from 'react-icons/bi'
+import { FaRegCalendarAlt } from 'react-icons/fa'
+import { FaRegAddressCard } from 'react-icons/fa6'
+import { TbTimeDuration45 } from 'react-icons/tb'
+
+import '@/styles/globals.css'
 
 export default function RootLayout({
   children,
@@ -167,6 +171,7 @@ export default function RootLayout({
           </div>
         </div>
         {/* <Footer /> */}
+        <NextTopLoader />
         <Toaster />
       </ThemeProvider>
     </body>
