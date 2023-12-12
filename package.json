@@ -1,6 +1,6 @@
 {
-  "name": "APP-CSI",
-  "version": "0.10.1.1-alpha",
+  "name": "app-csi",
+  "version": "0.11.1.1-alpha",
   "author": {
     "name": "Filipe Moreno",
     "email": "y8.filipe@gmail.com"
@@ -78,18 +78,13 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@rocketseat/eslint-config": "^2.1.0",
+    "@biomejs/biome": "1.4.1",
     "@types/node": "^20",
     "@types/node-schedule": "^2.1.5",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
-    "eslint": "^8",
-    "eslint-config-next": "14.0.4",
-    "eslint-config-prettier": "^9.1.0",
     "postcss": "^8",
-    "prettier": "^3.1.1",
-    "prettier-plugin-tailwindcss": "^0.5.9",
     "tailwindcss": "^3",
     "typescript": "^5"
   }

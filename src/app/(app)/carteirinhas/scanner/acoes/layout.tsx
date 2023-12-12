@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
+
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Scanner QRCode - Carteirinhas | Colégio Santo Inácio',
-  description: 'Scanner QRCode para carteirinhas de estudantes',
+	title: 'Scanner QRCode - Carteirinhas | Colégio Santo Inácio',
+	description: 'Scanner QRCode para carteirinhas de estudantes',
 }
 
 export default function CarteirinhasScanner({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode
 }) {
-  return <div>{children}</div>
+	return <div>{children}</div>
 }

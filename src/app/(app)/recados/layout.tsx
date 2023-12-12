@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
+
 import '@/styles/globals.css'
 
 export const metadata: Metadata = {
-  title: 'Recados | Colégio Santo Inácio',
-  description: 'Geração de recados',
+	title: 'Recados | Colégio Santo Inácio',
+	description: 'Geração de recados',
 }
 
 export default function RecadoLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode
 }) {
-  return <div>{children}</div>
+	return <div>{children}</div>
 }

@@ -1,13 +1,13 @@
-import { Inter, Caveat } from 'next/font/google'
+import { Caveat, Inter } from 'next/font/google'
 
 export const inter = Inter({
-  display: 'swap',
-  subsets: ['latin'],
-  variable: '--font-inter',
+	display: 'swap',
+	subsets: ['latin'],
+	variable: '--font-inter',
 })
 
 export const caveat = Caveat({
-  display: 'swap',
-  subsets: ['latin'],
-  variable: '--font-caveat',
+	display: 'swap',
+	subsets: ['latin'],
+	variable: '--font-caveat',
 })
