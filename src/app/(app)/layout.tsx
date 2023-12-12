@@ -177,7 +177,7 @@ export default function RootLayout({
       </ThemeProvider>
       <SpeedInsights />
       <Analytics />
-      <GoogleAnalytics />
+      {/* <GoogleAnalytics /> */}
     </body>
   )
 }
