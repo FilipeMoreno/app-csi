@@ -16,7 +16,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@eisberg-labs/next-google-analytics": "^5.0.1",
     "@hookform/resolvers": "^3.3.2",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@magicul/next-google-tag-manager": "^2.0.0",

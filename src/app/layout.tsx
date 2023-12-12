@@ -28,7 +28,6 @@ export default function RootLayout({
     <html lang="pt-BR" className="font-sans antialiased">
       <head>
         <meta charSet="utf-8" />
-
         <link
           href="splashscreens/iphone5_splash.png"
           media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)"

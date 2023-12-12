@@ -9,9 +9,9 @@ import { Sidebar } from '@/components/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Toaster } from '@/components/ui/toaster'
-import { GoogleAnalytics } from '@eisberg-labs/next-google-analytics'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import GoogleAnalytics from '../GoogleAnalytics'
 
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import {
@@ -133,9 +133,6 @@ export default function RootLayout({
 
   return (
     <body>
-      {/* <SpeedInsights />
-      <Analytics />
-      <GoogleAnalytics trackingId={process.env.NEXT_PUBLIC_GOOGLE_ID || ''} /> */}
       <ThemeProvider
         attribute="class"
         defaultTheme="system"
@@ -176,6 +173,9 @@ export default function RootLayout({
           </div>
         </div>
         <Toaster />
+        <SpeedInsights />
+        <Analytics />
+        <GoogleAnalytics />
       </ThemeProvider>
     </body>
   )
