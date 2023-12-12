@@ -1,15 +1,15 @@
 import {
-  DialogHeader,
-  DialogFooter,
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 
 import { CalendarIcon, Plus } from 'lucide-react'
 
@@ -23,10 +23,9 @@ import {
 } from '@/components/ui/select'
 import { useState } from 'react'
 
-import { cn } from '@/lib/utils'
-import { format } from 'date-fns'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { cn } from '@/lib/utils'
 
 interface Dados {
   setor: string
@@ -67,7 +66,12 @@ export default function AgendarAgendamento({ setor, data, horario }: Dados) {
             >
               <CalendarIcon className="mr-2 h-4 w-4" />
               {data ? (
-                format(data, 'dd/MM/yyyy')
+                Intl.DateTimeFormat('pt-BR', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                }).format(data)
               ) : (
                 <span>Selecione uma data</span>
               )}

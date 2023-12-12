@@ -1,17 +1,16 @@
 import {
-  DialogHeader,
-  DialogFooter,
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog'
 
-import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 
-import { CalendarIcon, Plus } from 'lucide-react'
 import { Calendar } from '@/components/ui/calendar'
 import {
   Select,
@@ -21,9 +20,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
+import { CalendarIcon, Plus } from 'lucide-react'
 import { useState } from 'react'
-import setores from './setores.json'
 import horarios from './horarios.json'
+import setores from './setores.json'
 
 import { Checkbox } from '@/components/ui/checkbox'
 import {
@@ -31,9 +31,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from '@/components/ui/popover'
-import { cn } from '@/lib/utils'
-import { format, setDate } from 'date-fns'
 import { Textarea } from '@/components/ui/textarea'
+import { cn } from '@/lib/utils'
 
 export default function AdicionarReserva() {
   const [setor, setSetor] = useState<string>('')
@@ -81,7 +80,12 @@ export default function AdicionarReserva() {
                 >
                   <CalendarIcon className="mr-2 h-4 w-4" />
                   {date ? (
-                    format(date, 'dd/MM/yyyy')
+                    Intl.DateTimeFormat('pt-BR', {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric',
+                    }).format(date)
                   ) : (
                     <span>Selecione uma data</span>
                   )}
