@@ -165,13 +165,13 @@ export default function RootLayout({
                   }`}
                 >
                   <div className="h-full px-4 py-6 lg:px-8">{children}</div>
+                  <SpeedInsights />
                 </div>
               </div>
             </div>
           </div>
         </div>
         {/* <Footer /> */}
-        <NextTopLoader />
         <Toaster />
       </ThemeProvider>
     </body>
