@@ -54,12 +54,12 @@ export default function RootLayout({
     },
     {
       title: 'Suporte',
-      icon: BiSupport,
+      icon: LifeBuoy,
       subitems: [
         {
           href: '/suporte',
           title: 'Chamados',
-          icon: LifeBuoy,
+          icon: BiSupport,
         },
       ],
     },
@@ -93,12 +93,12 @@ export default function RootLayout({
           role: ['carteirinhas.scanner', 'admin'],
           icon: ScanLine,
         },
-        {
-          href: '/carteirinhas/configuracoes',
-          title: 'Configurações',
-          role: ['carteirinhas.configuracoes', 'admin'],
-          icon: Settings,
-        },
+        // {
+        //   href: '/carteirinhas/configuracoes',
+        //   title: 'Configurações',
+        //   role: ['carteirinhas.configuracoes', 'admin'],
+        //   icon: Settings,
+        // },
       ],
     },
     {
