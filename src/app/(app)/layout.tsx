@@ -166,7 +166,12 @@ export default function RootLayout({
                     showSidebar ? 'hidden' : 'block'
                   }`}
                 >
-                  <div className="h-full px-4 py-6 lg:px-8">{children}</div>
+                  <div className="h-full px-4 py-6 lg:px-8">
+                    {children}
+                    <SpeedInsights />
+                    <Analytics />
+                    <GoogleAnalytics />
+                  </div>
                 </div>
               </div>
             </div>
@@ -175,9 +180,6 @@ export default function RootLayout({
         {/* <Footer /> */}
         <Toaster />
       </ThemeProvider>
-      <SpeedInsights />
-      <Analytics />
-      {/* <GoogleAnalytics /> */}
     </body>
   )
 }
