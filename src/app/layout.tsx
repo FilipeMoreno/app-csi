@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import Script from 'next/script'
 
 import '@/styles/globals.css'
+import GoogleAnalytics from './GoogleAnalytics'
 
 export const metadata: Metadata = {
   title: 'APP | Colégio Santo Inácio',
@@ -102,6 +103,7 @@ export default function RootLayout({
         {children}
         <SpeedInsights />
         <Analytics />
+        <GoogleAnalytics />
       </head>
     </html>
   )
