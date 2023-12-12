@@ -9,9 +9,9 @@ import { Sidebar } from '@/components/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Toaster } from '@/components/ui/toaster'
+import { GoogleAnalytics } from '@eisberg-labs/next-google-analytics'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
-import GoogleAnalytics from '../GoogleAnalytics'
 
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import {
@@ -132,54 +132,51 @@ export default function RootLayout({
   }
 
   return (
-    <>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <NextTopLoader color="#af3c41" />
-          <Header />
-          <div className="md:block">
-            <div className="border-t">
-              <div className="bg-background">
-                <div className="grid lg:grid-cols-5">
-                  <Sheet>
-                    <SheetTrigger className="lg:hidden">
-                      <HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
-                    </SheetTrigger>
-                    <SheetContent side="left">
-                      <Sidebar
-                        items={sidebarNavItems}
-                        onItemClick={handleItemClick}
-                      />
-                    </SheetContent>
-                  </Sheet>
-                  <Sidebar
-                    className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
-                    items={sidebarNavItems}
-                    onItemClick={handleItemClick}
-                  />
-                  <div
-                    className={`col-span-3 lg:col-span-4 lg:border-l ${
-                      showSidebar ? 'hidden' : 'block'
-                    }`}
-                  >
-                    <div className="h-full px-4 py-6 lg:px-8">{children}</div>
-                  </div>
+    <body>
+      <SpeedInsights />
+      <Analytics />
+      <GoogleAnalytics trackingId={process.env.NEXT_PUBLIC_GOOGLE_ID || ''} />
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        <NextTopLoader color="#af3c41" />
+        <Header />
+        <div className="md:block">
+          <div className="border-t">
+            <div className="bg-background">
+              <div className="grid lg:grid-cols-5">
+                <Sheet>
+                  <SheetTrigger className="lg:hidden">
+                    <HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+                  </SheetTrigger>
+                  <SheetContent side="left">
+                    <Sidebar
+                      items={sidebarNavItems}
+                      onItemClick={handleItemClick}
+                    />
+                  </SheetContent>
+                </Sheet>
+                <Sidebar
+                  className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
+                  items={sidebarNavItems}
+                  onItemClick={handleItemClick}
+                />
+                <div
+                  className={`col-span-3 lg:col-span-4 lg:border-l ${
+                    showSidebar ? 'hidden' : 'block'
+                  }`}
+                >
+                  <div className="h-full px-4 py-6 lg:px-8">{children}</div>
                 </div>
               </div>
             </div>
           </div>
-          <Toaster />
-        </ThemeProvider>
-      </body>
-
-      <SpeedInsights />
-      <Analytics />
-      <GoogleAnalytics />
-    </>
+        </div>
+        <Toaster />
+      </ThemeProvider>
+    </body>
   )
 }
