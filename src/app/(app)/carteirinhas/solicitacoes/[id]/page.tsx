@@ -28,6 +28,16 @@ import {
 	AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from '@/components/ui/drawer'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import {
@@ -41,6 +51,7 @@ import {
 
 export default function CarteirinhasDetalhes() {
 	const [isEditing, setIsEditing] = useState(false)
+	const [open, setOpen] = useState(false)
 
 	const pagestyle = `
   @page {
@@ -214,6 +225,40 @@ export default function CarteirinhasDetalhes() {
 						<h1 className="text-xl font-bold">Histórico</h1>
 						<span>Mostrando histórico de status</span>
 					</div>
+					<Drawer open={open} onOpenChange={setOpen}>
+						<DrawerTrigger asChild>
+							<Button variant={'outline'}>
+								<Plus className="mr-2 h-4 w-4" /> Status
+							</Button>
+						</DrawerTrigger>
+						<DrawerContent>
+							<DrawerHeader className="text-left">
+								<DrawerTitle>Adicionar status</DrawerTitle>
+								<DrawerDescription>
+									Selecione o status que deseja adicionar
+									<Select>
+										<SelectTrigger className="mt-2 w-full">
+											<SelectValue placeholder="Selecione o status" />
+										</SelectTrigger>
+										<SelectContent>
+											<SelectItem value="Entregue">Entregue</SelectItem>
+											<SelectItem value="Produzida">Produzida</SelectItem>
+											<SelectItem value="Pagamento recebido">
+												Pagamento recebido
+											</SelectItem>
+											<SelectItem value="Aprovada">Aprovada</SelectItem>
+										</SelectContent>
+									</Select>
+								</DrawerDescription>
+							</DrawerHeader>
+
+							<DrawerFooter className="pt-2">
+								<DrawerClose asChild>
+									<Button variant="outline">Cancelar</Button>
+								</DrawerClose>
+							</DrawerFooter>
+						</DrawerContent>
+					</Drawer>
 					<AlertDialog>
 						<AlertDialogTrigger asChild>
 							<Button variant={'outline'}>

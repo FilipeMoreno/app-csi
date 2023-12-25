@@ -53,6 +53,7 @@
     "cmdk": "^0.2.0",
     "cookies-next": "^4.1.0",
     "date-fns": "^2.30.0",
+    "embla-carousel-react": "^8.0.0-rc17",
     "framer-motion": "^10.16.16",
     "html5-qrcode": "^2.3.8",
     "lucide-react": "^0.294.0",
@@ -68,13 +69,16 @@
     "react-hook-form": "^7.49.0",
     "react-icons": "^4.12.0",
     "react-qr-code": "^2.0.12",
+    "react-resizable-panels": "^1.0.5",
     "react-spinners": "^0.13.8",
     "react-thermal-printer": "^0.17.0",
     "react-to-print": "^2.14.15",
     "react-use-audio-player": "^2.2.0",
     "react-webcam": "^7.2.0",
+    "sonner": "^1.2.4",
     "tailwind-merge": "^2.1.0",
     "tailwindcss-animate": "^1.0.7",
+    "vaul": "^0.8.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -85,7 +89,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
     "postcss": "^8",
-    "tailwindcss": "^3",
+    "tailwindcss": "^3.4.0",
     "typescript": "^5"
   }
 }

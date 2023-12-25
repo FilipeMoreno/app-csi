@@ -12,7 +12,7 @@ import {
 	CardFooter,
 	CardHeader,
 } from '@/components/ui/card'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'sonner'
 
 interface VouchersContent {
 	numDevices: string
@@ -29,8 +29,6 @@ export default function Home() {
 		month: 'long',
 		year: 'numeric',
 	})
-
-	const { toast } = useToast()
 
 	const componentRef = useRef()
 
@@ -95,11 +93,8 @@ export default function Home() {
 
 		if (voucher) {
 			setVouchers(voucher)
-			toast({
-				variant: 'success',
-				title: 'Sucesso!',
+			toast.success('Sucesso!', {
 				description: 'Voucher gerado com sucesso!',
-				className: 'my-1',
 			})
 		}
 

@@ -96,7 +96,12 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
 													variant={
 														pathname === subitem.href ? 'secondary' : 'ghost'
 													}
-													className="w-full justify-start text-left text-base font-bold tracking-tight"
+													// className="w-full justify-start text-left text-base font-bold tracking-tight"
+													className={`w-full justify-start text-left text-base font-bold tracking-tight ${
+														pathname === subitem.href
+															? 'border-l-2 border-zinc-900'
+															: 'border-none'
+													}`}
 												>
 													{subitem.icon && (
 														<subitem.icon className="mr-2 h-4 w-4" />

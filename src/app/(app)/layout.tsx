@@ -9,7 +9,7 @@ import { Header } from '@/components/header'
 import { Sidebar } from '@/components/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { Toaster } from '@/components/ui/toaster'
+import { Toaster } from '@/components/ui/sonner'
 
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
 import {
@@ -171,7 +171,7 @@ export default function RootLayout({
 						</div>
 					</div>
 				</div>
-				<Toaster />
+				<Toaster richColors closeButton />
 				<SpeedInsights />
 				<Analytics />
 				<GoogleAnalytics />
