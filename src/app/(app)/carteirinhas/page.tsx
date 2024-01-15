@@ -8,13 +8,11 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { useToast } from '@/components/ui/use-toast'
+import { toas, toast } from 'sonner'
 
 import { caveat } from '@/app/fonts'
 
 export default function CarteirinhaHome() {
-	const { toast } = useToast()
-
 	return (
 		<div className="flex flex-col items-center justify-center">
 			<Card className="h-full w-full">
@@ -25,11 +23,7 @@ export default function CarteirinhaHome() {
 				<CardContent>
 					<Button
 						onClick={() => {
-							toast({
-								title: 'Hello world',
-								description: 'This is a toast',
-								variant: 'success',
-							})
+							toast.success('Event has been created')
 						}}
 					>
 						Hello world

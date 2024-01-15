@@ -24,19 +24,15 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'sonner'
 
 export default function CarteirinhasScannerAcoes() {
-	const { toast } = useToast()
-
 	const [qrcode, setQrCode] = useState<string | null>(null)
 	const [status, setStatus] = useState('')
 
 	function handleChangeStatus() {
-		toast({
-			title: 'Status alterado!',
+		toast.success('Status alterado!', {
 			description: `O status foi alterado para ${status} com sucesso!`,
-			variant: 'success',
 		})
 
 		setQrCode(null)
@@ -44,10 +40,8 @@ export default function CarteirinhasScannerAcoes() {
 
 	useEffect(() => {
 		if (qrcode) {
-			toast({
-				title: 'Carteirinha encontrada!',
+			toast.success('Carteirinha encontrada!', {
 				description: `O código ${qrcode} foi encontrado`,
-				variant: 'success',
 			})
 		}
 	}, [qrcode])

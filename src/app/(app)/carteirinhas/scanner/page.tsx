@@ -4,11 +4,9 @@ import { useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 import CustomQrScanner from '@/components/CustomQrScanner'
-import { useToast } from '@/components/ui/use-toast'
+import { toast } from 'sonner'
 
 export default function CarteirinhasScanner() {
-	const { toast } = useToast()
-
 	const [qrcode, setQrCode] = useState<string | null>(null)
 
 	const router = useRouter()
@@ -17,10 +15,8 @@ export default function CarteirinhasScanner() {
 		let id = ''
 
 		if (qrcode) {
-			toast({
-				title: 'Carteirinha encontrada!',
+			toast.success('Carteirinha encontrada!', {
 				description: `O código ${qrcode} foi encontrado`,
-				variant: 'success',
 			})
 
 			if (qrcode.includes('http')) {
