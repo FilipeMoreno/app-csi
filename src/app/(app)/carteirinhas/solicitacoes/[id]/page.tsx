@@ -14,6 +14,7 @@ import Link from 'next/link'
 import { LegacyRef, useRef, useState } from 'react'
 import QRCode from 'react-qr-code'
 import ReactToPrint from 'react-to-print'
+import { useMediaQuery } from 'usehooks-ts'
 
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 import {
@@ -52,6 +53,7 @@ import {
 export default function CarteirinhasDetalhes() {
 	const [isEditing, setIsEditing] = useState(false)
 	const [open, setOpen] = useState(false)
+	const isDesktop = useMediaQuery('(min-width: 768px)')
 
 	const pagestyle = `
   @page {
@@ -225,72 +227,76 @@ export default function CarteirinhasDetalhes() {
 						<h1 className="text-xl font-bold">Histórico</h1>
 						<span>Mostrando histórico de status</span>
 					</div>
-					<Drawer open={open} onOpenChange={setOpen}>
-						<DrawerTrigger asChild>
-							<Button variant={'outline'}>
-								<Plus className="mr-2 h-4 w-4" /> Status
-							</Button>
-						</DrawerTrigger>
-						<DrawerContent>
-							<DrawerHeader className="text-left">
-								<DrawerTitle>Adicionar status</DrawerTitle>
-								<DrawerDescription>
-									Selecione o status que deseja adicionar
-									<Select>
-										<SelectTrigger className="mt-2 w-full">
-											<SelectValue placeholder="Selecione o status" />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value="Entregue">Entregue</SelectItem>
-											<SelectItem value="Produzida">Produzida</SelectItem>
-											<SelectItem value="Pagamento recebido">
-												Pagamento recebido
-											</SelectItem>
-											<SelectItem value="Aprovada">Aprovada</SelectItem>
-										</SelectContent>
-									</Select>
-								</DrawerDescription>
-							</DrawerHeader>
 
-							<DrawerFooter className="pt-2">
-								<DrawerClose asChild>
-									<Button variant="outline">Cancelar</Button>
-								</DrawerClose>
-							</DrawerFooter>
-						</DrawerContent>
-					</Drawer>
-					<AlertDialog>
-						<AlertDialogTrigger asChild>
-							<Button variant={'outline'}>
-								<Plus className="mr-2 h-4 w-4" /> Status
-							</Button>
-						</AlertDialogTrigger>
-						<AlertDialogContent>
-							<AlertDialogHeader>
-								<AlertDialogTitle>Adicionar status</AlertDialogTitle>
-								<AlertDialogDescription>
-									Selecione o status que deseja adicionar
-									<Select>
-										<SelectTrigger className="mt-2 w-full">
-											<SelectValue placeholder="Selecione o status" />
-										</SelectTrigger>
-										<SelectContent>
-											<SelectItem value="Entregue">Entregue</SelectItem>
-											<SelectItem value="Produzida">Produzida</SelectItem>
-											<SelectItem value="Pagamento recebido">
-												Pagamento recebido
-											</SelectItem>
-											<SelectItem value="Aprovada">Aprovada</SelectItem>
-										</SelectContent>
-									</Select>
-								</AlertDialogDescription>
-							</AlertDialogHeader>
-							<AlertDialogFooter>
-								<AlertDialogCancel>Cancelar</AlertDialogCancel>
-								<AlertDialogAction>Continuar</AlertDialogAction>
-							</AlertDialogFooter>
-						</AlertDialogContent>
-					</AlertDialog>
+					{(isDesktop && (
+						<AlertDialog>
+							<AlertDialogTrigger asChild>
+								<Button variant={'outline'}>
+									<Plus className="mr-2 h-4 w-4" /> Status
+								</Button>
+							</AlertDialogTrigger>
+							<AlertDialogContent>
+								<AlertDialogHeader>
+									<AlertDialogTitle>Adicionar status</AlertDialogTitle>
+									<AlertDialogDescription>
+										Selecione o status que deseja adicionar
+										<Select>
+											<SelectTrigger className="mt-2 w-full">
+												<SelectValue placeholder="Selecione o status" />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value="Entregue">Entregue</SelectItem>
+												<SelectItem value="Produzida">Produzida</SelectItem>
+												<SelectItem value="Pagamento recebido">
+													Pagamento recebido
+												</SelectItem>
+												<SelectItem value="Aprovada">Aprovada</SelectItem>
+											</SelectContent>
+										</Select>
+									</AlertDialogDescription>
+								</AlertDialogHeader>
+								<AlertDialogFooter>
+									<AlertDialogCancel>Cancelar</AlertDialogCancel>
+									<AlertDialogAction>Continuar</AlertDialogAction>
+								</AlertDialogFooter>
+							</AlertDialogContent>
+						</AlertDialog>
+					)) || (
+						<Drawer open={open} onOpenChange={setOpen}>
+							<DrawerTrigger asChild>
+								<Button variant={'outline'}>
+									<Plus className="mr-2 h-4 w-4" /> Status
+								</Button>
+							</DrawerTrigger>
+							<DrawerContent>
+								<DrawerHeader className="text-left">
+									<DrawerTitle>Adicionar status</DrawerTitle>
+									<DrawerDescription>
+										Selecione o status que deseja adicionar
+										<Select>
+											<SelectTrigger className="mt-2 w-full">
+												<SelectValue placeholder="Selecione o status" />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value="Entregue">Entregue</SelectItem>
+												<SelectItem value="Produzida">Produzida</SelectItem>
+												<SelectItem value="Pagamento recebido">
+													Pagamento recebido
+												</SelectItem>
+												<SelectItem value="Aprovada">Aprovada</SelectItem>
+											</SelectContent>
+										</Select>
+									</DrawerDescription>
+								</DrawerHeader>
+
+								<DrawerFooter className="pt-2">
+									<DrawerClose asChild>
+										<Button variant="outline">Cancelar</Button>
+									</DrawerClose>
+								</DrawerFooter>
+							</DrawerContent>
+						</Drawer>
+					)}
 				</div>
 				<div className="flex w-full flex-col items-center justify-center rounded-lg bg-emerald-900 p-4 text-zinc-100">
 					<span className="font-thin">Situação atual:</span>

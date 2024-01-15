@@ -14,6 +14,7 @@ import Link from 'next/link'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -21,6 +22,15 @@ import {
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Input } from '@/components/ui/input'
+import {
+	Pagination,
+	PaginationContent,
+	PaginationEllipsis,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+} from '@/components/ui/pagination'
 import {
 	Select,
 	SelectContent,
@@ -185,80 +195,183 @@ export default function CarteirinhasSolicitacoes() {
 					</SheetContent>
 				</Sheet>
 			</div>
-
-			<div className="rounded-md border md:block">
-				<Table className="relative">
-					<TableHeader>
-						<TableRow className="bg-secondary">
-							<TableHead className="w-[200px]">Nome</TableHead>
-							<TableHead>Série/Turma</TableHead>
-							<TableHead>Status</TableHead>
-							<TableHead>Data</TableHead>
-							<TableHead className="text-right" />
-						</TableRow>
-					</TableHeader>
-					<TableBody>
-						{solicitacoes.flatMap((solicitacao) => {
-							return (
-								<TableRow key={solicitacao.id}>
-									<TableCell className="font-medium">
-										{solicitacao.nome}
-									</TableCell>
-									<TableCell>
-										{solicitacao.serie} {solicitacao.turma}
-									</TableCell>
-									<TableCell>
-										<Badge
-											className={`font-bold uppercase ${
-												solicitacao.status === 'Entregue' &&
-												'border-success text-success'
-											} ${
-												solicitacao.status === 'Em análise' &&
-												'border-error text-error'
-											} ${
-												solicitacao.status === 'Aguardando foto' &&
-												'border-warning text-warning'
-											} ${
-												solicitacao.status === 'Aguardando pagamento' &&
-												'border-important text-important'
-											}`}
-											variant={'outline'}
-										>
-											{solicitacao.status}
-										</Badge>
-									</TableCell>
-									<TableCell>
-										{moment(solicitacao.createdAt).fromNow()}
-									</TableCell>
-
-									<TableCell className="text-right">
-										<DropdownMenu>
-											<DropdownMenuTrigger asChild>
-												<Button variant="ghost" className="h-8 w-8 p-0">
-													<span className="sr-only">Abrir opções</span>
-													<MoreHorizontal className="h-4 w-4" />
-												</Button>
-											</DropdownMenuTrigger>
-											<DropdownMenuContent align="end">
-												<Link href={`solicitacoes/${solicitacao.id}`}>
-													<DropdownMenuItem className="flex cursor-pointer flex-row items-center">
-														<EyeIcon className="mr-1 h-4 w-5" />
-														Visualizar
-													</DropdownMenuItem>
-												</Link>
-												<DropdownMenuItem className="flex cursor-pointer flex-row items-center">
-													<Trash2 className="mr-1 h-4 w-5" />
-													Remover
-												</DropdownMenuItem>
-											</DropdownMenuContent>
-										</DropdownMenu>
-									</TableCell>
-								</TableRow>
-							)
-						})}
-					</TableBody>
-				</Table>
+			<div className="space-y-2">
+				<Card>
+					<CardHeader>
+						<CardTitle>
+							<div className="uppercase text-lg items-center flex space-x-2">
+								<span className="font-bold">Nome do aluno</span>
+								<Badge variant={'outline'} className="bg-orange-600 text-white">
+									Novo
+								</Badge>
+							</div>
+						</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<div className="flex flex-row items-center justify-between">
+							<div className="flex flex-col">
+								<p className="text-sm">Série/Turma</p>
+								<p className="text-base font-bold">6º ANO A</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Curso</p>
+								<p className="text-base font-bold">Ensino Fundamental II</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Data</p>
+								<p className="text-base font-bold">01/08/2021</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Status</p>
+								<Badge variant={'outline'} className="font-bold bg-green-800">
+									Entregue
+								</Badge>
+							</div>
+							<div className="flex flex-col">
+								<div className="flex flex-row space-x-2">
+									<Link href={'/carteirinhas/solicitacoes/1'}>
+										<Button variant={'outline'} size={'icon'}>
+											<EyeIcon className="h-4 w-4" />
+										</Button>
+									</Link>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Button variant={'outline'} size={'icon'}>
+												<MoreHorizontal className="h-4 w-4" />
+											</Button>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem>
+												<Trash2 className="mr-2 h-4 w-4" /> Excluir
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</div>
+							</div>
+						</div>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardTitle className="uppercase text-lg">Nome do aluno</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<div className="flex flex-row items-center justify-between">
+							<div className="flex flex-col">
+								<p className="text-sm">Série/Turma</p>
+								<p className="text-base font-bold">6º ANO A</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Curso</p>
+								<p className="text-base font-bold">Ensino Fundamental II</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Data</p>
+								<p className="text-base font-bold">01/08/2021</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Status</p>
+								<Badge variant={'outline'} className="font-bold bg-orange-600">
+									Aguardando pagamento
+								</Badge>
+							</div>
+							<div className="flex flex-col">
+								<div className="flex flex-row space-x-2">
+									<Link href={'/carteirinhas/solicitacoes/1'}>
+										<Button variant={'outline'} size={'icon'}>
+											<EyeIcon className="h-4 w-4" />
+										</Button>
+									</Link>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Button variant={'outline'} size={'icon'}>
+												<MoreHorizontal className="h-4 w-4" />
+											</Button>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem>
+												<Trash2 className="mr-2 h-4 w-4" /> Excluir
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</div>
+							</div>
+						</div>
+					</CardContent>
+				</Card>
+				<Card>
+					<CardHeader>
+						<CardTitle className="uppercase text-lg">Nome do aluno</CardTitle>
+					</CardHeader>
+					<CardContent>
+						<div className="flex flex-row items-center justify-between">
+							<div className="flex flex-col">
+								<p className="text-sm">Série/Turma</p>
+								<p className="text-base font-bold">6º ANO A</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Curso</p>
+								<p className="text-base font-bold">Ensino Fundamental II</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Data</p>
+								<p className="text-base font-bold">01/08/2021</p>
+							</div>
+							<div className="flex flex-col">
+								<p className="text-sm">Status</p>
+								<Badge variant={'outline'} className="font-bold bg-yellow-600">
+									Aguardando retirada
+								</Badge>
+							</div>
+							<div className="flex flex-col">
+								<div className="flex flex-row space-x-2">
+									<Link href={'/carteirinhas/solicitacoes/1'}>
+										<Button variant={'outline'} size={'icon'}>
+											<EyeIcon className="h-4 w-4" />
+										</Button>
+									</Link>
+									<DropdownMenu>
+										<DropdownMenuTrigger asChild>
+											<Button variant={'outline'} size={'icon'}>
+												<MoreHorizontal className="h-4 w-4" />
+											</Button>
+										</DropdownMenuTrigger>
+										<DropdownMenuContent>
+											<DropdownMenuItem>
+												<Trash2 className="mr-2 h-4 w-4" /> Excluir
+											</DropdownMenuItem>
+										</DropdownMenuContent>
+									</DropdownMenu>
+								</div>
+							</div>
+						</div>
+					</CardContent>
+				</Card>
 			</div>
+			<Pagination className="mt-2">
+				<PaginationContent>
+					<PaginationItem>
+						<PaginationPrevious href="#" />
+					</PaginationItem>
+					<PaginationItem>
+						<PaginationLink href="#" isActive>
+							1
+						</PaginationLink>
+					</PaginationItem>
+					<PaginationItem>
+						<PaginationLink href="#">2</PaginationLink>
+					</PaginationItem>
+					<PaginationItem>
+						<PaginationLink href="#">3</PaginationLink>
+					</PaginationItem>
+					<PaginationItem>
+						<PaginationEllipsis />
+					</PaginationItem>
+					<PaginationItem>
+						<PaginationNext href="#" />
+					</PaginationItem>
+				</PaginationContent>
+			</Pagination>
 		</div>
 	)
 }
