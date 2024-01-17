@@ -8,7 +8,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/components/ui/card'
-import { toas, toast } from 'sonner'
+import { toast } from 'sonner'
 
 import { caveat } from '@/app/fonts'
 
