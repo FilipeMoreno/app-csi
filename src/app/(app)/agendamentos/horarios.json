@@ -8,7 +8,7 @@
 				"inicio": "07:15",
 				"fim": "08:00",
 				"periodo": "Manhã",
-				"reservado": true,
+				"reservado": false,
 				"reserva": {
 					"id": 1,
 					"data": "2021-08-20",
@@ -35,7 +35,7 @@
 				"inicio": "08:45",
 				"fim": "09:30",
 				"periodo": "Manhã",
-				"reservado": true,
+				"reservado": false,
 				"reserva": {
 					"id": 1,
 					"data": "2021-08-20",
@@ -51,8 +51,24 @@
 			},
 			{
 				"id": 4,
-				"inicio": "07:15",
-				"fim": "08:00",
+				"inicio": "09:50",
+				"fim": "10:35",
+				"periodo": "Manhã",
+				"reservado": false,
+				"reserva": null
+			},
+			{
+				"id": 5,
+				"inicio": "10:35",
+				"fim": "11:20",
+				"periodo": "Manhã",
+				"reservado": false,
+				"reserva": null
+			},
+			{
+				"id": 6,
+				"inicio": "11:20",
+				"fim": "12:05",
 				"periodo": "Manhã",
 				"reservado": false,
 				"reserva": null

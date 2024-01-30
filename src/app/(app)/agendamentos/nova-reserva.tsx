@@ -31,6 +31,8 @@ import { Textarea } from '@/components/ui/textarea'
 
 import { cn } from '@/lib/utils'
 
+import { Badge } from '@/components/ui/badge'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import horarios from './horarios.json'
 import setores from './setores.json'
 
@@ -139,7 +141,7 @@ export default function AdicionarReserva() {
 					{setor && periodo && (
 						<div className="flex w-full flex-row items-center">
 							<Label className="w-[95px]">Horários</Label>
-							<div className="flex flex-col space-y-3">
+							<div className="flex flex-row justify-center items-center space-x-2">
 								{(() => {
 									const horariosDisponiveis = horarios
 										.filter((horario) => horario.setor === setor)
@@ -160,70 +162,30 @@ export default function AdicionarReserva() {
 									}
 
 									return (
-										<div className="flex flex-row justify-between space-x-4">
-											<div>
-												{horariosDisponiveis
-													.slice(0, 3)
-													.flatMap((horarioInterno) => (
-														<div
-															key={horarioInterno.id}
-															className="flex flex-row space-x-2"
+										<ScrollArea className="w-[290px] whitespace-nowrap -ml-2">
+											<div className="overflow-hidden space-x-2">
+												{horariosDisponiveis.flatMap((horarioInterno) => {
+													return (
+														<Badge
+															variant={'outline'}
+															onClick={() =>
+																handleCheckboxChange(
+																	horarioInterno.id.toString(),
+																)
+															}
+															onChange={() =>
+																handleCheckboxChange(
+																	horarioInterno.id.toString(),
+																)
+															}
 														>
-															<Checkbox
-																id={horarioInterno.id.toString()}
-																value={horarioInterno.id.toString()}
-																onClick={() =>
-																	handleCheckboxChange(
-																		horarioInterno.id.toString(),
-																	)
-																}
-																onChange={() =>
-																	handleCheckboxChange(
-																		horarioInterno.id.toString(),
-																	)
-																}
-															/>
-															<label
-																htmlFor={horarioInterno.id.toString()}
-																className="text-sm font-medium"
-															>
-																{horarioInterno.inicio} - {horarioInterno.fim}
-															</label>
-														</div>
-													))}
+															{horarioInterno.inicio}
+														</Badge>
+													)
+												})}
+												<ScrollBar orientation="horizontal" />
 											</div>
-											<div>
-												{horariosDisponiveis
-													.slice(3, 6)
-													.flatMap((horarioInterno) => (
-														<div
-															key={horarioInterno.id}
-															className="flex flex-row space-x-2"
-														>
-															<Checkbox
-																id={horarioInterno.id.toString()}
-																value={horarioInterno.id.toString()}
-																onClick={() =>
-																	handleCheckboxChange(
-																		horarioInterno.id.toString(),
-																	)
-																}
-																onChange={() =>
-																	handleCheckboxChange(
-																		horarioInterno.id.toString(),
-																	)
-																}
-															/>
-															<label
-																htmlFor={horarioInterno.id.toString()}
-																className="text-sm font-medium"
-															>
-																{horarioInterno.inicio} - {horarioInterno.fim}
-															</label>
-														</div>
-													))}
-											</div>
-										</div>
+										</ScrollArea>
 									)
 								})()}
 							</div>
