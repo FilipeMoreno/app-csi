@@ -18,7 +18,79 @@ export default function Home() {
 			<div className="my-8 flex flex-col space-y-4 sm:flex-row">
 				<div>
 					<h1 className="text-2xl font-bold">Olá, Usuário!</h1>
-					<p className="text-md">Escolha uma das opções no menu ao lado!</p>
+					<p className="text-md">
+						{Intl.DateTimeFormat('pt-BR', {
+							weekday: 'long',
+							day: 'numeric',
+							month: 'long',
+							year: 'numeric',
+						}).format(new Date())}
+					</p>
+				</div>
+			</div>
+			<div>
+				<h1>Meus agendamentos</h1>
+				<div className="rounded-lg p-4 flex flex-row flex-wrap space-x-2 space-y-2 items-center">
+					<div className="flex flex-row space-x-3">
+						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
+							<div className="flex flex-col items-center justify-center font-bold text-xl">
+								<span>25</span>
+								<span>Jan</span>
+							</div>
+						</div>
+						<div className="flex flex-col justify-center">
+							<span className="font-bold text-2xl">Informática</span>
+							<span className="text-lg">07:15 às 08:00</span>
+						</div>
+					</div>
+					<div className="flex flex-row space-x-2">
+						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
+							<div className="flex flex-col items-center justify-center font-bold text-xl">
+								<span>25</span>
+								<span>Jan</span>
+							</div>
+						</div>
+						<div className="flex flex-col justify-center">
+							<span className="font-bold text-2xl">Informática</span>
+							<span className="text-lg">07:15 às 08:00</span>
+						</div>
+					</div>
+					<div className="flex flex-row space-x-2">
+						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
+							<div className="flex flex-col items-center justify-center font-bold text-xl">
+								<span>25</span>
+								<span>Jan</span>
+							</div>
+						</div>
+						<div className="flex flex-col justify-center">
+							<span className="font-bold text-2xl">Informática</span>
+							<span className="text-lg">07:15 às 08:00</span>
+						</div>
+					</div>
+					<div className="flex flex-row space-x-2">
+						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
+							<div className="flex flex-col items-center justify-center font-bold text-xl">
+								<span>25</span>
+								<span>Jan</span>
+							</div>
+						</div>
+						<div className="flex flex-col justify-center">
+							<span className="font-bold text-2xl">Informática</span>
+							<span className="text-lg">07:15 às 08:00</span>
+						</div>
+					</div>
+					<div className="flex flex-row space-x-2">
+						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
+							<div className="flex flex-col items-center justify-center font-bold text-xl">
+								<span>25</span>
+								<span>Jan</span>
+							</div>
+						</div>
+						<div className="flex flex-col justify-center">
+							<span className="font-bold text-2xl">Informática</span>
+							<span className="text-lg">07:15 às 08:00</span>
+						</div>
+					</div>
 				</div>
 			</div>
 			<CookiesConsent />
