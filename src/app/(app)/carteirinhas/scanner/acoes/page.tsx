@@ -21,6 +21,7 @@ import {
 	DrawerClose,
 	DrawerContent,
 	DrawerFooter,
+	DrawerOverlay,
 	DrawerPortal,
 	DrawerTitle,
 	DrawerTrigger,
@@ -117,22 +118,25 @@ export default function CarteirinhasScannerAcoes() {
 					)) ||
 						(qrcode && (
 							<Drawer open={true}>
-								<DrawerTrigger className="p-4">
-									<DrawerPortal>
-										<DrawerContent>
-											<DrawerTitle>Informações da carteirinha</DrawerTitle>
-											<div className="m-2">
-												<span className="text-lg">
+								<DrawerPortal>
+									<DrawerOverlay className="fixed inset-0 bg-black/40" />
+									<DrawerContent className="bg-gray-100 flex flex-col rounded-t-[10px] h-full mt-24 max-h-[96%] fixed bottom-0 left-0 right-0">
+										<div className="p-4 bg-white rounded-t-[10px] flex-1">
+											<div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full bg-gray-300 mb-8" />
+											<div className="max-w-md mx-auto">
+												<DrawerTitle className="font-medium mb-4">
+													Informações da carteirinha
+												</DrawerTitle>
+												<p className="text-gray-600 mb-2">
 													Nome: <b>Nome do aluno aqui</b>
-												</span>
-												<span className="text-lg">
+												</p>
+												<p className="text-gray-600 mb-2">
 													Série/Turma: <b>1º ANO A - Ensino Médio</b>
-												</span>
+												</p>
+												<p className="text-gray-600 mb-2">
+													Selecione o status que deseja adicionar
+												</p>
 											</div>
-											<Separator className="ny-2" />
-											<span className="text-lg">
-												Selecione o status que deseja adicionar
-											</span>
 											<Select onValueChange={setStatus}>
 												<SelectTrigger className="mt-2 w-full">
 													<SelectValue placeholder="Selecione o status" />
@@ -158,9 +162,9 @@ export default function CarteirinhasScannerAcoes() {
 													</Button>
 												</DrawerClose>
 											</DrawerFooter>
-										</DrawerContent>
-									</DrawerPortal>
-								</DrawerTrigger>
+										</div>
+									</DrawerContent>
+								</DrawerPortal>
 							</Drawer>
 						))}
 				</div>
