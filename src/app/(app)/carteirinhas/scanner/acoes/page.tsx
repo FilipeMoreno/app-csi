@@ -51,13 +51,13 @@ export default function CarteirinhasScannerAcoes() {
 		setQrCode(null)
 	}
 
-	useEffect(() => {
-		if (qrcode) {
-			toast.success('Carteirinha encontrada!', {
-				description: `O código ${qrcode} foi encontrado`,
-			})
-		}
-	}, [qrcode])
+	// useEffect(() => {
+	// 	if (qrcode) {
+	// 		toast.success('Carteirinha encontrada!', {
+	// 			description: `O código ${qrcode} foi encontrado`,
+	// 		})
+	// 	}
+	// }, [qrcode])
 
 	return (
 		<>
