@@ -50,12 +50,12 @@ export default function AgendarHorarioMobile({ setor, data, horario }: Dados) {
 				</Button>
 			</DrawerTrigger>
 			<DrawerPortal>
-				<DrawerContent>
+				<DrawerContent className="p-4">
 					<DrawerHeader className="text-left">
 						<DrawerTitle>Novo agendamento</DrawerTitle>
 						<DrawerDescription>Preencha os dados abaixo</DrawerDescription>
 					</DrawerHeader>
-					<div className="flex flex-col items-center space-y-4 p-4">
+					<div className="flex flex-col items-center space-y-4">
 						<div className="flex w-full flex-row items-center">
 							<Label className="w-36">Data</Label>
 							<Button

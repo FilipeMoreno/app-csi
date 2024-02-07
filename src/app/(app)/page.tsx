@@ -30,8 +30,8 @@ export default function Home() {
 			</div>
 			<div>
 				<h1>Meus agendamentos</h1>
-				<div className="rounded-lg p-4 flex flex-row flex-wrap space-x-2 space-y-2 items-center">
-					<div className="flex flex-row space-x-3">
+				<div className="rounded-lg p-4 flex flex-row flex-wrap gap-4 gap-y-8 items-center">
+					<div className="flex flex-row space-x-4">
 						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
 							<div className="flex flex-col items-center justify-center font-bold text-xl">
 								<span>25</span>
