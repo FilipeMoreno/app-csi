@@ -168,7 +168,7 @@ export default function RootLayout({
 									</DrawerPortal>
 								</Drawer> */}
 								<Drawer direction="left">
-									<DrawerTrigger asChild>
+									<DrawerTrigger asChild className="lg:hidden">
 									<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
 									</DrawerTrigger>
 									<DrawerPortal>
