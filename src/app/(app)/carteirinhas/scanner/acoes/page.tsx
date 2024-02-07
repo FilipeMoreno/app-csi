@@ -120,17 +120,17 @@ export default function CarteirinhasScannerAcoes() {
 							<Drawer open={true}>
 								<DrawerPortal>
 									<DrawerOverlay className="fixed inset-0 bg-black/40" />
-									<DrawerContent className="flex flex-col rounded-t-[10px] h-full mt-24 max-h-[46%] fixed bottom-0 left-0 right-0">
-										<div className="p-4rounded-t-[10px] flex-1">
+									<DrawerContent className="flex flex-col rounded-t-[10px] h-full mt-24 max-h-[46%] fixed bottom-0 left-0 right-0 p-4">
+										<div className="rounded-t-[10px] flex-1">
 											<div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full mb-8" />
 											<div className="max-w-md mx-auto">
 												<DrawerTitle className="font-medium mb-4">
 													Informações da carteirinha
 												</DrawerTitle>
-												<p className="text-gray-600 mb-2">
+												<p className="text-zinc-300 mb-2">
 													Nome: <b>Nome do aluno aqui</b>
 												</p>
-												<p className="text-gray-600 mb-2">
+												<p className="text-zinc-300 mb-2">
 													Série/Turma: <b>1º ANO A - Ensino Médio</b>
 												</p>
 												<p className="text-gray-600 mb-2">
