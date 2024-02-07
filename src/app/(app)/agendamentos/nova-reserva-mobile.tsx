@@ -32,12 +32,22 @@ import { Textarea } from '@/components/ui/textarea'
 import { cn } from '@/lib/utils'
 
 import { Badge } from '@/components/ui/badge'
+import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerDescription,
+	DrawerFooter,
+	DrawerHeader,
+	DrawerTitle,
+	DrawerTrigger,
+} from '@/components/ui/drawer'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 import { useMediaQuery } from 'usehooks-ts'
 import horarios from './horarios.json'
 import setores from './setores.json'
 
-export default function AdicionarReserva() {
+export default function NovaReservaMobile() {
 	const [setor, setSetor] = useState<string>('')
 	const [periodo, setPeriodo] = useState<string>('')
 	const [selectedHorarios, setSelectedHorarios] = useState<string[]>([])
@@ -46,6 +56,7 @@ export default function AdicionarReserva() {
 	const [turma, setTurma] = useState<string>('')
 	const [curso, setCurso] = useState<string>('')
 	const [atividades, setAtividades] = useState<string>('')
+	const [open, setOpen] = useState(false)
 
 	const isDesktop = useMediaQuery('(min-width: 768px)')
 
@@ -58,18 +69,17 @@ export default function AdicionarReserva() {
 		})
 	}
 	return (
-		<Dialog>
-			<DialogTrigger asChild>
+		<Drawer open={open} onOpenChange={setOpen}>
+			<DrawerTrigger asChild>
 				<Button variant={'outline'}>
 					<Plus className="h-4 w-4" /> Reservar
 				</Button>
-			</DialogTrigger>
-			<DialogContent className="sm:max-w-[425px]">
-				<DialogHeader>
-					<DialogTitle>Novo agendamento</DialogTitle>
-					<DialogDescription>Preencha os dados abaixo</DialogDescription>
-				</DialogHeader>
-
+			</DrawerTrigger>
+			<DrawerContent className="p-4">
+				<DrawerHeader className="text-left">
+					<DrawerTitle>Novo agendamento</DrawerTitle>
+					<DrawerDescription>Preencha os dados abaixo</DrawerDescription>
+				</DrawerHeader>
 				<div className="flex flex-col items-center space-y-4">
 					<div className="flex w-full flex-row items-center">
 						<Label className="w-28">Data</Label>
@@ -158,37 +168,30 @@ export default function AdicionarReserva() {
 
 									if (horariosDisponiveis.length === 0) {
 										return (
-											<p className="text-sm text-zinc-500">
+											<p className="text-sm text-zinc-500 mb-4">
 												Não há horários disponíveis.
 											</p>
 										)
 									}
 
 									return (
-										<ScrollArea className="w-[290px] whitespace-nowrap -ml-2">
-											<div className="overflow-hidden space-x-2">
-												{horariosDisponiveis.flatMap((horarioInterno) => {
-													return (
-														<Badge
-															variant={'outline'}
-															onClick={() =>
-																handleCheckboxChange(
-																	horarioInterno.id.toString(),
-																)
-															}
-															onChange={() =>
-																handleCheckboxChange(
-																	horarioInterno.id.toString(),
-																)
-															}
-														>
-															{horarioInterno.inicio}
-														</Badge>
-													)
-												})}
-												<ScrollBar orientation="horizontal" />
-											</div>
-										</ScrollArea>
+										<div className="flex flex-wrap gap-3 ml-2 mb-4">
+											{horariosDisponiveis.flatMap((horarioInterno) => {
+												return (
+													<Badge
+														variant={'outline'}
+														onClick={() =>
+															handleCheckboxChange(horarioInterno.id.toString())
+														}
+														onChange={() =>
+															handleCheckboxChange(horarioInterno.id.toString())
+														}
+													>
+														{horarioInterno.inicio}
+													</Badge>
+												)
+											})}
+										</div>
 									)
 								})()}
 							</div>
@@ -256,13 +259,23 @@ export default function AdicionarReserva() {
 						</div>
 					</div>
 				)}
-
-				<DialogFooter>
+				<DrawerFooter>
 					<Button className="mt-4 w-full" type="submit">
 						Reservar
 					</Button>
-				</DialogFooter>
-			</DialogContent>
-		</Dialog>
+					<DrawerClose asChild>
+						<Button variant="outline">Cancelar</Button>
+					</DrawerClose>
+				</DrawerFooter>
+			</DrawerContent>
+		</Drawer>
+
+		// 		<DialogFooter>
+		// 			<Button className="mt-4 w-full" type="submit">
+		// 				Reservar
+		// 			</Button>
+		// 		</DialogFooter>
+		// 	</DialogContent>
+		// </Dialog>
 	)
 }

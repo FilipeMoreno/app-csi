@@ -22,7 +22,8 @@ import horarios from './horarios.json'
 
 import AgendarHorarioMobile from './agendar-horario-mobile'
 import AgendarHorarioPC from './agendar-horario-pc'
-import AdicionarReserva from './nova-reserva'
+import AdicionarReservaMobile from './nova-reserva-mobile'
+import AdicionarReservaPC from './nova-reserva-pc'
 import setores from './setores.json'
 
 export default function ReservasHome() {
@@ -46,7 +47,7 @@ export default function ReservasHome() {
 					<p className="text-sm">Mostrando todos os agendamentos</p>
 				</div>
 				<div>
-					<AdicionarReserva />
+					{!isDesktop && <AdicionarReservaMobile /> ||	<AdicionarReservaPC /> }
 				</div>
 			</div>
 			<div className="mt-4 flex flex-row space-x-2">
@@ -156,7 +157,7 @@ export default function ReservasHome() {
 													/>
 												)}
 												{horario.reservado && (
-													<div className="mt-2 flex flex-row items-center space-x-8">
+													<div className="mt-2 flex flex-row items-center flex-wrap gap-x-8">
 														<div className="flex flex-col">
 															<p className="text-[10px] font-bold uppercase text-zinc-500">
 																Reservado por

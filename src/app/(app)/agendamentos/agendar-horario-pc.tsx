@@ -31,7 +31,7 @@ interface Dados {
 	horario: string
 }
 
-export default function AgendarHorarioPC({ setor, data, horario }: Dados) {
+export default function AgendarHorarioP({ setor, data, horario }: Dados) {
 	const [serie, setSerie] = useState('')
 	const [turma, setTurma] = useState('')
 	const [curso, setCurso] = useState('')
@@ -140,7 +140,7 @@ export default function AgendarHorarioPC({ setor, data, horario }: Dados) {
 						/>
 					</div>
 					<div className="flex w-full flex-row items-center">
-						<Label className="w-36 text-sm">Equipamentos</Label>
+						<Label className="w-28 text-sm">Equipamentos</Label>
 						<div className="flex w-full flex-row space-x-2">
 							<Select
 								value={equipamentos ? 'Sim' : 'Não'}

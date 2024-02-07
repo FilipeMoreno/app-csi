@@ -171,6 +171,9 @@ export default function AgendarHorarioMobile({ setor, data, horario }: Dados) {
 					)}
 				</div>
 				<DrawerFooter className="pt-2">
+					<Button className="mt-4 w-full" type="submit">
+						Reservar
+					</Button>
 					<DrawerClose asChild>
 						<Button variant="outline">Cancelar</Button>
 					</DrawerClose>
