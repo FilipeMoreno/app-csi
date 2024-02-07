@@ -396,5 +396,23 @@
         "description": "Removido Prettier."
       }
     ]
+  },
+  {
+    "version": "0.11.5.1-alpha",
+    "date": "2024-02-07T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Alterações",
+        "description": "Melhoria na responsividade."
+      },
+      {
+        "type": "Alterações",
+        "description": "Mudança no UX Mobile."
+      },
+      {
+        "type": "Correções",
+        "description": "Correções gerais no aplicativo."
+      }
+    ]
   }
 ]
