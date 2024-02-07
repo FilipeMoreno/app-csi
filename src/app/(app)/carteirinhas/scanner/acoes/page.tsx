@@ -22,6 +22,8 @@ import {
 	DrawerContent,
 	DrawerFooter,
 	DrawerPortal,
+	DrawerTitle,
+	DrawerTrigger,
 } from '@/components/ui/drawer'
 import {
 	Select,
@@ -115,38 +117,50 @@ export default function CarteirinhasScannerAcoes() {
 					)) ||
 						(qrcode && (
 							<Drawer open={true}>
-								<DrawerPortal>
-									<DrawerContent>
-										<span>Nome: Nome do aluno aqui</span>
-										<span>Série/Turma: 1º ANO A - Ensino Médio</span>
-										<Separator />
-										Selecione o status que deseja adicionar
-										<Select onValueChange={setStatus}>
-											<SelectTrigger className="mt-2 w-full">
-												<SelectValue placeholder="Selecione o status" />
-											</SelectTrigger>
-											<SelectContent>
-												<SelectItem value="Entregue">Entregue</SelectItem>
-												<SelectItem value="Produzida">Produzida</SelectItem>
-												<SelectItem value="Pagamento recebido">
-													Pagamento recebido
-												</SelectItem>
-												<SelectItem value="Aprovada">Aprovada</SelectItem>
-											</SelectContent>
-										</Select>
-										<DrawerFooter>
-											<Button onClick={handleChangeStatus}>Continuar</Button>
-											<DrawerClose>
-												<Button
-													variant={'outline'}
-													onClick={() => setQrCode(null)}
-												>
-													Cancelar
-												</Button>
-											</DrawerClose>
-										</DrawerFooter>
-									</DrawerContent>
-								</DrawerPortal>
+								<DrawerTrigger className="p-4">
+									<DrawerPortal>
+										<DrawerContent>
+											<DrawerTitle>Informações da carteirinha</DrawerTitle>
+											<div className="m-2">
+												<span className="text-lg">
+													Nome: <b>Nome do aluno aqui</b>
+												</span>
+												<span className="text-lg">
+													Série/Turma: <b>1º ANO A - Ensino Médio</b>
+												</span>
+											</div>
+											<Separator className="ny-2" />
+											<span className="text-lg">
+												Selecione o status que deseja adicionar
+											</span>
+											<Select onValueChange={setStatus}>
+												<SelectTrigger className="mt-2 w-full">
+													<SelectValue placeholder="Selecione o status" />
+												</SelectTrigger>
+												<SelectContent>
+													<SelectItem value="Entregue">Entregue</SelectItem>
+													<SelectItem value="Produzida">Produzida</SelectItem>
+													<SelectItem value="Pagamento recebido">
+														Pagamento recebido
+													</SelectItem>
+													<SelectItem value="Aprovada">Aprovada</SelectItem>
+												</SelectContent>
+											</Select>
+											<DrawerFooter>
+												<Button onClick={handleChangeStatus}>Continuar</Button>
+												<DrawerClose>
+													<Button
+														variant={'outline'}
+														onClick={() => setQrCode(null)}
+														className="w-full"
+													>
+														Cancelar
+													</Button>
+												</DrawerClose>
+											</DrawerFooter>
+										</DrawerContent>
+									</DrawerPortal>
+								</DrawerTrigger>
 							</Drawer>
 						))}
 				</div>
