@@ -522,7 +522,7 @@ export default function SinaleiroHome() {
 						<CardHeader>
 							<CardTitle>Configurações</CardTitle>
 							<CardDescription>
-								Mostrando as configurações do sistema
+								Mostrando as configurações do sistema.
 							</CardDescription>
 						</CardHeader>
 						<CardContent className="grid gap-6">

@@ -3,6 +3,7 @@
 import { Clock } from 'lucide-react'
 import Link from 'next/link'
 import { Suspense, useState } from 'react'
+import { useMediaQuery } from 'usehooks-ts'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -17,8 +18,10 @@ import {
 	SelectValue,
 } from '@/components/ui/select'
 
-import AgendarAgendamento from './agendar'
 import horarios from './horarios.json'
+
+import AgendarHorarioMobile from './agendar-horario-mobile'
+import AgendarHorarioPC from './agendar-horario-pc'
 import AdicionarReserva from './nova-reserva'
 import setores from './setores.json'
 
@@ -32,6 +35,8 @@ export default function ReservasHome() {
 			horario.setor === setor &&
 			horario.horarios.some((horarios) => horarios.periodo === periodo),
 	)
+
+		const isDesktop = useMediaQuery('(min-width: 768px)')
 
 	return (
 		<div>
@@ -137,8 +142,14 @@ export default function ReservasHome() {
 												</CardTitle>
 											</CardHeader>
 											<CardContent>
-												{!horario.reservado && (
-													<AgendarAgendamento
+												{!horario.reservado && isDesktop && (
+													<AgendarHorarioPC
+														data={date}
+														setor={setor}
+														horario={`${horario.inicio} às ${horario.fim}`}
+													/>
+												) || !horario.reservado && (
+													<AgendarHorarioMobile
 														data={date}
 														setor={setor}
 														horario={`${horario.inicio} às ${horario.fim}`}

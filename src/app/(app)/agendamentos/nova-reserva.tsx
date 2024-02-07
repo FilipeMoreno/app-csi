@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
-import { Checkbox } from '@/components/ui/checkbox'
+
 import {
 	Dialog,
 	DialogContent,
@@ -33,6 +33,7 @@ import { cn } from '@/lib/utils'
 
 import { Badge } from '@/components/ui/badge'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { useMediaQuery } from 'usehooks-ts'
 import horarios from './horarios.json'
 import setores from './setores.json'
 
@@ -45,6 +46,8 @@ export default function AdicionarReserva() {
 	const [turma, setTurma] = useState<string>('')
 	const [curso, setCurso] = useState<string>('')
 	const [atividades, setAtividades] = useState<string>('')
+
+	const isDesktop = useMediaQuery('(min-width: 768px)')
 
 	const handleCheckboxChange = (value: string) => {
 		setSelectedHorarios((prev) => {
@@ -99,7 +102,7 @@ export default function AdicionarReserva() {
 									onSelect={(day) => setDate(day as Date)}
 									disabled={(date) => {
 										const today = new Date()
-										today.setHours(0, 0, 0, 0)
+										today.setHours(0, 0, 0)
 										return date < today || date < new Date('1900-01-01')
 									}}
 									initialFocus

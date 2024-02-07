@@ -31,7 +31,7 @@ interface Dados {
 	horario: string
 }
 
-export default function AgendarAgendamento({ setor, data, horario }: Dados) {
+export default function AgendarHorarioPC({ setor, data, horario }: Dados) {
 	const [serie, setSerie] = useState('')
 	const [turma, setTurma] = useState('')
 	const [curso, setCurso] = useState('')
