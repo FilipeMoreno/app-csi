@@ -17,6 +17,13 @@ import {
 } from '@/components/ui/alert-dialog'
 import { Button } from '@/components/ui/button'
 import {
+	Drawer,
+	DrawerClose,
+	DrawerContent,
+	DrawerFooter,
+	DrawerPortal,
+} from '@/components/ui/drawer'
+import {
 	Select,
 	SelectContent,
 	SelectItem,
@@ -25,10 +32,13 @@ import {
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { toast } from 'sonner'
+import { useMediaQuery } from 'usehooks-ts'
 
 export default function CarteirinhasScannerAcoes() {
 	const [qrcode, setQrCode] = useState<string | null>(null)
 	const [status, setStatus] = useState('')
+
+	const isDesktop = useMediaQuery('(min-width: 768px)')
 
 	function handleChangeStatus() {
 		toast.success('Status alterado!', {
@@ -62,7 +72,7 @@ export default function CarteirinhasScannerAcoes() {
 						}}
 						onScan={(scannedCode) => setQrCode(scannedCode)}
 					/>
-					{qrcode && (
+					{(isDesktop && qrcode && (
 						<AlertDialog open>
 							<AlertDialogTrigger asChild>
 								<Button variant={'outline'}>
@@ -102,7 +112,43 @@ export default function CarteirinhasScannerAcoes() {
 								</AlertDialogFooter>
 							</AlertDialogContent>
 						</AlertDialog>
-					)}
+					)) ||
+						(qrcode && (
+							<Drawer open={true}>
+								<DrawerPortal>
+									<DrawerContent>
+										<span>Nome: Nome do aluno aqui</span>
+										<span>Série/Turma: 1º ANO A - Ensino Médio</span>
+										<Separator />
+										Selecione o status que deseja adicionar
+										<Select onValueChange={setStatus}>
+											<SelectTrigger className="mt-2 w-full">
+												<SelectValue placeholder="Selecione o status" />
+											</SelectTrigger>
+											<SelectContent>
+												<SelectItem value="Entregue">Entregue</SelectItem>
+												<SelectItem value="Produzida">Produzida</SelectItem>
+												<SelectItem value="Pagamento recebido">
+													Pagamento recebido
+												</SelectItem>
+												<SelectItem value="Aprovada">Aprovada</SelectItem>
+											</SelectContent>
+										</Select>
+										<DrawerFooter>
+											<Button onClick={handleChangeStatus}>Continuar</Button>
+											<DrawerClose>
+												<Button
+													variant={'outline'}
+													onClick={() => setQrCode(null)}
+												>
+													Cancelar
+												</Button>
+											</DrawerClose>
+										</DrawerFooter>
+									</DrawerContent>
+								</DrawerPortal>
+							</Drawer>
+						))}
 				</div>
 			</div>
 		</>

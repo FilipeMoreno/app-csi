@@ -195,159 +195,62 @@ export default function CarteirinhasSolicitacoes() {
 					</SheetContent>
 				</Sheet>
 			</div>
-			<div className="space-y-2">
-				<Card>
-					<CardHeader>
-						<CardTitle>
-							<div className="uppercase text-lg items-center flex space-x-2">
-								<span className="font-bold">Nome do aluno</span>
-								<Badge variant={'outline'} className="bg-orange-600 text-white">
-									Novo
-								</Badge>
-							</div>
-						</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="flex flex-row items-center justify-between">
-							<div className="flex flex-col">
-								<p className="text-sm">Série/Turma</p>
-								<p className="text-base font-bold">6º ANO A</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Curso</p>
-								<p className="text-base font-bold">Ensino Fundamental II</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Data</p>
-								<p className="text-base font-bold">01/08/2021</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Status</p>
-								<Badge variant={'outline'} className="font-bold bg-green-800">
-									Entregue
-								</Badge>
-							</div>
-							<div className="flex flex-col">
-								<div className="flex flex-row space-x-2">
-									<Link href={'/carteirinhas/solicitacoes/1'}>
+
+			<Card>
+				<CardHeader>
+					<CardTitle>
+						<div className="uppercase text-lg items-center flex space-x-2">
+							<span className="font-bold">Nome do aluno</span>
+							<Badge variant={'outline'} className="bg-orange-600 text-white">
+								Novo
+							</Badge>
+						</div>
+					</CardTitle>
+				</CardHeader>
+				<CardContent>
+					<div className="flex flex-row flex-wrap lg:gap-4 md:gap-2 gap-y-4 justify-between items-center">
+						<div className="flex flex-col">
+							<p className="text-sm">Série/Turma</p>
+							<p className="text-base font-bold">6º ANO A</p>
+						</div>
+						<div className="flex flex-col">
+							<p className="text-sm">Curso</p>
+							<p className="text-base font-bold">Ensino Fundamental II</p>
+						</div>
+						<div className="flex flex-col">
+							<p className="text-sm">Data</p>
+							<p className="text-base font-bold">01/08/2021</p>
+						</div>
+						<div className="flex flex-col">
+							<p className="text-sm">Status</p>
+							<Badge variant={'outline'} className="font-bold bg-green-800">
+								Entregue
+							</Badge>
+						</div>
+						<div className="flex flex-col">
+							<div className="flex flex-row space-x-2">
+								<Link href={'/carteirinhas/solicitacoes/1'}>
+									<Button variant={'outline'} size={'icon'}>
+										<EyeIcon className="h-4 w-4" />
+									</Button>
+								</Link>
+								<DropdownMenu>
+									<DropdownMenuTrigger asChild>
 										<Button variant={'outline'} size={'icon'}>
-											<EyeIcon className="h-4 w-4" />
+											<MoreHorizontal className="h-4 w-4" />
 										</Button>
-									</Link>
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
-											<Button variant={'outline'} size={'icon'}>
-												<MoreHorizontal className="h-4 w-4" />
-											</Button>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem>
-												<Trash2 className="mr-2 h-4 w-4" /> Excluir
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</div>
+									</DropdownMenuTrigger>
+									<DropdownMenuContent>
+										<DropdownMenuItem>
+											<Trash2 className="mr-2 h-4 w-4" /> Excluir
+										</DropdownMenuItem>
+									</DropdownMenuContent>
+								</DropdownMenu>
 							</div>
 						</div>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader>
-						<CardTitle className="uppercase text-lg">Nome do aluno</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="flex flex-row items-center justify-between">
-							<div className="flex flex-col">
-								<p className="text-sm">Série/Turma</p>
-								<p className="text-base font-bold">6º ANO A</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Curso</p>
-								<p className="text-base font-bold">Ensino Fundamental II</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Data</p>
-								<p className="text-base font-bold">01/08/2021</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Status</p>
-								<Badge variant={'outline'} className="font-bold bg-orange-600">
-									Aguardando pagamento
-								</Badge>
-							</div>
-							<div className="flex flex-col">
-								<div className="flex flex-row space-x-2">
-									<Link href={'/carteirinhas/solicitacoes/1'}>
-										<Button variant={'outline'} size={'icon'}>
-											<EyeIcon className="h-4 w-4" />
-										</Button>
-									</Link>
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
-											<Button variant={'outline'} size={'icon'}>
-												<MoreHorizontal className="h-4 w-4" />
-											</Button>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem>
-												<Trash2 className="mr-2 h-4 w-4" /> Excluir
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</div>
-							</div>
-						</div>
-					</CardContent>
-				</Card>
-				<Card>
-					<CardHeader>
-						<CardTitle className="uppercase text-lg">Nome do aluno</CardTitle>
-					</CardHeader>
-					<CardContent>
-						<div className="flex flex-row items-center justify-between">
-							<div className="flex flex-col">
-								<p className="text-sm">Série/Turma</p>
-								<p className="text-base font-bold">6º ANO A</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Curso</p>
-								<p className="text-base font-bold">Ensino Fundamental II</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Data</p>
-								<p className="text-base font-bold">01/08/2021</p>
-							</div>
-							<div className="flex flex-col">
-								<p className="text-sm">Status</p>
-								<Badge variant={'outline'} className="font-bold bg-yellow-600">
-									Aguardando retirada
-								</Badge>
-							</div>
-							<div className="flex flex-col">
-								<div className="flex flex-row space-x-2">
-									<Link href={'/carteirinhas/solicitacoes/1'}>
-										<Button variant={'outline'} size={'icon'}>
-											<EyeIcon className="h-4 w-4" />
-										</Button>
-									</Link>
-									<DropdownMenu>
-										<DropdownMenuTrigger asChild>
-											<Button variant={'outline'} size={'icon'}>
-												<MoreHorizontal className="h-4 w-4" />
-											</Button>
-										</DropdownMenuTrigger>
-										<DropdownMenuContent>
-											<DropdownMenuItem>
-												<Trash2 className="mr-2 h-4 w-4" /> Excluir
-											</DropdownMenuItem>
-										</DropdownMenuContent>
-									</DropdownMenu>
-								</div>
-							</div>
-						</div>
-					</CardContent>
-				</Card>
-			</div>
+					</div>
+				</CardContent>
+			</Card>
 			<Pagination className="mt-2">
 				<PaginationContent>
 					<PaginationItem>

@@ -131,7 +131,7 @@ export default function RootLayout({
 	}
 
 	return (
-		<body>
+		<body className="antialiased">
 			<ThemeProvider
 				attribute="class"
 				defaultTheme="system"
@@ -145,7 +145,10 @@ export default function RootLayout({
 						<div className="bg-background">
 							<div className="grid lg:grid-cols-5">
 								<Drawer direction="left">
-									<DrawerTrigger asChild className="lg:hidden">
+									<DrawerTrigger
+										asChild
+										className="lg:hidden focus:ring-0 focus:ring-offset-0"
+									>
 										<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
 									</DrawerTrigger>
 									<DrawerPortal>
