@@ -8,7 +8,6 @@ import { useState } from 'react'
 import { Header } from '@/components/header'
 import { Sidebar } from '@/components/sidebar'
 import { ThemeProvider } from '@/components/theme-provider'
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { Toaster } from '@/components/ui/sonner'
 
 import { HamburgerMenuIcon } from '@radix-ui/react-icons'
@@ -19,7 +18,6 @@ import {
 	List,
 	Podcast,
 	ScanLine,
-	Settings,
 	Speaker,
 	Ticket,
 	Wifi,
@@ -33,7 +31,6 @@ import {
 	Drawer,
 	DrawerContent,
 	DrawerOverlay,
-	DrawerPortal,
 	DrawerPortal,
 	DrawerTitle,
 	DrawerTrigger,
@@ -101,12 +98,6 @@ export default function RootLayout({
 					role: ['carteirinhas.scanner', 'admin'],
 					icon: ScanLine,
 				},
-				// {
-				//   href: '/carteirinhas/configuracoes',
-				//   title: 'Configurações',
-				//   role: ['carteirinhas.configuracoes', 'admin'],
-				//   icon: Settings,
-				// },
 			],
 		},
 		{
@@ -153,23 +144,9 @@ export default function RootLayout({
 					<div className="border-t">
 						<div className="bg-background">
 							<div className="grid lg:grid-cols-5">
-								{/* <Drawer direction="left">
-									<DrawerTrigger className="lg:hidden" asChild>
-										<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
-									</DrawerTrigger>
-									<DrawerPortal>
-										<DrawerOverlay className="fixed inset-0 bg-black/40" />
-										<DrawerContent>
-											<Sidebar
-												items={sidebarNavItems}
-												onItemClick={handleItemClick}
-											/>
-										</DrawerContent>
-									</DrawerPortal>
-								</Drawer> */}
 								<Drawer direction="left">
 									<DrawerTrigger asChild className="lg:hidden">
-									<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+										<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
 									</DrawerTrigger>
 									<DrawerPortal>
 										<DrawerOverlay className="fixed inset-0 bg-black/40" />
