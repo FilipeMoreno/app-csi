@@ -29,6 +29,15 @@ import { FaRegCalendarAlt } from 'react-icons/fa'
 import { FaRegAddressCard } from 'react-icons/fa6'
 import { TbTimeDuration45 } from 'react-icons/tb'
 
+import {
+	Drawer,
+	DrawerContent,
+	DrawerOverlay,
+	DrawerPortal,
+	DrawerPortal,
+	DrawerTitle,
+	DrawerTrigger,
+} from '@/components/ui/drawer'
 import '@/styles/globals.css'
 import GoogleAnalytics from '../GoogleAnalytics'
 
@@ -144,17 +153,34 @@ export default function RootLayout({
 					<div className="border-t">
 						<div className="bg-background">
 							<div className="grid lg:grid-cols-5">
-								<Sheet>
-									<SheetTrigger className="lg:hidden">
+								{/* <Drawer direction="left">
+									<DrawerTrigger className="lg:hidden" asChild>
 										<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
-									</SheetTrigger>
-									<SheetContent side="left">
-										<Sidebar
-											items={sidebarNavItems}
-											onItemClick={handleItemClick}
-										/>
-									</SheetContent>
-								</Sheet>
+									</DrawerTrigger>
+									<DrawerPortal>
+										<DrawerOverlay className="fixed inset-0 bg-black/40" />
+										<DrawerContent>
+											<Sidebar
+												items={sidebarNavItems}
+												onItemClick={handleItemClick}
+											/>
+										</DrawerContent>
+									</DrawerPortal>
+								</Drawer> */}
+								<Drawer direction="left">
+									<DrawerTrigger asChild>
+									<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+									</DrawerTrigger>
+									<DrawerPortal>
+										<DrawerOverlay className="fixed inset-0 bg-black/40" />
+										<DrawerContent className="flex flex-col rounded-t-[10px] h-full w-[350px] mt-24 fixed bottom-0 right-0">
+											<Sidebar
+												items={sidebarNavItems}
+												onItemClick={handleItemClick}
+											/>
+										</DrawerContent>
+									</DrawerPortal>
+								</Drawer>
 								<Sidebar
 									className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
 									items={sidebarNavItems}
