@@ -1,8 +1,8 @@
 {
   "name": "APP - Colégio Santo Inácio",
   "short_name": "CSI - APP",
-  "theme_color": "#a1313d",
-  "background_color": "#a1313d",
+  "theme_color": "#962c2a",
+  "background_color": "#962c2a",
   "color_overrides": [
     {
       "media": "(prefers-color-scheme: dark)",
@@ -11,8 +11,8 @@
     },
     {
       "media": "(prefers-color-scheme: light)",
-      "theme_color": "#a1313d",
-      "background_color": "#a1313d"
+      "theme_color": "#962c2a",
+      "background_color": "#962c2a"
     }
   ],
   "display": "standalone",
@@ -102,7 +102,7 @@
       "icons": [
         {
           "src": "/icons/suporte.png",
-          "sizes": "192x192"
+          "sizes": "512x512"
         }
       ]
     },
@@ -126,7 +126,7 @@
       "icons": [
         {
           "src": "/icons/wifi.png",
-          "sizes": "192x192"
+          "sizes": "512x512"
         }
       ]
     },
