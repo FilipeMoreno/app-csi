@@ -32,7 +32,6 @@ import {
 	DrawerContent,
 	DrawerOverlay,
 	DrawerPortal,
-	DrawerTitle,
 	DrawerTrigger,
 } from '@/components/ui/drawer'
 import '@/styles/globals.css'
