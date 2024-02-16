@@ -123,7 +123,7 @@ export function Sidebar({ className, items, onItemClick }: SidebarNavProps) {
 					width={20}
 					height={20}
 					src={'/icons/icon-512x512.png'}
-					className="mb-1 lg:hidden"
+					className="mb-1"
 				/>
 				<ChangelogComponent />
 				<span className="text-xs text-zinc-500">v{config.version}</span>

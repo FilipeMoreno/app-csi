@@ -98,7 +98,7 @@
       "name": "Suporte",
       "short_name": "Suporte",
       "description": "Precisa de ajuda? Abra um chamado.",
-      "url": "/sinaleiro",
+      "url": "/suporte",
       "icons": [
         {
           "src": "/icons/suporte.png",
@@ -110,7 +110,7 @@
       "name": "Agendamentos",
       "short_name": "Agendamentos",
       "description": "Abra os agendamentos",
-      "url": "/agendamento",
+      "url": "/agendamentos",
       "icons": [
         {
           "src": "/icons/agendamentos.png",
@@ -122,7 +122,7 @@
       "name": "Wi-Fi",
       "short_name": "Voucher Wi-Fi",
       "description": "Gera um voucher Wi-Fi",
-      "url": "/sinaleiro",
+      "url": "/wifi",
       "icons": [
         {
           "src": "/icons/wifi.png",
