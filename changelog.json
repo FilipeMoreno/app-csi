@@ -424,5 +424,15 @@
         "description": "Alteração nos ícones de SplashScreen."
       }
     ]
+  },
+  {
+    "version": "0.11.7.1-alpha",
+    "date": "2024-02-19T00:00:00+00:00",
+    "changes": [
+      {
+        "type": "Alterações",
+        "description": "Changelog otimizada para dispositivos mobile."
+      }
+    ]
   }
 ]
