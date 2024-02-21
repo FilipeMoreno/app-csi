@@ -1,5 +1,6 @@
 'use client'
 
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import NextTopLoader from 'nextjs-toploader'
@@ -129,6 +130,8 @@ export default function RootLayout({
 		setShowSidebar(false)
 	}
 
+	const queryClient = new QueryClient()
+
 	return (
 		<body className="antialiased">
 			<ThemeProvider
@@ -138,44 +141,46 @@ export default function RootLayout({
 				disableTransitionOnChange
 			>
 				<NextTopLoader color="#af3c41" />
-				<Header />
-				<div className="md:block">
-					<div className="border-t">
-						<div className="bg-background">
-							<div className="grid lg:grid-cols-5">
-								<Drawer direction="left">
-									<DrawerTrigger
-										asChild
-										className="lg:hidden focus:ring-0 focus:ring-offset-0"
+				<QueryClientProvider client={queryClient}>
+					<Header />
+					<div className="md:block">
+						<div className="border-t">
+							<div className="bg-background">
+								<div className="grid lg:grid-cols-5">
+									<Drawer direction="left">
+										<DrawerTrigger
+											asChild
+											className="lg:hidden focus:ring-0 focus:ring-offset-0"
+										>
+											<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
+										</DrawerTrigger>
+										<DrawerPortal>
+											<DrawerOverlay className="fixed inset-0 bg-black/40" />
+											<DrawerContent className="flex flex-col rounded-t-[10px] h-full w-[350px] mt-24 fixed bottom-0 right-0">
+												<Sidebar
+													items={sidebarNavItems}
+													onItemClick={handleItemClick}
+												/>
+											</DrawerContent>
+										</DrawerPortal>
+									</Drawer>
+									<Sidebar
+										className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
+										items={sidebarNavItems}
+										onItemClick={handleItemClick}
+									/>
+									<div
+										className={`col-span-3 lg:col-span-4 lg:border-l ${
+											showSidebar ? 'hidden' : 'block'
+										}`}
 									>
-										<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
-									</DrawerTrigger>
-									<DrawerPortal>
-										<DrawerOverlay className="fixed inset-0 bg-black/40" />
-										<DrawerContent className="flex flex-col rounded-t-[10px] h-full w-[350px] mt-24 fixed bottom-0 right-0">
-											<Sidebar
-												items={sidebarNavItems}
-												onItemClick={handleItemClick}
-											/>
-										</DrawerContent>
-									</DrawerPortal>
-								</Drawer>
-								<Sidebar
-									className={`lg:block ${showSidebar ? 'block' : 'hidden'}`}
-									items={sidebarNavItems}
-									onItemClick={handleItemClick}
-								/>
-								<div
-									className={`col-span-3 lg:col-span-4 lg:border-l ${
-										showSidebar ? 'hidden' : 'block'
-									}`}
-								>
-									<div className="h-full px-4 py-6 lg:px-8">{children}</div>
+										<div className="h-full px-4 py-6 lg:px-8">{children}</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</QueryClientProvider>
 				<Toaster richColors closeButton />
 				<SpeedInsights />
 				<Analytics />
