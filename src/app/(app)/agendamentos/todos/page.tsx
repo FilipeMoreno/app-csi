@@ -3,7 +3,7 @@
 import { Suspense, useState } from 'react'
 
 import { Calendar } from '@/components/ui/calendar'
-import { Skeleton, Skeleton } from '@/components/ui/skeleton'
+import { Skeleton } from '@/components/ui/skeleton'
 import { AgendamentosHorarios } from '../horarios'
 
 export default async function ReservasHome() {
@@ -34,7 +34,7 @@ export default async function ReservasHome() {
 				<div className="flex w-full flex-col space-y-4">
 					<Suspense
 						fallback={
-							<div className='flex flex-col space-y-3'>
+							<div className="flex flex-col space-y-3">
 								<Skeleton className="h-[125px] w-full rounded-lg" />
 								<Skeleton className="h-[125px] w-full rounded-lg" />
 							</div>
