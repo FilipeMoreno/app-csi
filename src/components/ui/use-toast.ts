@@ -1,3 +1,4 @@
+// Inspired by react-hot-toast library
 import * as React from 'react'
 
 import type { ToastActionElement, ToastProps } from '@/components/ui/toast'
@@ -22,7 +23,7 @@ const actionTypes = {
 let count = 0
 
 function genId() {
-	count = (count + 1) % Number.MAX_VALUE
+	count = (count + 1) % Number.MAX_SAFE_INTEGER
 	return count.toString()
 }
 
@@ -61,7 +62,7 @@ const addToRemoveQueue = (toastId: string) => {
 		toastTimeouts.delete(toastId)
 		dispatch({
 			type: 'REMOVE_TOAST',
-			toastId,
+			toastId: toastId,
 		})
 	}, TOAST_REMOVE_DELAY)
 
@@ -92,9 +93,10 @@ export const reducer = (state: State, action: Action): State => {
 			if (toastId) {
 				addToRemoveQueue(toastId)
 			} else {
-				for (const toast of state.toasts) {
+				// biome-ignore lint/complexity/noForEach: <explanation>
+				state.toasts.forEach((toast) => {
 					addToRemoveQueue(toast.id)
-				}
+				})
 			}
 
 			return {
@@ -129,9 +131,10 @@ let memoryState: State = { toasts: [] }
 
 function dispatch(action: Action) {
 	memoryState = reducer(memoryState, action)
-	for (const listener of listeners) {
+	// biome-ignore lint/complexity/noForEach: <explanation>
+	listeners.forEach((listener) => {
 		listener(memoryState)
-	}
+	})
 }
 
 type Toast = Omit<ToasterToast, 'id'>
@@ -159,7 +162,7 @@ function toast({ ...props }: Toast) {
 	})
 
 	return {
-		id,
+		id: id,
 		dismiss,
 		update,
 	}

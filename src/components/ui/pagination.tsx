@@ -1,12 +1,12 @@
+import * as React from 'react'
 import {
 	ChevronLeftIcon,
 	ChevronRightIcon,
 	DotsHorizontalIcon,
 } from '@radix-ui/react-icons'
-import * as React from 'react'
 
-import { ButtonProps, buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { ButtonProps, buttonVariants } from '@/components/ui/button'
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
 	<nav
@@ -16,6 +16,7 @@ const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
 		{...props}
 	/>
 )
+Pagination.displayName = 'Pagination'
 
 const PaginationContent = React.forwardRef<
 	HTMLUListElement,
@@ -48,19 +49,17 @@ const PaginationLink = ({
 	size = 'icon',
 	...props
 }: PaginationLinkProps) => (
-	<PaginationItem>
-		<a
-			aria-current={isActive ? 'page' : undefined}
-			className={cn(
-				buttonVariants({
-					variant: isActive ? 'outline' : 'ghost',
-					size,
-				}),
-				className,
-			)}
-			{...props}
-		/>
-	</PaginationItem>
+	<a
+		aria-current={isActive ? 'page' : undefined}
+		className={cn(
+			buttonVariants({
+				variant: isActive ? 'outline' : 'ghost',
+				size,
+			}),
+			className,
+		)}
+		{...props}
+	/>
 )
 PaginationLink.displayName = 'PaginationLink'
 
@@ -75,7 +74,7 @@ const PaginationPrevious = ({
 		{...props}
 	>
 		<ChevronLeftIcon className="h-4 w-4" />
-		<span>Anterior</span>
+		<span>Previous</span>
 	</PaginationLink>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
@@ -90,10 +89,11 @@ const PaginationNext = ({
 		className={cn('gap-1 pr-2.5', className)}
 		{...props}
 	>
-		<span>Próxima</span>
+		<span>Next</span>
 		<ChevronRightIcon className="h-4 w-4" />
 	</PaginationLink>
 )
+PaginationNext.displayName = 'PaginationNext'
 
 const PaginationEllipsis = ({
 	className,
@@ -105,9 +105,10 @@ const PaginationEllipsis = ({
 		{...props}
 	>
 		<DotsHorizontalIcon className="h-4 w-4" />
-		<span className="sr-only">Mais páginas</span>
+		<span className="sr-only">More pages</span>
 	</span>
 )
+PaginationEllipsis.displayName = 'PaginationEllipsis'
 
 export {
 	Pagination,

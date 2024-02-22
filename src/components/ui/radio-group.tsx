@@ -1,8 +1,8 @@
 'use client'
 
+import * as React from 'react'
 import { CheckIcon } from '@radix-ui/react-icons'
 import * as RadioGroupPrimitive from '@radix-ui/react-radio-group'
-import * as React from 'react'
 
 import { cn } from '@/lib/utils'
 
@@ -23,7 +23,7 @@ RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 const RadioGroupItem = React.forwardRef<
 	React.ElementRef<typeof RadioGroupPrimitive.Item>,
 	React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item>
->(({ className, children, ...props }, ref) => {
+>(({ className, ...props }, ref) => {
 	return (
 		<RadioGroupPrimitive.Item
 			ref={ref}
