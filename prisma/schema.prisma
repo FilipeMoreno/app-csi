@@ -1,0 +1,127 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id      String @id @default(uuid())
+  name    String
+  email   String @unique
+  picture String
+
+  @@map("users")
+}
+
+model Course {
+  id   String @id @default(uuid())
+  name String
+
+  class Class[]
+
+  @@map("courses")
+}
+
+model Class {
+  id        String @id @default(uuid())
+  name      String
+  course_id String
+  period    Period
+  year      String
+
+  course Course @relation(fields: [course_id], references: [id])
+
+  @@map("classes")
+}
+
+enum Period {
+  MATUTINO
+  VESPERTINO
+}
+
+model Sector {
+  id   String @id @default(uuid())
+  name String
+
+  appointment Appointment[]
+
+  @@map("sectors")
+}
+
+model TimeAppointment {
+  id       String  @id @default(uuid())
+  start    String
+  end      String
+  period   Period
+  reserved Boolean @default(false)
+
+  appointment Appointment[]
+
+  @@map("times_appointments")
+}
+
+model Appointment {
+  id         String   @id @default(uuid())
+  date       DateTime
+  activities String
+  equipament String?
+  sector_id  String
+  time_id    String
+
+  sector Sector          @relation(fields: [sector_id], references: [id])
+  time   TimeAppointment @relation(fields: [time_id], references: [id])
+
+  @@map("appointments")
+}
+
+enum DayOfWeek {
+  SEGUNDA
+  TERCA
+  QUARTA
+  QUINTA
+  SEXTA
+  SABADO
+  DOMINGO
+}
+
+model TimeSignal {
+  id       String @id @default(uuid())
+  duration String
+  time     String
+
+  scheduleTime ScheduleTimeSignal[]
+
+  @@map("time_signals")
+}
+
+model ScheduleTimeSignal {
+  id          String    @id @default(uuid())
+  day_of_week DayOfWeek
+  music_id    String
+  time_id     String
+
+  timeSignal  TimeSignal  @relation(fields: [time_id], references: [id])
+  musicSignal MusicSignal @relation(fields: [music_id], references: [id])
+
+  @@map("schedule_times")
+}
+
+model MusicSignal {
+  id     String @id @default(uuid())
+  title  String
+  artist String
+  url    String
+
+  scheduleTime ScheduleTimeSignal[]
+
+  @@map("music_signals")
+}

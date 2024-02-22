@@ -2,6 +2,8 @@ import { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 
 import '@/styles/globals.css'
+import { inter } from './fonts'
+import Providers from './providers'
 
 export const metadata: Metadata = {
 	title: 'APP | Colégio Santo Inácio',
@@ -27,7 +29,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="pt-BR" className="font-sans antialiased">
+		<html lang="pt-BR" className="antialiased" suppressHydrationWarning>
 			<head>
 				<meta charSet="utf-8" />
 
@@ -50,8 +52,10 @@ export default function RootLayout({
 				/>
 
 				<Script src="/register-sw.js" />
-				{children}
 			</head>
+			<body className={inter.className}>
+				<Providers>{children}</Providers>
+			</body>
 		</html>
 	)
 }

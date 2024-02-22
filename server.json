@@ -1,10 +1,15 @@
 {
-  "usuario": {
-    "id": "1",
-    "nome": "John Doe",
-    "email": "john@example.com",
-    "avatar": "/images/avatars/avatar_11.png",
-    "role": "Admin"
+  "users": {
+    "id": "123456",
+    "name": "Usuário do Sistema",
+    "username": "johndoe",
+    "email": "email@email.com",
+    "picture": "https://github.com/vercel.png",
+    "created_at": "2015-07-22T14:00:00.000Z",
+    "roles": [
+      "user",
+      "*"
+    ]
   },
   "agendamentos": [
     {
@@ -36,7 +41,7 @@
           "inicio": "07:15",
           "fim": "08:00",
           "periodo": "Manhã",
-          "reservado": false,
+          "reservado": true,
           "reserva": {
             "id": 1,
             "data": "2021-08-20",

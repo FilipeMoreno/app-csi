@@ -24,7 +24,7 @@ import AgendarHorarioMobile from './agendar-horario-mobile'
 import AgendarHorarioPC from './agendar-horario-pc'
 import AdicionarReservaMobile from './nova-reserva-mobile'
 import AdicionarReservaPC from './nova-reserva-pc'
-import setores from './setores.json'
+import { AgendamentosSetores } from './setores'
 
 export default function ReservasHome() {
 	const [date, setDate] = useState(new Date())
@@ -37,7 +37,7 @@ export default function ReservasHome() {
 			horario.horarios.some((horarios) => horarios.periodo === periodo),
 	)
 
-		const isDesktop = useMediaQuery('(min-width: 768px)')
+	const isDesktop = useMediaQuery('(min-width: 768px)')
 
 	return (
 		<div>
@@ -47,24 +47,12 @@ export default function ReservasHome() {
 					<p className="text-sm">Mostrando todos os agendamentos</p>
 				</div>
 				<div>
-					{!isDesktop && <AdicionarReservaMobile /> ||	<AdicionarReservaPC /> }
+					{(!isDesktop && <AdicionarReservaMobile />) || <AdicionarReservaPC />}
 				</div>
 			</div>
 			<div className="mt-4 flex flex-row space-x-2">
-				<Select onValueChange={setSetor} value={setor}>
-					<SelectTrigger className="w-full">
-						<SelectValue placeholder="Selecione o setor" />
-					</SelectTrigger>
-					<SelectContent>
-						<SelectGroup>
-							{setores.flatMap((setor) => (
-								<SelectItem key={setor.id} value={setor.nome}>
-									{setor.nome}
-								</SelectItem>
-							))}
-						</SelectGroup>
-					</SelectContent>
-				</Select>
+				<AgendamentosSetores />
+
 				<Select onValueChange={setPeriodo} value={periodo}>
 					<SelectTrigger className="w-full">
 						<SelectValue placeholder="Selecione o período" />
@@ -143,19 +131,20 @@ export default function ReservasHome() {
 												</CardTitle>
 											</CardHeader>
 											<CardContent>
-												{!horario.reservado && isDesktop && (
+												{(!horario.reservado && isDesktop && (
 													<AgendarHorarioPC
 														data={date}
 														setor={setor}
 														horario={`${horario.inicio} às ${horario.fim}`}
 													/>
-												) || !horario.reservado && (
-													<AgendarHorarioMobile
-														data={date}
-														setor={setor}
-														horario={`${horario.inicio} às ${horario.fim}`}
-													/>
-												)}
+												)) ||
+													(!horario.reservado && (
+														<AgendarHorarioMobile
+															data={date}
+															setor={setor}
+															horario={`${horario.inicio} às ${horario.fim}`}
+														/>
+													))}
 												{horario.reservado && (
 													<div className="mt-2 flex flex-row items-center flex-wrap gap-x-8">
 														<div className="flex flex-col">

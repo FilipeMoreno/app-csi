@@ -2,7 +2,6 @@
 
 import { ExclamationTriangleIcon } from '@radix-ui/react-icons'
 
-import CookiesConsent from '@/components/CookiesConsent'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 export default function Home() {
@@ -93,7 +92,6 @@ export default function Home() {
 					</div>
 				</div>
 			</div>
-			<CookiesConsent />
 		</>
 	)
 }

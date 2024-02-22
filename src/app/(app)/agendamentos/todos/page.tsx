@@ -1,15 +1,12 @@
 'use client'
 
-import { Clock } from 'lucide-react'
 import { Suspense, useState } from 'react'
 
-import { Badge } from '@/components/ui/badge'
 import { Calendar } from '@/components/ui/calendar'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Skeleton, Skeleton } from '@/components/ui/skeleton'
+import { AgendamentosHorarios } from '../horarios'
 
-import horarios from '../horarios.json'
-
-export default function ReservasHome() {
+export default async function ReservasHome() {
 	const [date, setDate] = useState(new Date())
 
 	return (
@@ -35,91 +32,15 @@ export default function ReservasHome() {
 					/>
 				</div>
 				<div className="flex w-full flex-col space-y-4">
-					<Suspense fallback={<div>Carregando...</div>}>
-						{horarios
-							.flatMap((horario) =>
-								horario.horarios
-									.filter((horario) => horario.reservado === true)
-									.flatMap((horarioReservado) => ({
-										...horarioReservado,
-										setor: horario.setor,
-									})),
-							)
-							.sort((a, b) => {
-								const horaA = a.inicio.split(':').join('')
-								const horaB = b.inicio.split(':').join('')
-								return horaA > horaB ? 1 : -1
-							})
-							.flatMap((horario) => (
-								<Card
-									key={horario.id}
-									className={`border-2 ${
-										horario.reservado ? 'border-l-error' : 'border-l-success'
-									}`}
-								>
-									<CardHeader>
-										<CardTitle
-											className={`flex flex-row items-center text-xl font-bold ${
-												horario.reservado ? 'text-error' : 'text-success'
-											}
-                        `}
-										>
-											<Clock className="mr-2 h-4 w-4" />
-											{horario.inicio} às {horario.fim}
-											<Badge
-												variant={'outline'}
-												className="ml-2 border border-error font-bold uppercase text-error"
-											>
-												Reservado
-											</Badge>
-										</CardTitle>
-									</CardHeader>
-									<CardContent>
-										<div className="mt-2 flex flex-row items-center space-x-8">
-											<div className="flex flex-col">
-												<p className="text-[10px] font-bold uppercase text-zinc-500">
-													Setor
-												</p>
-												<p className="text-primary">{horario.reserva?.setor}</p>
-											</div>
-											<div className="flex flex-col">
-												<p className="text-[10px] font-bold uppercase text-zinc-500">
-													Reservado por
-												</p>
-												<p className="text-primary">
-													{horario.reserva?.usuario}
-												</p>
-											</div>
-											<div className="flex flex-col">
-												<p className="text-[10px] font-bold uppercase text-zinc-500">
-													Série/Turma
-												</p>
-												<p className="text-primary">
-													{horario.reserva?.serie} {horario.reserva?.turma}
-												</p>
-											</div>
-											<div className="flex flex-col">
-												<p className="text-[10px] font-bold uppercase text-zinc-500">
-													Atividades
-												</p>
-												<p className="text-primary">
-													{horario.reserva?.atividades}
-												</p>
-											</div>
-											{horario.reserva?.equipamentos && (
-												<div className="flex flex-col">
-													<p className="text-[10px] font-bold uppercase text-zinc-500">
-														Equipamentos
-													</p>
-													<p className="text-primary">
-														{horario.reserva?.equipamentos}
-													</p>
-												</div>
-											)}
-										</div>
-									</CardContent>
-								</Card>
-							))}
+					<Suspense
+						fallback={
+							<div className='flex flex-col space-y-3'>
+								<Skeleton className="h-[125px] w-full rounded-lg" />
+								<Skeleton className="h-[125px] w-full rounded-lg" />
+							</div>
+						}
+					>
+						<AgendamentosHorarios />
 					</Suspense>
 				</div>
 			</div>
