@@ -88,6 +88,8 @@ export default function SinaleiroHome() {
 		if (!currentSong) return
 
 		load(currentSong.url, {
+			html5: true,
+			format: 'mp3',
 			autoplay: verifyAutoPlay(),
 			initialVolume: volumeValue,
 			onend: () => {
