@@ -414,12 +414,12 @@ export default function SinaleiroHome() {
 												{(playing && (
 													<span className="text-green-500">
 														<b>
-															{song.title} - {song.author}
+															{song.title} - {song.artist}
 														</b>
 													</span>
 												)) || (
 													<b>
-														{song.title} - {song.author}
+														{song.title} - {song.artist}
 													</b>
 												)}
 
@@ -435,7 +435,7 @@ export default function SinaleiroHome() {
 											>
 												<p>{song.id}.</p>
 												<p>
-													{song.title} - {song.author}
+													{song.title} - {song.artist}
 												</p>
 											</li>
 										),

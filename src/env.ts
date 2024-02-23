@@ -15,33 +15,14 @@ function requiredOnEnv(env: z.infer<typeof nodeEnv>) {
 
 export const env = createEnv({
 	server: {
+		WISEFI_URL: z.string().min(1),
+		WISEFI_ACCESS_TOKEN: z.string().min(1),
+		GOOGLE_ID: z.string().min(1),
+		SENTRY_DNS: z.string().min(1),
 		DATABASE_URL: z.string().min(1),
-		CLOUDFLARE_ACCOUNT_ID: z.string().min(1),
-		CLOUDFLARE_ACCESS_KEY: z.string().min(1),
-		CLOUDFLARE_SECRET_KEY: z.string().min(1),
-		CLOUDFLARE_UPLOAD_BUCKET_ID: z.string().min(1),
-		CLOUDFLARE_UPLOAD_BUCKET_NAME: z.string().min(1),
-		CLOUDFLARE_STORAGE_BUCKET_NAME: z.string().min(1),
-		OPENAI_API_KEY: z.string().min(1),
-		PANDAVIDEO_API_KEY: z.string().refine(requiredOnEnv('production')),
-		PANDAVIDEO_UPLOAD_FOLDER: z.string().uuid().min(1),
-		NEXTAUTH_URL: z.string().optional(),
-		AUTH_SECRET: z.string().min(1),
-		GOOGLE_CLIENT_ID: z.string().min(1),
-		GOOGLE_CLIENT_SECRET: z.string().min(1),
-		QSTASH_TOKEN: z.string().refine(requiredOnEnv('production')),
-		QSTASH_CURRENT_SIGNING_KEY: z.string().refine(requiredOnEnv('production')),
-		QSTASH_NEXT_SIGNING_KEY: z.string().refine(requiredOnEnv('production')),
-		QSTASH_VALIDATE_SIGNATURE: z
-			.string()
-			.transform((value) => value === 'true')
-			.default('true'),
-		KAFKA_BROKER_URL: z.string().refine(requiredOnEnv('production')),
-		KAFKA_USERNAME: z.string().refine(requiredOnEnv('production')),
-		KAFKA_PASSWORD: z.string().refine(requiredOnEnv('production')),
 	},
 	client: {
-		NEXT_PUBLIC_VERCEL_URL: z.string().url().min(1),
+		NEXT_PUBLIC_API_URL: z.string().min(1),
 	},
 	shared: {
 		NODE_ENV: nodeEnv,
@@ -50,7 +31,7 @@ export const env = createEnv({
 			.default('development'),
 	},
 	experimental__runtimeEnv: {
-		NEXT_PUBLIC_VERCEL_URL: process.env.NEXT_PUBLIC_VERCEL_URL,
+		NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
 		NODE_ENV: process.env.NODE_ENV,
 		VERCEL_ENV: process.env.VERCEL_ENV,
 	},

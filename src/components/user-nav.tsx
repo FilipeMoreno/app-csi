@@ -2,6 +2,7 @@ import dados from '@/utils/dados.json'
 import { ExitIcon } from '@radix-ui/react-icons'
 import { Settings } from 'lucide-react'
 import Link from 'next/link'
+import { Suspense } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Button } from './ui/button'
 import {
@@ -37,6 +38,7 @@ export function UserNav() {
 							/>
 							<AvatarFallback>CSI</AvatarFallback>
 						</Avatar>
+
 						<div className="flex flex-col">
 							<p className="text-sm font-medium leading-none">
 								{dados.user.name}
