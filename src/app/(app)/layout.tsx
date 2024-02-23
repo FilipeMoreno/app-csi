@@ -133,7 +133,7 @@ export default function RootLayout({
 							<Drawer direction="left">
 								<DrawerTrigger
 									asChild
-									className="lg:hidden border-transparent focus:border-transparent focus:ring-0"
+									className="lg:hidden border-transparent focus:border-transparent focus:ring-0 focus:!ring-offset-0"
 								>
 									<HamburgerMenuIcon className="top-0 -mt-11 ml-6 h-6 w-6 text-gray-500" />
 								</DrawerTrigger>
