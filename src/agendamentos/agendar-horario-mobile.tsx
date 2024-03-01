@@ -25,7 +25,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 
-import { cn } from '@/services/lib/utils'
+import { cn } from '@/lib/utils'
 
 interface Dados {
 	setor: string
