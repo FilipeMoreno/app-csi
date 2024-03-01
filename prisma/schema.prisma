@@ -21,7 +21,7 @@ model User {
   accounts     Account[]
   sessions     Session[]
   appointments Appointment[]
-  Notification Notification[]
+  notification Notification[]
 }
 
 model Course {
@@ -132,6 +132,16 @@ model Notification {
   user User @relation(fields: [user_id], references: [id])
 
   @@map("notifications")
+}
+
+model Changelog {
+  id          String @id @default(cuid())
+  type        String
+  description String
+  date        String
+  version     String
+
+  @@map("changelogs")
 }
 
 // AUTH.JS
