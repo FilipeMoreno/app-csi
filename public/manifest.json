@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "APP - Colégio Santo Inácio",
   "short_name": "CSI - APP",
   "theme_color": "#962c2a",
@@ -16,9 +17,18 @@
     }
   ],
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay"
+  ],
   "scope": "/",
   "start_url": "/",
   "description": "Aplicativo para o Colégio Santo Inácio",
+  "launch_handler": {
+    "client_mode": [
+      "focus-existing",
+      "auto"
+    ]
+  },
   "icons": [
     {
       "src": "icons/16x16.png",

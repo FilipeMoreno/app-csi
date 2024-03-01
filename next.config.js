@@ -1,3 +1,19 @@
+const withPWA = require('@ducanh2912/next-pwa').default({
+	swSrc: 'service-worker.js',
+	cacheOnFrontEndNav: true,
+	aggressiveFrontEndNavCaching: true,
+	reloadOnOnline: true,
+	swcMinify: true,
+	dest: 'public',
+	fallbacks: {
+		image: '/images/offline.png',
+		document: '/offline', // if you want to fallback to a custom page rather than /_offline
+	},
+	workboxOptions: {
+		disableDevLogs: true,
+	},
+})
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -20,4 +36,4 @@ const nextConfig = {
 	},
 }
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)

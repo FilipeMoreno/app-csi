@@ -1,8 +1,6 @@
-import dados from '@/utils/dados.json'
 import { ExitIcon } from '@radix-ui/react-icons'
 import { Settings } from 'lucide-react'
 import Link from 'next/link'
-import { Suspense } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Button } from './ui/button'
 import {
@@ -14,15 +12,19 @@ import {
 	DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 
-export function UserNav() {
+export async function UserNav() {
+	const response = await fetch(
+		'http://localhost:3000/api/profile?email=eu@filipemoreno.com.br',
+	).then((res) => res.json())
+
 	return (
 		<DropdownMenu>
 			<DropdownMenuTrigger asChild>
 				<Button variant="ghost" className="relative h-8 w-8 rounded-full">
 					<Avatar className="h-8 w-8 border border-secondary">
 						<AvatarImage
-							src={dados.user.picture}
-							alt={`@ ${dados.user.username}`}
+							src={response.profile.image}
+							alt={`@ ${response.profile.name}`}
 						/>
 						<AvatarFallback>CSI</AvatarFallback>
 					</Avatar>
@@ -33,18 +35,18 @@ export function UserNav() {
 					<div className="flex flex-row space-x-4 space-y-1">
 						<Avatar className="h-8 w-8 border border-secondary">
 							<AvatarImage
-								src={dados.user.picture}
-								alt={`@ ${dados.user.username}`}
+								src={response.profile.image}
+								alt={`@ ${response.profile.name}`}
 							/>
 							<AvatarFallback>CSI</AvatarFallback>
 						</Avatar>
 
 						<div className="flex flex-col">
 							<p className="text-sm font-medium leading-none">
-								{dados.user.name}
+								{response.profile.name}
 							</p>
 							<p className="text-xs leading-none text-muted-foreground">
-								{dados.user.email}
+								{response.profile.email}
 							</p>
 						</div>
 					</div>

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { UserAuthForm } from '@/components/user-auth-form'
+import { SignInForm, } from './_components/sign-in-form'
 
 export default function AuthPage() {
 	return (
@@ -26,7 +26,7 @@ export default function AuthPage() {
 									Digite suas credencias abaixo para continuar
 								</p>
 							</div>
-							<UserAuthForm />
+							<SignInForm />
 							<CardFooter>
 								<p className="text-center text-sm text-muted-foreground">
 									Ao continuar, você concorda com nossos{' '}

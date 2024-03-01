@@ -20,7 +20,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 
-import { cn } from '@/lib/utils'
+import { cn } from '@/services/lib/utils'
 
 import { Badge } from '@/components/ui/badge'
 import {
