@@ -19,22 +19,23 @@ interface Notification {
 }
 
 export async function Notifications() {
-	const notifications = await fetch(
-		'http://localhost:3000/api/notificacoes?email=eu@filipemoreno.com.br',
-	).then((res) => res.json())
+	// const notifications = await fetch(
+	// 	'http://localhost:3000/api/notificacoes?email=eu@filipemoreno.com.br',
+	// ).then((res) => res.json())
 
-	async function marcarTodasComoLidas() {
-		await fetch(
-			'http://localhost:3000/api/notificacoes/arquivar-todas?email=eu@filipemoreno.com.br',
-			{
-				method: 'POST',
-			},
-		).then((res) => res.json())
-	}
+	// async function marcarTodasComoLidas() {
+	// 	await fetch(
+	// 		'http://localhost:3000/api/notificacoes/arquivar-todas?email=eu@filipemoreno.com.br',
+	// 		{
+	// 			method: 'POST',
+	// 		},
+	// 	).then((res) => res.json())
+	// }
 
 	return (
 		<Suspense fallback={<div>Carregando...</div>}>
-			<Popover onOpenChange={() => marcarTodasComoLidas()}>
+			<Popover>
+				{/* <Popover onOpenChange={() => marcarTodasComoLidas()}> */}
 				<PopoverTrigger asChild>
 					<Button
 						variant="outline"
@@ -42,14 +43,15 @@ export async function Notifications() {
 						size="sm"
 					>
 						<BellIcon className="h-3 w-3" />
-						<span>{notifications.count}</span>
+						<span>0</span>
+						{/* <span>{notifications.count}</span> */}
 
-						{notifications.count > 0 && (
+						{/* {notifications.count > 0 && (
 							<span className="absolute -right-0.5 -top-0.5 flex h-2 w-2">
 								<span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75" />
 								<span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500" />
 							</span>
-						)}
+						)} */}
 					</Button>
 				</PopoverTrigger>
 
@@ -67,22 +69,23 @@ export async function Notifications() {
 					<Tabs defaultValue="new" className="mt-2">
 						<TabsList className="space-x-1">
 							<TabsTrigger value="new">
-								Novas ({notifications.count})
+								Novas (0)
+								{/* Novas ({notifications.count}) */}
 							</TabsTrigger>
 							<TabsTrigger value="archived">Arquivadas</TabsTrigger>
 						</TabsList>
 						<TabsContent value="new">
 							<Separator className="my-4" />
 							<div className="space-y-4">
-								{notifications.count === 0 && (
+								{/* {notifications.count === 0 && (
 									<div className="flex items-center justify-center">
 										<LifeBuoy className="size-4 mx-2 text-muted-foreground" />
 										<p className="text-muted-foreground text-sm">
 											Nenhuma notificação
 										</p>
 									</div>
-								)}
-								{notifications.notifications.map(
+								)} */}
+								{/* {notifications.notifications.map(
 									(notification: Notification) => {
 										const icons = [
 											{
@@ -131,7 +134,7 @@ export async function Notifications() {
 											</div>
 										)
 									},
-								)}
+								)} */}
 
 								<Button variant="outline" className="w-full">
 									Arquivar todas
@@ -141,7 +144,7 @@ export async function Notifications() {
 						<TabsContent value="archived">
 							<Separator className="my-4" />
 							<div className="space-y-4">
-								{notifications.arquivadas.map((notification: Notification) => {
+								{/* {notifications.arquivadas.map((notification: Notification) => {
 									const icons = [
 										{
 											type: 'APPOINTMENT',
@@ -186,7 +189,7 @@ export async function Notifications() {
 											</div>
 										</div>
 									)
-								})}
+								})} */}
 							</div>
 						</TabsContent>
 					</Tabs>
