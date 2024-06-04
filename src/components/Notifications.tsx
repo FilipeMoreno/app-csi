@@ -19,19 +19,6 @@ interface Notification {
 }
 
 export async function Notifications() {
-	// const notifications = await fetch(
-	// 	'http://localhost:3000/api/notificacoes?email=eu@filipemoreno.com.br',
-	// ).then((res) => res.json())
-
-	// async function marcarTodasComoLidas() {
-	// 	await fetch(
-	// 		'http://localhost:3000/api/notificacoes/arquivar-todas?email=eu@filipemoreno.com.br',
-	// 		{
-	// 			method: 'POST',
-	// 		},
-	// 	).then((res) => res.json())
-	// }
-
 	return (
 		<Suspense fallback={<div>Carregando...</div>}>
 			<Popover>
