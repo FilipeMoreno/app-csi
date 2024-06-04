@@ -62,7 +62,7 @@ export default function SinaleiroHome() {
 	const [currentSeekPosition, setCurrentSeekPosition] = useState(() => {
 		if (typeof window !== 'undefined') {
 			const seekPosition = localStorage.getItem('music_pos')
-			return seekPosition ? parseFloat(seekPosition) : 0
+			return seekPosition ? Number.parseFloat(seekPosition) : 0
 		}
 		return 1
 	})
@@ -74,8 +74,8 @@ export default function SinaleiroHome() {
 	useEffect(() => {
 		const getVolume = localStorage.getItem('volume')
 
-		setVolumeValue(getVolume ? parseFloat(getVolume) : 0.5)
-		setVolume(getVolume ? parseFloat(getVolume) : 0.5)
+		setVolumeValue(getVolume ? Number.parseFloat(getVolume) : 0.5)
+		setVolume(getVolume ? Number.parseFloat(getVolume) : 0.5)
 	}, [])
 
 	useEffect(() => {
@@ -203,7 +203,7 @@ export default function SinaleiroHome() {
 	}
 
 	const handleVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		const volume = parseFloat(event.target.value)
+		const volume = Number.parseFloat(event.target.value)
 		setVolume(volume)
 		setVolumeValue(volume)
 		localStorage.setItem('volume', event.target.value)
@@ -224,10 +224,10 @@ export default function SinaleiroHome() {
 	function muteMusica() {
 		const getVolume = localStorage.getItem('volume')
 
-		setVolumeValue(getVolume ? parseFloat(getVolume) : 0.5)
-		setVolume(getVolume ? parseFloat(getVolume) : 0.5)
+		setVolumeValue(getVolume ? Number.parseFloat(getVolume) : 0.5)
+		setVolume(getVolume ? Number.parseFloat(getVolume) : 0.5)
 
-		if (getVolume && parseFloat(getVolume) === 0) {
+		if (getVolume && Number.parseFloat(getVolume) === 0) {
 			setVolumeValue(0.5)
 			setVolume(0.5)
 			localStorage.setItem('volume', (0.5).toString())

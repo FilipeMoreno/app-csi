@@ -20,16 +20,16 @@ export default function RootLayout({
 			<Sidebar />
 			<main
 				className={cn(
-					'min-h-[calc(100vh_-_56px)] bg-zinc-50 dark:bg-zinc-900 transition-[margin-left] ease-in-out duration-300',
+					'min-h-[calc(100vh_-_56px)] bg-zinc-50 transition-[margin-left] duration-300 ease-in-out dark:bg-zinc-900',
 					sidebar?.isOpen === false ? 'lg:ml-[90px]' : 'lg:ml-72',
 				)}
 			>
 				<Navbar />
-				<div className="container pt-8 pb-8 px-4 sm:px-8">{children}</div>
+				<div className="container px-4 pt-8 pb-8 sm:px-8">{children}</div>
 			</main>
 			<footer
 				className={cn(
-					'transition-[margin-left] ease-in-out duration-300',
+					'transition-[margin-left] duration-300 ease-in-out',
 					sidebar?.isOpen === false ? 'lg:ml-[90px]' : 'lg:ml-72',
 				)}
 			>

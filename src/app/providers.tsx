@@ -7,7 +7,7 @@ import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider } from 'next-themes'
 import NextTopLoader from 'nextjs-toploader'
-import { ReactNode, useState } from 'react'
+import { type ReactNode, useState } from 'react'
 import GoogleAnalytics from './GoogleAnalytics'
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -20,9 +20,9 @@ export default function Providers({ children }: { children: ReactNode }) {
 			enableSystem
 			disableTransitionOnChange
 		>
+			<CookiesConsent />
 			<NextTopLoader color="#af3c41" />
 			<QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-			<CookiesConsent />
 			<Toaster richColors closeButton />
 			<SpeedInsights />
 			<Analytics />

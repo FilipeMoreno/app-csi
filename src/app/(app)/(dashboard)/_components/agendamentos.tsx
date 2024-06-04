@@ -29,10 +29,10 @@ export default async function DashboardAgendamentos() {
 			<Suspense fallback={<p>Carregando...</p>}>
 				<div
 					// key={agendamento?.id}
-					className="rounded-lg p-4 flex flex-row flex-wrap gap-4 gap-y-8"
+					className="flex flex-row flex-wrap gap-4 gap-y-8 rounded-lg p-4"
 				>
 					<div className="flex flex-row space-x-4">
-						<div className="rounded-lg bg-zinc-500 w-24 h-full p-2">
+						<div className="h-full w-24 rounded-lg bg-zinc-500 p-2">
 							<div className="flex flex-col items-center justify-center font-bold text-xl">
 								<span>
 									{/* {Intl.DateTimeFormat('pt-BR', {

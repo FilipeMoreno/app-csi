@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { SignInForm, } from './_components/sign-in-form'
+import { SignInForm } from './_components/sign-in-form'
 
 export default function AuthPage() {
 	return (

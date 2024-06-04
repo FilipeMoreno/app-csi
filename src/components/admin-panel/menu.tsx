@@ -1,6 +1,6 @@
 'use client'
 
-import { Code2, Ellipsis } from 'lucide-react'
+import { Code2 } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
@@ -19,6 +19,7 @@ import { getPages } from '@/lib/pages'
 import { cn } from '@/lib/utils'
 import { HeartFilledIcon } from '@radix-ui/react-icons'
 import Image from 'next/image'
+import { FaEllipsis } from 'react-icons/fa6'
 import ChangelogComponent from '../Changelog'
 
 interface MenuProps {
@@ -30,7 +31,7 @@ export function Menu({ isOpen }: MenuProps) {
 	const pages = getPages(pathname)
 
 	return (
-		<ScrollArea className="[&>div>div[style]]:!block">
+		<ScrollArea className="[&>div>div[style]]:!block scrollbar scrollbar-track-white">
 			<nav className="mt-8 h-full w-full">
 				<ul className="flex flex-col min-h-[calc(100vh-48px-36px-16px-32px)] lg:min-h-[calc(100vh-32px-40px-32px)] items-start space-y-1 px-2">
 					{pages.map(({ groupLabel, menus, icon: Icon }, index) => (
@@ -45,7 +46,7 @@ export function Menu({ isOpen }: MenuProps) {
 									<Tooltip delayDuration={100}>
 										<TooltipTrigger className="w-full">
 											<div className="w-full flex justify-center items-center">
-												<Ellipsis className="h-5 w-5" />
+												<FaEllipsis className="h-4 w-4" />
 											</div>
 										</TooltipTrigger>
 										<TooltipContent side="right">
@@ -54,7 +55,7 @@ export function Menu({ isOpen }: MenuProps) {
 									</Tooltip>
 								</TooltipProvider>
 							) : (
-								<p className="pb-2"></p>
+								<p className="pb-2" />
 							)}
 							{menus.map(
 								({ href, label, icon: Icon, active, submenus }, index) =>
@@ -110,31 +111,39 @@ export function Menu({ isOpen }: MenuProps) {
 						</li>
 					))}
 				</ul>
-				<div className="bottom-0 left-0 right-0 flex flex-col items-center justify-center">
-					<Image
-						alt="Logo"
-						width={20}
-						height={20}
-						src={'/icons/icon-512x512.png'}
-						className="mb-1"
-					/>
-					<ChangelogComponent />
-					<span className="text-xs text-zinc-500">v{config.version}</span>
-				</div>
-				<div className="mt-4 flex flex-row items-center justify-center text-xs">
-					<Code2 className="mr-1 h-4 w-4 text-zinc-500" />
-					<span className="text-zinc-500">Developed with</span>
-					<HeartFilledIcon className="mx-1 h-4 w-4 text-tertiary" />
-					<span className="text-zinc-500">
-						by{' '}
-						<Link
-							className="hover:text-tertiary"
-							href="https://filipemoreno.com.br"
-						>
-							Filipe Moreno
-						</Link>
-					</span>
-				</div>
+				{(isOpen && (
+					<>
+						<div className="bottom-0 left-0 right-0 flex flex-col items-center justify-center">
+							<Image
+								alt="Logo"
+								width={20}
+								height={20}
+								src={'/icons/icon-512x512.png'}
+								className="mb-1"
+							/>
+							<ChangelogComponent />
+							<span className="text-xs text-zinc-500">v{config.version}</span>
+						</div>
+						<div className="mt-4 flex flex-row items-center justify-center text-xs">
+							<Code2 className="mr-1 h-4 w-4 text-zinc-500" />
+							<span className="text-zinc-500">Developed with</span>
+							<HeartFilledIcon className="mx-1 h-4 w-4 text-tertiary" />
+							<span className="text-zinc-500">
+								by{' '}
+								<Link
+									className="hover:text-tertiary"
+									href="https://filipemoreno.com.br"
+								>
+									Filipe Moreno
+								</Link>
+							</span>
+						</div>
+					</>
+				)) || (
+					<div className="flex items-center justify-center">
+						<span className="text-xs text-zinc-500">v{config.version}</span>
+					</div>
+				)}
 			</nav>
 		</ScrollArea>
 	)

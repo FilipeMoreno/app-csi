@@ -34,7 +34,7 @@ export default function CarteirinhasScanner() {
 	return (
 		<>
 			<div className="mb-4 flex flex-col">
-				<h1 className="text-3xl font-bold">Scanner</h1>
+				<h1 className="font-bold text-3xl">Scanner</h1>
 				<p>Aponte a câmera para o QR Code</p>
 			</div>
 			<div className="flex flex-wrap gap-8">

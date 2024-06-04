@@ -1,6 +1,6 @@
 'use client'
 
-import { LegacyRef, useEffect, useRef, useState } from 'react'
+import { type LegacyRef, useEffect, useRef, useState } from 'react'
 import { Br, Cut, Image, Printer, Text } from 'react-thermal-printer'
 import ReactToPrint from 'react-to-print'
 

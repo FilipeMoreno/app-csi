@@ -23,7 +23,7 @@ export default function ChamadosDetalhes() {
 		<div className="flex flex-col space-y-4 lg:flex-row lg:space-x-2 lg:space-y-0">
 			<section className="flex w-full flex-col rounded-lg border">
 				<div className="flex flex-col border-b p-4">
-					<span className="text-lg font-bold">
+					<span className="font-bold text-lg">
 						Projetor não funciona
 						<Badge variant={'outline'} className="ml-2 text-xs">
 							#1234
@@ -57,7 +57,7 @@ export default function ChamadosDetalhes() {
 							</div>
 							<div className="flex flex-col space-y-1">
 								<div className="rounded-lg bg-secondary p-2">
-									<span className="flex text-[10px] font-bold text-zinc-400">
+									<span className="flex font-bold text-[10px] text-zinc-400">
 										Usuário
 									</span>
 									<p className="text-sm">
@@ -72,7 +72,7 @@ export default function ChamadosDetalhes() {
 						<div className="flex items-end justify-end gap-2">
 							<div className="flex flex-col space-y-1">
 								<div className="rounded-lg bg-tertiary p-2 text-white">
-									<span className="flex text-[10px] font-bold text-zinc-300">
+									<span className="flex font-bold text-[10px] text-zinc-300">
 										Usuário
 									</span>
 									<p className="text-sm">Resolvido!</p>
@@ -93,7 +93,7 @@ export default function ChamadosDetalhes() {
 						<div className="flex items-end justify-end gap-2">
 							<div className="flex flex-col space-y-1">
 								<div className="rounded-lg bg-tertiary p-2 text-white">
-									<span className="flex text-[10px] font-bold text-zinc-300">
+									<span className="flex font-bold text-[10px] text-zinc-300">
 										Usuário
 									</span>
 									<p className="text-sm">
@@ -119,7 +119,7 @@ export default function ChamadosDetalhes() {
 						<div className="flex items-end justify-end gap-2">
 							<div className="flex flex-col space-y-1">
 								<div className="rounded-lg border border-tertiary bg-transparent p-2 text-primary">
-									<span className="flex text-[10px] font-bold text-zinc-400">
+									<span className="flex font-bold text-[10px] text-zinc-400">
 										Nota privada - Usuário
 									</span>
 									<p className="text-sm">
@@ -253,7 +253,7 @@ export default function ChamadosDetalhes() {
 						<CardTitle className="font-bold">Solicitante</CardTitle>
 					</CardHeader>
 					<CardContent>
-						<div className="flex flex-row  space-x-4">
+						<div className="flex flex-row space-x-4">
 							<Image
 								src="/icons/icon.png"
 								width={50}
@@ -268,15 +268,15 @@ export default function ChamadosDetalhes() {
 						</div>
 						<div className="mt-4 flex flex-row items-center justify-between rounded-lg bg-secondary p-4">
 							<div className="flex flex-col items-center justify-center">
-								<span className="text-lg font-bold">5</span>
+								<span className="font-bold text-lg">5</span>
 								<span>Total</span>
 							</div>
 							<div className="flex flex-col items-center justify-center">
-								<span className="text-lg font-bold">3</span>
+								<span className="font-bold text-lg">3</span>
 								<span>Abertos</span>
 							</div>
 							<div className="flex flex-col items-center justify-center">
-								<span className="text-lg font-bold">2</span>
+								<span className="font-bold text-lg">2</span>
 								<span>Resolvidos</span>
 							</div>
 						</div>

@@ -31,9 +31,6 @@ const nextConfig = {
 			},
 		],
 	},
-	async redirects() {
-		return []
-	},
 }
 
 module.exports = withPWA(nextConfig)

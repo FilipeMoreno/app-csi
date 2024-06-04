@@ -1,6 +1,6 @@
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import NextTopLoader from 'nextjs-toploader'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export const metadata: Metadata = {
 	title: 'Você está off-line | Colégio Santo Inácio',

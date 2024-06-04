@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 
-
 export default function ConfiguracoesHome() {
 	const { setTheme, theme } = useTheme()
 	const [getAtualTheme, setAtualTheme] = useState('')

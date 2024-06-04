@@ -62,7 +62,7 @@ export default function CarteirinhasScannerAcoes() {
 	return (
 		<>
 			<div className="mb-4 flex flex-col">
-				<h1 className="text-3xl font-bold">Scanner de ações rápidas</h1>
+				<h1 className="font-bold text-3xl">Scanner de ações rápidas</h1>
 				<p>Aponte a câmera para o QR Code para visualizar as ações rápidas</p>
 			</div>
 			<div className="flex flex-wrap gap-8">
@@ -119,18 +119,18 @@ export default function CarteirinhasScannerAcoes() {
 						(qrcode && (
 							<Drawer open={true}>
 								<DrawerPortal>
-									<DrawerOverlay className="fixed inset-0 bg-black/40 border-none focus:ring-transparent ring-0" />
-									<DrawerContent className="flex flex-col rounded-t-[10px] h-full mt-24 max-h-[46%] fixed bottom-0 left-0 right-0 p-4">
-										<div className="rounded-t-[10px] flex-1">
-											<div className="mx-auto w-12 h-1.5 flex-shrink-0 rounded-full mb-8" />
-											<div className="max-w-md mx-auto">
-												<DrawerTitle className="font-medium mb-4">
+									<DrawerOverlay className="fixed inset-0 border-none bg-black/40 ring-0 focus:ring-transparent" />
+									<DrawerContent className="fixed right-0 bottom-0 left-0 mt-24 flex h-full max-h-[46%] flex-col rounded-t-[10px] p-4">
+										<div className="flex-1 rounded-t-[10px]">
+											<div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full" />
+											<div className="mx-auto max-w-md">
+												<DrawerTitle className="mb-4 font-medium">
 													Informações da carteirinha
 												</DrawerTitle>
-												<p className="text-zinc-300 mb-2">
+												<p className="mb-2 text-zinc-300">
 													Nome: <b>Nome do aluno aqui</b>
 												</p>
-												<p className="text-zinc-300 mb-2">
+												<p className="mb-2 text-zinc-300">
 													Série/Turma: <b>1º ANO A - Ensino Médio</b>
 												</p>
 											</div>

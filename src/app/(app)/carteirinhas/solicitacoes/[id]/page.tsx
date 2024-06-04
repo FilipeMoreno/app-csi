@@ -11,7 +11,7 @@ import {
 } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { LegacyRef, useRef, useState } from 'react'
+import { type LegacyRef, useRef, useState } from 'react'
 import QRCode from 'react-qr-code'
 import ReactToPrint from 'react-to-print'
 import { useMediaQuery } from 'usehooks-ts'
@@ -75,7 +75,7 @@ export default function CarteirinhasDetalhes() {
 			<div className="flex flex-wrap gap-8">
 				<div className="flex w-full flex-row items-center justify-between rounded-lg">
 					<div>
-						<h1 className="text-2xl font-bold">Carteirnha #1234</h1>
+						<h1 className="font-bold text-2xl">Carteirnha #1234</h1>
 						<p className="text-sm">Mostrando detalhes da carteirinha #1234</p>
 					</div>
 					<Button
@@ -224,7 +224,7 @@ export default function CarteirinhasDetalhes() {
 			<div className="my-4 space-y-4">
 				<div className="flex flex-row items-center justify-between">
 					<div>
-						<h1 className="text-xl font-bold">Histórico</h1>
+						<h1 className="font-bold text-xl">Histórico</h1>
 						<span>Mostrando histórico de status</span>
 					</div>
 
@@ -300,7 +300,7 @@ export default function CarteirinhasDetalhes() {
 				</div>
 				<div className="flex w-full flex-col items-center justify-center rounded-lg bg-emerald-900 p-4 text-zinc-100">
 					<span className="font-thin">Situação atual:</span>
-					<span className="text-xl font-bold">Entregue!</span>
+					<span className="font-bold text-xl">Entregue!</span>
 				</div>
 				<div className="my-2 flex flex-col space-y-3">
 					<Alert className="bg-secondary">
@@ -336,7 +336,7 @@ export default function CarteirinhasDetalhes() {
 			<div className="hidden flex-col lg:flex">
 				<div className="mb-4 flex items-center justify-between">
 					<div>
-						<h1 className="text-xl font-bold">Carteirinha</h1>
+						<h1 className="font-bold text-xl">Carteirinha</h1>
 						<span>Mostrando a carteirinha</span>
 					</div>
 					<ReactToPrint
@@ -383,68 +383,68 @@ export default function CarteirinhasDetalhes() {
 									alt="Foto do aluno"
 								/>
 								<div className="mt-4 flex items-center space-x-2">
-									<span className="font-bold uppercase text-white">
+									<span className="font-bold text-white uppercase">
 										Validade:
 									</span>
-									<span className="font-bold uppercase text-white">
+									<span className="font-bold text-white uppercase">
 										31/03/2025
 									</span>
 								</div>
 							</div>
 							<div>
-								<h1 className="-mt-8 mb-8 text-3xl font-bold uppercase text-white">
+								<h1 className="-mt-8 mb-8 font-bold text-3xl text-white uppercase">
 									Taylor Alison Swift
 								</h1>
 								<div className="flex flex-row items-center justify-between">
 									<div className="my-1 flex w-[300px] flex-col">
-										<span className="text-sm font-bold uppercase text-white">
+										<span className="font-bold text-sm text-white uppercase">
 											Data de nascimento
 										</span>
-										<span className="text-xl font-bold uppercase text-white">
+										<span className="font-bold text-white text-xl uppercase">
 											13/12/1989
 										</span>
 									</div>
 									<div className="my-1 flex w-[300px] flex-col">
-										<span className="text-sm font-bold uppercase text-white">
+										<span className="font-bold text-sm text-white uppercase">
 											Matrícula
 										</span>
-										<span className="text-xl font-bold uppercase text-white">
+										<span className="font-bold text-white text-xl uppercase">
 											123456
 										</span>
 									</div>
 								</div>
 								<div className="flex flex-row items-center justify-between">
 									<div className="my-1 flex w-[300px] flex-col">
-										<span className="text-sm font-bold uppercase text-white">
+										<span className="font-bold text-sm text-white uppercase">
 											Série/Turma
 										</span>
-										<span className="text-xl font-bold uppercase text-white">
+										<span className="font-bold text-white text-xl uppercase">
 											3º SÉRIE A
 										</span>
 									</div>
 									<div className="my-1 flex w-[300px] flex-col">
-										<span className="text-sm font-bold uppercase text-white">
+										<span className="font-bold text-sm text-white uppercase">
 											Curso
 										</span>
-										<span className="text-xl font-bold uppercase text-white">
+										<span className="font-bold text-white text-xl uppercase">
 											Ensino Médio
 										</span>
 									</div>
 								</div>
 								<div className="flex flex-row items-center justify-between">
 									<div className="my-1 flex w-[300px] flex-col">
-										<span className="text-sm font-bold uppercase text-white">
+										<span className="font-bold text-sm text-white uppercase">
 											CPF
 										</span>
-										<span className="text-xl font-bold uppercase text-white">
+										<span className="font-bold text-white text-xl uppercase">
 											560.293.833-88
 										</span>
 									</div>
 									<div className="my-1 flex w-[300px] flex-col">
-										<span className="text-sm font-bold uppercase text-white">
+										<span className="font-bold text-sm text-white uppercase">
 											RG
 										</span>
-										<span className="text-xl font-bold uppercase text-white">
+										<span className="font-bold text-white text-xl uppercase">
 											29.865.222-5
 										</span>
 									</div>

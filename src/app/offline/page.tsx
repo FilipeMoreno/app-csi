@@ -22,7 +22,7 @@ export default function OfflinePage() {
 			/>
 
 			<div className="my-6 flex flex-col justify-start space-y-2">
-				<h1 className="text-center text-2xl font-bold">
+				<h1 className="text-center font-bold text-2xl">
 					Conecte-se à Internet
 				</h1>
 				<p className="text-center font-light">

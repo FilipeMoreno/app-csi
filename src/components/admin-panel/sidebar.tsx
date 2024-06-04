@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { useSidebarToggle } from '@/hooks/use-sidebar-toggle'
 import { useStore } from '@/hooks/use-store'
 import { cn } from '@/lib/utils'
-import { PanelsTopLeft } from 'lucide-react'
 import Image from 'next/image'
 
 export function Sidebar() {

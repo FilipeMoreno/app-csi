@@ -22,7 +22,7 @@ export default function Custom404() {
 			/>
 
 			<div className="my-6 flex flex-col justify-start space-y-2">
-				<h1 className="text-center text-4xl font-bold">404</h1>
+				<h1 className="text-center font-bold text-4xl">404</h1>
 				<p className="text-center font-light">
 					Página não encontrada ou indisponível
 				</p>

@@ -1,4 +1,4 @@
-import { Metadata, Viewport } from 'next'
+import type { Metadata, Viewport } from 'next'
 import Script from 'next/script'
 
 import '@/styles/globals.css'
@@ -29,33 +29,38 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="pt-BR" className="antialiased" suppressHydrationWarning>
-			<head>
-				<meta charSet="utf-8" />
+		<>
+			<html lang="pt-BR" className="antialiased" suppressHydrationWarning>
+				<head>
+					<meta charSet="utf-8" />
 
-				<meta property="og:image" content="https://i.imgur.com/V3yZGU7.png" />
-				<meta property="og:image:type" content="image/png" />
-				<meta property="og:image:width" content="1200" />
-				<meta property="og:image:height" content="630" />
-				<meta property="og:image:alt" content="Logo CSI" />
+					<meta property="og:image" content="https://i.imgur.com/V3yZGU7.png" />
+					<meta property="og:image:type" content="image/png" />
+					<meta property="og:image:width" content="1200" />
+					<meta property="og:image:height" content="630" />
+					<meta property="og:image:alt" content="Logo CSI" />
 
-				<meta name="twitter:image" content="https://i.imgur.com/V3yZGU7.png" />
-				<meta name="twitter:image:type" content="image/png" />
-				<meta name="twitter:image:width" content="1200" />
-				<meta name="twitter:image:height" content="630" />
-				<meta property="twitter:image:alt" content="Logo CSI" />
+					<meta
+						name="twitter:image"
+						content="https://i.imgur.com/V3yZGU7.png"
+					/>
+					<meta name="twitter:image:type" content="image/png" />
+					<meta name="twitter:image:width" content="1200" />
+					<meta name="twitter:image:height" content="630" />
+					<meta property="twitter:image:alt" content="Logo CSI" />
 
-				<meta name="apple-mobile-web-app-capable" content="yes" />
-				<meta
-					name="apple-mobile-web-app-status-bar-style"
-					content="black-translucent"
-				/>
+					<meta name="apple-mobile-web-app-capable" content="yes" />
+					<meta
+						name="apple-mobile-web-app-status-bar-style"
+						content="black-translucent"
+					/>
 
-				<Script src="/register-sw.js" />
-			</head>
-			<body className={inter.className}>
-				<Providers>{children}</Providers>
-			</body>
-		</html>
+					<Script src="/register-sw.js" />
+				</head>
+				<body className={inter.className}>
+					<Providers>{children}</Providers>
+				</body>
+			</html>
+		</>
 	)
 }

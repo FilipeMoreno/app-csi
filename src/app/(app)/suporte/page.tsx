@@ -235,8 +235,7 @@ export default function ChamadosHome() {
 												)}
 												<Badge>{item.status}</Badge>
 												<span className="flex flex-row items-center text-zinc-400">
-													<MessageCircle className="mr-1 h-4 w-4" />
-													0
+													<MessageCircle className="mr-1 h-4 w-4" />0
 												</span>
 											</div>
 											<span className="text-sm text-zinc-500">
